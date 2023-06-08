@@ -43,6 +43,21 @@ const TastingManager = require("./TastingManager");
 
 models.tasting = new TastingManager();
 models.tasting.setDatabase(pool);
+
+const Compo_recipeManager = require("./Compo_recipeManager");
+
+models.compo_recipe = new Compo_recipeManager();
+models.compo_recipe.setDatabase(pool);
+
+const RecipeManager = require("./RecipeManager");
+
+models.recipe = new RecipeManager();
+models.recipe.setDatabase(pool);
+
+const PreferenceManager = require("./PreferenceManager");
+
+models.preference = new PreferenceManager();
+models.preference.setDatabase(pool);
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 

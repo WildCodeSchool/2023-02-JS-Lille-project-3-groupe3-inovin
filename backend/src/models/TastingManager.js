@@ -13,8 +13,8 @@ class TastingManager extends AbstractManager {
   update(tasting) {
     return this.database.query(
       `update ${this.table} set robe = ?, color_intensity = ?, arome = ?, arome_intensity = ?, flavor = ?, rating = ?, where id = ?`,
-      [tasting.robe, tasting.color_intensity, tasting.arome, tasting.arome_intensity, tasting.flavor, tasting.rating]);
+      [tasting.robe, tasting.color_intensity, tasting.arome, tasting.arome_intensity, tasting.flavor, tasting.rating, tasting.id]);
   }
 }
 
-module.exports = WinebottleManager;
+module.exports = TastingManager;
