@@ -1,5 +1,5 @@
 function SliderHome() {
-  return <div />;
+  return <div className="slide" />;
 }
 
 export default SliderHome;

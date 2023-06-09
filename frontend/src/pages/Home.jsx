@@ -1,6 +1,11 @@
+import "../App.css";
+
 function Home() {
   return (
-    <div>
+    <div
+      className="k"
+      // style={{backgroundColor: $background_color}}
+    >
       <h1>TEST DE LA VINASSE</h1>
     </div>
   );
