@@ -1,5 +1,5 @@
 function Inscription() {
-  return <div />;
+  return <div>TEST</div>;
 }
 
 export default Inscription;
