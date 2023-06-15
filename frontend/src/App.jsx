@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Inscription from "./pages/Inscription";
-import FicheDegustation from "./pages/FicheDegustation";
-import AtelierCreation from "./pages/AtelierCreation";
-import LivreDor from "./pages/LivreDor";
-import Resume from "./pages/Resume";
+import Home from "./pages/Home/Home";
+import Inscription from "./pages/Inscription/Inscription";
+import FicheDegustation from "./pages/FicheDegustation/FicheDegustation";
+import AtelierCreation from "./pages/AtelierCreation/AtelierCreation";
+import LivreDor from "./pages/LivreDor/LivreDor";
+import Resume from "./pages/Resume/Resume";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 

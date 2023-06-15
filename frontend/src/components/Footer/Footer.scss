@@ -1,1 +1,13 @@
 @import "../../App.scss";
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.legal-link {
+  font-family: $font_title_small;
+  color: $input_color;
+  cursor: pointer;
+  background-color: $box_color;
+}
