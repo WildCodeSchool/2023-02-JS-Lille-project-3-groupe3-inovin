@@ -5,7 +5,7 @@ import wineGlass from "../../assets/images/verre_plan_de_travail.png";
 
 function SliderHome() {
   return (
-    <div>
+    <div className="wrapper_portrait">
       <div className="carousel_container">
         <Carousel
           showThumbs
