@@ -8,7 +8,7 @@ function SliderHome() {
     <div className="wrapper_portrait">
       <div className="carousel_container">
         <Carousel
-          showThumbs
+          showThumbs={false}
           showStatus={false}
           infiniteLoop
           useKeyboardArrows

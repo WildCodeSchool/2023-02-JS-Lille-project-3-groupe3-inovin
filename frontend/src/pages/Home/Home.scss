@@ -2,7 +2,10 @@
 
 #title {
   color: $title_color;
+  font-family: $font_title_small;
   text-align: center;
+  line-height: 2;
+  text-shadow: 4px 4px 4px rgb(0 0 0 / 96%);
 }
 #background_btn {
   transform: rotate(180deg);
@@ -17,14 +20,19 @@
 
 @media (orientation: landscape) {
   .header_container {
-    background: linear-gradient(
-      180deg,
-      #000000 1.19%,
-      rgba(115, 115, 115, 0.550339) 27.59%,
-      rgba(255, 255, 255, 0) 46.73%,
-      rgba(55, 55, 55, 0.783352) 67.87%,
-      #000000 97.86%
-    );
+    // background: linear-gradient(
+    //   180deg,
+    //   #000000 1.19%,
+    //   rgba(115, 115, 115, 0.550339) 27.59%,
+    //   rgba(255, 255, 255, 0) 46.73%,
+    //   rgba(55, 55, 55, 0.783352) 67.87%,
+    //   #000000 97.86%
+    // );
+    background-image: url("../../../src/assets/images/wines.jpg");
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2%;
     font-family: $font_title_small;
     width: 50%;
     display: flex;
@@ -34,6 +42,7 @@
     z-index: 1;
     align-items: center;
     margin: 0 auto;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .start_button {
@@ -70,7 +79,7 @@
     transform: translateX(-50%);
   }
   .header_container {
-    background-image: url("../../../src/assets/images/grape.jpg");
+    background-image: url("../../../src/assets/images/wines.jpg");
     width: 50%;
     height: 20%;
     justify-content: center;
@@ -83,6 +92,8 @@
     margin: 0 auto;
     transform: translateX(-50%);
     left: 50%;
+    border-radius: 5%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   .title_background {
     position: absolute;
