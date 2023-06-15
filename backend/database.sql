@@ -41,35 +41,35 @@ INSERT INTO `account` VALUES (1,'florent@gmail.fr','nadineMorano'),(2,'Cédric@g
 UNLOCK TABLES;
 
 --
--- Table structure for table `compo_recipe`
+-- Table structure for table `compoRecipe`
 --
 
-DROP TABLE IF EXISTS `compo_recipe`;
+DROP TABLE IF EXISTS `compoRecipe`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `compo_recipe` (
+CREATE TABLE `compoRecipe` (
   `id` int NOT NULL AUTO_INCREMENT,
   `percentage` int DEFAULT NULL,
   `user_id` int NOT NULL,
   `user_account_ID` int NOT NULL,
-  `wine_bottle_id` int NOT NULL,
-  PRIMARY KEY (`id`,`user_id`,`user_account_ID`,`wine_bottle_id`),
-  KEY `fk_compo_recipe_wine_bottle_user_idx` (`id`),
-  KEY `fk_compo_recipe_user1_idx` (`user_id`,`user_account_ID`),
-  KEY `fk_compo_recipe_wine_bottle1_idx` (`wine_bottle_id`),
-  CONSTRAINT `fk_compo_recipe_user1` FOREIGN KEY (`user_id`, `user_account_ID`) REFERENCES `user` (`id`, `account_ID`),
-  CONSTRAINT `fk_compo_recipe_wine_bottle1` FOREIGN KEY (`wine_bottle_id`) REFERENCES `wine_bottle` (`id`)
+  `wineBottle_id` int NOT NULL,
+  PRIMARY KEY (`id`,`user_id`,`user_account_ID`,`wineBottle_id`),
+  KEY `fk_compoRecipe_wineBottle_user_idx` (`id`),
+  KEY `fk_compoRecipe_user1_idx` (`user_id`,`user_account_ID`),
+  KEY `fk_compoRecipe_wineBottle1_idx` (`wineBottle_id`),
+  CONSTRAINT `fk_compoRecipe_user1` FOREIGN KEY (`user_id`, `user_account_ID`) REFERENCES `user` (`id`, `account_ID`),
+  CONSTRAINT `fk_compoRecipe_wineBottle1` FOREIGN KEY (`wineBottle_id`) REFERENCES `wineBottle` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `compo_recipe`
+-- Dumping data for table `compoRecipe`
 --
 
-LOCK TABLES `compo_recipe` WRITE;
-/*!40000 ALTER TABLE `compo_recipe` DISABLE KEYS */;
-INSERT INTO `compo_recipe` VALUES (1,47,3,1,6),(2,53,3,1,5);
-/*!40000 ALTER TABLE `compo_recipe` ENABLE KEYS */;
+LOCK TABLES `compoRecipe` WRITE;
+/*!40000 ALTER TABLE `compoRecipe` DISABLE KEYS */;
+INSERT INTO `compoRecipe` VALUES (1,47,3,1,6),(2,53,3,1,5);
+/*!40000 ALTER TABLE `compoRecipe` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -134,15 +134,15 @@ DROP TABLE IF EXISTS `relation_recipe`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `relation_recipe` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `compo_recipe_id` int NOT NULL,
-  `compo_recipe_user_id` int NOT NULL,
-  `compo_recipe_user_account_ID` int NOT NULL,
+  `compoRecipe_id` int NOT NULL,
+  `compoRecipe_user_id` int NOT NULL,
+  `compoRecipe_user_account_ID` int NOT NULL,
   `recipe_id` int NOT NULL,
-  PRIMARY KEY (`id`,`compo_recipe_id`,`compo_recipe_user_id`,`compo_recipe_user_account_ID`,`recipe_id`),
-  KEY `fk_relation_recipe_compo_recipe1_idx` (`compo_recipe_id`,`compo_recipe_user_id`,`compo_recipe_user_account_ID`),
+  PRIMARY KEY (`id`,`compoRecipe_id`,`compoRecipe_user_id`,`compoRecipe_user_account_ID`,`recipe_id`),
+  KEY `fk_relation_recipe_compoRecipe1_idx` (`compoRecipe_id`,`compoRecipe_user_id`,`compoRecipe_user_account_ID`),
   KEY `fk_relation_recipe_recipe1_idx` (`recipe_id`),
   CONSTRAINT `fk_recipe` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_relation_recipe_compo_recipe1` FOREIGN KEY (`compo_recipe_id`, `compo_recipe_user_id`, `compo_recipe_user_account_ID`) REFERENCES `compo_recipe` (`id`, `user_id`, `user_account_ID`),
+  CONSTRAINT `fk_relation_recipe_compoRecipe1` FOREIGN KEY (`compoRecipe_id`, `compoRecipe_user_id`, `compoRecipe_user_account_ID`) REFERENCES `compoRecipe` (`id`, `user_id`, `user_account_ID`),
   CONSTRAINT `fk_relation_recipe_recipe1` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -174,12 +174,12 @@ CREATE TABLE `tasting` (
   `rating` varchar(45) NOT NULL,
   `user_id` int NOT NULL,
   `user_account_ID` int NOT NULL,
-  `wine_bottle_id` int NOT NULL,
-  PRIMARY KEY (`id`,`user_id`,`user_account_ID`,`wine_bottle_id`),
+  `wineBottle_id` int NOT NULL,
+  PRIMARY KEY (`id`,`user_id`,`user_account_ID`,`wineBottle_id`),
   KEY `fk_tasting_user1_idx` (`user_id`,`user_account_ID`),
-  KEY `fk_tasting_wine_bottle1_idx` (`wine_bottle_id`),
+  KEY `fk_tasting_wineBottle1_idx` (`wineBottle_id`),
   CONSTRAINT `fk_tasting_user1` FOREIGN KEY (`user_id`, `user_account_ID`) REFERENCES `user` (`id`, `account_ID`),
-  CONSTRAINT `fk_tasting_wine_bottle1` FOREIGN KEY (`wine_bottle_id`) REFERENCES `wine_bottle` (`id`)
+  CONSTRAINT `fk_tasting_wineBottle1` FOREIGN KEY (`wineBottle_id`) REFERENCES `wineBottle` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,13 +226,13 @@ INSERT INTO `user` VALUES (3,'khouloud','belkhir','1992-12-27','koukabelle@gmail
 UNLOCK TABLES;
 
 --
--- Table structure for table `wine_bottle`
+-- Table structure for table `wineBottle`
 --
 
-DROP TABLE IF EXISTS `wine_bottle`;
+DROP TABLE IF EXISTS `wineBottle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `wine_bottle` (
+CREATE TABLE `wineBottle` (
   `id` int NOT NULL AUTO_INCREMENT,
   `bottle_name` varchar(50) NOT NULL,
   `region` varchar(50) NOT NULL,
@@ -245,13 +245,13 @@ CREATE TABLE `wine_bottle` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `wine_bottle`
+-- Dumping data for table `wineBottle`
 --
 
-LOCK TABLES `wine_bottle` WRITE;
-/*!40000 ALTER TABLE `wine_bottle` DISABLE KEYS */;
-INSERT INTO `wine_bottle` VALUES (5,'Chateau Auzias','Languedoc-Roussillon','blanc',2021,'chardonnay','frontend\src\assets\chardonnay-2021-chateau-auzias.png'),(6,'Pouilly-Fumé Nuit Blanche','Val de Loire','blanc',2020,'sauvignon','frontend\src\assets\pouilly-fume-nuit-blanche.jpg');
-/*!40000 ALTER TABLE `wine_bottle` ENABLE KEYS */;
+LOCK TABLES `wineBottle` WRITE;
+/*!40000 ALTER TABLE `wineBottle` DISABLE KEYS */;
+INSERT INTO `wineBottle` VALUES (5,'Chateau Auzias','Languedoc-Roussillon','blanc',2021,'chardonnay','frontend\src\assets\chardonnay-2021-chateau-auzias.png'),(6,'Pouilly-Fumé Nuit Blanche','Val de Loire','blanc',2020,'sauvignon','frontend\src\assets\pouilly-fume-nuit-blanche.jpg');
+/*!40000 ALTER TABLE `wineBottle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

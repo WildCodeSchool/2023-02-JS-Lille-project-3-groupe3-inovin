@@ -2,18 +2,34 @@ const AbstractManager = require("./AbstractManager");
 
 class WinebottleManager extends AbstractManager {
   constructor() {
-    super({ table: "wine_bottle" });
+    super({ table: "wineBottle" });
   }
 
-  insert(wine_bottle) {
-    return this.database.query(`insert into ${this.table} (name, region, color, cepage, image) values (?,?,?,?,?)`, 
-    [wine_bottle.name, wine_bottle.region, wine_bottle.color, wine_bottle.cepage, wine_bottle.image]);
+  insert(wineBottle) {
+    return this.database.query(
+      `insert into ${this.table} (name, region, color, cepage, image) values (?,?,?,?,?)`,
+      [
+        wineBottle.name,
+        wineBottle.region,
+        wineBottle.color,
+        wineBottle.cepage,
+        wineBottle.image,
+      ]
+    );
   }
 
-  update(wine_bottle) {
+  update(wineBottle) {
     return this.database.query(
       `update ${this.table} set name = ?, region = ?, color = ?, cepage = ?, image = ?, where id = ?`,
-      [wine_bottle.name, wine_bottle.region, wine_bottle.color, wine_bottle.cepage, wine_bottle.image, wine_bottle.id]);
+      [
+        wineBottle.name,
+        wineBottle.region,
+        wineBottle.color,
+        wineBottle.cepage,
+        wineBottle.image,
+        wineBottle.id,
+      ]
+    );
   }
 }
 
