@@ -1,0 +1,8 @@
+@import "../../App.scss";
+
+@media (orientation: portrait) {
+  .feedbackPage {
+    background-color: $background_color;
+    font-family: $font_inovin;
+  }
+}

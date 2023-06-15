@@ -12,6 +12,7 @@ $font_title_small: "Bebas Neue", sans-serif;
 $font_title_large: "Montaga", serif;
 $tablet-width: 768px;
 $desktop-width: 1024px;
+
 @mixin tablet-paysage {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;

@@ -1,28 +1,37 @@
 import { useState } from "react";
 import "./FormFeedback.scss";
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import separator from "../../assets/images/separator02.png";
+import fleche from "../../assets/images/fleche_360.png";
 
 function FormFeedback() {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleClickNext = () => {
+    navigate("/Resume");
+  };
 
   return (
     <div className="commentsPage">
       <div className="commentsBook">
         <h2>LIVRE D'OR</h2>
       </div>
-      <img alt="artdeco" />
+      <img src={separator} className="separatorImg" alt="artdeco" />
 
       <div className="noticeContainer">
         <h3 className="noticeTitle">AVIS</h3>
 
         <div className="content">
-          <h3>NOTE SUR 5</h3>
-          {[...Array(5)].map((star, i) => {
+          <h3>NOTE L'EXPERIENCE DE L'ATELIER :</h3>
+          {[...Array(5)].map((star, i, index) => {
             const ratingValue = i + 1;
 
             return (
-              <label>
+              <label key={index} className="starContainer">
                 <input
                   type="radio"
                   name="rating"
@@ -43,13 +52,25 @@ function FormFeedback() {
           })}
 
           <h3>UN PETIT COMMENTAIRE ?</h3>
-          <textarea className="commentsArea" rows="10" cols="50" />
+          <textarea className="commentsArea" rows="7" cols="33" />
         </div>
-        <button type="submit">ENVOYER</button>
-        {/* send {rating} par mail à Cédric */}
-      </div>
 
-      <button type="button">Suivant</button>
+        <div className="buttonDecoration">
+          <button type="submit" className="sendForm">
+            ENVOYER
+          </button>
+        </div>
+
+        {/* send {rating} par mail à Cédric */}
+        <button
+          type="button"
+          onClick={handleClickNext}
+          className="navigateLinkToResume"
+        >
+          {" "}
+          <img src={fleche} alt="next page" className="nextPageArrow" /> SUIVANT
+        </button>
+      </div>
     </div>
   );
 }
