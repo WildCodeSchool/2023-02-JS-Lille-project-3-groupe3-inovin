@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.scss";
 import { useContext } from "react";
 import { LogingContext } from "../../contexts/LogingContext";
 
