@@ -1,5 +1,7 @@
+import FormFeedback from "../components/FormFeedback/FormFeedback";
+
 function LivreDor() {
-  return <div />;
+  return <FormFeedback />;
 }
 
 export default LivreDor;

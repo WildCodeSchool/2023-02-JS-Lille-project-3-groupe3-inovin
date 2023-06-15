@@ -1,0 +1,51 @@
+@import "../../App.scss";
+
+@media (orientation: portrait) {
+  .commentsPage {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .commentsBook {
+    background-color: $box_color;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 7px;
+  }
+
+  .commentsBook h2 {
+    padding: 10px 0;
+    color: $title_color;
+  }
+
+  .noticeContainer {
+    margin-top: 10%;
+    background-color: $box_color;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .noticeTitle {
+    color: $gold_title;
+  }
+
+  .content {
+    color: $title_color;
+    background-color: #b5b3b3b8;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  .star {
+    cursor: pointer;
+    transition: 300ms;
+  }
+}
