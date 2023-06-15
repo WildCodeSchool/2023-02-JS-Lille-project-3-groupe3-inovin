@@ -1,5 +1,142 @@
 @import "../../App.scss";
 
-.slide {
-  background-color: $background_color;
+.carousel_container {
+  background-color: $box_color;
+  padding: 1em 3em;
+  position: absolute;
+  bottom: 10%;
+  box-shadow: 4px 4px 4px 4px #000000;
+  z-index: auto;
+  margin: 2% 5%;
+  border: 1px solid gainsboro;
 }
+
+#first_slide {
+  display: contents;
+}
+.carousel .control-arrow:before,
+.carousel.carousel-slider .control-arrow:before {
+  margin: 0 5px;
+  display: inline-block;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.carousel.carousel-slider {
+  margin: 0px auto;
+  overflow: visible;
+}
+
+.carousel .slide {
+  color: white;
+}
+
+.carousel .slide-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.carousel .slide img {
+  margin: 30px;
+  width: 35%;
+  height: 200px;
+  object-fit: contain;
+}
+.carousel .slide iframe {
+  margin: 30px;
+  width: 35%;
+}
+.carousel .text-container {
+  padding: 30px;
+  text-align: left;
+}
+
+.carousel .text-container h2 {
+  margin-top: 0px;
+}
+
+.carousel .text-container p:last-child {
+  margin-bottom: 0px;
+}
+
+.carousel .control-dots {
+  display: none;
+}
+
+.carousel .thumbs-wrapper {
+  display: none;
+}
+
+#wineGlass {
+  width: auto;
+}
+@media (orientation: landscape) {
+  body {
+    background-color: $background_color;
+  }
+  .carousel_container {
+    height: 36%;
+  }
+
+  #a,
+  #b,
+  #c,
+  #d,
+  #e {
+    position: absolute;
+    font-family: $font_title_small;
+    letter-spacing: 1px;
+    text-shadow: 4px 4px 3px #000000;
+  }
+
+  #a {
+    top: 10%;
+    left: 10%;
+  }
+
+  #b {
+    top: 10%;
+    left: 43%;
+  }
+
+  #c {
+    top: 35%;
+    left: 7%;
+  }
+
+  #d {
+    top: 35%;
+    left: 43%;
+  }
+
+  #e {
+    top: 60%;
+    left: 28%;
+  }
+}
+
+@media (orientation: portrait) {
+  body {
+    background-color: yellow;
+  }
+}
+
+// @media (max-width: 768px) {
+//   #1,
+//   #2,
+//   #3,
+//   #4,
+//   #5 {
+//     position: static;
+//     top: auto;
+//     left: auto;
+//   }
+// }
+
+// #first-slide{
+//   // display: flex;
+//   // background-color: green;
+//   // width: auto
+// }
