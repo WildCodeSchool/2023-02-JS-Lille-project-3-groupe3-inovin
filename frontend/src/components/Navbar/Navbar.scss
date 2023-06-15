@@ -3,7 +3,4 @@
 .nav {
   background-color: $background_color;
   height: 120%;
-  @include tablet-paysage {
-    background-color: red;
-  }
 }

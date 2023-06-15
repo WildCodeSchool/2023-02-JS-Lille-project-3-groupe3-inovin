@@ -72,23 +72,22 @@
 #wineGlass {
   width: auto;
 }
+#a,
+#b,
+#c,
+#d,
+#e {
+  position: absolute;
+  font-family: $font_title_small;
+  letter-spacing: 1px;
+  text-shadow: 4px 4px 3px #000000;
+}
 @media (orientation: landscape) {
   body {
     background-color: $background_color;
   }
   .carousel_container {
     height: 36%;
-  }
-
-  #a,
-  #b,
-  #c,
-  #d,
-  #e {
-    position: absolute;
-    font-family: $font_title_small;
-    letter-spacing: 1px;
-    text-shadow: 4px 4px 3px #000000;
   }
 
   #a {
@@ -118,8 +117,48 @@
 }
 
 @media (orientation: portrait) {
-  body {
-    background-color: yellow;
+  .wrapper_portrait {
+  }
+
+  .carousel_container {
+    position: absolute;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    top: 40%;
+    height: 50%;
+    width: -webkit-fill-available;
+    box-shadow: 4px 4px 4px 4px #000000;
+    z-index: auto;
+    margin: 5%;
+    border: 1px solid gainsboro;
+  }
+  #wineGlass {
+    height: 30vh;
+  }
+  #a {
+    top: 5%;
+    left: 5%;
+  }
+
+  #b {
+    top: 20%;
+    left: 30%;
+  }
+
+  #c {
+    top: 40%;
+    left: 5%;
+  }
+
+  #d {
+    top: 60%;
+    left: 25%;
+  }
+
+  #e {
+    top: 80%;
+    left: 15%;
   }
 }
 

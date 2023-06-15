@@ -2,9 +2,17 @@
 
 #title {
   color: $title_color;
+  text-align: center;
 }
 #background_btn {
   transform: rotate(180deg);
+}
+.home_btn {
+  cursor: pointer;
+}
+.title_background {
+  transform: rotate(180deg);
+  width: -webkit-fill-available;
 }
 
 @media (orientation: landscape) {
@@ -28,9 +36,6 @@
     margin: 0 auto;
   }
 
-  .title_background {
-    transform: rotate(180deg);
-  }
   .start_button {
     font-family: $font_title_small;
     width: 50%;
@@ -50,5 +55,37 @@
     font-family: $font_title_small;
     position: absolute;
     top: 1%;
+  }
+}
+
+@media (orientation: portrait) {
+  .start_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .header_container {
+    background-image: url("../../../src/assets/images/grape.jpg");
+    width: 50%;
+    height: 20%;
+    justify-content: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 15%;
+    z-index: 1;
+    align-items: center;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  .title_background {
+    position: absolute;
+    top: 15em;
   }
 }
