@@ -1,5 +1,9 @@
 function Footer() {
-  return <div>Et moi je suis le footer !</div>;
+  return (
+    <div>
+      L'alcool est dangereux pour la santé, à consommer avec modération.
+    </div>
+  );
 }
 
 export default Footer;

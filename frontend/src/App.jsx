@@ -8,13 +8,17 @@ import Resume from "./pages/Resume";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
+import { LogingProvider } from "./contexts/LogingContext";
+
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        <LogingProvider>
+          <Navbar />
+        </LogingProvider>
 
         <Routes>
           <Route path="/" element={<Home />} />
