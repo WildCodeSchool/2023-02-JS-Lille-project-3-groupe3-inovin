@@ -1,1 +1,30 @@
 @import "../../App.scss";
+
+.element_apercu {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40%;
+  height: 25%;
+  width: 60%;
+  border: red solid;
+}
+
+.element_photo {
+  display: flex;
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+}
+
+.element_gauche {
+  display: flex;
+  align-items: center;
+}
+
+.element_droite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 7%;
+  justify-content: space-around;
+}

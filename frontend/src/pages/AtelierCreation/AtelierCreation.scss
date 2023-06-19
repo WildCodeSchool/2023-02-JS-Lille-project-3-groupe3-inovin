@@ -1,0 +1,12 @@
+@import "../../App.scss";
+
+.container_atelier {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+  width: 100%;
+  height: 640px;
+  border: solid red;
+  background-color: aqua;
+  align-items: center;
+}

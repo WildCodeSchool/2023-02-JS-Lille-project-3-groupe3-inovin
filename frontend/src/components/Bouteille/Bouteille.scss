@@ -1,1 +1,13 @@
 @import "../../App.scss";
+
+.container_bouteilles {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  border: red solid;
+}
+
+.element_bouteille {
+  display: flex;
+  flex-direction: row;
+}
