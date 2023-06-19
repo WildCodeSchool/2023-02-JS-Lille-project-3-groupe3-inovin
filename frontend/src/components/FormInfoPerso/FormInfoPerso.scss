@@ -1,1 +1,10 @@
 @import "../../App.scss";
+
+.h2-title {
+    font: $font_title_large;
+}
+.picture-preference {
+    width: 200px;
+    border: solid white 0.5px;
+    border-radius: 5%;
+}
