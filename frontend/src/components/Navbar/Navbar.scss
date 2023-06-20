@@ -8,9 +8,6 @@
 }
 
 .logo {
-  background-image: url(../../assets/images/logo_inovin.png);
-  height: 180px;
-  width: 200px;
   align-self: self-start;
   background-repeat: no-repeat;
   margin-left: 10px;
@@ -25,8 +22,9 @@
 }
 
 .loginLinks {
-  display: flex;
-  color: aqua;
-  flex-direction: column;
+  height: 65px;
+  width: 65px;
   margin-right: 10px;
+  background-color: #0000;
+  border: none;
 }
