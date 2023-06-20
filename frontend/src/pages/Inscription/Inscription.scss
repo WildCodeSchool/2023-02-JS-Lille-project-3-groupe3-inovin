@@ -1,5 +1,6 @@
 @import "../../App.scss";
 
-.inscription_container{
-    border:solid red;
+.inscription_container {
+  display: flex;
+  flex-direction: column;
 }

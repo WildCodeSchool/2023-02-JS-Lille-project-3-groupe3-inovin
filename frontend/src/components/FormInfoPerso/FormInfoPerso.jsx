@@ -15,7 +15,7 @@ function FormInfoPerso() {
     axios
       .post("http://localhost:5000/user", formInscription)
       .then(() => {
-        console.log("C'est bon");
+        <p>""</p>;
       })
       .catch((err) => {
         console.error(err);
@@ -36,10 +36,9 @@ function FormInfoPerso() {
   };
   return (
     <div>
-      <form onSubmit={hSubmit}>
+      <form className="form-inscription" onSubmit={hSubmit}>
         <h2 className="title-identity">INSCRIPTION</h2>
         <div className="contenair-identity">
-          <h2 className="form-inscription-idendity-h2">inscription</h2>
           <div className="form-inscription-identity-input-contenair">
             <label
               className="form-inscription-idendity-label"
@@ -109,8 +108,8 @@ function FormInfoPerso() {
         <div className="contenair-preference">
           <div className="contenair-preference-g">
             <div className="contenair-color">
+              <h3 className="title-checkbox">Color</h3>
               <label className="form-color-label" htmlFor="label-color">
-                color
                 <p>rouge</p>
                 <input
                   className="formbook-input-check"
@@ -144,8 +143,8 @@ function FormInfoPerso() {
               </label>
             </div>
             <div className="contenair-arome">
+              <h3 className="title-checkbox">Arôme</h3>
               <label className="form-arome-label" htmlFor="label-arome">
-                Arôme
                 <p>fruité</p>
                 <input
                   className="formbook-input-check"
@@ -179,7 +178,7 @@ function FormInfoPerso() {
               </label>
             </div>
             <div className="contenair-area-taste">
-              <label className="story">
+              <label className="comment">
                 Comment aimes-tu ton vin?
                 <textarea
                   id="other-taste"
@@ -199,7 +198,7 @@ function FormInfoPerso() {
               alt="wine bottle"
             />
             <button className="button-submit-identity" type="submit">
-              envoyez
+              <span>JE M'INSCRIS</span>
             </button>
           </div>
         </div>

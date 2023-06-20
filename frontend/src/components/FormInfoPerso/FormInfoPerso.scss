@@ -1,10 +1,228 @@
 @import "../../App.scss";
 
-.h2-title {
-    font: $font_title_large;
+.inscription_container {
+  display: flex;
+  flex-direction: column;
+  background-color: $background-black;
+}
+.form-inscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.title-identity,
+.title-preference {
+  font-family: "Montaga", serif;
+  color: $gold_title;
+  font-size: 38px;
+  align-self: flex-start;
+  padding: 2%;
+  margin-left: 8%;
+  padding: 16px;
 }
 .picture-preference {
-    width: 200px;
-    border: solid white 0.5px;
-    border-radius: 5%;
+  width: 156px;
+  height: 230px;
+  border: solid white 0.5px;
+  border-radius: 5%;
+  margin: 1px 1px 18px 1px;
+}
+.contenair-identity {
+  border: solid $title_color 1px;
+  border-radius: 5px;
+  background-color: $box_color;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  margin: 3%;
+}
+.form-inscription-identity-input-contenair {
+  display: flex;
+  margin: 2%;
+  font-family: $font_title_small;
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: white;
+  width: 100%;
+}
+.form-inscription-idendity-label {
+  width: 98%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 16px;
+}
+.form-inscription-idendity-input-class {
+  font-family: "Bebas Neue", sans-serif;
+  padding: 2%;
+  width: 240px;
+  margin: 6px;
+  font-size: 22px;
+  letter-spacing: 3px;
+  height: 17px;
+  border-radius: 5px;
+  margin-right: 38px;
+  background: #c5c5c5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.contenair-preference {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 3%;
+}
+.contenair-preference-g {
+  background-image: url("../../assets/images/fond-gris_720.png");
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border-radius: 5px;
+  padding: 5px 1px 5px 1px;
+  mix-blend-mode: normal;
+  opacity: 0.77;
+  box-shadow: 0px 0px 27px 3px #000000;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.story {
+  display: flex;
+  flex-direction: column;
+}
+.contenair-preference-d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.contenair-color,
+.contenair-arome,
+.contenair-area-taste {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  background: rgba(197, 197, 197, 0.37);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: 2% auto 1% auto;
+  padding: 4% 5% 1% 5%;
+  width: 78%;
+}
+.form-color-label,
+.form-arome-label {
+  display: flex;
+  color: black;
+  font-size: 28px;
+  text-align: center;
+  font-family: $font_title_small;
+}
+.form-color-label p,
+.form-arome-label p {
+  padding: 3px 6px 3px 6px;
+  margin: 0px 4px 0px 3px;
+}
+.title-checkbox {
+  font-family: $font_title_small;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 0.26em;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.56);
+}
+.comment {
+  font-family: $font_title_small;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.56);
+}
+.comment textarea {
+  font-family: $font_title_small;
+  overflow-y: scroll;
+  height: 74px;
+  font-size: 20px;
+}
+
+.comment textarea::-webkit-scrollbar {
+  width: 13px;
+  width: 13px;
+}
+.comment textarea::-webkit-scrollbar-track {
+  border-radius: 1px;
+  background-color: #ebebeb;
+  border: 2px solid #ffffff;
+}
+
+.comment textarea::-webkit-scrollbar-track:hover {
+  background-color: #b8c0c2;
+}
+
+.comment textarea::-webkit-scrollbar-track:active {
+  background-color: #b8c0c2;
+}
+
+.comment textarea::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #000000;
+  border: 2px solid #ffffff;
+}
+
+.comment textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #a3a3a3;
+}
+
+.comment textarea::-webkit-scrollbar-thumb:active {
+  background-color: #d3d3d3;
+}
+.button-submit-identity {
+  display: inline-block;
+  background-color: white;
+  border-radius: 8px;
+  border: 8px double #3e3e3e;
+  color: $box_color;
+  text-align: center;
+  font-size: 22px;
+  padding: 8px;
+  width: 156px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  font-family: $font_title_small;
+  letter-spacing: 3px;
+}
+.button-submit-identity span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button-submit-identity span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button-submit-identity:hover {
+  background-color: $input_color;
+}
+.home_btn:hover span {
+  padding-right: 25px;
+}
+.button-submit-identity:hover span:after {
+  opacity: 1;
+  right: 0;
 }
