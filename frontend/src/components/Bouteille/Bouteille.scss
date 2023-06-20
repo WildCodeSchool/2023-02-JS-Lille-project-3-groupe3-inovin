@@ -5,7 +5,7 @@
   height: 400px;
   width: 80%;
   flex-wrap: wrap;
-  background-color: $background_color;
+  background-color: #1D1D1D;
   box-shadow: 3px 4px 5px 2px rgba(0, 0, 0, 0.5);
   border-radius: 6px;
   margin-top: -2%;
@@ -38,6 +38,7 @@
 .element_description_bouteille {
   font-size: 20px;
   letter-spacing: 0.1em;
+  text-align: center;
 }
 
 .element_titre_exterieur_deux {
@@ -50,10 +51,46 @@
   padding-right: 23%;
 }
 
-.home_btn {
-  height: 17%;
-  width: 8rem;
-  font-family: $font_title_small;
-  margin-left: 13%;
-  margin-top: 13%;
-}
+.bouteille_btn {
+    display: inline-block;
+    background-color: white;
+    border-radius: 8px;
+    border: 8px double #3E3E3E;
+    color: $box_color;
+    text-align: center;
+    font-size: 16px;
+    height: 78px;
+    font-size: 28px;
+    width: 254px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    font-family: $font_title_small;
+    letter-spacing: 3px;
+    margin-top: 11%;
+    margin-left: 5%
+  }
+  .bouteille_btn span {
+    cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+  }
+  .bouteille_btn span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .bouteille_btn:hover {
+    background-color: $input_color;
+  }
+  .bouteille_btn:hover span {
+    padding-right: 25px;
+  }
+  .bouteille_btn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

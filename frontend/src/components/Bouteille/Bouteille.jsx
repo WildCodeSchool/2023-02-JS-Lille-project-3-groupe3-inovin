@@ -57,9 +57,9 @@ function Bouteille() {
           </div>
         </div>
 
-        <button type="button" className="home_btn">
+        <button type="button" className="bouteille_btn">
           {" "}
-          Bravo ! Un avis ?
+          Création recette
         </button>
       </div>
     </>

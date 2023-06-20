@@ -3,6 +3,7 @@ import grapes from "../../assets/images/grape.jpg";
 
 function Apercu() {
   return (
+    <>
     <div className="element_apercu">
       <div className="element_gauche">
         <img src={grapes} className="element_photo" alt="Grapes" />
@@ -13,8 +14,15 @@ function Apercu() {
         <p className="element_description">
           Mélange doux et léger avec des notes de prune et d’hibiscus.
         </p>
+        
       </div>
+      
     </div>
+    <button type="button" className="apercu_btn">
+    {" "}
+    Bravo ! Un avis ?
+  </button>
+  </>
   );
 }
 
