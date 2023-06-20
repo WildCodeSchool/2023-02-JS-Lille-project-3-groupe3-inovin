@@ -1,21 +1,64 @@
 @import "../../App.scss";
 
-@media (orientation: portrait) {
-  .commentsPage {
-    width: 90%;
-    margin-left: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.commentsPage {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.commentsBook {
+  box-sizing: border-box;
+  background-color: $box_color;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border: 0.493274px solid #ffffff;
+  border-radius: 6px;
+}
+
+.starContainer {
+  display: inline-block;
+  padding-right: 4%;
+}
+
+textarea {
+  background-color: #c5c5c592;
+  resize: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  color: #fff;
+  overflow: auto;
+}
+
+.buttonDecoration {
+  position: relative;
+  top: 10%;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.noticeTitle {
+  color: $gold_title;
+  font-family: $font_title_large;
+  position: relative;
+  top: 5%;
+  font-size: 2.5rem;
+  letter-spacing: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (orientation: portrait) {
   .commentsBook {
     box-sizing: border-box;
     background-color: $box_color;
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: center;
-    border-radius: 10px;
     position: relative;
   }
 
@@ -35,18 +78,6 @@
     border-radius: 10px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
       drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
-
-  .noticeTitle {
-    color: $gold_title;
-    font-family: $font_title_large;
-    position: relative;
-    right: 250px;
-    top: 50px;
-    font-size: 2.5rem;
-    letter-spacing: 5px;
-    margin: 0;
-    padding: 0;
   }
 
   .content {
@@ -69,10 +100,6 @@
     display: none;
   }
 
-  .starContainer {
-    display: inline-block;
-  }
-
   .star {
     cursor: pointer;
     transition: 300ms;
@@ -82,7 +109,8 @@
   .separatorImg {
     transform: rotate(180deg);
     position: relative;
-    bottom: 18px;
+    bottom: 10px;
+    width: 90%;
   }
 
   .sendForm {
@@ -102,19 +130,11 @@
     width: auto;
   }
 
-  .buttonDecoration {
-    position: relative;
-    left: 200px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    padding: 5px;
-  }
-
   .navigateLinkToResume {
     cursor: pointer;
     position: relative;
-    left: 280px;
-    top: 30px;
+    left: 40%;
+    top: 20%;
     text-decoration: none;
     border: none;
     background: none;
@@ -126,13 +146,6 @@
   }
 
   textarea {
-    background-color: #c5c5c592;
-    resize: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-      inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    color: #fff;
-    overflow: auto;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
