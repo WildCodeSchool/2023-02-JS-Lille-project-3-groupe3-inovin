@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Limelight&family=Montaga&display=swap");
 $background_color: #383737;
 $background_navbar_image: "";
 $title_color: #ffffff;
@@ -11,15 +12,20 @@ $font_title_small: "Bebas Neue", sans-serif;
 $font_title_large: "Montaga", serif;
 $tablet-width: 768px;
 $desktop-width: 1024px;
+
 @mixin tablet-paysage {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
   }
 }
-
-
-
-
-
+@mixin tablet-portrait {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
 //import background image to navbar
 // background-image: '../backend/public/assets/images/background_navbar_img.png';
+
+body {
+  background-color: $background_color;
+}

@@ -1,0 +1,102 @@
+@import "../../App.scss";
+
+#title {
+  color: $title_color;
+  font-family: $font_title_small;
+  text-align: center;
+  line-height: 2;
+  text-shadow: 4px 4px 4px rgb(0 0 0 / 96%);
+}
+#background_btn {
+  transform: rotate(180deg);
+}
+.home_btn {
+  cursor: pointer;
+}
+.title_background {
+  transform: rotate(180deg);
+  width: -webkit-fill-available;
+}
+
+@media (orientation: landscape) {
+  .header_container {
+    // background: linear-gradient(
+    //   180deg,
+    //   #000000 1.19%,
+    //   rgba(115, 115, 115, 0.550339) 27.59%,
+    //   rgba(255, 255, 255, 0) 46.73%,
+    //   rgba(55, 55, 55, 0.783352) 67.87%,
+    //   #000000 97.86%
+    // );
+    background-image: url("../../../src/assets/images/wines.jpg");
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2%;
+    font-family: $font_title_small;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .start_button {
+    font-family: $font_title_small;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .home_btn {
+    height: 27%;
+    width: 8rem;
+    font-family: $font_title_small;
+    position: absolute;
+    top: 1%;
+  }
+}
+
+@media (orientation: portrait) {
+  .start_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .header_container {
+    background-image: url("../../../src/assets/images/wines.jpg");
+    width: 50%;
+    height: 20%;
+    justify-content: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 15%;
+    z-index: 1;
+    align-items: center;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    left: 50%;
+    border-radius: 5%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  .title_background {
+    position: absolute;
+    top: 15em;
+  }
+}
