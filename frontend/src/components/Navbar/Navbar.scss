@@ -1,6 +1,32 @@
 @import "../../App.scss";
 
-.nav {
-  background-color: $background_color;
-  height: 120%;
+.navHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+}
+
+.logo {
+  background-image: url(../../assets/images/logo_inovin.png);
+  height: 180px;
+  width: 200px;
+  align-self: self-start;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+.inovinTitle {
+  font-family: $font_inovin;
+  color: $title_color;
+  font-size: 8vh;
+  text-shadow: 4px 4px 3px #000000;
+  margin-right: 110px;
+}
+
+.loginLinks {
+  display: flex;
+  color: aqua;
+  flex-direction: column;
+  margin-right: 10px;
 }
