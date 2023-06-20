@@ -3,10 +3,10 @@
 .container_atelier {
   display: flex;
   flex-direction: column;
-  margin-top: 20%;
+  margin-top: 25%;
   width: 100%;
   height: 640px;
-  border: solid red;
-  background-color: aqua;
   align-items: center;
+  background-image: url("../../assets/images/wines.jpg");
+  background-size: cover;
 }

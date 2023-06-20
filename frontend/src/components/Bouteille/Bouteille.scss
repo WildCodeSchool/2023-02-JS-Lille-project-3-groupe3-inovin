@@ -2,12 +2,31 @@
 
 .container_bouteilles {
   display: flex;
-  height: 100px;
-  width: 100%;
-  border: red solid;
+  height: 400px;
+  width: 80%;
+  flex-wrap: wrap;
+  background-color: $background_color;
+  box-shadow: 6px 5px 5px black;
+  margin-top: -2%;
 }
 
 .element_bouteille {
   display: flex;
-  flex-direction: row;
+  border: black solid;
+  width: 250px;
+  height: 47%;
+  margin-left: 2%;
+}
+
+.element_text_droite {
+  color: $title_color;
+  font-family: $font_title_small;
+}
+
+.home_btn {
+  height: 17%;
+  width: 8rem;
+  font-family: $font_title_small;
+  margin-left: 13%;
+  margin-top: 13%;
 }
