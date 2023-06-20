@@ -1,3 +1,5 @@
+
+
 html,
 body,
 div,
@@ -7,9 +9,17 @@ object,
 iframe,
 h1,
 h2,
+
+h3,
 h4,
 h5,
 h6,
+p,
+
+h4,
+h5,
+h6,
+
 blockquote,
 pre,
 a,
@@ -85,8 +95,45 @@ video {
   vertical-align: baseline;
 }
 
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Limelight&family=Montaga&display=swap");
 $background_color: #383737;
+$background-black: #1d1d1d;
 $background_navbar_image: "";
 $title_color: #ffffff;
 $box_color: #3e3e3e;
