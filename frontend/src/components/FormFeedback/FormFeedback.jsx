@@ -25,11 +25,6 @@ function FormFeedback() {
     navigate("/Resume");
   };
 
-
-  const starClicking = () => {
-    setRating(ratingValue)
-  }
-
   return (
     <div className="commentsPage">
       <div className="commentsBook">
@@ -51,7 +46,7 @@ function FormFeedback() {
                   type="radio"
                   name="rating"
                   value={ratingValue}
-                  onClick={starClicking}
+                  onClick={() => setRating(ratingValue)}
                 />
                 <FaStar
                   className="star"
@@ -68,14 +63,11 @@ function FormFeedback() {
 
           <h3>UN PETIT COMMENTAIRE ?</h3>
 
-          {isPortrait ? 
-          (
+          {isPortrait ? (
             <textarea className="commentsArea" rows="7" cols="33" />
-
-          ):(
-            <textarea className="commentsArea" rows="5" cols="70" />
+          ) : (
+            <textarea className="commentsArea" rows="6" cols="60" />
           )}
-          
         </div>
 
         <div className="buttonDecoration">
