@@ -58,9 +58,10 @@ input[type="radio"] {
   background-color: $box_color;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
   border: 0.493274px solid #ffffff;
   border-radius: 6px;
+  padding: 8px 0;
 }
 
 .starContainer {
@@ -103,28 +104,26 @@ textarea {
   .commentsBook {
     box-sizing: border-box;
     background-color: $box_color;
-    width: 90%;
+    width: 80%;
     display: flex;
     justify-content: center;
-    position: relative;
+    z-index: 1;
+    top: 20%;
+
+
   }
 
   .commentsBook h2 {
     padding: 10px 0;
     color: $title_color;
+    font-size: 2rem;
   }
 
   .noticeContainer {
-    background-color: $box_color;
-    width: 100%;
+    width: 90%;
     height: 60vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url("../../assets/images/fond-gris_720.png");
-    border-radius: 10px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-      drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    position: relative;
+    top: 20px;
   }
 
   .content {
@@ -141,8 +140,9 @@ textarea {
   .separatorImg {
     transform: rotate(180deg);
     position: relative;
-    bottom: 10px;
-    width: 90%;
+    z-index: 1;
+    bottom: -19px;
+    width: 70%;
   }
 
   .sendForm {
@@ -186,15 +186,21 @@ textarea {
   .commentsBook {
     box-sizing: border-box;
     background-color: $box_color;
-    width: 65%;
+    width: 40%;
     display: flex;
     justify-content: center;
-    position: relative;
+    position: absolute;
+    top: 19.5%;
+    z-index: 1;
   }
 
   .commentsBook h2 {
     padding: none;
     color: $title_color;
+    padding: 7px 0px;
+    font-size: 2rem;
+
+
   }
 
   .noticeTitle {
@@ -207,7 +213,7 @@ textarea {
     background-color: #c5c5c538;
     border-radius: 10px;
     position: relative;
-    top: 7%;
+    top: 5%;
     width: 80%;
     text-align: center;
   }
@@ -230,8 +236,10 @@ textarea {
   .separatorImg {
     transform: rotate(180deg);
     position: relative;
-    bottom: 10px;
-    width: 50%;
+    z-index: 1;
+    bottom: -19px;
+    width: 70%;
+
   }
 
   .nextPageArrow {
@@ -246,7 +254,7 @@ textarea {
     cursor: pointer;
     position: relative;
     left: 43%;
-    top: 13%;
+    top: 7.5%;
     text-decoration: none;
     border: none;
     background: none;
@@ -264,10 +272,12 @@ textarea {
   }
 
   .buttonDecoration {
-    top: 9%;
+    top: 6.5%;
   }
 
   .noticeContainer {
-    height: 58vh;
+    height: 55vh;
+    position: relative;
+    top: 10px;
   }
 }

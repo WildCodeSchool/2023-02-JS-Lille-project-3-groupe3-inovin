@@ -114,6 +114,7 @@ $desktop-width: 1024px;
 body {
   background-color: $background_color;
   height: 1024px;
+  overflow: hidden;
 }
 
 .backgroundHeader {
