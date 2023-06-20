@@ -6,7 +6,7 @@
   margin-top: 5%;
   height: 40%;
   width: 80%;
-  background-color: #1D1D1D;
+  background-color: #1d1d1d;
   box-shadow: 3px 4px 5px 2px rgba(0, 0, 0, 0.5);
   border-radius: 6px;
 }
@@ -67,7 +67,7 @@
   display: inline-block;
   background-color: white;
   border-radius: 8px;
-  border: 8px double #3E3E3E;
+  border: 8px double #3e3e3e;
   color: $box_color;
   text-align: center;
   font-size: 16px;
@@ -80,13 +80,13 @@
   font-family: $font_title_small;
   letter-spacing: 3px;
   margin-top: -10px;
-  margin-left: 5%
+  margin-left: 5%;
 }
 .apercu_btn span {
   cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
 .apercu_btn span:after {
   content: "\00bb";
