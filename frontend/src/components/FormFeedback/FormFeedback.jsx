@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./FormFeedback.scss";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +8,27 @@ import fleche from "../../assets/images/fleche_360.png";
 function FormFeedback() {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const [isPortrait, setIsPortrait] = useState(window.innerWidth < 689);
+
+  const updateMedia = () => {
+    setIsPortrait(window.innerWidth < 689);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
 
   const navigate = useNavigate();
 
   const handleClickNext = () => {
     navigate("/Resume");
   };
+
+
+  const starClicking = () => {
+    setRating(ratingValue)
+  }
 
   return (
     <div className="commentsPage">
@@ -36,7 +51,7 @@ function FormFeedback() {
                   type="radio"
                   name="rating"
                   value={ratingValue}
-                  onClick={() => setRating(ratingValue)}
+                  onClick={starClicking}
                 />
                 <FaStar
                   className="star"
@@ -52,7 +67,15 @@ function FormFeedback() {
           })}
 
           <h3>UN PETIT COMMENTAIRE ?</h3>
-          <textarea className="commentsArea" rows="7" cols="33" />
+
+          {isPortrait ? 
+          (
+            <textarea className="commentsArea" rows="7" cols="33" />
+
+          ):(
+            <textarea className="commentsArea" rows="5" cols="70" />
+          )}
+          
         </div>
 
         <div className="buttonDecoration">
