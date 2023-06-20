@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 10%;
-  height: 25%;
+  height: 35%;
   width: 65%;
   background-color: $background_color;
   box-shadow: 3px 4px 5px 2px rgba(0, 0, 0, 0.5);
@@ -32,6 +32,8 @@
   font-size: 26px;
   letter-spacing: 0.16em;
   font-family: $font_title_small;
+  padding: 3%;
+  margin-top: -5%;
 }
 
 .element_droite {
@@ -49,9 +51,12 @@
   font-weight: 400;
   font-size: 38px;
   color: $gold_title;
+  margin: 5%;
 }
 
 .element_description {
   font-family: $font_title_small;
-  font-size: 22px;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.1em;
 }

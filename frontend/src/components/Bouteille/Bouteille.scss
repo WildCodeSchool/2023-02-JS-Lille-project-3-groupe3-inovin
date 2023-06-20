@@ -37,6 +37,17 @@
 
 .element_description_bouteille {
   font-size: 20px;
+  letter-spacing: 0.1em;
+}
+
+.element_titre_exterieur_deux {
+  font-family: $font_title_large;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+  font-size: 38px;
+  color: $gold_title;
+  padding-bottom: 3%;
+  padding-right: 23%;
 }
 
 .home_btn {
