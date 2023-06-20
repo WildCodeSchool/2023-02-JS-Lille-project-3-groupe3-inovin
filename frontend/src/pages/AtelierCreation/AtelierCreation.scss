@@ -1,8 +1,10 @@
 @import "../../App.scss";
 
-body {
-  background-image: url("../../assets/images/wines2.jpg");
-  background-size: 243%;
+.element-fond {
+  background-image: url(/src/assets/images/wines2.jpg);
+  height: 1024px;
+  margin-top: -30%;
+  background-size: 216%;
   background-position-x: center;
   background-position-y: center;
 }

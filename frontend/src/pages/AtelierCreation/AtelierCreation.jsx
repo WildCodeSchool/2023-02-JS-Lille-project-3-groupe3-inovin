@@ -4,9 +4,11 @@ import "./AtelierCreation.scss";
 
 function AtelierCreation() {
   return (
-    <div className="container_atelier">
-      <Bouteille />
-      <Apercu />
+    <div className="element-fond">
+      <div className="container_atelier">
+        <Bouteille />
+        <Apercu />
+      </div>
     </div>
   );
 }
