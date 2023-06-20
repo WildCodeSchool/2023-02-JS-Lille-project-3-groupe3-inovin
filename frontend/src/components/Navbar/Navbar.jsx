@@ -26,18 +26,19 @@ function Navbar() {
   };
 
   return (
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Accueil</Link>
-        </li>
+    <div className="navHeader">
+      <p className="logo">
+        <Link to="/">Accueil</Link>
+      </p>
 
-        <div>
-          <button type="button" onClick={handleLogingLogout}>
-            {isOnline ? "Déconnexion" : "Inscription"}
-          </button>
-        </div>
-      </ul>
+      <h1 className="inovinTitle">Ino Vin</h1>
+
+      <div className="loginLinks">
+        <button type="button" onClick={handleLogingLogout}>
+          {isOnline ? "Déconnexion" : "Inscription"}
+        </button>
+        Déjà inscrit ?
+      </div>
     </div>
   );
 }

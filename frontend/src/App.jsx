@@ -16,9 +16,11 @@ function App() {
   return (
     <Router>
       <div>
-        <LogingProvider>
-          <Navbar />
-        </LogingProvider>
+        <div className="backgroundHeader">
+          <LogingProvider>
+            <Navbar />
+          </LogingProvider>
+        </div>
 
         <Routes>
           <Route path="/" element={<Home />} />
