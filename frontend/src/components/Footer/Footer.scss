@@ -3,11 +3,61 @@
 footer {
   position: absolute;
   bottom: 0;
-  right: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
 }
+
+.inovinSiteLink {
+  color: $input_color;
+  text-shadow: 4px 4px 3px #000000;
+  margin-left: 10px;
+}
+
 .legal-link {
   font-family: $font_title_small;
   color: $input_color;
   cursor: pointer;
-  background-color: $box_color;
+  background-color: $background_color;
+  border: none;
+}
+
+.legal-link:hover {
+  color: $gold_title;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-content {
+  width: 60%;
+  min-height: 200px;
+  background-color: $input_color;
+  padding: 25px;
+  border-radius: 15px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalTitle {
+  font-size: x-large;
+  text-decoration: underline;
+}
+
+.modalText {
+  font-size: large;
+  text-align: center;
 }
