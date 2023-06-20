@@ -1,6 +1,30 @@
 @import "../../App.scss";
 
-.nav {
-  background-color: $background_color;
-  height: 120%;
+.navHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+}
+
+.logo {
+  align-self: self-start;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+.inovinTitle {
+  font-family: $font_inovin;
+  color: $title_color;
+  font-size: 8vh;
+  text-shadow: 4px 4px 3px #000000;
+  margin-right: 110px;
+}
+
+.loginLinks {
+  height: 65px;
+  width: 65px;
+  margin-right: 10px;
+  background-color: #0000;
+  border: none;
 }
