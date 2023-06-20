@@ -1,5 +1,12 @@
 @import "../../App.scss";
 
+body {
+  background-image: url("../../assets/images/wines2.jpg");
+  background-size: 243%;
+  background-position-x: center;
+  background-position-y: center;
+}
+
 .container_atelier {
   display: flex;
   flex-direction: column;
@@ -7,6 +14,5 @@
   width: 100%;
   height: 640px;
   align-items: center;
-  background-image: url("../../assets/images/wines.jpg");
   background-size: cover;
 }

@@ -8,9 +8,11 @@ function Apercu() {
         <img src={grapes} className="element_photo" alt="Grapes" />
       </div>
       <div className="element_droite">
-        <h2>Votre création</h2>
-        <h3>Fantine du Pouyac</h3>
-        <p>Mélange doux et léger avec des notes de prune et d’hibiscus.</p>
+        <h2 className="element_titre_exterieur">VOTRE CREATION</h2>
+        <h3 className="element_mini_title">Fantine du Pouyac</h3>
+        <p className="element_description">
+          Mélange doux et léger avec des notes de prune et d’hibiscus.
+        </p>
       </div>
     </div>
   );
