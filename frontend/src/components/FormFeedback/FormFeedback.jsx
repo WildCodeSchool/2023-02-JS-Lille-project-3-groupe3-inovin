@@ -129,7 +129,6 @@ function FormFeedback() {
           </button>
         </div>
 
-        {/* send {rating} par mail à Cédric */}
         <button
           type="button"
           onClick={handleClickNext}
