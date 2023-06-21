@@ -1,5 +1,20 @@
 @import "../../App.scss";
 
+.navigateLinkToResume {
+  cursor: pointer;
+  position: relative;
+  left: 43%;
+  top: 15%;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: $font_title_small;
+  letter-spacing: 3px;
+}
+
 .sendForm {
   border: none;
   padding: 10px;
@@ -7,6 +22,7 @@
   letter-spacing: 3px;
   cursor: pointer;
   background-color: $button_background_color;
+  color: black;
 }
 
 .noticeContainer {
@@ -15,7 +31,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   background-image: url("../../assets/images/fond-gris_720.png");
+  background-size: cover;
   border-radius: 10px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
     drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -123,7 +141,7 @@ textarea::placeholder {
     display: flex;
     justify-content: center;
     z-index: 1;
-    top: 20%;
+    top: 22%;
   }
 
   .commentsBook h2 {
@@ -134,7 +152,7 @@ textarea::placeholder {
 
   .noticeContainer {
     width: 90%;
-    height: 60vh;
+    height: 50vh;
     position: relative;
     top: 20px;
   }
@@ -154,7 +172,7 @@ textarea::placeholder {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: -8px;
+    bottom: -10px;
     width: 70%;
   }
 
@@ -176,22 +194,12 @@ textarea::placeholder {
   }
 
   .navigateLinkToResume {
-    cursor: pointer;
-    position: relative;
     left: 40%;
     top: 22%;
-    text-decoration: none;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    font-size: $font_title_small;
-    letter-spacing: 3px;
   }
 
   textarea {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -203,7 +211,7 @@ textarea::placeholder {
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 19.5%;
+    top: 22%;
     z-index: 1;
   }
 
@@ -230,7 +238,7 @@ textarea::placeholder {
     position: relative;
     top: 5%;
     width: 80%;
-    height: 70%;
+    height: 75%;
     text-align: center;
   }
 
@@ -266,49 +274,19 @@ textarea::placeholder {
   }
 
   .navigateLinkToResume {
-    cursor: pointer;
-    position: relative;
-    left: 43%;
-    top: 15%;
-    text-decoration: none;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    font-size: $font_title_small;
-    letter-spacing: 3px;
+    top: 9%;
   }
 
   textarea {
     font-size: 1rem;
     position: relative;
-    top: 5%;
-    margin-bottom: 5%;
-  }
-
-  .starContainer {
-    position: relative;
-    top: 5%;
-  }
-
-  .rateExpTitle {
-    position: relative;
-    top: 5%;
   }
 
   .noticeContainer {
-    height: 55vh;
-    position: relative;
-    top: 10px;
+    height: 45vh;
   }
 
   .buttonDecoration {
-    top: 10%;
-  }
-
-  .askCommentTitle {
-    position: relative;
-    top: 5%;
+    top: 7%;
   }
 }
