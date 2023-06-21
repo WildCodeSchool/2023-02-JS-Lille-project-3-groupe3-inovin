@@ -7,6 +7,7 @@ import LivreDor from "./pages/LivreDor/LivreDor";
 import Resume from "./pages/Resume/Resume";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import Admin from "./pages/Admin/Admin";
 
 import { LogingProvider } from "./contexts/LogingContext";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/AtelierCreation" element={<AtelierCreation />} />
           <Route path="/LivreDor" element={<LivreDor />} />
           <Route path="/Resume" element={<Resume />} />
+          <Route path="/Admin" element={<Admin />} />
         </Routes>
 
         <Footer />
