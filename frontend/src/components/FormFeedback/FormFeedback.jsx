@@ -8,10 +8,10 @@ import fleche from "../../assets/images/fleche_360.png";
 function FormFeedback() {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const [isPortrait, setIsPortrait] = useState(window.innerWidth < 689);
+  const [isPortrait, setIsPortrait] = useState(window.innerWidth < 769);
 
   const updateMedia = () => {
-    setIsPortrait(window.innerWidth < 689);
+    setIsPortrait(window.innerWidth < 769);
   };
 
   useEffect(() => {

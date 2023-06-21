@@ -207,6 +207,8 @@ CREATE TABLE `user` (
   `birthdate` date NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `ordering` tinyint NOT NULL,
+  `feedbackRating` tinyint NOT NULL,
+  `feedbackComment` varchar(255) DEFAULT NULL,
   `user_type` varchar(45) NOT NULL,
   `account_ID` int NOT NULL,
   PRIMARY KEY (`id`,`account_ID`),
@@ -221,7 +223,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,'khouloud','belkhir','1992-12-27','koukabelle@gmail.com',0,'utilisateur',1),(4,'Cédric','guyot','1878-07-15','cédricinovin@gmail.fr',0,'administrateur',2);
+INSERT INTO `user` VALUES (3,'khouloud','belkhir','1992-12-27','koukabelle@gmail.com',0,4,'','utilisateur',1),(4,'Cédric','guyot','1878-07-15','cédricinovin@gmail.fr',0,5,'','administrateur',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 

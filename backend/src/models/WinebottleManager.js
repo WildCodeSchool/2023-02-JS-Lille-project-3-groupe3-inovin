@@ -20,11 +20,12 @@ class WinebottleManager extends AbstractManager {
 
   update(wineBottle) {
     return this.database.query(
-      `update ${this.table} set name = ?, region = ?, color = ?, cepage = ?, image = ?, where id = ?`,
+      `update ${this.table} set bottle_name = ?, region = ?, color = ?, year = ?, cepage = ?, image = ? where id = ?`,
       [
-        wineBottle.name,
+        wineBottle.bottle_name,
         wineBottle.region,
         wineBottle.color,
+        wineBottle.year,
         wineBottle.cepage,
         wineBottle.image,
         wineBottle.id,
