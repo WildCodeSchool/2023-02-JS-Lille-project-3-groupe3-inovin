@@ -37,8 +37,8 @@ function FormInfoPerso() {
   return (
     <div>
       <form className="form-inscription" onSubmit={hSubmit}>
-        <h2 className="title-identity">INSCRIPTION</h2>
         <div className="contenair-identity">
+          <h2 className="title-identity">INSCRIPTION</h2>
           <div className="form-inscription-identity-input-contenair">
             <label
               className="form-inscription-idendity-label"
@@ -103,10 +103,24 @@ function FormInfoPerso() {
               />
             </label>
           </div>
+          <div className="box-18">
+            <input
+              className="formbook-input-check"
+              type="checkbox"
+              id="checkbox-18-yes"
+              name="checkbox-18-yes"
+              checked={FormInfoPerso.checked}
+              required
+              onChange={handleCheckboxChange}
+            />
+            <label className="box-yes" htmlFor="label-color">
+              J'ai plus de 18 ans
+            </label>
+          </div>
         </div>
-        <h2 className="title-preference">PREFERENCES</h2>
         <div className="contenair-preference">
           <div className="contenair-preference-g">
+            <h2 className="title-preference">PREFERENCES</h2>
             <div className="contenair-color">
               <h3 className="title-checkbox">Color</h3>
               <label className="form-color-label" htmlFor="label-color">

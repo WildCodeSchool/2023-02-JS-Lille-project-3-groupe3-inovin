@@ -3,13 +3,20 @@
 .inscription_container {
   display: flex;
   flex-direction: column;
-  background-color: $background-black;
+  margin-top: -13%;
+  @include tablet-paysage {
+    margin-top: 2%;
+  }
 }
 .form-inscription {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  @include tablet-paysage {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 .title-identity,
 .title-preference {
@@ -18,15 +25,19 @@
   font-size: 38px;
   align-self: flex-start;
   padding: 2%;
-  margin-left: 8%;
-  padding: 16px;
+  margin-left: 2%;
+  padding: 10px;
 }
 .picture-preference {
+  display: block;
   width: 156px;
   height: 230px;
   border: solid white 0.5px;
   border-radius: 5%;
   margin: 1px 1px 18px 1px;
+  @include tablet-paysage {
+    display: none;
+  }
 }
 .contenair-identity {
   border: solid $title_color 1px;
@@ -36,11 +47,15 @@
   flex-direction: column;
   align-items: flex-start;
   width: 80%;
-  margin: 3%;
+  margin: 2%;
+  @include tablet-paysage {
+    width: 100%;
+    margin-top: 6%;
+  }
 }
 .form-inscription-identity-input-contenair {
   display: flex;
-  margin: 2%;
+  margin: 0% 2% 1% 2%;
   font-family: $font_title_small;
   font-size: 22px;
   letter-spacing: 3px;
@@ -56,8 +71,8 @@
   margin-left: 16px;
 }
 .form-inscription-idendity-input-class {
-  font-family: "Bebas Neue", sans-serif;
-  padding: 2%;
+  font-family: $font_title_small;
+  padding: 8px;
   width: 240px;
   margin: 6px;
   font-size: 22px;
@@ -69,24 +84,53 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.box-18 {
+  display: flex;
+  align-self: center;
+  font-size: 22px;
+  color: $gold_title;
+  font-family: $font_title_small;
+  font-weight: 100;
+  letter-spacing: 2px;
+  align-items: center;
+}
+.box-18 p {
+  padding-right: 50px;
+}
+.box-yes,
+.box-no {
+  padding-right: 20px;
+  place-self: center;
+  padding: 12px 0px 12px 1px;
+}
+.box-18 input {
+  width: 40px;
+  height: 25px;
+}
 .contenair-preference {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 80%;
-  margin: 3%;
+  margin: 1%;
+  @include tablet-paysage {
+    flex-direction: column;
+  }
 }
 .contenair-preference-g {
   background-image: url("../../assets/images/fond-gris_720.png");
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 68%;
   border-radius: 5px;
   padding: 5px 1px 5px 1px;
   mix-blend-mode: normal;
   opacity: 0.77;
   box-shadow: 0px 0px 27px 3px #000000;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  @include tablet-paysage {
+    width: 88%;
+  }
 }
 .story {
   display: flex;
@@ -123,7 +167,7 @@
 }
 .form-color-label p,
 .form-arome-label p {
-  padding: 3px 6px 3px 6px;
+  padding: 3px 0px 3px 6px;
   margin: 0px 4px 0px 3px;
 }
 .title-checkbox {
@@ -136,6 +180,10 @@
   letter-spacing: 0.26em;
   color: #ffffff;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.56);
+}
+.formbook-input-check {
+  width: 40px;
+  height: 25px;
 }
 .comment {
   font-family: $font_title_small;
@@ -201,6 +249,12 @@
   margin: 5px;
   font-family: $font_title_small;
   letter-spacing: 3px;
+  position: inherit;
+  @include tablet-paysage {
+    width: 200px;
+    position: absolute;
+    left: 20%;
+  }
 }
 .button-submit-identity span {
   cursor: pointer;
