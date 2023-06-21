@@ -37,11 +37,11 @@ function FormFeedback() {
 
         <div className="content">
           <h3 className="rateExpTitle">NOTE L'EXPERIENCE DE L'ATELIER :</h3>
-          {[...Array(5)].map((star, i, index) => {
+          {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
 
             return (
-              <label key={index} className="starContainer">
+              <label key={star} className="starContainer">
                 <input
                   type="radio"
                   name="rating"
