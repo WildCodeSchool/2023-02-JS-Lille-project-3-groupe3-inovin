@@ -14,7 +14,7 @@ class compoRecipeManager extends AbstractManager {
 
   update(compoRecipe) {
     return this.database.query(
-      `update ${this.table} set percentage = ?, where id = ?`,
+      `update ${this.table} set percentage = ? where id = ?`,
       [compoRecipe.percentage, compoRecipe.id]
     );
   }
