@@ -36,7 +36,7 @@ function FormFeedback() {
         <h3 className="noticeTitle">AVIS</h3>
 
         <div className="content">
-          <h3>NOTE L'EXPERIENCE DE L'ATELIER :</h3>
+          <h3 className="rateExpTitle">NOTE L'EXPERIENCE DE L'ATELIER :</h3>
           {[...Array(5)].map((star, i, index) => {
             const ratingValue = i + 1;
 
@@ -61,7 +61,7 @@ function FormFeedback() {
             );
           })}
 
-          <h3>UN PETIT COMMENTAIRE ?</h3>
+          <h3 className="askCommentTitle">UN PETIT COMMENTAIRE ?</h3>
 
           {isPortrait ? (
             <textarea className="commentsArea" rows="7" cols="33" />
