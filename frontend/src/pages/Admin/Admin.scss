@@ -1,1 +1,17 @@
 @import "../../App.scss";
+
+
+.adminTitle {
+    font-family: $font_title_large;
+    color: $gold_title;
+    font-size: 73px;
+    margin-left: 7%;
+    margin-top: -11%
+}
+
+#barDeRecherche {
+    margin-top: 10%;
+    margin-left: 48%;
+    width: 35%;
+    padding: 3%
+}
