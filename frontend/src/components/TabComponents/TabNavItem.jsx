@@ -10,7 +10,6 @@ function TabNavItem({ id, title, activeTab, setActiveTab }) {
         onClick={handleClickNav}
         onKeyDown={handleClickNav}
         role="presentation"
-        // tabIndex={0}
         className={activeTab === id ? "active" : ""}
       >
         {title}

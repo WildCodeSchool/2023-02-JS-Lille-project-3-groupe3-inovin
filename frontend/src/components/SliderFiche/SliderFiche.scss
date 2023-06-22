@@ -1,5 +1,39 @@
 @import "../../App.scss";
 
-* {
-  color: antiquewhite;
+.tabs {
+  width: 60vw;
+  height: auto;
+  background: $input_color;
+  border-radius: 15px;
+  margin: 3.5rem auto 1.5rem;
+  padding: 2rem 1rem;
+}
+
+ul.nav {
+  width: 50vw;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #0c1a22;
+  border-radius: 15px;
+  padding-left: 0px;
+}
+
+ul.nav li {
+  padding: 1rem;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.7s;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+ul.nav li:hover {
+  background: #3e3e3e4d;
+}
+
+ul.nav li:active {
+  background: #3e3e3e4d;
 }
