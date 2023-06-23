@@ -81,6 +81,7 @@ function FormFeedback() {
                   type="radio"
                   name="rating"
                   value={ratingValue}
+                  className="starInput"
                   onClick={() => setRating(ratingValue)}
                 />
                 <FaStar
