@@ -8,12 +8,18 @@ const tastingControllers = require("./controllers/tastingControllers");
 const compoRecipeControllers = require("./controllers/compoRecipeControllers");
 const recipeControllers = require("./controllers/recipeControllers");
 const preferenceControllers = require("./controllers/preferenceControllers");
+const accountControllers = require("./controllers/accountControllers");
 
 router.get("/user", userControllers.browse);
 router.get("/user/:id", userControllers.read);
 router.put("/user/:id", userControllers.edit);
 router.post("/user", userControllers.add);
 router.delete("/user/:id", userControllers.destroy);
+
+router.get("/account", accountControllers.browse);
+router.get("/account/:id", userControllers.read);
+router.post("/account", accountControllers.add);
+router.delete("/account/:id", accountControllers.destroy);
 
 router.get("/winebottle", winebottleControllers.browse);
 router.get("/winebottle/:id", winebottleControllers.read);

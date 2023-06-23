@@ -1,5 +1,20 @@
 @import "../../App.scss";
 
+.navigateLinkToResume {
+  cursor: pointer;
+  position: relative;
+  left: 43%;
+  top: 15%;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: $font_title_small;
+  letter-spacing: 3px;
+}
+
 .sendForm {
   border: none;
   padding: 10px;
@@ -7,6 +22,7 @@
   letter-spacing: 3px;
   cursor: pointer;
   background-color: $button_background_color;
+  color: black;
 }
 
 .noticeContainer {
@@ -15,7 +31,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   background-image: url("../../assets/images/fond-gris_720.png");
+  background-size: cover;
   border-radius: 10px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
     drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -81,6 +99,10 @@ textarea {
   top: -2%;
 }
 
+textarea::placeholder {
+  color: #fff;
+}
+
 .buttonDecoration {
   position: relative;
   top: 14%;
@@ -100,6 +122,17 @@ textarea {
   padding: 0;
 }
 
+.feedbackSent {
+  color: $gold_title;
+  font-family: $font_title_large;
+  position: relative;
+  top: 5%;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  margin: 0;
+  padding: 0;
+}
+
 @media (orientation: portrait) {
   .commentsBook {
     box-sizing: border-box;
@@ -108,7 +141,7 @@ textarea {
     display: flex;
     justify-content: center;
     z-index: 1;
-    top: 20%;
+    top: 22%;
   }
 
   .commentsBook h2 {
@@ -119,7 +152,7 @@ textarea {
 
   .noticeContainer {
     width: 90%;
-    height: 60vh;
+    height: 50vh;
     position: relative;
     top: 20px;
   }
@@ -139,7 +172,7 @@ textarea {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: -19px;
+    bottom: -10px;
     width: 70%;
   }
 
@@ -161,22 +194,12 @@ textarea {
   }
 
   .navigateLinkToResume {
-    cursor: pointer;
-    position: relative;
     left: 40%;
-    top: 20%;
-    text-decoration: none;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    font-size: $font_title_small;
-    letter-spacing: 3px;
+    top: 22%;
   }
 
   textarea {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -188,7 +211,7 @@ textarea {
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 19.5%;
+    top: 22%;
     z-index: 1;
   }
 
@@ -203,6 +226,10 @@ textarea {
     font-size: 1.5rem;
     top: 3%;
   }
+  .feedbackSent {
+    font-size: 1.5rem;
+    top: 3%;
+  }
 
   .content {
     color: $title_color;
@@ -211,6 +238,7 @@ textarea {
     position: relative;
     top: 5%;
     width: 80%;
+    height: 75%;
     text-align: center;
   }
 
@@ -233,7 +261,7 @@ textarea {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: -19px;
+    bottom: -8px;
     width: 70%;
   }
 
@@ -246,42 +274,19 @@ textarea {
   }
 
   .navigateLinkToResume {
-    cursor: pointer;
-    position: relative;
-    left: 43%;
-    top: 10.5%;
-    text-decoration: none;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    font-size: $font_title_small;
-    letter-spacing: 3px;
+    top: 9%;
   }
 
   textarea {
     font-size: 1rem;
     position: relative;
-    top: -3%;
-    margin-bottom: 5%;
-  }
-
-  .buttonDecoration {
-    top: 6.5%;
   }
 
   .noticeContainer {
-    height: 55vh;
-    position: relative;
-    top: 10px;
+    height: 45vh;
   }
 
   .buttonDecoration {
-    position: relative;
     top: 7%;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    padding: 5px;
   }
 }
