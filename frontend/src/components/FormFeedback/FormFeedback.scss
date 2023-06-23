@@ -111,7 +111,7 @@ textarea::placeholder {
 
 .buttonDecoration {
   position: relative;
-  top:5vh;
+  top: 5vh;
   border: 0.0625rem solid #fff;
   border-radius: 0.3125rem;
   padding: 0.3125rem;
@@ -170,7 +170,7 @@ textarea::placeholder {
 
   .starContainer {
     position: relative;
-    top:-1vh;
+    top: -1vh;
   }
 
   .star {
@@ -181,7 +181,7 @@ textarea::placeholder {
 
   .askCommentTitle {
     position: relative;
-    top:-2vh;
+    top: -2vh;
   }
 
   .separatorImg {
@@ -200,8 +200,6 @@ textarea::placeholder {
     cursor: pointer;
     background-color: $button_background_color;
   }
-
-
 
   .navigateLinkToResume {
     left: 38vw;
@@ -261,7 +259,7 @@ textarea::placeholder {
     display: none;
   }
 
-  .starContainer{
+  .starContainer {
     position: relative;
     top: -1vh;
   }
@@ -272,10 +270,9 @@ textarea::placeholder {
     position: relative;
   }
 
-
   .askCommentTitle {
     position: relative;
-    top:-1vh;
+    top: -1vh;
   }
 
   .separatorImg {

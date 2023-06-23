@@ -24,7 +24,8 @@ DROP TABLE IF EXISTS `account`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL ,
+  CONSTRAINT AK_email UNIQUE (email),
   `pwd` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -36,7 +37,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'florent@gmail.fr','nadineMorano'),(2,'Cédric@gmail.fr','inovinLove');
+INSERT INTO `account` VALUES (1,'florent@gmail.fr','nadineMorano'),(2,'Cedric@gmail.fr','inovinLove');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +224,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,'khouloud','belkhir','1992-12-27','koukabelle@gmail.com',0,4,'','utilisateur',1),(4,'Cédric','guyot','1878-07-15','cédricinovin@gmail.fr',0,5,'','administrateur',2);
+INSERT INTO `user` VALUES (3,'khouloud','belkhir','1992-12-27','18 rue vaillant 59000 Lille',0,4,'','utilisateur',1),(4,'Cédric','guyot','1878-07-15','cédricinovin@gmail.fr',0,5,'','administrateur',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
