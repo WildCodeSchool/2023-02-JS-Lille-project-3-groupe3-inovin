@@ -1,7 +1,13 @@
 import "./Apercu.scss";
+import { useNavigate } from "react-router-dom";
 import grapes from "../../assets/images/grape.jpg";
 
 function Apercu() {
+  const navigate = useNavigate();
+
+  const handleClickNext = () => {
+    navigate("/livredor");
+  };
   return (
     <>
       <div className="element_apercu">
@@ -16,7 +22,7 @@ function Apercu() {
           </p>
         </div>
       </div>
-      <button type="button" className="apercu_btn">
+      <button type="button" className="apercu_btn" onClick={handleClickNext}>
         {" "}
         Bravo ! Un avis ?
       </button>
