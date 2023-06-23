@@ -154,10 +154,17 @@ $tablet-width-paysage: 1024px;
   }
 }
 
-body {
+@mixin page-background {
   background-color: $background_color;
+}
+@mixin black-page-background {
+  background-color: #1d1d1d;
+}
+
+body {
   height: 1024px;
   overflow: hidden;
+  @include page-background();
 }
 
 .backgroundHeader {
