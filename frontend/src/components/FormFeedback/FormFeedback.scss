@@ -234,11 +234,11 @@ textarea::placeholder {
 
   .noticeTitle {
     font-size: 1.5rem;
-    top: 1vh;
+    top: 0.5vh;
   }
   .feedbackSent {
     font-size: 1.5rem;
-    top: 1vh;
+    top: 0.5vh;
   }
 
   .content {
@@ -246,7 +246,7 @@ textarea::placeholder {
     background-color: #c5c5c538;
     border-radius: 0.625rem;
     position: relative;
-    top: 3vh;
+    top: 2vh;
     width: 80vw;
     height: 40vh;
     text-align: center;
@@ -263,7 +263,7 @@ textarea::placeholder {
 
   .starContainer{
     position: relative;
-    top: -2vh;
+    top: -1vh;
   }
 
   .star {
@@ -272,9 +272,10 @@ textarea::placeholder {
     position: relative;
   }
 
+
   .askCommentTitle {
     position: relative;
-    top: -2vh;
+    top:-1vh;
   }
 
   .separatorImg {
@@ -286,24 +287,24 @@ textarea::placeholder {
   }
 
   .navigateLinkToResume {
-    top: 7vh;
+    top: 3vh;
     left: 40vw;
   }
 
   textarea {
-    font-size: 1.2rem;
+    font-size: 1rem;
     position: relative;
-    top: -3vh;
+    top: -1.5vh;
   }
 
   .noticeContainer {
-    height: 55vh;
+    height: 50vh;
     position: relative;
-    top: 4vh;
+    top: 2vh;
     width: 90vw;
   }
 
   .buttonDecoration {
-    top: 4vh;
+    top: 2vh;
   }
 }

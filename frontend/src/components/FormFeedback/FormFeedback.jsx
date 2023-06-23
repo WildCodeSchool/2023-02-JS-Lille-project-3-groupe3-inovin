@@ -86,7 +86,7 @@ function FormFeedback() {
                 />
                 <FaStar
                   className="star"
-                  size={50}
+                  size={45}
                   color={
                     ratingValue <= (hover || rating) ? "#d8af49" : "#e4e5e9"
                   }
