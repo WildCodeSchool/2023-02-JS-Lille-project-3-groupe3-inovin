@@ -4,29 +4,58 @@ import React, { useState } from "react";
 import picturePreferences from "../../assets/images/photo2_720.png";
 
 function FormInfoPerso() {
+  // useState table account
+  const [formAuthentification, setAuthentification] = useState({
+    email: "",
+    pwd: "",
+  });
+
+  // console.log(`formAuthentification = ${formAuthentification}`);
+  // use state table user
   const [formInscription, setFormInscription] = useState({
-    lastname: "",
     firstname: "",
+    lastname: "",
     birthdate: "",
     address: "",
+    ordering: 0,
+    feedbackRating: 0,
+    feedBackComment: "",
+    user_type: "utilisateur",
   });
-  const hSubmit = async (evt) => {
-    evt.preventDefault();
-    axios
-      .post("http://localhost:5000/user", formInscription)
-      .then(() => {
-        <p>""</p>;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
 
-  const hChange = (evt) => {
+  const [formPreferenceColor, setFormPreferenceColor] = useState();
+  const [formPreferenceArome, setFormPreferenceArome] = useState();
+  const [formPreferenceOther, setFormPreferenceOther] = useState();
+
+  /*   const statePreference = {
+    stateColor: `${formPreferenceColor}`,
+    stateArome: `${formPreferenceArome}`,
+    stateOther: `${formPreferenceOther}`,
+  }; */
+
+  // changer données champs inscription
+  const handleChangeFormInscription = (evt) => {
     setFormInscription({
       ...formInscription,
       [evt.target.name]: evt.target.value,
     });
+  };
+  // changer données champs inscription
+  const handleChangeFormAuthentification = (evt) => {
+    setAuthentification({
+      ...formInscription,
+      [evt.target.name]: evt.target.value,
+    });
+  };
+  // on chahnge preference
+  const handleChangeFormPreferenceColor = (event) => {
+    setFormPreferenceColor(event.target.value);
+  };
+  const handleChangeFormPreferenceArome = (event) => {
+    setFormPreferenceArome(event.target.value);
+  };
+  const handleChangeFormPreferenceOther = (event) => {
+    setFormPreferenceOther(event.target.value);
   };
   // checked
   const [checked, setChecked] = React.useState(false);
@@ -34,9 +63,52 @@ function FormInfoPerso() {
   const handleCheckboxChange = () => {
     setChecked(!checked);
   };
+  // form submit
+  const handleSubmitIndendityAccount = async (evt) => {
+    evt.preventDefault();
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/account`, formAuthentification)
+      .then((response) => {
+        response.send("Account created");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  /* const handleSubmitIndendityUser = async (evt) => {
+    evt.preventDefault();
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/user`, formInscription)
+      .then((response) => {
+        response.send("Inscription réussie");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }; */
+
+  /*   const handleSubmitIndendityPreference = async (evt) => {
+    evt.preventDefault();
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/preference`, statePreference)
+      .then((response) => {
+        response.send("Inscription réussie");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }; */
+
+  const handleSubmitInscription = (evt) => {
+    evt.preventDefault();
+    handleSubmitIndendityAccount(evt);
+    /*     handleSubmitIndendityUser(evt);
+    handleSubmitIndendityPreference(evt); */
+  };
   return (
     <div>
-      <form className="form-inscription" onSubmit={hSubmit}>
+      <form className="form-inscription" onSubmit={handleSubmitInscription}>
         <div className="contenair-identity">
           <h2 className="title-identity">INSCRIPTION</h2>
           <div className="form-inscription-identity-input-contenair">
@@ -49,9 +121,9 @@ function FormInfoPerso() {
                 className="form-inscription-idendity-input-class"
                 type="text"
                 name="lastname"
-                placeholder="Nom"
+                placeholder="Dupont"
                 value={formInscription.lastname}
-                onChange={hChange}
+                onChange={handleChangeFormInscription}
               />
             </label>
           </div>
@@ -65,9 +137,9 @@ function FormInfoPerso() {
                 className="form-inscription-idendity-input-class"
                 type="text"
                 name="firstname"
-                placeholder="Prénom"
+                placeholder="Jean"
                 value={formInscription.firstname}
-                onChange={hChange}
+                onChange={handleChangeFormInscription}
               />
             </label>
           </div>
@@ -81,25 +153,41 @@ function FormInfoPerso() {
                 className="form-inscription-idendity-input-class"
                 type="text"
                 name="birthdate"
-                placeholder="Date d'anniversaire"
+                placeholder="1980-12-29"
                 value={formInscription.birthdate}
-                onChange={hChange}
+                onChange={handleChangeFormInscription}
               />
             </label>
           </div>
           <div className="form-inscription-identity-input-contenair">
             <label
               className="form-inscription-idendity-label"
-              htmlFor="label-address"
+              htmlFor="label-email"
             >
-              Adresse mail
+              E-mail:
+              <input
+                className="form-inscription-idendity-input-class"
+                type="email"
+                name="email"
+                placeholder="jeandupont@gmail.fr"
+                value={formAuthentification.email}
+                onChange={handleChangeFormAuthentification}
+              />
+            </label>
+          </div>
+          <div className="form-inscription-identity-input-contenair">
+            <label
+              className="form-inscription-idendity-label"
+              htmlFor="label-pwd"
+            >
+              Mot de Passe:
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-                name="address"
-                placeholder="Date d'anniversaire"
-                value={formInscription.address}
-                onChange={hChange}
+                name="pwd"
+                placeholder="........"
+                value={formAuthentification.pwd}
+                onChange={handleChangeFormAuthentification}
               />
             </label>
           </div>
@@ -130,9 +218,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-red"
                   name="checkbox-red"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="rouge"
+                  checked={formPreferenceColor === "rouge"}
+                  onChange={handleChangeFormPreferenceColor}
                 />
                 <p>blanc</p>
                 <input
@@ -140,9 +228,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-white"
                   name="checkbox-white"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="blanc"
+                  checked={formPreferenceColor === "blanc"}
+                  onChange={handleChangeFormPreferenceColor}
                 />
                 <p>rosé</p>
                 <input
@@ -150,9 +238,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-rose"
                   name="checkbox-rose"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="rose"
+                  checked={formPreferenceColor === "rose"}
+                  onChange={handleChangeFormPreferenceColor}
                 />
               </label>
             </div>
@@ -165,9 +253,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-fruit"
                   name="checkbox-fruit"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="fruite"
+                  checked={formPreferenceArome === "fruite"}
+                  onChange={handleChangeFormPreferenceArome}
                 />
                 <p>minéral</p>
                 <input
@@ -175,9 +263,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-mineral"
                   name="checkbox-mineral"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="mineral"
+                  checked={formPreferenceArome === "mineral"}
+                  onChange={handleChangeFormPreferenceArome}
                 />
                 <p>boisé</p>
                 <input
@@ -185,9 +273,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-wood"
                   name="checkbox-wood"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="boise"
+                  checked={formPreferenceArome === "boise"}
+                  onChange={handleChangeFormPreferenceArome}
                 />
               </label>
             </div>
@@ -195,10 +283,13 @@ function FormInfoPerso() {
               <label className="comment">
                 Comment aimes-tu ton vin?
                 <textarea
+                  className="comment-taste"
                   id="other-taste"
                   name="other-taste"
                   rows="5"
                   cols="33"
+                  value={formPreferenceOther}
+                  onChange={handleChangeFormPreferenceOther}
                 >
                   Précisez...
                 </textarea>
