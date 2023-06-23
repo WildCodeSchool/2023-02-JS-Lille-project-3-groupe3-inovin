@@ -37,3 +37,22 @@ ul.nav li:hover {
 ul.nav li:active {
   background: #3e3e3e4d;
 }
+.carouselWrapper {
+  background-color: $box_color;
+  padding: 1em 3em;
+  position: absolute;
+  bottom: 10%;
+  box-shadow: 4px 4px 4px 4px #000000;
+  z-index: auto;
+  margin: 2% 5%;
+  border: 1px solid gainsboro;
+  width: 75%;
+}
+
+.carousel .control-arrow:before,
+.carousel.carousel-slider .control-arrow:before {
+  margin: 0 5px;
+  display: inline-block;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
