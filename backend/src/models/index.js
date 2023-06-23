@@ -60,6 +60,10 @@ models.preference = new PreferenceManager();
 models.preference.setDatabase(pool);
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
+const AccountManager = require("./AccountManager");
+
+models.account = new AccountManager();
+models.account.setDatabase(pool);
 
 const handler = {
   get(obj, prop) {
