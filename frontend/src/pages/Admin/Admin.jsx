@@ -55,15 +55,22 @@ function Admin() {
         </div>
         <div className="containerModif">
           <h4 className="titleMiniInfo">Nom de la recette: </h4>
-          <h4 className="titleMiniInfo">
-            RECETTE - nom ingrédient Cépage 1 + %
-          </h4>
-          <h4 className="titleMiniInfo">
-            RECETTE - nom ingrédient Cépage 2 + %
-          </h4>
-          <h4 className="titleMiniInfo">
-            RECETTE - nom ingrédient Cépage 3 + %
-          </h4>
+          <div className="containerInfoGauche">
+            <h4 className="titleMiniInfo">
+              RECETTE - nom ingrédient Cépage 1 + %
+            </h4>
+            <h4 className="titleMiniInfo">
+              RECETTE - nom ingrédient Cépage 2 + %
+            </h4>
+            <h4 className="titleMiniInfo">
+              RECETTE - nom ingrédient Cépage 3 + %
+            </h4>
+          </div>
+          <div className="containerInfoDroite">
+            <button type="submit" className="boutonModif">
+              MODIFIER
+            </button>
+          </div>
         </div>
         <div className="containerBoutonBasPage">
           <button className="boutonSupprimer" type="submit">

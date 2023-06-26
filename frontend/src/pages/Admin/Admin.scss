@@ -57,7 +57,6 @@
 
 .titleMiniInfo {
   margin-left: 3rem;
-  margin-top: 1%;
 }
 
 .containerPrefUser {
@@ -87,6 +86,7 @@
 .containerModif {
   margin-top: 2rem;
   background-color: rgb(226, 226, 226);
+  display: flex;
 }
 
 .containerBoutonBasPage {
@@ -121,4 +121,12 @@
   border: black solid 1mm;
   font-size: large;
   font-family: $font_title_small;
+}
+
+.containerInfoGauche {
+  border: red solid;
+}
+
+.containerInfoDroite {
+  border: black solid;
 }

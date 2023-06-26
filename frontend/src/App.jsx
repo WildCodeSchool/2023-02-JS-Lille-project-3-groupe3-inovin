@@ -8,7 +8,7 @@ import Resume from "./pages/Resume/Resume";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin/Admin";
-
+import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
 import { LogingProvider } from "./contexts/LogingContext";
 
 import "./App.css";
@@ -31,6 +31,7 @@ function App() {
           <Route path="/LivreDor" element={<LivreDor />} />
           <Route path="/Resume" element={<Resume />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
         </Routes>
 
         <Footer />
