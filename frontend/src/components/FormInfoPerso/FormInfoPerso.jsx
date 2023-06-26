@@ -3,17 +3,33 @@ import "./FormInfoPerso.scss";
 import React, { useEffect, useState } from "react";
 import picturePreferences from "../../assets/images/photo2_720.png";
 
+// fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
+const getUserId = (accountId, setUserId) => {
+  axios
+    .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+      params: { account_id: accountId },
+    })
+    .then((response) => {
+      const resultUserId = response.data[0]?.id;
+      setUserId(resultUserId);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 function FormInfoPerso() {
   // stock mail & pwd du form pour post
   const [formAuthentification, setFormAuthentifiation] = useState({
     email: "",
     pwd: "",
   });
+
   // stock accountId after account creation by post method
   const [accountId, setAccountId] = useState();
 
   // stock userId after user creation by post method
-  /*   const [userId, setUserId] = useState() */
+  const [userId, setUserId] = useState();
 
   // stock user informations du form pour post
   const [formInscription, setFormInscription] = useState({
@@ -65,7 +81,7 @@ function FormInfoPerso() {
     const { value } = evt.target;
     setFormPreference((prevState) => ({
       ...prevState,
-      color: prevState.color === value ? "" : value,
+      color: prevState.color === value ? "" : value, // si c'est deja la couleur de value, "" deselectionne, sinon on met la nouvelle value
     }));
   };
 
@@ -89,16 +105,15 @@ function FormInfoPerso() {
     }));
   };
 
-  // fonction pour recup l'account_id du nouvel inscrit grâce à son email
+  // fonction pour recup l'account_id du nouvel utilisateur qui s'inscrit grâce à son email
   const getAccountId = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/account`, {
         params: { email: formAuthentification.email },
       })
       .then((response) => {
-        const resultAccountId = response.data[0]?.id;
-        setAccountId(resultAccountId);
-        // console.log(resultAccountId);
+        const resultAccountId = response.data[0]?.id; // permet de récupérer l'id si il y en a un
+        setAccountId(resultAccountId); // récupère l'account_id grâce au mail et met à jour le state accountId
       })
       .catch((err) => {
         console.error(err);
@@ -108,49 +123,64 @@ function FormInfoPerso() {
   // fonction de soumission du formulaire
   const handleSubmitInscription = (event) => {
     event.preventDefault();
-
+    // post email et pwd
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/account`, formAuthentification)
       .then(() => {
-        getAccountId(); // Récupérer l'account_id du nouvel inscrit grâce à son email
-        // console.log("Account created");
+        getAccountId(); // call la fonction pour récupérer l'account_id du nouvel inscrit grâce à son email
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
+  // fonction pour importer les preferences de l'utilisateur dans la bdd
+  const createPreference = () => {
+    if (accountId && userId) {
+      // on a besoin du user_id (foreign key) et pour l'obtenir on a besoin de l'account_id(foreign key), on verifie donc si on a les deux
+      const updatedFormPreference = {
+        ...formPreference,
+        user_id: userId,
+      };
+      // Effectuer la requête POST avec le formulaire de préférence
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/preference`,
+          updatedFormPreference
+        )
+        .then()
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
+
+  // hook qui permet d'envoyer les données de la table utilisateur vers la bdd dès que l'on a récupérer le account_id (foreign key)
   useEffect(() => {
     if (accountId) {
-      // Effectuer la requête POST avec le formulaire d'inscription
       const updatedFormInscription = {
         ...formInscription,
         account_id: accountId,
       };
+      // Effectuer la requête POST avec le formulaire d'inscription
       axios
         .post(
           `${import.meta.env.VITE_BACKEND_URL}/user`,
           updatedFormInscription
         )
         .then(() => {
-          // console.log("Inscription réussie");
-          axios
-            .post(
-              `${import.meta.env.VITE_BACKEND_URL}/preference`,
-              formPreference
-            )
-            .then(() => {
-              // console.log("Envoi des préférences réussi");
-            })
-            .catch((err) => {
-              console.error(err);
-            });
+          getUserId(accountId, setUserId); // Appeler la fonction getUserId avec accountId et setUserId pour récup le user_id qui va servir pour la table préférence et qui vient d'ê créé avec ce .post
         })
         .catch((err) => {
           console.error(err);
         });
     }
   }, [accountId]); // dès que accountId est mis à jour, (dans la fonction getAccountId) le hook useEffect s'execute.
+
+  // ici, dès qu'on a récupéré le user_id et donc que le state userId a été mis à jour, le hook s'execute et lance la fonction pour .post les preferences
+  useEffect(() => {
+    createPreference();
+  }, [userId]);
 
   return (
     <div>

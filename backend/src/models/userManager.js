@@ -38,6 +38,13 @@ class UserManager extends AbstractManager {
       ]
     );
   }
+
+  findAccountId(account_id) {
+    return this.database.query(
+      `select * from  ${this.table} where account_id = ?`,
+      [account_id]
+    );
+  }
 }
 
 module.exports = UserManager;
