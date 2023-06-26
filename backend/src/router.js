@@ -16,8 +16,8 @@ router.put("/user/:id", userControllers.edit);
 router.post("/user", userControllers.add);
 router.delete("/user/:id", userControllers.destroy);
 
-router.get("/account", accountControllers.browse);
-router.get("/account/:id", userControllers.read);
+/* router.get("/account", accountControllers.browse); */
+router.get("/account", accountControllers.read);
 router.post("/account", accountControllers.add);
 router.delete("/account/:id", accountControllers.destroy);
 

@@ -1,109 +1,157 @@
 import axios from "axios";
 import "./FormInfoPerso.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import picturePreferences from "../../assets/images/photo2_720.png";
 
 function FormInfoPerso() {
-  // use state table user
+  // stock mail & pwd du form pour post
+  const [formAuthentification, setFormAuthentifiation] = useState({
+    email: "",
+    pwd: "",
+  });
+  // stock accountId after account creation by post method
+  const [accountId, setAccountId] = useState();
+
+  // stock userId after user creation by post method
+  /*   const [userId, setUserId] = useState() */
+
+  // stock user informations du form pour post
   const [formInscription, setFormInscription] = useState({
     firstname: "",
     lastname: "",
     birthdate: "",
     address: "",
-    ordering: "",
-    feedbackRating: "",
+    ordering: 0,
+    feedbackRating: 0,
     feedBackComment: "",
-    user_type: "",
+    user_type: "utilisateur",
+    account_id: "",
   });
 
-  // useState table account
-  const [formAuthentification, setAuthentification] = useState({
-    email: "",
-    pwd: "",
+  // stock preference user du form pour post
+  const [formPreference, setFormPreference] = useState({
+    color: "",
+    arome: "",
+    other: "",
+    user_id: "",
   });
 
-  const [formPreferenceColor, setFormPreferenceColor] = useState();
-  const [formPreferenceArome, setFormPreferenceArome] = useState();
-  const [formPreferenceOther, setFormPreferenceOther] = useState();
+  // check box +18
+  const [checked, setChecked] = useState(false);
 
-  const statePreference = {
-    stateColor: `${formPreferenceColor}`,
-    stateArome: `${formPreferenceArome}`,
-    stateOther: `${formPreferenceOther}`,
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
   };
-  // changer données champs inscription
+
+  // get value authent from form and push it in formAuthentification state
+  const handleChangeFormAuthentification = (evt) => {
+    evt.preventDefault();
+    setFormAuthentifiation({
+      ...formAuthentification,
+      [evt.target.name]: evt.target.value,
+    });
+  };
+
+  // get value user from form and push it in formInscription state
   const handleChangeFormInscription = (evt) => {
     setFormInscription({
       ...formInscription,
       [evt.target.name]: evt.target.value,
     });
   };
-  // changer données champs inscription
-  const handleChangeFormAuthentification = (evt) => {
-    setAuthentification({
-      ...formInscription,
-      [evt.target.name]: evt.target.value,
-    });
+
+  // get value preference Color from form and push it in formPrefence state
+  const handleColorChange = (evt) => {
+    const { value } = evt.target;
+    setFormPreference((prevState) => ({
+      ...prevState,
+      color: prevState.color === value ? "" : value,
+    }));
   };
-  // on chahnge preference
-  const handleChangeFormPreferenceColor = (event) => {
-    setFormPreferenceColor(event.target.value);
+
+  // get value preference Arome from form and push it in formPrefence state
+
+  const handleAromeChange = (evt) => {
+    const { value } = evt.target;
+    setFormPreference((prevState) => ({
+      ...prevState,
+      arome: prevState.arome === value ? "" : value,
+    }));
   };
-  const handleChangeFormPreferenceArome = (event) => {
-    setFormPreferenceArome(event.target.value);
+
+  // get value preference Other (precisions) from form and push it in formPrefence state
+
+  const handleOtherChange = (evt) => {
+    const { value } = evt.target;
+    setFormPreference((prevState) => ({
+      ...prevState,
+      other: value,
+    }));
   };
-  const handleChangeFormPreferenceOther = (event) => {
-    setFormPreferenceOther(event.target.value);
-  };
-  // checked
-  const [checked, setChecked] = React.useState(false);
-  // state Checkbox
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
-  };
-  // form submit
-  const handleSubmitIndendityUser = async (evt) => {
-    evt.preventDefault();
+
+  // fonction pour recup l'account_id du nouvel inscrit grâce à son email
+  const getAccountId = () => {
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/user`, formInscription)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/account`, {
+        params: { email: formAuthentification.email },
+      })
       .then((response) => {
-        response.send("Inscription réussie");
+        const resultAccountId = response.data[0]?.id;
+        setAccountId(resultAccountId);
+        // console.log(resultAccountId);
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  const handleSubmitIndendityAccount = async (evt) => {
-    evt.preventDefault();
+  // fonction de soumission du formulaire
+  const handleSubmitInscription = (event) => {
+    event.preventDefault();
+
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/account`, formAuthentification)
-      .then((response) => {
-        response.send("Inscription réussie");
+      .then(() => {
+        getAccountId(); // Récupérer l'account_id du nouvel inscrit grâce à son email
+        // console.log("Account created");
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  const handleSubmitIndendityPreference = async (evt) => {
-    evt.preventDefault();
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/preference`, statePreference)
-      .then((response) => {
-        response.send("Inscription réussie");
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  useEffect(() => {
+    if (accountId) {
+      // Effectuer la requête POST avec le formulaire d'inscription
+      const updatedFormInscription = {
+        ...formInscription,
+        account_id: accountId,
+      };
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/user`,
+          updatedFormInscription
+        )
+        .then(() => {
+          // console.log("Inscription réussie");
+          axios
+            .post(
+              `${import.meta.env.VITE_BACKEND_URL}/preference`,
+              formPreference
+            )
+            .then(() => {
+              // console.log("Envoi des préférences réussi");
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [accountId]); // dès que accountId est mis à jour, (dans la fonction getAccountId) le hook useEffect s'execute.
 
-  const handleSubmitInscription = (evt) => {
-    evt.preventDefault();
-    handleSubmitIndendityUser(evt);
-    handleSubmitIndendityAccount(evt);
-    handleSubmitIndendityPreference(evt);
-  };
   return (
     <div>
       <form className="form-inscription" onSubmit={handleSubmitInscription}>
@@ -114,13 +162,13 @@ function FormInfoPerso() {
               className="form-inscription-idendity-label"
               htmlFor="label-lastname"
             >
-              Nom:
+              Prénom:
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-                name="lastname"
+                name="firstname"
                 placeholder="Dupont"
-                value={formInscription.lastname}
+                value={formInscription.firstname}
                 onChange={handleChangeFormInscription}
               />
             </label>
@@ -130,13 +178,13 @@ function FormInfoPerso() {
               className="form-inscription-idendity-label"
               htmlFor="label-firstname"
             >
-              Prénom:
+              Nom:
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-                name="firstname"
+                name="lastname"
                 placeholder="Jean"
-                value={formInscription.firstname}
+                value={formInscription.lastname}
                 onChange={handleChangeFormInscription}
               />
             </label>
@@ -195,7 +243,6 @@ function FormInfoPerso() {
               type="checkbox"
               id="checkbox-18-yes"
               name="checkbox-18-yes"
-              checked={FormInfoPerso.checked}
               required
               onChange={handleCheckboxChange}
             />
@@ -217,8 +264,8 @@ function FormInfoPerso() {
                   id="checkbox-red"
                   name="checkbox-red"
                   value="rouge"
-                  checked={formPreferenceColor === "rouge"}
-                  onChange={handleChangeFormPreferenceColor}
+                  checked={formPreference.color === "rouge"}
+                  onChange={handleColorChange}
                 />
                 <p>blanc</p>
                 <input
@@ -227,8 +274,8 @@ function FormInfoPerso() {
                   id="checkbox-white"
                   name="checkbox-white"
                   value="blanc"
-                  checked={formPreferenceColor === "blanc"}
-                  onChange={handleChangeFormPreferenceColor}
+                  checked={formPreference.color === "blanc"}
+                  onChange={handleColorChange}
                 />
                 <p>rosé</p>
                 <input
@@ -237,8 +284,8 @@ function FormInfoPerso() {
                   id="checkbox-rose"
                   name="checkbox-rose"
                   value="rose"
-                  checked={formPreferenceColor === "rose"}
-                  onChange={handleChangeFormPreferenceColor}
+                  checked={formPreference.color === "rose"}
+                  onChange={handleColorChange}
                 />
               </label>
             </div>
@@ -252,8 +299,8 @@ function FormInfoPerso() {
                   id="checkbox-fruit"
                   name="checkbox-fruit"
                   value="fruite"
-                  checked={formPreferenceArome === "fruite"}
-                  onChange={handleChangeFormPreferenceArome}
+                  checked={formPreference.arome === "fruite"}
+                  onChange={handleAromeChange}
                 />
                 <p>minéral</p>
                 <input
@@ -262,8 +309,8 @@ function FormInfoPerso() {
                   id="checkbox-mineral"
                   name="checkbox-mineral"
                   value="mineral"
-                  checked={formPreferenceArome === "mineral"}
-                  onChange={handleChangeFormPreferenceArome}
+                  checked={formPreference.arome === "mineral"}
+                  onChange={handleAromeChange}
                 />
                 <p>boisé</p>
                 <input
@@ -272,8 +319,8 @@ function FormInfoPerso() {
                   id="checkbox-wood"
                   name="checkbox-wood"
                   value="boise"
-                  checked={formPreferenceArome === "boise"}
-                  onChange={handleChangeFormPreferenceArome}
+                  checked={formPreference.arome === "boise"}
+                  onChange={handleAromeChange}
                 />
               </label>
             </div>
@@ -286,11 +333,10 @@ function FormInfoPerso() {
                   name="other-taste"
                   rows="5"
                   cols="33"
-                  value={formPreferenceOther}
-                  onChange={handleChangeFormPreferenceOther}
-                >
-                  Précisez...
-                </textarea>
+                  defaultValue="Précisez..."
+                  value={formPreference.other}
+                  onChange={handleOtherChange}
+                />
               </label>
             </div>
           </div>
