@@ -25,7 +25,6 @@ function FormInfoPerso() {
     pwd: "",
   });
 
-
   // stock accountId after account creation by post method
   const [accountId, setAccountId] = useState();
 
@@ -33,7 +32,6 @@ function FormInfoPerso() {
   const [userId, setUserId] = useState();
 
   // stock user informations du form pour post
-
   const [formInscription, setFormInscription] = useState({
     firstname: "",
     lastname: "",
@@ -88,7 +86,6 @@ function FormInfoPerso() {
   };
 
   // get value preference Arome from form and push it in formPrefence state
-
   const handleAromeChange = (evt) => {
     const { value } = evt.target;
     setFormPreference((prevState) => ({
@@ -98,7 +95,6 @@ function FormInfoPerso() {
   };
 
   // get value preference Other (precisions) from form and push it in formPrefence state
-
   const handleOtherChange = (evt) => {
     const { value } = evt.target;
     setFormPreference((prevState) => ({
@@ -183,11 +179,7 @@ function FormInfoPerso() {
   useEffect(() => {
     createPreference();
   }, [userId]);
-
-
- 
- 
-
+  
   return (
     <div>
       <form className="form-inscription" onSubmit={handleSubmitInscription}>
@@ -202,13 +194,9 @@ function FormInfoPerso() {
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-
                 name="firstname"
                 placeholder="Dupont"
                 value={formInscription.firstname}
-
-             
-
                 onChange={handleChangeFormInscription}
               />
             </label>
@@ -222,12 +210,9 @@ function FormInfoPerso() {
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-
                 name="lastname"
                 placeholder="Jean"
                 value={formInscription.lastname}
-
-
                 onChange={handleChangeFormInscription}
               />
             </label>
@@ -307,10 +292,8 @@ function FormInfoPerso() {
                   id="checkbox-red"
                   name="checkbox-red"
                   value="rouge"
-
                   checked={formPreference.color === "rouge"}
                   onChange={handleColorChange}
-
                 />
                 <p>blanc</p>
                 <input
@@ -319,10 +302,8 @@ function FormInfoPerso() {
                   id="checkbox-white"
                   name="checkbox-white"
                   value="blanc"
-
                   checked={formPreference.color === "blanc"}
                   onChange={handleColorChange}
-
                 />
                 <p>rosé</p>
                 <input
@@ -331,10 +312,8 @@ function FormInfoPerso() {
                   id="checkbox-rose"
                   name="checkbox-rose"
                   value="rose"
-
                   checked={formPreference.color === "rose"}
                   onChange={handleColorChange}
-
                 />
               </label>
             </div>
@@ -348,10 +327,8 @@ function FormInfoPerso() {
                   id="checkbox-fruit"
                   name="checkbox-fruit"
                   value="fruite"
-
                   checked={formPreference.arome === "fruite"}
                   onChange={handleAromeChange}
-
                 />
                 <p>minéral</p>
                 <input
@@ -360,10 +337,8 @@ function FormInfoPerso() {
                   id="checkbox-mineral"
                   name="checkbox-mineral"
                   value="mineral"
-
                   checked={formPreference.arome === "mineral"}
                   onChange={handleAromeChange}
-
                 />
                 <p>boisé</p>
                 <input
@@ -372,10 +347,8 @@ function FormInfoPerso() {
                   id="checkbox-wood"
                   name="checkbox-wood"
                   value="boise"
-
                   checked={formPreference.arome === "boise"}
                   onChange={handleAromeChange}
-
                 />
               </label>
             </div>
