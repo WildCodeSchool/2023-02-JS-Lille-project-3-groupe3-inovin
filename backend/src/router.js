@@ -34,7 +34,8 @@ router.post("/tasting", tastingControllers.add);
 router.delete("/tasting/:id", tastingControllers.destroy);
 
 router.get("/compo_recipe", compoRecipeControllers.browse);
-router.get("/compo_recipe/:id", compoRecipeControllers.read);
+// router.get("/compo_recipe/:id", compoRecipeControllers.read);
+router.get("/compo_recipe/:id", compoRecipeControllers.getDetails);
 router.put("/compo_recipe/:id", compoRecipeControllers.edit);
 router.post("/compo_recipe", compoRecipeControllers.add);
 router.delete("/compo_recipe/:id", compoRecipeControllers.destroy);
