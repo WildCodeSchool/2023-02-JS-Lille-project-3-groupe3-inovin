@@ -179,7 +179,6 @@ function FormInfoPerso() {
   useEffect(() => {
     createPreference();
   }, [userId]);
-  
   return (
     <div>
       <form className="form-inscription" onSubmit={handleSubmitInscription}>
