@@ -10,14 +10,14 @@ const recipeControllers = require("./controllers/recipeControllers");
 const preferenceControllers = require("./controllers/preferenceControllers");
 const accountControllers = require("./controllers/accountControllers");
 
-router.get("/user", userControllers.browse);
-router.get("/user/:id", userControllers.read);
+/* router.get("/user", userControllers.browse); */ // commenté pour pouvoir faire les requêtes de FormInfoPerso
+router.get("/user", userControllers.read);
 router.put("/user/:id", userControllers.edit);
 router.post("/user", userControllers.add);
 router.delete("/user/:id", userControllers.destroy);
 
-router.get("/account", accountControllers.browse);
-router.get("/account/:id", userControllers.read);
+/* router.get("/account", accountControllers.browse); */ // commenté pour pouvoir faire les requêtes de FormInfoPerso
+router.get("/account", accountControllers.read);
 router.post("/account", accountControllers.add);
 router.delete("/account/:id", accountControllers.destroy);
 

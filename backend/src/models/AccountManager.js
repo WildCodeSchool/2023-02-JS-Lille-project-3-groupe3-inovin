@@ -11,6 +11,12 @@ class AccountManager extends AbstractManager {
       [account.email, account.pwd]
     );
   }
+
+  findByEmail(email) {
+    return this.database.query(`SELECT id FROM ${this.table} WHERE email = ?`, [
+      email,
+    ]);
+  }
 }
 
 module.exports = AccountManager;
