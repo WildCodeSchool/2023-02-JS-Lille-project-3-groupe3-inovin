@@ -18,7 +18,9 @@ function Home() {
       <div className="start_button">
         <button
           type="button"
-          className="home_btn"
+          // className="home_btn"
+          className="button-submit-identity"
+          id="home_btn"
           onClick={navigateToInscription}
         >
           C'est parti

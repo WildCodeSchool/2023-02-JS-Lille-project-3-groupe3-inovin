@@ -14,7 +14,7 @@ class PreferenceManager extends AbstractManager {
 
   update(preference) {
     return this.database.query(
-      `update ${this.table} set color = ?, arome = ?, other = ?, where id = ?`,
+      `update ${this.table} set color = ?, arome = ?, other = ? where id = ?`,
       [preference.color, preference.arome, preference.other, preference.id]
     );
   }

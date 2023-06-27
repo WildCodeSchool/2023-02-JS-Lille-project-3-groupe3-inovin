@@ -1,0 +1,307 @@
+@import "../../App.scss";
+
+.navigateLinkToResume {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: $font_title_small;
+  letter-spacing: 0.1875rem;
+}
+
+.nextPageArrow {
+  position: relative;
+  top: 0.3vh;
+  right: 0.1875vw;
+  height: 2vh;
+  width: auto;
+}
+
+.sendForm {
+  border: none;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  letter-spacing: 0.1875rem;
+  cursor: pointer;
+  background-color: $button_background_color;
+  color: black;
+}
+
+.noticeContainer {
+  background-color: $box_color;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url("../../assets/images/fond-gris_720.png");
+  background-size: cover;
+  border-radius: 0.625rem;
+  filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25))
+    drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+}
+
+.content {
+  color: $title_color;
+  background-color: #c5c5c538;
+  border-radius: 0.625rem;
+  position: relative;
+  width: 80vw;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.content h3 {
+  font-family: $font_title_small;
+  letter-spacing: 0.3125rem;
+  font-size: 1rem;
+  width: 100vw;
+}
+
+.starInput[type="radio"] {
+  display: none;
+}
+
+.commentsPage {
+  width: 90vw;
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commentsBook {
+  box-sizing: border-box;
+  background-color: $box_color;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  border: 1px solid #ffffff;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0;
+}
+
+.starContainer {
+  display: inline-block;
+  padding-right: 4vw;
+}
+
+textarea {
+  background-color: #c5c5c592;
+  resize: none;
+  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25),
+    inset 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
+  color: #fff;
+  overflow: auto;
+  position: relative;
+  top: -2vh;
+}
+
+textarea::placeholder {
+  color: #fff;
+}
+
+.buttonDecoration {
+  position: relative;
+  top: 5vh;
+  border: 0.0625rem solid #fff;
+  border-radius: 0.3125rem;
+  padding: 0.3125rem;
+}
+
+.noticeTitle {
+  color: $gold_title;
+  font-family: $font_title_large;
+  position: relative;
+  top: 1vh;
+  font-size: 2.5rem;
+  letter-spacing: 0.3125rem;
+  margin: 0;
+  padding: 0;
+}
+
+.feedbackSent {
+  color: $gold_title;
+  font-family: $font_title_large;
+  position: relative;
+  top: 1vh;
+  font-size: 1.5rem;
+  letter-spacing: 0.3125rem;
+  margin: 0;
+  padding: 0;
+}
+
+@media (orientation: portrait) {
+  .commentsBook {
+    box-sizing: border-box;
+    background-color: $box_color;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    top: 21vh;
+  }
+
+  .commentsBook h2 {
+    padding: 0.625rem 0;
+    color: $title_color;
+    font-size: 2rem;
+  }
+
+  .noticeContainer {
+    width: 90vw;
+    height: 50vh;
+    position: relative;
+    top: 2vh;
+  }
+
+  .content {
+    top: 4vh;
+    height: 35vh;
+  }
+
+  .starContainer {
+    position: relative;
+    top: -1vh;
+  }
+
+  .star {
+    cursor: pointer;
+    transition: 300ms;
+    position: relative;
+  }
+
+  .askCommentTitle {
+    position: relative;
+    top: -2vh;
+  }
+
+  .separatorImg {
+    transform: rotate(180deg);
+    position: relative;
+    z-index: 1;
+    bottom: -1.6vh;
+    width: 70vw;
+  }
+
+  .sendForm {
+    border: none;
+    padding: 0.625rem;
+    border-radius: 0.3125rem;
+    letter-spacing: 0.1875rem;
+    cursor: pointer;
+    background-color: $button_background_color;
+  }
+
+  .navigateLinkToResume {
+    left: 38vw;
+    top: 10vh;
+  }
+
+  textarea {
+    font-size: 1.2rem;
+  }
+}
+
+@media (orientation: landscape) {
+  .commentsBook {
+    box-sizing: border-box;
+    background-color: $box_color;
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 20vh;
+    z-index: 1;
+  }
+
+  .commentsBook h2 {
+    padding: none;
+    color: $title_color;
+    padding: 0.4375rem 0rem;
+    font-size: 2rem;
+  }
+
+  .noticeTitle {
+    font-size: 1.5rem;
+    top: 0.5vh;
+  }
+  .feedbackSent {
+    font-size: 1.5rem;
+    top: 0.5vh;
+  }
+
+  .content {
+    color: $title_color;
+    background-color: #c5c5c538;
+    border-radius: 0.625rem;
+    position: relative;
+    top: 2vh;
+    width: 80vw;
+    height: 40vh;
+    text-align: center;
+  }
+
+  .content h3 {
+    font-family: $font_title_small;
+    letter-spacing: 0.3125rem;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  .starContainer {
+    position: relative;
+    top: -1vh;
+  }
+
+  .star {
+    cursor: pointer;
+    transition: 300ms;
+    position: relative;
+  }
+
+  .askCommentTitle {
+    position: relative;
+    top: -1vh;
+  }
+
+  .separatorImg {
+    transform: rotate(180deg);
+    position: relative;
+    z-index: 1;
+    bottom: -1rem;
+    width: 40vw;
+  }
+
+  .navigateLinkToResume {
+    top: 3vh;
+    left: 40vw;
+  }
+
+  textarea {
+    font-size: 1rem;
+    position: relative;
+    top: -1.5vh;
+  }
+
+  .noticeContainer {
+    height: 50vh;
+    position: relative;
+    top: 2vh;
+    width: 90vw;
+  }
+
+  .buttonDecoration {
+    top: 2vh;
+  }
+}

@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.compoRecipe
+  models.account
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.compo_recipe
+  models.account
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -28,53 +28,15 @@ const read = (req, res) => {
     });
 };
 
-const getDetails = (req, res) => {
-  // get specific recipe details to show in resume page
-  models.compo_recipe
-    .get(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-const edit = (req, res) => {
-  const compoRecipe = req.body;
-
-  // TODO validations (length, format...)
-
-  compoRecipe.id = parseInt(req.params.id, 10);
-
-  models.compoRecipe
-    .update(compoRecipe)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const add = (req, res) => {
-  const compoRecipe = req.body;
+  const account = req.body;
 
   // TODO validations (length, format...)
 
-  models.compoRecipe
-    .insert(compoRecipe)
+  models.account
+    .insert(account)
     .then(([result]) => {
-      res.location(`/compoRecipes/${result.insertId}`).sendStatus(201);
+      res.location(`/accounts/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -83,7 +45,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.compoRecipe
+  models.account
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -101,8 +63,6 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
-  getDetails,
-  edit,
   add,
   destroy,
 };

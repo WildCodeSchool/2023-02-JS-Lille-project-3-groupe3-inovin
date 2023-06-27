@@ -1,1 +1,108 @@
 @import "../../App.scss";
+
+.element_apercu {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  height: 40%;
+  width: 80%;
+  background-color: #1d1d1d;
+  box-shadow: 3px 4px 5px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+}
+
+.element_photo {
+  display: block;
+  border-radius: 5px;
+  width: 200%;
+}
+
+.element_gauche {
+  display: flex;
+  align-items: center;
+  margin-left: 18px;
+  overflow: hidden;
+  width: 150px;
+  height: 130px;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.element_mini_title {
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  font-family: $font_title_small;
+  padding-bottom: 6%;
+  margin-top: 0%;
+}
+
+.element_droite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 3%;
+  justify-content: space-around;
+  color: $title_color;
+}
+
+.element_titre_exterieur {
+  font-family: $font_title_large;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+  font-size: 38px;
+  color: $gold_title;
+  margin: 5%;
+}
+
+.element_description {
+  font-family: $font_title_small;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  margin-top: -2%;
+  margin-bottom: 4%;
+}
+
+.apercu_btn {
+  display: inline-block;
+  background-color: white;
+  border-radius: 8px;
+  border: 8px double #3e3e3e;
+  color: $box_color;
+  text-align: center;
+  font-size: 16px;
+  height: 78px;
+  font-size: 28px;
+  width: 230px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  font-family: $font_title_small;
+  letter-spacing: 3px;
+  margin-top: -10px;
+  margin-left: 5%;
+}
+.apercu_btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.apercu_btn span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.apercu_btn:hover {
+  background-color: $input_color;
+}
+.apercu_btn:hover span {
+  padding-right: 25px;
+}
+.apercu_btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
