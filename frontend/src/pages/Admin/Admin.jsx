@@ -54,8 +54,9 @@ function Admin() {
           </div>
         </div>
         <div className="containerModif">
-          <h4 className="titleMiniInfo">Nom de la recette: </h4>
           <div className="containerInfoGauche">
+            <h4 className="titleMiniInfo">Nom de la recette: </h4>
+
             <h4 className="titleMiniInfo">
               RECETTE - nom ingrédient Cépage 1 + %
             </h4>
@@ -79,6 +80,7 @@ function Admin() {
           <button className="boutonPdf" type="submit">
             IMPRIMER EN PDF
           </button>
+
           <button className="boutonAjout" type="submit">
             AJOUTER UN VIN
           </button>

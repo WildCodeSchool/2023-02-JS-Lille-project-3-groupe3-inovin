@@ -4,6 +4,7 @@
   height: 102vh;
   width: 100vw;
   background-color: white;
+  line-height: 32px;
 }
 .adminTitle {
   font-family: $font_title_large;
@@ -124,9 +125,15 @@
 }
 
 .containerInfoGauche {
-  border: red solid;
+  width: 18em;
 }
 
-.containerInfoDroite {
-  border: black solid;
+.boutonModif {
+  width: 253%;
+  height: 3rem;
+  background-color: white;
+  border: black solid 1mm;
+  font-size: large;
+  font-family: $font_title_small;
+  margin-top: 44%;
 }
