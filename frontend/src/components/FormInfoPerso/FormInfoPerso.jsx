@@ -1,7 +1,10 @@
 import axios from "axios";
 import "./FormInfoPerso.scss";
 import React, { useEffect, useState } from "react";
+// import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import picturePreferences from "../../assets/images/photo2_720.png";
+// import UserContext from "../../contexts/UserContext";
 
 // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
 const getUserId = (accountId, setUserId) => {
@@ -19,6 +22,16 @@ const getUserId = (accountId, setUserId) => {
 };
 
 function FormInfoPerso() {
+  // usecontext
+  // const [user, setUser] = useContext(UserContext);
+
+  // navigation
+  const navigate = useNavigate();
+
+  const handleClickNext = () => {
+    navigate("/FicheDegustation");
+  };
+
   // stock mail & pwd du form pour post
   const [formAuthentification, setFormAuthentifiation] = useState({
     email: "",
@@ -111,7 +124,8 @@ function FormInfoPerso() {
       })
       .then((response) => {
         const resultAccountId = response.data[0]?.id; // permet de récupérer l'id si il y en a un
-        setAccountId(resultAccountId); // récupère l'account_id grâce au mail et met à jour le state accountId
+        setAccountId(resultAccountId);
+        // setUser(resultAccountId); // update userContext with account_id
       })
       .catch((err) => {
         console.error(err);
@@ -179,6 +193,7 @@ function FormInfoPerso() {
   useEffect(() => {
     createPreference();
   }, [userId]);
+
   return (
     <div>
       <form className="form-inscription" onSubmit={handleSubmitInscription}>
@@ -379,6 +394,10 @@ function FormInfoPerso() {
           </div>
         </div>
       </form>
+      <button type="button" onClick={handleClickNext}>
+        {" "}
+        Suivant
+      </button>
     </div>
   );
 }
