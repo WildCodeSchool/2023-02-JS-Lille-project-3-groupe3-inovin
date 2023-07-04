@@ -7,7 +7,8 @@ class UserManager extends AbstractManager {
 
   insert(user) {
     return this.database.query(
-      `insert into ${this.table} (firstname, lastname, birthdate, address, ordering, feedbackRating, feedbackComment, user_type) values (?,?,?,?,?,?,?,?)`,
+      `insert into ${this.table} (firstname, lastname, birthdate, address, ordering, feedbackRating, feedbackComment, user_type, account_id) values (?,?,?,?,?,?,?,?,?)`,
+
       [
         user.firstname,
         user.lastname,
@@ -17,6 +18,7 @@ class UserManager extends AbstractManager {
         user.feedbackRating,
         user.feedbackComment,
         user.user_type,
+        user.account_id,
       ]
     );
   }
@@ -35,6 +37,13 @@ class UserManager extends AbstractManager {
         user.user_type,
         user.id,
       ]
+    );
+  }
+
+  findAccountId(account_id) {
+    return this.database.query(
+      `select * from  ${this.table} where account_id = ?`,
+      [account_id]
     );
   }
 }

@@ -132,10 +132,10 @@ textarea::placeholder {
   color: $gold_title;
   font-family: $font_title_large;
   position: relative;
-  top: 1vh;
+  top: 2vh;
   font-size: 1.5rem;
   letter-spacing: 0.3125rem;
-  margin: 0;
+  margin-bottom: 1.7vh;
   padding: 0;
 }
 
@@ -203,7 +203,7 @@ textarea::placeholder {
 
   .navigateLinkToResume {
     left: 38vw;
-    top: 10vh;
+    top: 7vh;
   }
 
   textarea {
@@ -237,6 +237,7 @@ textarea::placeholder {
   .feedbackSent {
     font-size: 1.5rem;
     top: 0.5vh;
+    margin-bottom: 0vh;
   }
 
   .content {
@@ -284,7 +285,7 @@ textarea::placeholder {
   }
 
   .navigateLinkToResume {
-    top: 3vh;
+    top: 5vh;
     left: 40vw;
   }
 

@@ -13,14 +13,12 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
+  const { account_id } = req.query;
+
   models.user
-    .find(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows[0]);
-      }
+    .findAccountId(account_id)
+    .then(([result]) => {
+      res.send(result);
     })
     .catch((err) => {
       console.error(err);

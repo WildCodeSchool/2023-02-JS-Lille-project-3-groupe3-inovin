@@ -10,14 +10,6 @@
 #background_btn {
   transform: rotate(180deg);
 }
-#home_btn {
-  cursor: pointer;
-  position: absolute;
-  bottom: 6vh;
-  height: 5vh;
-  text-align: center;
-  margin-bottom: 2vh;
-}
 .title_background {
   transform: rotate(180deg);
   width: inherit;
@@ -32,9 +24,11 @@
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 2%;
+
     font-family: "Bebas Neue", sans-serif;
     width: 50%;
     height: 20vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,7 +76,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 7%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
   }

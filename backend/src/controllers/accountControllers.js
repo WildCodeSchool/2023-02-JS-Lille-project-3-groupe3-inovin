@@ -13,14 +13,12 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
+  const { email } = req.query;
+
   models.account
-    .find(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows[0]);
-      }
+    .findByEmail(email)
+    .then(([result]) => {
+      res.send(result);
     })
     .catch((err) => {
       console.error(err);
