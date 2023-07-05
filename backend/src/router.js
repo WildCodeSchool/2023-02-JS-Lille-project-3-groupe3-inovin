@@ -21,7 +21,7 @@ router.get("/account", accountControllers.read);
 router.post("/account", accountControllers.add);
 router.delete("/account/:id", accountControllers.destroy);
 
-router.get("/winebottle", winebottleControllers.browse);
+router.get("/winebottle", winebottleControllers.getOneBottle);
 router.get("/winebottle/:id", winebottleControllers.read);
 router.put("/winebottle/:id", winebottleControllers.edit);
 router.post("/winebottle", winebottleControllers.add);

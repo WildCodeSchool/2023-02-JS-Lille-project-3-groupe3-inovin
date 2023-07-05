@@ -12,6 +12,20 @@ const browse = (req, res) => {
     });
 };
 
+const getOneBottle = (req, res) => {
+  const { bottle_name } = req.query;
+
+  models.winebottle
+    .findByName(bottle_name)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   models.winebottle
     .find(req.params.id)
@@ -88,4 +102,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  getOneBottle,
 };
