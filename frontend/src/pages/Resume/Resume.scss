@@ -1,0 +1,220 @@
+@import "../../App.scss";
+@import url("https://fonts.googleapis.com/css2?family=Birthstone+Bounce&display=swap");
+.resume_wrapper {
+  height: 100vh;
+  width: 100%;
+  @include black-page-background;
+}
+.profil {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.profil_title,
+.recepie_title {
+  color: $gold_title;
+  font-family: $font_title_large;
+  font-size: x-large;
+  padding: 2vh;
+  font-weight: bold;
+}
+
+#bottle_resume {
+  width: 12vh;
+  margin-left: 11vh;
+  z-index: 1;
+  position: absolute;
+  bottom: 8vh;
+}
+
+.resume_info {
+  width: 60vh;
+  height: 10vh;
+  border: 1px solid rgb(189, 187, 187);
+  padding: 2%;
+  //background-color: $box_color
+}
+
+.halfBackground {
+  background-image: url("../../assets//images/fond-gris_720.png");
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: auto;
+}
+
+.recepie_info {
+  position: absolute;
+  background-color: #3e3e3e;
+  box-shadow: 1px 1px 15px 1px #000000;
+  padding: 1vh;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#commande_btn {
+  position: absolute;
+}
+#diploma {
+  position: absolute;
+}
+
+.personalDetails {
+  font-family: $font_title_large;
+  color: $title_color;
+  line-height: 2;
+}
+#rName {
+  font-family: "Birthstone Bounce", cursive;
+  letter-spacing: 0.2rem;
+}
+.bottle_title {
+  color: black;
+  font-family: "Birthstone Bounce", cursive;
+
+  font-weight: bold;
+  position: absolute;
+  height: 10vh;
+  width: 10vh;
+  text-align: center;
+  line-height: 2;
+}
+.diploma_winner {
+  position: absolute;
+  font-family: $font_title_large;
+  color: black;
+  font-weight: bold;
+}
+.nextPageArrow {
+  transform: rotate(180deg);
+}
+@media (orientation: portrait) {
+  .recipe_resume {
+    width: 80%;
+    display: flex;
+    height: 20vh;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  #commande_btn {
+    top: 1;
+    bottom: 11vh;
+    right: 20vh;
+    z-index: 2;
+  }
+
+  .resume_info {
+    width: 60vh;
+    height: 10vh;
+    border: 1px solid rgb(189, 187, 187);
+    padding: 2%;
+  }
+
+  .recepie_info {
+    width: 30vh;
+    height: 15vh;
+    position: absolute;
+    right: 3vh;
+    background-color: #3e3e3e;
+    //border: 1px solid rgb(189, 187, 187);
+    box-shadow: 1px 1px 15px 1px #000000;
+    margin: 7vh 3vh;
+    padding: 1vh;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .halfBackground {
+    height: 25%;
+  }
+  #diploma {
+    width: 35%;
+    position: absolute;
+    top: 25%;
+    right: 13%;
+  }
+
+  #commande_btn {
+    position: absolute;
+    right: 14vh;
+    bottom: 21vh;
+    z-index: 1;
+  }
+
+  .bottle_title {
+    font-size: xx-large;
+    z-index: 2;
+    bottom: 19vh;
+    left: 12vh;
+  }
+
+  .diploma_winner {
+    bottom: 12vh;
+    right: 18vh;
+  }
+  #goBack_btn {
+    position: absolute;
+    left: 3vh;
+    bottom: -8vh;
+  }
+}
+
+@media (orientation: landscape) {
+  .recipe_resume {
+    width: 80%;
+    display: flex;
+    height: 20vh;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .halfBackground {
+    position: absolute;
+    height: 25%;
+  }
+  .recepie_info {
+    width: 40vh;
+    height: 20vh;
+    right: 10vh;
+    margin: 7vh 3vh;
+  }
+
+  #commande_btn {
+    z-index: 2;
+    top: 1;
+    bottom: 11vh;
+    right: 20vh;
+  }
+
+  #diploma {
+    width: 30vh;
+    height: 20vh;
+    width: 30vh;
+    height: 20vh;
+    left: 25%;
+    right: 50%;
+  }
+  .bottle_title {
+    font-size: larger;
+    z-index: 2;
+    left: 12vh;
+    bottom: 18vh;
+  }
+  .diploma_winner {
+    bottom: 17vh;
+    left: 40vh;
+    z-index: 2;
+  }
+  #goBack_btn {
+    position: absolute;
+    right: -55vh;
+    bottom: -11vh;
+  }
+}

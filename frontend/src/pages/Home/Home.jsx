@@ -1,13 +1,8 @@
 import "./Home.scss";
-import { useNavigate } from "react-router-dom";
 import background from "../../assets/images/separator02.png";
 import SliderHome from "../../components/SliderHomePage/SliderHomePage";
 
 function Home() {
-  const navigate = useNavigate();
-  const navigateToInscription = () => {
-    navigate("/inscription");
-  };
   return (
     <div className="">
       <div className="header_container">
@@ -16,13 +11,6 @@ function Home() {
       </div>
       <SliderHome />
       <div className="start_button">
-        <button
-          type="button"
-          className="home_btn"
-          onClick={navigateToInscription}
-        >
-          C'est parti
-        </button>
         <img id="background_btn" src={background} alt="" />
       </div>
     </div>

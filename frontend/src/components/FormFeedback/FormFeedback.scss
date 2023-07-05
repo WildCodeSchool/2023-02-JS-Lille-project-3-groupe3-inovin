@@ -1,32 +1,56 @@
 @import "../../App.scss";
 
+.navigateLinkToResume {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: $font_title_small;
+  letter-spacing: 0.1875rem;
+}
+
+.nextPageArrow {
+  position: relative;
+  top: 0.3vh;
+  right: 0.1875vw;
+  height: 2vh;
+  width: auto;
+}
+
 .sendForm {
   border: none;
-  padding: 10px;
-  border-radius: 5px;
-  letter-spacing: 3px;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  letter-spacing: 0.1875rem;
   cursor: pointer;
   background-color: $button_background_color;
+  color: black;
 }
 
 .noticeContainer {
   background-color: $box_color;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   background-image: url("../../assets/images/fond-gris_720.png");
-  border-radius: 10px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-size: cover;
+  border-radius: 0.625rem;
+  filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25))
+    drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
 }
 
 .content {
   color: $title_color;
   background-color: #c5c5c538;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   position: relative;
-  width: 80%;
+  width: 80vw;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -36,18 +60,18 @@
 
 .content h3 {
   font-family: $font_title_small;
-  letter-spacing: 5px;
+  letter-spacing: 0.3125rem;
   font-size: 1rem;
-  width: 100%;
+  width: 100vw;
 }
 
-input[type="radio"] {
+.starInput[type="radio"] {
   display: none;
 }
 
 .commentsPage {
-  width: 90%;
-  margin-left: 5%;
+  width: 90vw;
+  margin-left: 5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,26 +83,26 @@ input[type="radio"] {
   display: flex;
   justify-content: center;
   position: absolute;
-  border: 0.493274px solid #ffffff;
-  border-radius: 6px;
-  padding: 8px 0;
+  border: 1px solid #ffffff;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0;
 }
 
 .starContainer {
   display: inline-block;
-  padding-right: 4%;
+  padding-right: 4vw;
 }
 
 textarea {
   background-color: #c5c5c592;
   resize: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
+  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25),
+    inset 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
   color: #fff;
   overflow: auto;
   position: relative;
-  top: -2%;
+  top: -2vh;
 }
 
 textarea::placeholder {
@@ -87,19 +111,19 @@ textarea::placeholder {
 
 .buttonDecoration {
   position: relative;
-  top: 14%;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  padding: 5px;
+  top: 5vh;
+  border: 0.0625rem solid #fff;
+  border-radius: 0.3125rem;
+  padding: 0.3125rem;
 }
 
 .noticeTitle {
   color: $gold_title;
   font-family: $font_title_large;
   position: relative;
-  top: 5%;
+  top: 1vh;
   font-size: 2.5rem;
-  letter-spacing: 5px;
+  letter-spacing: 0.3125rem;
   margin: 0;
   padding: 0;
 }
@@ -108,10 +132,10 @@ textarea::placeholder {
   color: $gold_title;
   font-family: $font_title_large;
   position: relative;
-  top: 5%;
+  top: 2vh;
   font-size: 1.5rem;
-  letter-spacing: 5px;
-  margin: 0;
+  letter-spacing: 0.3125rem;
+  margin-bottom: 1.7vh;
   padding: 0;
 }
 
@@ -119,29 +143,34 @@ textarea::placeholder {
   .commentsBook {
     box-sizing: border-box;
     background-color: $box_color;
-    width: 80%;
+    width: 80vw;
     display: flex;
     justify-content: center;
     z-index: 1;
-    top: 20%;
+    top: 21vh;
   }
 
   .commentsBook h2 {
-    padding: 10px 0;
+    padding: 0.625rem 0;
     color: $title_color;
     font-size: 2rem;
   }
 
   .noticeContainer {
-    width: 90%;
-    height: 60vh;
+    width: 90vw;
+    height: 50vh;
     position: relative;
-    top: 20px;
+    top: 2vh;
   }
 
   .content {
-    top: 10%;
-    height: 65%;
+    top: 4vh;
+    height: 35vh;
+  }
+
+  .starContainer {
+    position: relative;
+    top: -1vh;
   }
 
   .star {
@@ -150,44 +179,31 @@ textarea::placeholder {
     position: relative;
   }
 
+  .askCommentTitle {
+    position: relative;
+    top: -2vh;
+  }
+
   .separatorImg {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: -8px;
-    width: 70%;
+    bottom: -1.6vh;
+    width: 70vw;
   }
 
   .sendForm {
     border: none;
-    padding: 10px;
-    border-radius: 5px;
-    letter-spacing: 3px;
+    padding: 0.625rem;
+    border-radius: 0.3125rem;
+    letter-spacing: 0.1875rem;
     cursor: pointer;
     background-color: $button_background_color;
   }
 
-  .nextPageArrow {
-    position: relative;
-    top: 4px;
-    right: 3px;
-    height: 20px;
-    width: auto;
-  }
-
   .navigateLinkToResume {
-    cursor: pointer;
-    position: relative;
-    left: 40%;
-    top: 22%;
-    text-decoration: none;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    font-size: $font_title_small;
-    letter-spacing: 3px;
+    left: 38vw;
+    top: 7vh;
   }
 
   textarea {
@@ -199,48 +215,54 @@ textarea::placeholder {
   .commentsBook {
     box-sizing: border-box;
     background-color: $box_color;
-    width: 40%;
+    width: 40vw;
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 19.5%;
+    top: 20vh;
     z-index: 1;
   }
 
   .commentsBook h2 {
     padding: none;
     color: $title_color;
-    padding: 7px 0px;
+    padding: 0.4375rem 0rem;
     font-size: 2rem;
   }
 
   .noticeTitle {
     font-size: 1.5rem;
-    top: 3%;
+    top: 0.5vh;
   }
   .feedbackSent {
     font-size: 1.5rem;
-    top: 3%;
+    top: 0.5vh;
+    margin-bottom: 0vh;
   }
 
   .content {
     color: $title_color;
     background-color: #c5c5c538;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     position: relative;
-    top: 5%;
-    width: 80%;
-    height: 70%;
+    top: 2vh;
+    width: 80vw;
+    height: 40vh;
     text-align: center;
   }
 
   .content h3 {
     font-family: $font_title_small;
-    letter-spacing: 5px;
+    letter-spacing: 0.3125rem;
   }
 
   input[type="radio"] {
     display: none;
+  }
+
+  .starContainer {
+    position: relative;
+    top: -1vh;
   }
 
   .star {
@@ -249,66 +271,38 @@ textarea::placeholder {
     position: relative;
   }
 
+  .askCommentTitle {
+    position: relative;
+    top: -1vh;
+  }
+
   .separatorImg {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: -8px;
-    width: 70%;
-  }
-
-  .nextPageArrow {
-    position: relative;
-    top: 4px;
-    right: 3px;
-    height: 20px;
-    width: auto;
+    bottom: -1rem;
+    width: 40vw;
   }
 
   .navigateLinkToResume {
-    cursor: pointer;
-    position: relative;
-    left: 43%;
-    top: 15%;
-    text-decoration: none;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    font-size: $font_title_small;
-    letter-spacing: 3px;
+    top: 5vh;
+    left: 40vw;
   }
 
   textarea {
     font-size: 1rem;
     position: relative;
-    top: 5%;
-    margin-bottom: 5%;
-  }
-
-  .starContainer {
-    position: relative;
-    top: 5%;
-  }
-
-  .rateExpTitle {
-    position: relative;
-    top: 5%;
+    top: -1.5vh;
   }
 
   .noticeContainer {
-    height: 55vh;
+    height: 50vh;
     position: relative;
-    top: 10px;
+    top: 2vh;
+    width: 90vw;
   }
 
   .buttonDecoration {
-    top: 10%;
-  }
-
-  .askCommentTitle {
-    position: relative;
-    top: 5%;
+    top: 2vh;
   }
 }

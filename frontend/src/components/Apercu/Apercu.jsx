@@ -1,7 +1,19 @@
 import "./Apercu.scss";
+import { useNavigate } from "react-router-dom";
+// import { useContext } from "react";
 import grapes from "../../assets/images/grape.jpg";
+// import UserContext from "../../contexts/UserContext";
 
 function Apercu() {
+  // useContext
+  // const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+  // console.log(`aperçu component account_id: ${user} `);
+
+  const navigate = useNavigate();
+
+  const handleClickNext = () => {
+    navigate("/livredor");
+  };
   return (
     <>
       <div className="element_apercu">
@@ -16,7 +28,7 @@ function Apercu() {
           </p>
         </div>
       </div>
-      <button type="button" className="apercu_btn">
+      <button type="button" className="apercu_btn" onClick={handleClickNext}>
         {" "}
         Bravo ! Un avis ?
       </button>

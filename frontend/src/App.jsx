@@ -12,16 +12,19 @@ import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
 import { LogingProvider } from "./contexts/LogingContext";
 
 import "./App.css";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <div className="backgroundHeader">
-          <LogingProvider>
-            <Navbar />
-          </LogingProvider>
-        </div>
+    <UserProvider>
+      <Router>
+        <div>
+          <div className="backgroundHeader">
+            <LogingProvider>
+              <Navbar />
+            </LogingProvider>
+          </div>
+
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,9 +37,12 @@ function App() {
           <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
         </Routes>
 
-        <Footer />
-      </div>
-    </Router>
+
+
+          <Footer />
+        </div>
+      </Router>
+    </UserProvider>
   );
 }
 

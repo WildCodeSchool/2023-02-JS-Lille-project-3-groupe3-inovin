@@ -7,8 +7,8 @@ class PreferenceManager extends AbstractManager {
 
   insert(preference) {
     return this.database.query(
-      `insert into ${this.table} (color, arome, other) values (?,?,?)`,
-      [preference.color, preference.arome, preference.other]
+      `insert into ${this.table} (color, arome, other, user_id) values (?,?,?,?)`,
+      [preference.color, preference.arome, preference.other, preference.user_id]
     );
   }
 

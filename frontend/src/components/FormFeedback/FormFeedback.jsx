@@ -1,18 +1,42 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./FormFeedback.scss";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import separator from "../../assets/images/separator02.png";
 import fleche from "../../assets/images/fleche_360.png";
+import UserContext from "../../contexts/UserContext";
 
 function FormFeedback() {
+  // useContext
+  const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+  // console.log(`formfeedback account_id: ${user} `);
+
+  // current state of components
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [userComment, setUserComment] = useState("");
   const [isPortrait, setIsPortrait] = useState(window.innerWidth < 769);
-
   const [feedbackConfirm, setFeedbackConfirm] = useState(false);
+
+  const [userId, setUserId] = useState();
+
+  // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: user },
+      })
+      .then((response) => {
+        const resultUserId = response.data[0]?.id;
+        setUserId(resultUserId);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  // console.log(`id de l'utilisateur sur cette page feedback : ${userId}`);
 
   const updateMedia = () => {
     setIsPortrait(window.innerWidth < 769);
@@ -30,25 +54,18 @@ function FormFeedback() {
   };
 
   const sendFeedbackRating = () => {
-    const userId = 3; // id de l'utilisateur connecté
-
-    const user = {
+    const userData = {
       // get les données de l'utilisateur connecté
-      firstname: "khouloud",
-      lastname: "belkhir",
-      birthdate: "1992-12-26",
-      address: "koukabelle@gmail.com",
+      address: "",
       ordering: 0,
       feedbackRating: rating,
       feedbackComment: userComment,
-      user_type: "utilisateur",
     };
 
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/user/${userId}`, user)
-      .then((response) => {
+      .put(`${import.meta.env.VITE_BACKEND_URL}/user/${userId}`, userData)
+      .then(() => {
         setFeedbackConfirm(true);
-        response.send("Feedback envoyé avec succès !");
       })
       .catch((error) => {
         // Gérez les erreurs de la requête ici
@@ -76,16 +93,17 @@ function FormFeedback() {
             const ratingValue = i + 1;
 
             return (
-              <label key={star} className="starContainer">
+              <label key={ratingValue} className="starContainer">
                 <input
                   type="radio"
                   name="rating"
                   value={ratingValue}
+                  className="starInput"
                   onClick={() => setRating(ratingValue)}
                 />
                 <FaStar
                   className="star"
-                  size={50}
+                  size={45}
                   color={
                     ratingValue <= (hover || rating) ? "#d8af49" : "#e4e5e9"
                   }
@@ -129,7 +147,6 @@ function FormFeedback() {
           </button>
         </div>
 
-        {/* send {rating} par mail à Cédric */}
         <button
           type="button"
           onClick={handleClickNext}

@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.user
+  models.account
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,10 +13,10 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  const { account_id } = req.query;
+  const { email } = req.query;
 
-  models.user
-    .findAccountId(account_id)
+  models.account
+    .findByEmail(email)
     .then(([result]) => {
       res.send(result);
     })
@@ -26,37 +26,15 @@ const read = (req, res) => {
     });
 };
 
-const edit = (req, res) => {
-  const user = req.body;
-
-  // TODO validations (length, format...)
-
-  user.id = parseInt(req.params.id, 10);
-
-  models.user
-    .update(user)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const add = (req, res) => {
-  const user = req.body;
+  const account = req.body;
 
   // TODO validations (length, format...)
 
-  models.user
-    .insert(user)
+  models.account
+    .insert(account)
     .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
+      res.location(`/accounts/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -65,7 +43,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.user
+  models.account
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -83,7 +61,6 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
-  edit,
   add,
   destroy,
 };

@@ -1,42 +1,202 @@
 import axios from "axios";
 import "./FormInfoPerso.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+// import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import picturePreferences from "../../assets/images/photo2_720.png";
+// import UserContext from "../../contexts/UserContext";
+
+// fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
+const getUserId = (accountId, setUserId) => {
+  axios
+    .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+      params: { account_id: accountId },
+    })
+    .then((response) => {
+      const resultUserId = response.data[0]?.id;
+      setUserId(resultUserId);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
 
 function FormInfoPerso() {
+  // usecontext
+  // const [user, setUser] = useContext(UserContext);
+
+  // navigation
+  const navigate = useNavigate();
+
+  const handleClickNext = () => {
+    navigate("/FicheDegustation");
+  };
+
+  // stock mail & pwd du form pour post
+  const [formAuthentification, setFormAuthentifiation] = useState({
+    email: "",
+    pwd: "",
+  });
+
+  // stock accountId after account creation by post method
+  const [accountId, setAccountId] = useState();
+
+  // stock userId after user creation by post method
+  const [userId, setUserId] = useState();
+
+  // stock user informations du form pour post
   const [formInscription, setFormInscription] = useState({
-    lastname: "",
     firstname: "",
+    lastname: "",
     birthdate: "",
     address: "",
+    ordering: 0,
+    feedbackRating: 0,
+    feedBackComment: "",
+    user_type: "utilisateur",
+    account_id: "",
   });
-  const hSubmit = async (evt) => {
+
+  // stock preference user du form pour post
+  const [formPreference, setFormPreference] = useState({
+    color: "",
+    arome: "",
+    other: "",
+    user_id: "",
+  });
+
+  // check box +18
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+  };
+
+  // get value authent from form and push it in formAuthentification state
+  const handleChangeFormAuthentification = (evt) => {
     evt.preventDefault();
+    setFormAuthentifiation({
+      ...formAuthentification,
+      [evt.target.name]: evt.target.value,
+    });
+  };
+
+  // get value user from form and push it in formInscription state
+  const handleChangeFormInscription = (evt) => {
+    setFormInscription({
+      ...formInscription,
+      [evt.target.name]: evt.target.value,
+    });
+  };
+
+  // get value preference Color from form and push it in formPrefence state
+  const handleColorChange = (evt) => {
+    const { value } = evt.target;
+    setFormPreference((prevState) => ({
+      ...prevState,
+      color: prevState.color === value ? "" : value, // si c'est deja la couleur de value, "" deselectionne, sinon on met la nouvelle value
+    }));
+  };
+
+  // get value preference Arome from form and push it in formPrefence state
+  const handleAromeChange = (evt) => {
+    const { value } = evt.target;
+    setFormPreference((prevState) => ({
+      ...prevState,
+      arome: prevState.arome === value ? "" : value,
+    }));
+  };
+
+  // get value preference Other (precisions) from form and push it in formPrefence state
+  const handleOtherChange = (evt) => {
+    const { value } = evt.target;
+    setFormPreference((prevState) => ({
+      ...prevState,
+      other: value,
+    }));
+  };
+
+  // fonction pour recup l'account_id du nouvel utilisateur qui s'inscrit grâce à son email
+  const getAccountId = () => {
     axios
-      .post("http://localhost:5000/user", formInscription)
-      .then(() => {
-        <p>""</p>;
+      .get(`${import.meta.env.VITE_BACKEND_URL}/account`, {
+        params: { email: formAuthentification.email },
+      })
+      .then((response) => {
+        const resultAccountId = response.data[0]?.id; // permet de récupérer l'id si il y en a un
+        setAccountId(resultAccountId);
+        // setUser(resultAccountId); // update userContext with account_id
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  const hChange = (evt) => {
-    setFormInscription({
-      ...formInscription,
-      [evt.target.name]: evt.target.value,
-    });
+  // fonction de soumission du formulaire
+  const handleSubmitInscription = (event) => {
+    event.preventDefault();
+    // post email et pwd
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/account`, formAuthentification)
+      .then(() => {
+        getAccountId(); // call la fonction pour récupérer l'account_id du nouvel inscrit grâce à son email
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
-  // checked
-  const [checked, setChecked] = React.useState(false);
-  // state Checkbox
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
+
+  // fonction pour importer les preferences de l'utilisateur dans la bdd
+  const createPreference = () => {
+    if (accountId && userId) {
+      // on a besoin du user_id (foreign key) et pour l'obtenir on a besoin de l'account_id(foreign key), on verifie donc si on a les deux
+      const updatedFormPreference = {
+        ...formPreference,
+        user_id: userId,
+      };
+      // Effectuer la requête POST avec le formulaire de préférence
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/preference`,
+          updatedFormPreference
+        )
+        .then()
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
+
+  // hook qui permet d'envoyer les données de la table utilisateur vers la bdd dès que l'on a récupérer le account_id (foreign key)
+  useEffect(() => {
+    if (accountId) {
+      const updatedFormInscription = {
+        ...formInscription,
+        account_id: accountId,
+      };
+      // Effectuer la requête POST avec le formulaire d'inscription
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/user`,
+          updatedFormInscription
+        )
+        .then(() => {
+          getUserId(accountId, setUserId); // Appeler la fonction getUserId avec accountId et setUserId pour récup le user_id qui va servir pour la table préférence et qui vient d'ê créé avec ce .post
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [accountId]); // dès que accountId est mis à jour, (dans la fonction getAccountId) le hook useEffect s'execute.
+
+  // ici, dès qu'on a récupéré le user_id et donc que le state userId a été mis à jour, le hook s'execute et lance la fonction pour .post les preferences
+  useEffect(() => {
+    createPreference();
+  }, [userId]);
+
   return (
     <div>
-      <form className="form-inscription" onSubmit={hSubmit}>
+      <form className="form-inscription" onSubmit={handleSubmitInscription}>
         <div className="contenair-identity">
           <h2 className="title-identity">INSCRIPTION</h2>
           <div className="form-inscription-identity-input-contenair">
@@ -44,14 +204,14 @@ function FormInfoPerso() {
               className="form-inscription-idendity-label"
               htmlFor="label-lastname"
             >
-              Nom:
+              Prénom:
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-                name="lastname"
-                placeholder="Nom"
-                value={formInscription.lastname}
-                onChange={hChange}
+                name="firstname"
+                placeholder="Dupont"
+                value={formInscription.firstname}
+                onChange={handleChangeFormInscription}
               />
             </label>
           </div>
@@ -60,14 +220,14 @@ function FormInfoPerso() {
               className="form-inscription-idendity-label"
               htmlFor="label-firstname"
             >
-              Prénom:
+              Nom:
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-                name="firstname"
-                placeholder="Prénom"
-                value={formInscription.firstname}
-                onChange={hChange}
+                name="lastname"
+                placeholder="Jean"
+                value={formInscription.lastname}
+                onChange={handleChangeFormInscription}
               />
             </label>
           </div>
@@ -81,25 +241,41 @@ function FormInfoPerso() {
                 className="form-inscription-idendity-input-class"
                 type="text"
                 name="birthdate"
-                placeholder="Date d'anniversaire"
+                placeholder="1980-12-29"
                 value={formInscription.birthdate}
-                onChange={hChange}
+                onChange={handleChangeFormInscription}
               />
             </label>
           </div>
           <div className="form-inscription-identity-input-contenair">
             <label
               className="form-inscription-idendity-label"
-              htmlFor="label-address"
+              htmlFor="label-email"
             >
-              Adresse mail
+              E-mail:
+              <input
+                className="form-inscription-idendity-input-class"
+                type="email"
+                name="email"
+                placeholder="jeandupont@gmail.fr"
+                value={formAuthentification.email}
+                onChange={handleChangeFormAuthentification}
+              />
+            </label>
+          </div>
+          <div className="form-inscription-identity-input-contenair">
+            <label
+              className="form-inscription-idendity-label"
+              htmlFor="label-pwd"
+            >
+              Mot de Passe:
               <input
                 className="form-inscription-idendity-input-class"
                 type="text"
-                name="address"
-                placeholder="Date d'anniversaire"
-                value={formInscription.address}
-                onChange={hChange}
+                name="pwd"
+                placeholder="........"
+                value={formAuthentification.pwd}
+                onChange={handleChangeFormAuthentification}
               />
             </label>
           </div>
@@ -109,7 +285,6 @@ function FormInfoPerso() {
               type="checkbox"
               id="checkbox-18-yes"
               name="checkbox-18-yes"
-              checked={FormInfoPerso.checked}
               required
               onChange={handleCheckboxChange}
             />
@@ -130,9 +305,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-red"
                   name="checkbox-red"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="rouge"
+                  checked={formPreference.color === "rouge"}
+                  onChange={handleColorChange}
                 />
                 <p>blanc</p>
                 <input
@@ -140,9 +315,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-white"
                   name="checkbox-white"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="blanc"
+                  checked={formPreference.color === "blanc"}
+                  onChange={handleColorChange}
                 />
                 <p>rosé</p>
                 <input
@@ -150,9 +325,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-rose"
                   name="checkbox-rose"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="rose"
+                  checked={formPreference.color === "rose"}
+                  onChange={handleColorChange}
                 />
               </label>
             </div>
@@ -165,9 +340,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-fruit"
                   name="checkbox-fruit"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="fruite"
+                  checked={formPreference.arome === "fruite"}
+                  onChange={handleAromeChange}
                 />
                 <p>minéral</p>
                 <input
@@ -175,9 +350,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-mineral"
                   name="checkbox-mineral"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="mineral"
+                  checked={formPreference.arome === "mineral"}
+                  onChange={handleAromeChange}
                 />
                 <p>boisé</p>
                 <input
@@ -185,9 +360,9 @@ function FormInfoPerso() {
                   type="checkbox"
                   id="checkbox-wood"
                   name="checkbox-wood"
-                  checked={FormInfoPerso.checked}
-                  required
-                  onChange={handleCheckboxChange}
+                  value="boise"
+                  checked={formPreference.arome === "boise"}
+                  onChange={handleAromeChange}
                 />
               </label>
             </div>
@@ -195,13 +370,15 @@ function FormInfoPerso() {
               <label className="comment">
                 Comment aimes-tu ton vin?
                 <textarea
+                  className="comment-taste"
                   id="other-taste"
                   name="other-taste"
                   rows="5"
                   cols="33"
-                >
-                  Précisez...
-                </textarea>
+                  defaultValue="Précisez..."
+                  value={formPreference.other}
+                  onChange={handleOtherChange}
+                />
               </label>
             </div>
           </div>
@@ -217,6 +394,10 @@ function FormInfoPerso() {
           </div>
         </div>
       </form>
+      <button type="button" onClick={handleClickNext}>
+        {" "}
+        Suivant
+      </button>
     </div>
   );
 }
