@@ -25,19 +25,16 @@ function App() {
             </LogingProvider>
           </div>
 
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Inscription" element={<Inscription />} />
-          <Route path="/FicheDegustation" element={<FicheDegustation />} />
-          <Route path="/AtelierCreation" element={<AtelierCreation />} />
-          <Route path="/LivreDor" element={<LivreDor />} />
-          <Route path="/Resume" element={<Resume />} />
-          <Route path="/Admin" element={<Admin />} />
-          <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
-        </Routes>
-
-
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Inscription" element={<Inscription />} />
+            <Route path="/FicheDegustation" element={<FicheDegustation />} />
+            <Route path="/AtelierCreation" element={<AtelierCreation />} />
+            <Route path="/LivreDor" element={<LivreDor />} />
+            <Route path="/Resume" element={<Resume />} />
+            <Route path="/Admin" element={<Admin />} />
+            <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
+          </Routes>
 
           <Footer />
         </div>

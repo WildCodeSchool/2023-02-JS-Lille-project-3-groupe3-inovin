@@ -19,7 +19,7 @@ function SliderFiche() {
   const handleClickNext = () => {
     navigate("/AtelierCreation");
   };
-  // Functions ton handle the Tab Nav
+  // Functions to handle the Tab Nav
   const [activeTabSlide1, setActiveTabSlide1] = useState("tab1");
   const [activeTabSlide2, setActiveTabSlide2] = useState("tab1");
   const [activeTabSlide3, setActiveTabSlide3] = useState("tab1");
@@ -53,6 +53,10 @@ function SliderFiche() {
   const handleOptionChange5 = (event) => {
     setSelectedOption5(event.target.value);
   };
+
+  // Submit functions
+
+  
 
   // Second Slide Choices
 
@@ -1211,6 +1215,7 @@ function SliderFiche() {
           </div>
         </div>
       </Carousel>
+      <button type="button">Envoyer tous les formulaires</button>
       <button type="button" onClick={handleClickNext}>
         next page
       </button>
