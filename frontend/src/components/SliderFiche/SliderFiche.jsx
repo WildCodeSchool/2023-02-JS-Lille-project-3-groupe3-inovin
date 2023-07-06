@@ -56,8 +56,6 @@ function SliderFiche() {
 
   // Submit functions
 
-  
-
   // Second Slide Choices
 
   const [selectedOption6, setSelectedOption6] = useState();
