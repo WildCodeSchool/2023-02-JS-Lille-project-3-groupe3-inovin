@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
+import Lexique from "../Lexique/Lexique";
 
 import "./SliderFiche.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -1199,6 +1200,7 @@ function SliderFiche() {
           </div>
         </div>
       </Carousel>
+      <Lexique />
     </div>
   );
 }
