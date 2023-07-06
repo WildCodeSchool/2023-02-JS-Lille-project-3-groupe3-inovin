@@ -15,9 +15,10 @@
 .recepie_title {
   color: $gold_title;
   font-family: $font_title_large;
-  font-size: x-large;
+  color: #d8af49;
+  font-size: 38px;
   padding: 2vh;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 #bottle_resume {
@@ -216,5 +217,21 @@
     position: absolute;
     right: -55vh;
     bottom: -11vh;
+  }
+
+  #bottle_resume {
+    bottom: 28vh;
+  }
+
+  #diploma {
+    width: 33vh;
+    height: 23vh;
+    left: 25%;
+    right: 50%;
+    bottom: 80%;
+  }
+
+  #commande_btn {
+    margin-left: -163px;
   }
 }

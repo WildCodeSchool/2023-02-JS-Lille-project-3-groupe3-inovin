@@ -231,7 +231,7 @@ textarea::placeholder {
   }
 
   .noticeTitle {
-    font-size: 1.5rem;
+    font-size: 38px;
     top: 0.5vh;
   }
   .feedbackSent {
@@ -254,6 +254,7 @@ textarea::placeholder {
   .content h3 {
     font-family: $font_title_small;
     letter-spacing: 0.3125rem;
+    font-size: 28px;
   }
 
   input[type="radio"] {
@@ -290,13 +291,15 @@ textarea::placeholder {
   }
 
   textarea {
-    font-size: 1rem;
+    font-size: 17px;
     position: relative;
     top: -1.5vh;
+    font-family: $font_title_small;
+    width: 53%;
   }
 
   .noticeContainer {
-    height: 50vh;
+    height: 53vh;
     position: relative;
     top: 2vh;
     width: 90vw;
@@ -305,4 +308,21 @@ textarea::placeholder {
   .buttonDecoration {
     top: 2vh;
   }
+
+  .sendForm {
+    background-color: white;
+    border-radius: 8px;
+    border: 8px double #3e3e3e;
+    color: #3e3e3e;
+    text-align: center;
+    font-family: "Bebas Neue", sans-serif;
+    width: 235px;
+    height: 53px;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 3px;
+    padding: 0;
+  }
 }
+
+

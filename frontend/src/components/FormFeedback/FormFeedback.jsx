@@ -88,7 +88,7 @@ function FormFeedback() {
         )}
 
         <div className="content">
-          <h3 className="rateExpTitle">NOTE L'EXPERIENCE DE L'ATELIER :</h3>
+          <h3 className="rateExpTitle">NOTEZ L'EXPERIENCE DE L'ATELIER :</h3>
           {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
 
