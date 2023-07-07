@@ -287,30 +287,37 @@ function AdminAjoutVin() {
       <div className="containerTraitNoir" />
 
       <div className="containerRechercheAjoutVin">
-        <h3 className="rechercheAjoutVin">RECHERCHER :</h3>
-        <input
-          type="search"
-          placeholder="Recherche par nom de vin"
-          className="inputRechercheVin"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        {searchTerm !== "" && showSuggestWine && (
-          <ul className="displaySuggestWineBottle">
-            {wineSearchSuggest.map((wineBottle) => (
-              <li
-                role="presentation"
-                key={wineBottle.id}
-                className="customListItem"
-                onClick={() => handleWineBottleClickedDisplay(wineBottle)}
-                onKeyDown={() => handleWineBottleClickedDisplay(wineBottle)}
-              >
-                <p>{wineBottle}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-        <button type="button" onClick={handleClickValidateSearch}>
+        <h3 className="rechercheAjoutVin">RECHERCHER:</h3>
+        <div className="test">
+          <input
+            type="search"
+            placeholder="Recherche par nom de vin"
+            className="inputRechercheVin"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          {searchTerm !== "" && showSuggestWine && (
+            <ul className="displaySuggestWineBottle">
+              {wineSearchSuggest.map((wineBottle) => (
+                <li
+                  role="presentation"
+                  key={wineBottle.id}
+                  className="customListItem"
+                  onClick={() => handleWineBottleClickedDisplay(wineBottle)}
+                  onKeyDown={() => handleWineBottleClickedDisplay(wineBottle)}
+                >
+                  <p>{wineBottle}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={handleClickValidateSearch}
+          className="validButton"
+        >
           Valider
         </button>
       </div>
