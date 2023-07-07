@@ -364,7 +364,7 @@ function AdminAjoutVin() {
           <ReactModal
             isOpen={modalIsOpen}
             contentLabel="Example Modal"
-            className="modal"
+            className="editWineModal"
             onRequestClose={() => setModalIsOpen(false)}
           >
             <div>

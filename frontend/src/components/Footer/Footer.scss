@@ -50,6 +50,7 @@ footer {
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .modalTitle {
@@ -60,4 +61,28 @@ footer {
 .modalText {
   font-size: large;
   text-align: center;
+}
+
+.close {
+  display: inline-block;
+  background-color: white;
+  border-radius: 8px;
+  border: 8px double #3e3e3e;
+  color: $box_color;
+  text-align: center;
+  font-size: 22px;
+  padding: 8px;
+  width: 156px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  font-family: $font_title_small;
+  letter-spacing: 3px;
+  position: inherit;
+  @include tablet-paysage {
+    width: 200px;
+    position: absolute;
+    left: 19%;
+    margin-top: 1%;
+  }
 }
