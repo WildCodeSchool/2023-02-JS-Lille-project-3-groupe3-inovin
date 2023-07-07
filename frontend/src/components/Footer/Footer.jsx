@@ -11,8 +11,12 @@ function Footer() {
     setModalOpen(false);
   };
   return (
-    <footer>
-      <Link to="https://www.inovin.fr/" className="inovinSiteLink">
+    <footer className="footerContainer">
+      <Link
+        to="https://www.inovin.fr/"
+        className="inovinSiteLink"
+        target="_blank"
+      >
         © 2023 INO VIN. Tous droits réservés.{" "}
       </Link>
       <button
