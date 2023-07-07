@@ -1,6 +1,6 @@
 @import "../../App.scss";
 
-footer {
+.footerContainer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -14,18 +14,18 @@ footer {
   color: $input_color;
   text-shadow: 4px 4px 3px #000000;
   margin-left: 10px;
+  text-decoration: none;
 }
 
 .legal-link {
   font-family: $font_title_small;
-  color: $input_color;
+  color: $gold_title;
   cursor: pointer;
-  background-color: $background_color;
   border: none;
 }
 
-.legal-link:hover {
-  color: $gold_title;
+footer button {
+  background-color: transparent;
 }
 
 .modal {
@@ -54,12 +54,12 @@ footer {
 }
 
 .modalTitle {
-  font-size: x-large;
+  font-size: 2em;
   text-decoration: underline;
 }
 
 .modalText {
-  font-size: large;
+  font-size: 1.5em;
   text-align: center;
 }
 
@@ -70,9 +70,9 @@ footer {
   border: 8px double #3e3e3e;
   color: $box_color;
   text-align: center;
-  font-size: 22px;
+  font-size: 1.3em;
   padding: 8px;
-  width: 156px;
+  width: 22vw;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -80,9 +80,7 @@ footer {
   letter-spacing: 3px;
   position: inherit;
   @include tablet-paysage {
-    width: 200px;
-    position: absolute;
-    left: 19%;
+    width: 20vw;
     margin-top: 1%;
   }
 }

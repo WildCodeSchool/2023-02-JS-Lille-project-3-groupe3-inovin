@@ -1215,7 +1215,6 @@ function SliderFiche() {
       <button type="button" onClick={handleClickNext}>
         next page
       </button>
-
     </div>
   );
 }
