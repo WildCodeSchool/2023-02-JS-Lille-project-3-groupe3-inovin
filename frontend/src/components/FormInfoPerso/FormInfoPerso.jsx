@@ -238,8 +238,8 @@ function FormInfoPerso() {
             >
               Date d'anniversaire:
               <input
-                className="form-inscription-idendity-input-class"
-                type="text"
+                className="form-inscription-idendity-input-class inputDate"
+                type="date"
                 name="birthdate"
                 placeholder="1980-12-29"
                 value={formInscription.birthdate}
@@ -271,7 +271,7 @@ function FormInfoPerso() {
               Mot de Passe:
               <input
                 className="form-inscription-idendity-input-class"
-                type="text"
+                type="password"
                 name="pwd"
                 placeholder="........"
                 value={formAuthentification.pwd}
@@ -375,7 +375,7 @@ function FormInfoPerso() {
                   name="other-taste"
                   rows="5"
                   cols="33"
-                  defaultValue="Précisez..."
+                  placeholder="Précisez..."
                   value={formPreference.other}
                   onChange={handleOtherChange}
                 />
