@@ -1,29 +1,29 @@
 import axios from "axios";
 import "./FormInfoPerso.scss";
-import React, { useEffect, useState } from "react";
-// import { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import picturePreferences from "../../assets/images/photo2_720.png";
-// import UserContext from "../../contexts/UserContext";
-
-// fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
-const getUserId = (accountId, setUserId) => {
-  axios
-    .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-      params: { account_id: accountId },
-    })
-    .then((response) => {
-      const resultUserId = response.data[0]?.id;
-      setUserId(resultUserId);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
+import UserContext from "../../contexts/UserContext";
 
 function FormInfoPerso() {
   // usecontext
-  // const [user, setUser] = useContext(UserContext);
+  const { setUser, setFirstname } = useContext(UserContext);
+
+  // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
+  const getUserId = (accountId, setUserId) => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: accountId },
+      })
+      .then((response) => {
+        const resultUserId = response.data[0]?.id;
+        setUserId(resultUserId);
+        setFirstname(response.data[0]?.firstname);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   // navigation
   const navigate = useNavigate();
@@ -125,7 +125,7 @@ function FormInfoPerso() {
       .then((response) => {
         const resultAccountId = response.data[0]?.id; // permet de récupérer l'id si il y en a un
         setAccountId(resultAccountId);
-        // setUser(resultAccountId); // update userContext with account_id
+        setUser(resultAccountId); // update userContext with account_id
       })
       .catch((err) => {
         console.error(err);
