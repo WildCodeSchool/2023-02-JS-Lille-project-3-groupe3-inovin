@@ -76,26 +76,23 @@
   cursor: pointer;
 }
 
-#cancelBtn {
-  background-color: crimson;
-}
 .formCommande {
   width: 90vw;
   max-width: 20em;
 }
 
-input {
+.commandeInput {
   border: 1px solid;
   padding: 0.3em;
   width: 100%;
 }
 
-textarea {
-  width: 100%;
-  min-height: 3em;
-}
+// textarea {
+//   width: 100%;
+//   min-height: 3em;
+// }
 
-label {
+.commandeLabel {
   display: block;
   font-size: 1.2rem;
   margin-top: 1rem;
