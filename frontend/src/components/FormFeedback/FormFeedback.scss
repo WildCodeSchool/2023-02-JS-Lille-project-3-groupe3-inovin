@@ -22,13 +22,18 @@
 }
 
 .sendForm {
-  border: none;
-  padding: 0.625rem;
-  border-radius: 0.3125rem;
-  letter-spacing: 0.1875rem;
-  cursor: pointer;
-  background-color: $button_background_color;
-  color: black;
+  background-color: white;
+  border-radius: 8px;
+  border: 8px double #ffffff;
+  color: #3e3e3e;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  width: 235px;
+  height: 53px;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 3px;
+  padding: 0;
 }
 
 .noticeContainer {
