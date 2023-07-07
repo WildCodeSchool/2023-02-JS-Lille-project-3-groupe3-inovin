@@ -25,12 +25,13 @@ function FormInfoPerso() {
       });
   };
 
+
   // navigation
   const navigate = useNavigate();
 
-  const handleClickNext = () => {
-    navigate("/FicheDegustation");
-  };
+  // const handleClickNext = () => {
+  //   navigate("/FicheDegustation");
+  // };
 
   // stock mail & pwd du form pour post
   const [formAuthentification, setFormAuthentifiation] = useState({
@@ -163,6 +164,10 @@ function FormInfoPerso() {
         .then()
         .catch((err) => {
           console.error(err);
+        })
+        .finally(() => {
+          // Navigate to "/FicheDegustation"
+          navigate("/FicheDegustation");
         });
     }
   };
@@ -271,7 +276,7 @@ function FormInfoPerso() {
               Mot de Passe:
               <input
                 className="form-inscription-idendity-input-class"
-                type="text"
+                type="password"
                 name="pwd"
                 placeholder="........"
                 value={formAuthentification.pwd}
@@ -375,7 +380,7 @@ function FormInfoPerso() {
                   name="other-taste"
                   rows="5"
                   cols="33"
-                  defaultValue="Précisez..."
+                  placeholder="Précisez..."
                   value={formPreference.other}
                   onChange={handleOtherChange}
                 />
@@ -394,10 +399,6 @@ function FormInfoPerso() {
           </div>
         </div>
       </form>
-      <button type="button" onClick={handleClickNext}>
-        {" "}
-        Suivant
-      </button>
     </div>
   );
 }
