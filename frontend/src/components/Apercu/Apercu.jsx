@@ -6,8 +6,7 @@ import grapes from "../../assets/images/grape.jpg";
 
 function Apercu() {
   // useContext
-  // const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-  // console.log(`aperçu component account_id: ${user} `);
+  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
   const navigate = useNavigate();
 

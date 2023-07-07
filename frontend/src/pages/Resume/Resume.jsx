@@ -1,6 +1,5 @@
 import "./Resume.scss";
 import { useState, useEffect } from "react";
-// import { useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import bottle from "../../assets/images/bootle_360.png";
@@ -10,7 +9,7 @@ import fleche from "../../assets/images/fleche_360.png";
 
 function Resume() {
   // useContext
-  // const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
   // console.log(`resume account_id: ${user} `);
 
   const [fullName, setFullName] = useState("");
