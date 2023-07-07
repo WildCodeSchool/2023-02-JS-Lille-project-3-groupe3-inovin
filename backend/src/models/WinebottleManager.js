@@ -7,29 +7,35 @@ class WinebottleManager extends AbstractManager {
 
   insert(wineBottle) {
     return this.database.query(
-      `insert into ${this.table} (name, region, color, cepage, image) values (?,?,?,?,?)`,
-      [
-        wineBottle.name,
-        wineBottle.region,
-        wineBottle.color,
-        wineBottle.cepage,
-        wineBottle.image,
-      ]
-    );
-  }
-
-  update(wineBottle) {
-    return this.database.query(
-      `update ${this.table} set bottle_name = ?, region = ?, color = ?, year = ?, cepage = ?, image = ? where id = ?`,
+      `insert into ${this.table} (bottle_name, region, color, year, cepage) values (?,?,?,?,?)`,
       [
         wineBottle.bottle_name,
         wineBottle.region,
         wineBottle.color,
         wineBottle.year,
         wineBottle.cepage,
-        wineBottle.image,
+      ]
+    );
+  }
+
+  update(wineBottle) {
+    return this.database.query(
+      `update ${this.table} set bottle_name = ?, region = ?, color = ?, year = ?, cepage = ? where id = ?`,
+      [
+        wineBottle.bottle_name,
+        wineBottle.region,
+        wineBottle.color,
+        wineBottle.year,
+        wineBottle.cepage,
         wineBottle.id,
       ]
+    );
+  }
+
+  findByName(name) {
+    return this.database.query(
+      `select * from  ${this.table} where bottle_name = ?`,
+      [name]
     );
   }
 }
