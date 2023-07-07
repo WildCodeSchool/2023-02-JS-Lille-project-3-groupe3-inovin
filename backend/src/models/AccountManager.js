@@ -8,7 +8,7 @@ class AccountManager extends AbstractManager {
   insert(account) {
     return this.database.query(
       `insert into ${this.table} (email, pwd) values (?,?)`,
-      [account.email, account.pwd]
+      [account.email, account.hashedPassword]
     );
   }
 

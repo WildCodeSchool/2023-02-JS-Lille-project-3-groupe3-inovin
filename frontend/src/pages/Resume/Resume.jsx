@@ -1,16 +1,19 @@
 import "./Resume.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import bottle from "../../assets/images/bootle_360.png";
 import diploma from "../../assets/images/diplome.png";
 import fleche from "../../assets/images/fleche_360.png";
-// import UserContext from "../../contexts/UserContext";
+import UserContext from "../../contexts/UserContext";
+import CommandeModal from "../../components/commandeModal/CommandeModal";
 
 function Resume() {
   // useContext
-  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+  const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+
   // console.log(`resume account_id: ${user} `);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -18,11 +21,14 @@ function Resume() {
   const [bottleData, setBottleData] = useState([]);
   const [recipeName, setRecipeName] = useState("");
   const [quantity, setQuantity] = useState();
+
   const navigate = useNavigate();
-  const compoRecipeId = 1;
+
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe/:${compoRecipeId}`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: `${user}` },
+      })
       .then((response) => {
         const {
           firstname,
@@ -31,7 +37,7 @@ function Resume() {
           address,
           birthdate,
           recipe_name,
-        } = response.data[1];
+        } = response.data[0];
         setFullName(`${firstname} ${lastname}`);
         setEmailAddress(`${address}`);
         setBirthDay(`${birthdate}`);
@@ -46,6 +52,10 @@ function Resume() {
 
   const previousPage = () => {
     navigate("/livredor");
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
   };
   return (
     <div className="resume_wrapper">
@@ -81,9 +91,11 @@ function Resume() {
             className="button-submit-identity"
             id="commande_btn"
             type="submit"
+            onClick={openModal}
           >
             Commander
           </button>
+          {modalOpen && <CommandeModal setOpenModal={setModalOpen} />}
         </div>
         <div className="bottle_diploma">
           <img id="bottle_resume" src={bottle} alt="" />
