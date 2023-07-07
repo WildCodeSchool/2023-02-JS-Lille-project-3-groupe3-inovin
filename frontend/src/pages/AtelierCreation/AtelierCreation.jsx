@@ -1,5 +1,5 @@
-import Bouteille from "../../components/Bouteille/Bouteille";
 import Apercu from "../../components/Apercu/Apercu";
+import Bouteille from "../../components/Bouteille/Bouteille";
 import "./AtelierCreation.scss";
 
 function AtelierCreation() {
