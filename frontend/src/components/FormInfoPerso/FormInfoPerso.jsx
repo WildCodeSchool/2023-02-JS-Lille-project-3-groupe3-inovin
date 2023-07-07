@@ -25,7 +25,6 @@ function FormInfoPerso() {
       });
   };
 
-
   // navigation
   const navigate = useNavigate();
 

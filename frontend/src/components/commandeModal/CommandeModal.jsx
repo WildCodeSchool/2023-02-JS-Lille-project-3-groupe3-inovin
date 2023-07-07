@@ -125,7 +125,7 @@ function CommandeModal({ setOpenModal }) {
         </div>
         <div className="body">
           {!confirmed ? (
-            <form>
+            <form className="formCommande">
               <div className="street">
                 <label htmlFor="street-address">Rue</label>
                 <input
