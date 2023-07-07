@@ -11,6 +11,7 @@ import CommandeModal from "../../components/commandeModal/CommandeModal";
 function Resume() {
   // useContext
   const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+
   // console.log(`resume account_id: ${user} `);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -59,7 +60,7 @@ function Resume() {
   return (
     <div className="resume_wrapper">
       <div className="profil">
-        <h2 className="profil_title">Profil</h2>
+        <h2 className="profil_title">PROFIL</h2>
         <div className="resume_info">
           <h3 className="personalDetails">{fullName}</h3>
           <h3 className="personalDetails">{emailAddress}</h3>
@@ -68,7 +69,7 @@ function Resume() {
       </div>
       <div className="bottom_recette">
         <div className="recipe_resume">
-          <h2 className="recepie_title">Recette</h2>
+          <h2 className="recepie_title">RECETTE</h2>
           <div className="recepie_info">
             <span className="personalDetails">
               {/* Need a map over all bottleData with same user_id */}

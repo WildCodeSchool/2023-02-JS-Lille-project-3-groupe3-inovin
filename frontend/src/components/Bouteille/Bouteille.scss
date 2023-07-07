@@ -9,6 +9,10 @@
   box-shadow: 3px 4px 5px 2px rgba(0, 0, 0, 0.5);
   border-radius: 6px;
   margin-top: -2%;
+  @include tablet-paysage {
+    height: 300px;
+    margin-top: -7.7%;
+  }
 }
 
 .element_bouteille {
@@ -17,6 +21,11 @@
   height: 47%;
   margin-left: 8%;
   margin-top: 2%;
+  @include tablet-paysage {
+    width: 200px;
+    margin-top: 11%;
+    margin-left: 6%;
+  }
 }
 
 .element_text_droite {
@@ -28,17 +37,25 @@
   justify-content: space-around;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.56);
   margin-left: 15%;
+  @include tablet-paysage {
+    width: 68%;
+    text-align: center;
+  }
 }
 
 .element_mini_title {
   font-size: 26px;
   letter-spacing: 0.16em;
+  @include tablet-paysage {
+    display: flex;
+    align-items: center;
+    width: max-content;
+  }
 }
 
 .element_description_bouteille {
-  font-size: 20px;
-  letter-spacing: 0.1em;
-  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.2em;
 }
 
 .element_titre_exterieur_deux {
@@ -49,6 +66,12 @@
   color: $gold_title;
   padding-bottom: 3%;
   padding-right: 23%;
+  @include tablet-paysage {
+    margin-top: 5%;
+    position: sticky;
+    display: flex;
+    padding-right: 0;
+  }
 }
 
 .bouteille_btn {
@@ -69,6 +92,12 @@
   letter-spacing: 3px;
   margin-top: 11%;
   margin-left: 5%;
+  @include tablet-paysage {
+    margin-left: 38%;
+    margin-top: 5%;
+    width: 235px;
+    height: 55px;
+  }
 }
 .bouteille_btn span {
   cursor: pointer;

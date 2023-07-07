@@ -5,24 +5,26 @@ import { useNavigate } from "react-router-dom";
 import picturePreferences from "../../assets/images/photo2_720.png";
 import UserContext from "../../contexts/UserContext";
 
-// fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
-const getUserId = (accountId, setUserId) => {
-  axios
-    .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-      params: { account_id: accountId },
-    })
-    .then((response) => {
-      const resultUserId = response.data[0]?.id;
-      setUserId(resultUserId);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
-
 function FormInfoPerso() {
   // usecontext
-  const { setUser } = useContext(UserContext);
+  const { setUser, setFirstname } = useContext(UserContext);
+
+  // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
+  const getUserId = (accountId, setUserId) => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: accountId },
+      })
+      .then((response) => {
+        const resultUserId = response.data[0]?.id;
+        setUserId(resultUserId);
+        setFirstname(response.data[0]?.firstname);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
 
   // navigation
   const navigate = useNavigate();

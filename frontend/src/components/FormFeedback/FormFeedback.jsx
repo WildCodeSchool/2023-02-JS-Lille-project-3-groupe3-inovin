@@ -9,8 +9,7 @@ import UserContext from "../../contexts/UserContext";
 
 function FormFeedback() {
   // useContext
-  const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-  // console.log(`formfeedback account_id: ${user} `);
+  const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
   // current state of components
   const [rating, setRating] = useState(null);
@@ -88,7 +87,7 @@ function FormFeedback() {
         )}
 
         <div className="content">
-          <h3 className="rateExpTitle">NOTE L'EXPERIENCE DE L'ATELIER :</h3>
+          <h3 className="rateExpTitle">NOTEZ L'EXPERIENCE DE L'ATELIER :</h3>
           {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
 

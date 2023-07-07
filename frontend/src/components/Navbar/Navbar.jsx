@@ -4,8 +4,11 @@ import { useContext } from "react";
 import { LogingContext } from "../../contexts/LogingContext";
 import ProfileIcone from "../../assets/images/🦆 icon _profile circle_.png";
 import LogoInovin from "../../assets/images/logo_inovin.png";
+import UserContext from "../../contexts/UserContext";
 
 function Navbar() {
+  const { firstname } = useContext(UserContext);
+
   const navigate = useNavigate();
   const { isOnline, loging, logout } = useContext(LogingContext);
 
@@ -38,6 +41,11 @@ function Navbar() {
       <h1 className="inovinTitle">Ino Vin</h1>
 
       <div>
+        {firstname ? (
+          <h3 className="username">{firstname}</h3>
+        ) : (
+          <h3 className="username">Invité</h3>
+        )}
         <button
           type="button"
           className="loginLinks"

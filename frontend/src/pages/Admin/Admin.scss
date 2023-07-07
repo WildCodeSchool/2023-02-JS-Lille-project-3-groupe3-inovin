@@ -1,1 +1,139 @@
 @import "../../App.scss";
+
+.generalContainer {
+  height: 102vh;
+  width: 100vw;
+  background-color: white;
+  line-height: 32px;
+}
+.adminTitle {
+  font-family: $font_title_large;
+  color: #d8af49;
+  font-size: 53px;
+  margin-left: 11rem;
+  margin-top: -34%;
+  padding-top: 7%;
+}
+
+#barreDeRecherche {
+  padding-top: 1rem;
+  font-family: $font_title_small;
+  width: 19rem;
+  font-size: 2rem;
+  border: black solid;
+}
+
+.informationTitre {
+  font-family: $font_title_large;
+  font-size: 166%;
+  color: $gold_title;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: 3rem;
+}
+
+.titreContainer {
+  margin-top: 3%;
+  background-color: black;
+}
+
+.labelRecherche {
+  margin-left: 8rem;
+  color: black;
+  font-size: 2em;
+  margin-right: 3rem;
+  margin-top: 1rem;
+}
+
+.containerBarRecherche {
+  display: flex;
+  height: 4rem;
+  margin-top: 7rem;
+  font-family: $font_title_small;
+}
+
+.containerGeneralUser {
+  font-family: $font_title_small;
+  font-size: 1.7em;
+}
+
+.titleMiniInfo {
+  margin-left: 3rem;
+}
+
+.containerPrefUser {
+  margin-top: 2rem;
+}
+
+.containerTroisRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.containerVinUser {
+  margin-top: 2rem;
+  width: 21%;
+}
+
+.containerNoteUser {
+  margin-top: 2rem;
+  width: 21%;
+}
+
+.containerDegusUser {
+  margin-top: 2rem;
+  width: 21%;
+}
+
+.containerModif {
+  margin-top: 2rem;
+  background-color: rgb(226, 226, 226);
+  display: flex;
+}
+
+.containerBoutonBasPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.boutonAjout {
+  width: 21%;
+  height: 3rem;
+  background-color: white;
+  border: black solid 1mm;
+  font-size: large;
+  font-family: $font_title_small;
+}
+
+.boutonSupprimer {
+  width: 21%;
+  height: 3rem;
+  background-color: white;
+  border: black solid 1mm;
+  font-size: large;
+  font-family: $font_title_small;
+}
+
+.boutonPdf {
+  width: 21%;
+  height: 3rem;
+  background-color: white;
+  border: black solid 1mm;
+  font-size: large;
+  font-family: $font_title_small;
+}
+
+.containerInfoGauche {
+  width: 18em;
+}
+
+.boutonModif {
+  width: 253%;
+  height: 3rem;
+  background-color: white;
+  border: black solid 1mm;
+  font-size: large;
+  font-family: $font_title_small;
+  margin-top: 44%;
+}
