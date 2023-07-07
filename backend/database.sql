@@ -26,7 +26,7 @@ CREATE TABLE `account` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL ,
   CONSTRAINT AK_email UNIQUE (email),
-  `pwd` varchar(255) NOT NULL,
+  `pwd` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

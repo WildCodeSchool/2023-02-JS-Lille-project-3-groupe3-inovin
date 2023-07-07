@@ -31,14 +31,9 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
-    "argon2": "^0.30.3",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
-
-    "gsap": "^3.12.2",
-
     "react-modal": "^3.16.1",
-
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.12.1"
   }
