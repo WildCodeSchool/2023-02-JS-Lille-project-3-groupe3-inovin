@@ -1,7 +1,5 @@
 @import "../../App.scss";
 .modalBackground {
-  // width: 100vw;
-  // height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -81,14 +79,10 @@
 #cancelBtn {
   background-color: crimson;
 }
-form {
+.formCommande {
   width: 90vw;
   max-width: 20em;
 }
-
-// button {
-//   margin-top: 2rem;
-// }
 
 input {
   border: 1px solid;
@@ -161,12 +155,13 @@ input#city {
   cursor: pointer;
   text-align: center;
   position: relative;
+  left: 15vh;
   border: none;
   outline: none;
   color: var(--color);
   background: #3e3e3e;
   border-radius: var(--br, 5px);
-  -webkit-appearance: none;
+  //-webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
   transform-style: preserve-3d;
   transform: rotateX(var(--rx, 0deg)) translateZ(0);
@@ -416,39 +411,6 @@ input#city {
         --o: 1;
         --offset: 0;
       }
-    }
-  }
-}
-
-html {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-}
-
-* {
-  box-sizing: inherit;
-  &:before,
-  &:after {
-    box-sizing: inherit;
-  }
-}
-
-// Center & dribbble
-body {
-  min-height: 100vh;
-  display: flex;
-  font-family: "Inter UI", "Inter", Arial;
-  justify-content: center;
-  align-items: center;
-  background: #eceffc;
-  .dribbble {
-    position: fixed;
-    display: block;
-    right: 20px;
-    bottom: 20px;
-    img {
-      display: block;
-      height: 28px;
     }
   }
 }

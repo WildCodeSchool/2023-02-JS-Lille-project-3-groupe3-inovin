@@ -10,7 +10,7 @@ import CommandeModal from "../../components/commandeModal/CommandeModal";
 
 function Resume() {
   // useContext
-  const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+  const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
   // console.log(`resume account_id: ${user} `);
   const [modalOpen, setModalOpen] = useState(false);
