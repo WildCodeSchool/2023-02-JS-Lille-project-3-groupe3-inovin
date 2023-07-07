@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
+import Lexique from "../Lexique/Lexique";
 // import UserContext from "../../contexts/UserContext";
+
 import "./SliderFiche.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -1211,9 +1213,11 @@ function SliderFiche() {
           </div>
         </div>
       </Carousel>
+      <Lexique />
       <button type="button" onClick={handleClickNext}>
         next page
       </button>
+
     </div>
   );
 }
