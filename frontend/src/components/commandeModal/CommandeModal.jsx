@@ -120,48 +120,59 @@ function CommandeModal({ setOpenModal }) {
             X
           </button>
         </div>
-        <div className="title">
-          <h1>Nous avons besoin de votre adresse de livraison, Alex!</h1>
-        </div>
         <div className="body">
           {!confirmed ? (
-            <form className="formCommande">
-              <div className="street">
-                <label htmlFor="street-address">Rue</label>
-                <input
-                  type="text"
-                  id="street-address"
-                  name="street-address"
-                  autoComplete="street-address"
-                  required
-                  enterKeyHint="next"
-                />
-              </div>
-              <div className="city">
-                <label htmlFor="city">Ville</label>
-                <input
-                  required
-                  type="text"
-                  id="city"
-                  name="city"
-                  autoComplete="address-level2"
-                  enterKeyHint="next"
-                />
-              </div>
-              <div className="codePostale">
-                <label htmlFor="postal-code">Code postale</label>
-                <input
-                  required
-                  className="postal-code"
-                  id="postal-code"
-                  name="postal-code"
-                  autoComplete="postal-code"
-                  enterKeyHint="next"
-                />
+            <div>
+              <div className="title">
+                <h1>Nous avons besoin de votre adresse de livraison, Alex!</h1>
               </div>
 
-              <div />
-            </form>
+              <form className="formCommande">
+                <div className="street">
+                  <label className="commandeLabel" htmlFor="street-address">
+                    Rue
+                  </label>
+                  <input
+                    className="commandeInput"
+                    type="text"
+                    id="street-address"
+                    name="street-address"
+                    autoComplete="street-address"
+                    required
+                    enterKeyHint="next"
+                  />{" "}
+                </div>{" "}
+                <div className="city">
+                  {" "}
+                  <label className="commandeLabel" htmlFor="city">
+                    Ville
+                  </label>{" "}
+                  <input
+                    className="commandeInput"
+                    required
+                    type="text"
+                    id="city"
+                    name="city"
+                    autoComplete="address-level2"
+                    enterKeyHint="next"
+                  />
+                </div>
+                <div className="codePostale">
+                  <label className="commandeLabel" htmlFor="postal-code">
+                    Code postale
+                  </label>
+                  <input
+                    required
+                    className="postal-code commandeInput"
+                    id="postal-code"
+                    name="postal-code"
+                    autoComplete="postal-code"
+                    enterKeyHint="next"
+                  />
+                </div>
+                <div />
+              </form>
+            </div>
           ) : (
             <div className="confirmationMessage">
               Merci pour votre commande. Nous vous avons envoyé un mail de
@@ -169,7 +180,6 @@ function CommandeModal({ setOpenModal }) {
             </div>
           )}
         </div>
-
         <button type="button" className="truck-button" onClick={handleClick}>
           <span className="default">Commander</span>
           <span className="success">
@@ -189,9 +199,7 @@ function CommandeModal({ setOpenModal }) {
     </div>
   );
 }
-
 export default CommandeModal;
-
 CommandeModal.propTypes = {
   setOpenModal: PropTypes.func.isRequired,
 };

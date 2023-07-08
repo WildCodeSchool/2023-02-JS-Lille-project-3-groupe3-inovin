@@ -242,8 +242,8 @@ function FormInfoPerso() {
             >
               Date d'anniversaire:
               <input
-                className="form-inscription-idendity-input-class"
-                type="text"
+                className="form-inscription-idendity-input-class inputDate"
+                type="date"
                 name="birthdate"
                 placeholder="1980-12-29"
                 value={formInscription.birthdate}

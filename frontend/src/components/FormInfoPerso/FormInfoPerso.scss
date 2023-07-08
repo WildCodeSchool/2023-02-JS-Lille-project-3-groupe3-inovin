@@ -201,6 +201,7 @@
   overflow-y: scroll;
   height: 74px;
   font-size: 20px;
+  top: 1%;
   @include tablet-paysage {
     margin-top: 5%;
   }
@@ -284,4 +285,12 @@
 .button-submit-identity:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.inputDate {
+  color: #0000007b;
+}
+
+.inputDate:focus {
+  color: #000;
 }
