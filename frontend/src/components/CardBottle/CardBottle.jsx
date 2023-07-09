@@ -9,6 +9,9 @@ export default function CardBottle({ id }) {
 
   useEffect(() => {
     axios
+      /**
+       * Effectue une requête GET pour récupérer les informations de la bouteille de vin correspondant à l'ID.
+       */
       .get(`${import.meta.env.VITE_BACKEND_URL}/winebottle/${id}`)
       .then()
       .catch((error) => {

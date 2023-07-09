@@ -3,11 +3,12 @@ import axios from "axios";
 import "./AnimationBottle.scss";
 
 function AnimationBottle() {
+  // État pour gérer la progression
   const [progress, setProgress] = useState(0);
-  const [fixedProgress, setFixedProgress] = useState(null);
-  const [isLocked, setIsLocked] = useState(false);
-  const [wineBottleId, setWineBottleId] = useState(null);
-  const progressBarRef = useRef(null);
+  const [fixedProgress, setFixedProgress] = useState(null); // État pour stocker la progression fixée
+  const [isLocked, setIsLocked] = useState(false); // État pour indiquer si la progression est verrouillée
+  const [wineBottleId, setWineBottleId] = useState(null); // État pour stocker l'ID de la bouteille de vin
+  const progressBarRef = useRef(null); // Référence à l'élément de la barre de progression
 
   useEffect(() => {
     // Effectuer la requête GET pour obtenir wineBottle_id depuis la table compo_recipe
@@ -15,7 +16,7 @@ function AnimationBottle() {
       .get(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`)
       .then((response) => {
         const { wineBottle_id } = response.data;
-        setWineBottleId(wineBottle_id);
+        setWineBottleId(wineBottle_id); // Mettre à jour l'état avec l'ID de la bouteille de vin
       })
       .catch((error) => {
         console.error(
@@ -26,6 +27,7 @@ function AnimationBottle() {
   }, []);
 
   useEffect(() => {
+    // Écouteur d'événement pour la souris
     const handleMouseMove = (e) => {
       const progressBar = progressBarRef.current;
       const progressBarHeight = progressBar.offsetHeight;
@@ -42,7 +44,7 @@ function AnimationBottle() {
           maxProgress
         );
 
-        setProgress(newProgress);
+        setProgress(newProgress); // Mettre à jour l'état avec la nouvelle progression
       }
     };
 
@@ -55,8 +57,8 @@ function AnimationBottle() {
 
   const handleClick = () => {
     if (fixedProgress === null) {
-      setFixedProgress(progress);
-      setIsLocked(true);
+      setFixedProgress(progress); // Fixer la progression
+      setIsLocked(true); // Verrouiller la progression
 
       // Effectuer la requête POST pour envoyer la valeur progress et wineBottleId
       axios
@@ -72,7 +74,7 @@ function AnimationBottle() {
           );
         });
     } else {
-      setIsLocked(false);
+      setIsLocked(false); // Déverrouiller la progression
     }
   };
 
@@ -94,12 +96,14 @@ function AnimationBottle() {
         ref={progressBarRef}
       >
         <div className="progress-bar-inner" style={{ height: `${progress}%` }}>
+          {/* Affichage de la progression fixée ou en cours */}
           {fixedProgress !== null
             ? `${fixedProgress.toFixed(0)}%`
             : `${progress.toFixed(0)}%`}
         </div>
       </div>
       <h3 className="h3-pourcentage">
+        {/* Affichage de la progression fixée */}
         {fixedProgress !== null ? `${fixedProgress.toFixed(0)}%` : ""}
       </h3>
     </div>
