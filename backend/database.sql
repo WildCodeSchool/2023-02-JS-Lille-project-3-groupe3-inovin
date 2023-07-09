@@ -69,7 +69,7 @@ CREATE TABLE `compoRecipe` (
 
 LOCK TABLES `compoRecipe` WRITE;
 /*!40000 ALTER TABLE `compoRecipe` DISABLE KEYS */;
-INSERT INTO `compoRecipe` VALUES (1,47,3,1,6),(2,53,3,1,5);
+INSERT INTO `compoRecipe` VALUES (1,47,3,1,1),(2,53,3,1,2);
 /*!40000 ALTER TABLE `compoRecipe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,8 +253,7 @@ CREATE TABLE `wineBottle` (
 
 LOCK TABLES `wineBottle` WRITE;
 /*!40000 ALTER TABLE `wineBottle` DISABLE KEYS */;
-INSERT INTO `wineBottle` VALUES (5,'Chateau Auzias','Languedoc-Roussillon','blanc',2021,'chardonnay','frontend\src\assets\chardonnay-2021-chateau-auzias.png'),(6,'Pouilly-Fumé Nuit Blanche','Val de Loire','blanc',2020,'sauvignon','frontend\src\assets\pouilly-fume-nuit-blanche.jpg');
-/*!40000 ALTER TABLE `wineBottle` ENABLE KEYS */;
+INSERT INTO `wineBottle` VALUES (1,'Chateau Auzias','Languedoc-Roussillon','blanc',2021,'chardonnay','frontend\src\assets\chardonnay-2021-chateau-auzias.png'),(2,'Pouilly-Fumé Nuit Blanche','Val de Loire','blanc',2020,'sauvignon','frontend\src\assets\pouilly-fume-nuit-blanche.jpg'),(3,'Pinot Gris Grand Cru zinnkoepfle','Alsace','blanc',2020,'Pinot gris','frontend\src\assets\pouilly-fume-nuit-blanche.jpg');
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

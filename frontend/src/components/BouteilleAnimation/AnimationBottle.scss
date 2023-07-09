@@ -1,0 +1,63 @@
+.progress-bar {
+  clip-path: polygon(
+    30% 90%,
+    60% 90%,
+    60% 36%,
+    50% 28%,
+    50% 13%,
+    52% 9%,
+    52% 0%,
+    40% 0%,
+    40% 8%,
+    42% 13%,
+    41% 28%,
+    30% 36%
+  );
+  position: relative;
+  width: 200px;
+  height: 250px;
+  background-color: goldenrod;
+
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  position: absolute;
+  bottom: 10px;
+  left: 64px;
+  width: 28%;
+  height: 50%;
+  background-color: goldenrod;
+  transition: height 0.2s ease-in-out;
+}
+
+.h3-pourcentage {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.progress-bar:before {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 36px;
+  width: 60%;
+  height: 94%;
+  background-color: #000;
+  border-radius: 5px;
+  clip-path: polygon(
+    24% 90%,
+    66% 90%,
+    66% 36%,
+    50% 28%,
+    50% 8%,
+    52% 5%,
+    52% 0%,
+    40% 0%,
+    40% 5%,
+    42% 8%,
+    41% 28%,
+    24% 36%
+  );
+}
