@@ -55,15 +55,15 @@
 //       <div className="tabs">
 //         <h3>Formulaire du vin 1</h3>
 
-//         {isEditing ? (
-//           <button type="button" onClick={handleEdit}>
-//             Modifier form 1
-//           </button>
-//         ) : (
-//           <button type="button" onClick={handleSubmitForm1}>
-//             Valider form 1
-//           </button>
-//         )}
+// {isEditing ? (
+//   <button type="button" onClick={handleEdit}>
+//     Modifier form 1
+//   </button>
+// ) : (
+//   <button type="button" onClick={handleSubmitForm1}>
+//     Valider form 1
+//   </button>
+// )}
 
 //         {/* Tab nav */}
 //         <ul className="nav">

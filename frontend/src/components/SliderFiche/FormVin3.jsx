@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import UserContext from "../../contexts/UserContext";
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
 import TabNavItem from "../TabComponents/TabNavItem";
@@ -6,6 +7,8 @@ import TabContent from "../TabComponents/TabContent";
 
 function FormVin3() {
   const [activeTabSlide3, setActiveTabSlide3] = useState("tab1");
+  const [isEditing, setIsEditing] = useState(false);
+  // const { user } = useContext(UserContext);
 
   const [rating, setRating] = useState(null);
 
@@ -17,7 +20,19 @@ function FormVin3() {
     arome: "",
     arome_intensity: "",
     flavor: "",
-    rating: 8,
+    rating,
+    user_id: 5,
+    user_account_ID: 3,
+    wineBottle_id: 5,
+  });
+
+  const [editFormData3, setEditFormData3] = useState({
+    robe: "",
+    color_intensity: "",
+    arome: "",
+    arome_intensity: "",
+    flavor: "",
+    rating,
     user_id: 5,
     user_account_ID: 3,
     wineBottle_id: 5,
@@ -28,6 +43,10 @@ function FormVin3() {
       ...previousData,
       [evt.target.name]: evt.target.value,
     }));
+    setEditFormData3((previousData) => ({
+      ...previousData,
+      [evt.target.name]: evt.target.value,
+    }));
   };
 
   const handleSubmitForm3 = (evt) => {
@@ -35,7 +54,24 @@ function FormVin3() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/tasting`, formData3)
       .then(() => {
-        // getUserId();
+        setIsEditing(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleEditForm3 = (evt) => {
+    evt.preventDefault();
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/tasting`, editFormData3, {
+        params: {
+          user_account_ID: formData3.user_account_ID,
+          wineBottle_id: formData3.wineBottle_id,
+        },
+      })
+      .then(() => {
+        setIsEditing(false);
       })
       .catch((err) => {
         console.error(err);
@@ -45,9 +81,15 @@ function FormVin3() {
   return (
     <div>
       <h3>Formulaire du vin 3</h3>
-      <button type="button" onClick={handleSubmitForm3}>
-        Envoyer formulaire 3
-      </button>
+      {isEditing ? (
+        <button type="button" onClick={handleEditForm3}>
+          Modifier form 1
+        </button>
+      ) : (
+        <button type="button" onClick={handleSubmitForm3}>
+          Valider form 1
+        </button>
+      )}
       <div className="slideWrapper">
         <div className="thirdSlide">
           <h3>Vin numéro 3</h3>
@@ -84,6 +126,7 @@ function FormVin3() {
                       type="radio"
                       name="robe"
                       value="jauneOr"
+                      checked={formData3.robe === "jauneOr"}
                       onChange={handleChangeData3}
                     />
                     Jaune Or
@@ -93,6 +136,7 @@ function FormVin3() {
                       type="radio"
                       name="robe"
                       value="roux"
+                      checked={formData3.robe === "roux"}
                       onChange={handleChangeData3}
                     />
                     Roux
@@ -102,6 +146,7 @@ function FormVin3() {
                       type="radio"
                       name="robe"
                       value="grenat"
+                      checked={formData3.robe === "grenat"}
                       onChange={handleChangeData3}
                     />
                     Grenat
@@ -111,6 +156,7 @@ function FormVin3() {
                       type="radio"
                       name="robe"
                       value="violet"
+                      checked={formData3.robe === "violet"}
                       onChange={handleChangeData3}
                     />
                     Violet
@@ -120,6 +166,7 @@ function FormVin3() {
                       type="radio"
                       name="robe"
                       value="jauneVert"
+                      checked={formData3.robe === "jauneVert"}
                       onChange={handleChangeData3}
                     />
                     Jaune Vert
@@ -140,6 +187,7 @@ function FormVin3() {
                       type="radio"
                       name="color_intensity"
                       value="claire"
+                      checked={formData3.color_intensity === "claire"}
                       onChange={handleChangeData3}
                     />
                     Claire
@@ -149,6 +197,7 @@ function FormVin3() {
                       type="radio"
                       name="color_intensity"
                       value="moyenne"
+                      checked={formData3.color_intensity === "moyenne"}
                       onChange={handleChangeData3}
                     />
                     Moyenne
@@ -158,6 +207,7 @@ function FormVin3() {
                       type="radio"
                       name="color_intensity"
                       value="trouble"
+                      checked={formData3.color_intensity === "trouble"}
                       onChange={handleChangeData3}
                     />
                     Trouble
@@ -167,6 +217,7 @@ function FormVin3() {
                       type="radio"
                       name="color_intensity"
                       value="opaque"
+                      checked={formData3.color_intensity === "opaque"}
                       onChange={handleChangeData3}
                     />
                     Opaque
@@ -182,6 +233,7 @@ function FormVin3() {
                       type="radio"
                       name="arome"
                       value="fruit"
+                      checked={formData3.arome === "fruit"}
                       onChange={handleChangeData3}
                     />
                     Fruits
@@ -191,6 +243,7 @@ function FormVin3() {
                       type="radio"
                       name="arome"
                       value="fleur"
+                      checked={formData3.arome === "fleur"}
                       onChange={handleChangeData3}
                     />
                     Fleurs
@@ -200,6 +253,7 @@ function FormVin3() {
                       type="radio"
                       name="arome"
                       value="vegetal"
+                      checked={formData3.arome === "vegetal"}
                       onChange={handleChangeData3}
                     />
                     Végétal
@@ -209,6 +263,7 @@ function FormVin3() {
                       type="radio"
                       name="arome"
                       value="epice"
+                      checked={formData3.arome === "epice"}
                       onChange={handleChangeData3}
                     />
                     Epicé
@@ -218,6 +273,7 @@ function FormVin3() {
                       type="radio"
                       name="arome"
                       value="animal"
+                      checked={formData3.arome === "animal"}
                       onChange={handleChangeData3}
                     />
                     Animal
@@ -229,6 +285,7 @@ function FormVin3() {
                       type="radio"
                       name="arome_intensity"
                       value="leger"
+                      checked={formData3.arome_intensity === "leger"}
                       onChange={handleChangeData3}
                     />
                     Léger
@@ -238,6 +295,7 @@ function FormVin3() {
                       type="radio"
                       name="arome_intensity"
                       value="moyen"
+                      checked={formData3.arome_intensity === "moyen"}
                       onChange={handleChangeData3}
                     />
                     Moyen
@@ -247,6 +305,7 @@ function FormVin3() {
                       type="radio"
                       name="arome_intensity"
                       value="fort"
+                      checked={formData3.arome_intensity === "fort"}
                       onChange={handleChangeData3}
                     />
                     Fort
@@ -262,6 +321,7 @@ function FormVin3() {
                       type="radio"
                       name="flavor"
                       value="acide"
+                      checked={formData3.flavor === "acide"}
                       onChange={handleChangeData3}
                     />
                     Acide
@@ -271,6 +331,7 @@ function FormVin3() {
                       type="radio"
                       name="flavor"
                       value="amer"
+                      checked={formData3.flavor === "amer"}
                       onChange={handleChangeData3}
                     />
                     Amer
@@ -280,6 +341,7 @@ function FormVin3() {
                       type="radio"
                       name="flavor"
                       value="sucre"
+                      checked={formData3.flavor === "sucre"}
                       onChange={handleChangeData3}
                     />
                     Sucré
@@ -289,6 +351,7 @@ function FormVin3() {
                       type="radio"
                       name="flavor"
                       value="gras"
+                      checked={formData3.flavor === "gras"}
                       onChange={handleChangeData3}
                     />
                     Gras
@@ -305,6 +368,7 @@ function FormVin3() {
                           value={ratingValue}
                           className="dropletInput"
                           onClick={() => setRating(ratingValue)}
+                          onChange={handleChangeData3}
                         />
                         <BsDropletFill
                           className="droplet"

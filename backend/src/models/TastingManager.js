@@ -36,6 +36,29 @@ class TastingManager extends AbstractManager {
       ]
     );
   }
+
+  updateById(tasting, userAccountId, wineBottleId) {
+    return this.database.query(
+      `update ${this.table} set robe = ?, color_intensity = ?, arome = ?, arome_intensity = ?, flavor = ?, rating = ? where user_account_ID = ? and wineBottle_id = ?`,
+      [
+        tasting.robe,
+        tasting.color_intensity,
+        tasting.arome,
+        tasting.arome_intensity,
+        tasting.flavor,
+        tasting.rating,
+        userAccountId,
+        wineBottleId,
+      ]
+    );
+  }
+
+  findByBottleTasting(wineBottle_id) {
+    return this.database.query(
+      `select * from  ${this.table} where wineBottle_id = ?`,
+      [wineBottle_id]
+    );
+  }
 }
 
 module.exports = TastingManager;
