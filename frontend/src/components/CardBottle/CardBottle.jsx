@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 import AnimationBottle from "../BouteilleAnimation/AnimationBottle";
 import "./CardBottle.scss";
 
 export default function CardBottle({ id }) {
   const [wineBottle, setWineBottle] = useState(null); // État local pour stocker les données de la bouteille de vin
-
   useEffect(() => {
     // useEffect pour effectuer la requête HTTP lors du montage du composant
     axios
@@ -30,3 +30,6 @@ export default function CardBottle({ id }) {
     </div>
   );
 }
+CardBottle.propTypes = {
+  id: PropTypes.number.isRequired,
+};
