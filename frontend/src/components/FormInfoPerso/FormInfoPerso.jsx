@@ -245,9 +245,12 @@ function FormInfoPerso() {
                 className="form-inscription-idendity-input-class inputDate"
                 type="date"
                 name="birthdate"
-                placeholder="1980-12-29"
                 value={formInscription.birthdate}
                 onChange={handleChangeFormInscription}
+                style={{
+                  color: formInscription.birthdate ? "black" : "gray",
+                  fontWeight: formInscription.birthdate ? "normal" : "bold",
+                }}
               />
             </label>
           </div>
