@@ -38,7 +38,7 @@ class UserManager extends AbstractManager {
 
   // modify(user) {
   //   return this.database.query(
-  //     `UPDATE ${this.table} SET address = ?, ordering = ? WHERE account_id = ?`,
+  //     `UPDATE ${this.table} SET address = ?, ordering = ? WHERE id = ?`,
   //     [user.address, user.ordering, user.account_id]
   //   );
   // }

@@ -28,9 +28,6 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body;
-
-  // TODO validations (length, format...)
-
   user.id = parseInt(req.params.id, 10);
 
   models.user
@@ -49,11 +46,10 @@ const edit = (req, res) => {
 };
 
 // const modify = (req, res) => {
-//   const { account_id } = req.params;
-//   const { address, ordering } = req.body;
-
+//   const user = req.body;
+//   user.id = parseInt(req.params.id, 10);
 //   models.user
-//     .modify({ address, ordering }, account_id)
+//     .modify(user)
 //     .then(([result]) => {
 //       if (result.affectedRows === 0) {
 //         res.sendStatus(404);
