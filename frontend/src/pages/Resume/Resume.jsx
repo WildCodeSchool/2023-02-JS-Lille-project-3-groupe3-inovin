@@ -37,9 +37,12 @@ function Resume() {
           birthdate,
           recipe_name,
         } = response.data[0];
+        const array = birthdate.split("T");
+        const dateParts = array[0].split("-");
+        const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
         setFullName(`${firstname} ${lastname}`);
         setEmailAddress(`${address}`);
-        setBirthDay(`${birthdate}`);
+        setBirthDay(`${formattedDate}`);
         setRecipeName(`${recipe_name}`);
         setQuantity(`${percentage}`);
         setBottleData(response.data);

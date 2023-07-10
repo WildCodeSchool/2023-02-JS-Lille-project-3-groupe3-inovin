@@ -14,6 +14,10 @@ function CommandeModal({ setOpenModal, fullName, user }) {
   });
   const [ordering, setOrdering] = useState(0);
   const [userId, setUserId] = useState();
+  const [buttonClicks, setbuttonClicks] = useState(0);
+  // const [emailSent, setEmailSent] = useState(false);
+  const [feedbackComment, setfeedbackComment] = useState("");
+  const [rating, setRating] = useState(null);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
@@ -22,6 +26,8 @@ function CommandeModal({ setOpenModal, fullName, user }) {
       .then((response) => {
         const resultUserId = response.data[0]?.id;
         setUserId(resultUserId);
+        setfeedbackComment(response.data[0].feedbackComment);
+        setRating(response.data[0].feedbackRating);
       })
       .catch((err) => {
         console.error(err);
@@ -32,6 +38,8 @@ function CommandeModal({ setOpenModal, fullName, user }) {
       const userData = {
         address: `${address.street} ${address.town} ${address.postalcode}`,
         ordering,
+        feedbackRating: rating,
+        feedbackComment,
       };
 
       axios
@@ -45,6 +53,7 @@ function CommandeModal({ setOpenModal, fullName, user }) {
     }
   };
   const handleClick = () => {
+    setbuttonClicks(buttonClicks + 1);
     document.querySelectorAll(".truck-button").forEach((button) => {
       button.addEventListener("click", (e) => {
         e.preventDefault();
@@ -240,13 +249,34 @@ function CommandeModal({ setOpenModal, fullName, user }) {
           ) : (
             <div className="confirmationMessage">
               <img id="commandeLogo" src={logo} alt="" />
-              Merci pour votre commande, {fullName}. Nous vous avons envoyé un
-              mail de confirmation.
+              {/* {buttonClicks === 1 ? (
+                <h2>
+                  {" "}
+                  Merci pour votre commande, {fullName}. Nous vous avons envoyé
+                  un mail de confirmation.{" "}
+                </h2>
+              ) : (
+                <h2>Merci, Votre address a étè bien enregistrée</h2>
+              )} */}
+              {buttonClicks === 1 ? (
+                <h2 className="confirmation">
+                  Merci. Votre address a étè bien enregistrée
+                </h2>
+              ) : (
+                <h2 className="confirmation">
+                  Merci pour votre commande, {fullName}. Nous vous avons envoyé
+                  un mail de confirmation.
+                </h2>
+              )}
             </div>
           )}
         </div>
         <button type="button" className="truck-button" onClick={handleClick}>
-          <span className="default">Commander</span>
+          {buttonClicks === 1 ? (
+            <span className="default">Commander</span>
+          ) : (
+            <span className="default">Enregistrer</span>
+          )}
           <span className="success">
             Commande confirmée
             <svg viewBox="0 0 12 10">
