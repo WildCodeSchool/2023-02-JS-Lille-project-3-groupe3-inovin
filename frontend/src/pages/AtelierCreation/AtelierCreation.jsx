@@ -1,12 +1,17 @@
 import Apercu from "../../components/Apercu/Apercu";
 import Bouteille from "../../components/Bouteille/Bouteille";
 import "./AtelierCreation.scss";
+import CardBottle from "../../components/CardBottle/CardBottle";
 
 function AtelierCreation() {
   return (
     <div className="element-fond">
       <div className="container_atelier">
-        <Bouteille />
+        <div className="container-bottle">
+          <CardBottle id={1} />
+          <CardBottle id={2} />
+          <CardBottle id={3} />
+        </div>
         <Apercu />
       </div>
     </div>
