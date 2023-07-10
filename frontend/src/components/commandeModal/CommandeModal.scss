@@ -1,4 +1,5 @@
 @import "../../App.scss";
+
 .modalBackground {
   position: fixed;
   top: 0;
@@ -13,11 +14,11 @@
 }
 
 .modalContainer {
-  width: 500px;
-  height: 500px;
+  width: 50vh;
+  height: 53vh;
   border-radius: 12px;
   position: fixed;
-  top: 30vh;
+  top: 28vh;
   //left: 10vh;
   background-color: #c5c5c5;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -113,20 +114,26 @@
 
 input#street-address,
 input#city {
-  left: 105px;
+  left: 10vh;
   position: relative;
-  width: 60%;
+  width: 57%;
   text-indent: 6px;
   font-size: x-large;
 }
 
 #postal-code {
-  margin-left: 10px;
-  width: 60%;
+  margin-left: 30px;
+  width: 58%;
   text-indent: 5px;
   font-size: x-large;
 }
 
+#commandeLogo {
+  width: 13vh;
+  padding: 3vh;
+  position: relative;
+  bottom: 5vh;
+}
 .truck-button {
   --color: #fff;
   --background: #2b3044;
@@ -153,6 +160,7 @@ input#city {
   text-align: center;
   position: relative;
   left: 15vh;
+  bottom: 4vh;
   border: none;
   outline: none;
   color: var(--color);
@@ -409,5 +417,31 @@ input#city {
         --offset: 0;
       }
     }
+  }
+}
+.confirmationMessage {
+  position: relative;
+  bottom: 4vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  line-height: 1.5;
+}
+
+@media (orientation: landscape) {
+  .modalContainer {
+    width: 75vh;
+    top: 23vh;
+  }
+  input#street-address,
+  input#city {
+    left: 13vh;
+  }
+
+  .truck-button {
+    left: 25vh;
+    bottom: 2vh;
   }
 }
