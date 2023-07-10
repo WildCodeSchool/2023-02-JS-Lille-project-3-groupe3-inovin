@@ -11,7 +11,6 @@ import CommandeModal from "../../components/commandeModal/CommandeModal";
 function Resume() {
   // useContext
   const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-
   // console.log(`resume account_id: ${user} `);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -95,7 +94,13 @@ function Resume() {
           >
             Commander
           </button>
-          {modalOpen && <CommandeModal setOpenModal={setModalOpen} />}
+          {modalOpen && (
+            <CommandeModal
+              setOpenModal={setModalOpen}
+              fullName={fullName}
+              user={user}
+            />
+          )}
         </div>
         <div className="bottle_diploma">
           <img id="bottle_resume" src={bottle} alt="" />

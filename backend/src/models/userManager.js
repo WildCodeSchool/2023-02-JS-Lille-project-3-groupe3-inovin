@@ -36,6 +36,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  // modify(user) {
+  //   return this.database.query(
+  //     `UPDATE ${this.table} SET address = ?, ordering = ? WHERE account_id = ?`,
+  //     [user.address, user.ordering, user.account_id]
+  //   );
+  // }
+
   findAccountId(account_id) {
     return this.database.query(
       `select * from  ${this.table} where account_id = ?`,
@@ -44,7 +51,7 @@ class UserManager extends AbstractManager {
   }
 
   get(account_id) {
-    // this rrequest will be displayed on the resume page
+    // this request will be displayed on the resume page
     return this.database.query(
       `
       SELECT cr.id, cr.percentage, cr.user_account_ID, u.firstname, u.lastname, u.address, u.birthdate, wb.bottle_name, r.recipe_name

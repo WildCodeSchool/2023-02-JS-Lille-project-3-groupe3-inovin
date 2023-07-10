@@ -1,10 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CommandeModal.scss";
 import PropTypes from "prop-types";
 import { gsap } from "gsap";
+import axios from "axios";
+import logo from "../../assets/images/logo_inovin.png";
 
-function CommandeModal({ setOpenModal }) {
+function CommandeModal({ setOpenModal, fullName, user }) {
   const [confirmed, setConfirmed] = useState(false);
+  const [address, setAddress] = useState({
+    street: "",
+    town: "",
+    postalcode: "",
+  });
+  const [ordering, setOrdering] = useState(0);
+  const [userId, setUserId] = useState();
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: user },
+      })
+      .then((response) => {
+        const resultUserId = response.data[0]?.id;
+        setUserId(resultUserId);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+  const postAddress = () => {
+    if (address.street && address.town && address.postalcode) {
+      const userData = {
+        address: `${address.street} ${address.town} ${address.postalcode}`,
+        ordering,
+      };
+
+      axios
+        .put(`${import.meta.env.VITE_BACKEND_URL}/user/${userId}`, userData)
+        .then(() => {
+          setOrdering(1);
+        })
+        .catch((error) => {
+          console.error("Error posting address:", error);
+        });
+    }
+  };
   const handleClick = () => {
     document.querySelectorAll(".truck-button").forEach((button) => {
       button.addEventListener("click", (e) => {
@@ -106,7 +145,9 @@ function CommandeModal({ setOpenModal }) {
       });
     });
     setConfirmed(true);
+    postAddress();
   };
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -124,7 +165,9 @@ function CommandeModal({ setOpenModal }) {
           {!confirmed ? (
             <div>
               <div className="title">
-                <h1>Nous avons besoin de votre adresse de livraison, Alex!</h1>
+                <h1>
+                  Nous avons besoin de votre adresse de livraison, {fullName}!
+                </h1>
               </div>
 
               <form className="formCommande">
@@ -136,10 +179,17 @@ function CommandeModal({ setOpenModal }) {
                     className="commandeInput"
                     type="text"
                     id="street-address"
-                    name="street-address"
+                    name="street"
                     autoComplete="street-address"
                     required
                     enterKeyHint="next"
+                    value={address.street}
+                    onChange={(e) =>
+                      setAddress((prevAddress) => ({
+                        ...prevAddress,
+                        street: e.target.value,
+                      }))
+                    }
                   />{" "}
                 </div>{" "}
                 <div className="city">
@@ -152,9 +202,16 @@ function CommandeModal({ setOpenModal }) {
                     required
                     type="text"
                     id="city"
-                    name="city"
+                    name="town"
                     autoComplete="address-level2"
                     enterKeyHint="next"
+                    value={address.town}
+                    onChange={(e) =>
+                      setAddress((prevAddress) => ({
+                        ...prevAddress,
+                        town: e.target.value,
+                      }))
+                    }
                   />
                 </div>
                 <div className="codePostale">
@@ -165,9 +222,16 @@ function CommandeModal({ setOpenModal }) {
                     required
                     className="postal-code commandeInput"
                     id="postal-code"
-                    name="postal-code"
+                    name="postalcode"
                     autoComplete="postal-code"
                     enterKeyHint="next"
+                    value={address.postalcode}
+                    onChange={(e) =>
+                      setAddress((prevAddress) => ({
+                        ...prevAddress,
+                        postalcode: e.target.value,
+                      }))
+                    }
                   />
                 </div>
                 <div />
@@ -175,8 +239,9 @@ function CommandeModal({ setOpenModal }) {
             </div>
           ) : (
             <div className="confirmationMessage">
-              Merci pour votre commande. Nous vous avons envoyé un mail de
-              confirmation.
+              <img id="commandeLogo" src={logo} alt="" />
+              Merci pour votre commande, {fullName}. Nous vous avons envoyé un
+              mail de confirmation.
             </div>
           )}
         </div>
@@ -199,7 +264,10 @@ function CommandeModal({ setOpenModal }) {
     </div>
   );
 }
+
 export default CommandeModal;
 CommandeModal.propTypes = {
   setOpenModal: PropTypes.func.isRequired,
+  fullName: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
 };

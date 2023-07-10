@@ -12,7 +12,6 @@ const accountControllers = require("./controllers/accountControllers");
 const { hashPassword } = require("./auth");
 /* router.get("/user", userControllers.browse); */ // commenté pour pouvoir faire les requêtes de FormInfoPerso
 router.get("/user", userControllers.read);
-// router.get("/user/:account_id", userControllers.read);
 router.put("/user/:id", userControllers.edit);
 router.post("/user", userControllers.add);
 router.delete("/user/:id", userControllers.destroy);

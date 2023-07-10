@@ -208,7 +208,7 @@ CREATE TABLE `user` (
   `birthdate` date NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `ordering` tinyint NOT NULL,
-  `feedbackRating` tinyint NOT NULL,
+  `feedbackRating` tinyint NULL,
   `feedbackComment` varchar(255) DEFAULT NULL,
   `user_type` varchar(45) NOT NULL,
   `account_ID` int NOT NULL,

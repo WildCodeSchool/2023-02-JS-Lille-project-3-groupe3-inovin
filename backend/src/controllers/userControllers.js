@@ -48,6 +48,25 @@ const edit = (req, res) => {
     });
 };
 
+// const modify = (req, res) => {
+//   const { account_id } = req.params;
+//   const { address, ordering } = req.body;
+
+//   models.user
+//     .modify({ address, ordering }, account_id)
+//     .then(([result]) => {
+//       if (result.affectedRows === 0) {
+//         res.sendStatus(404);
+//       } else {
+//         res.sendStatus(204);
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// };
+
 const add = (req, res) => {
   const user = req.body;
 
@@ -96,6 +115,7 @@ const getDetails = (req, res) => {
       res.sendStatus(500);
     });
 };
+
 module.exports = {
   browse,
   read,
