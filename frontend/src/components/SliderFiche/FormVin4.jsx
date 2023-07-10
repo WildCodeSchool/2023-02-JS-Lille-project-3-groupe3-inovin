@@ -1,45 +1,97 @@
 import { useState } from "react";
+// import UserContext from "../../contexts/UserContext";
+import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
 function FormVin4() {
   const [activeTabSlide4, setActiveTabSlide4] = useState("tab1");
-
-  const [selectedOption16, setSelectedOption16] = useState();
-  const [selectedOption17, setSelectedOption17] = useState();
-  const [selectedOption18, setSelectedOption18] = useState();
-  const [selectedOption19, setSelectedOption19] = useState();
-  const [selectedOption20, setSelectedOption20] = useState();
-
-  const handleOptionChange16 = (event) => {
-    setSelectedOption16(event.target.value);
-  };
-
-  const handleOptionChange17 = (event) => {
-    setSelectedOption17(event.target.value);
-  };
-
-  const handleOptionChange18 = (event) => {
-    setSelectedOption18(event.target.value);
-  };
-
-  const handleOptionChange19 = (event) => {
-    setSelectedOption19(event.target.value);
-  };
-
-  const handleOptionChange20 = (event) => {
-    setSelectedOption20(event.target.value);
-  };
+  const [isEditing, setIsEditing] = useState(false);
+  // const { user } = useContext(UserContext);
 
   const [rating, setRating] = useState(null);
+
   const [hover, setHover] = useState(null);
+
+  const [formData4, setFormData4] = useState({
+    robe: "",
+    color_intensity: "",
+    arome: "",
+    arome_intensity: "",
+    flavor: "",
+    rating,
+    user_id: 5,
+    user_account_ID: 3,
+    wineBottle_id: 6,
+  });
+
+  const [editFormData4, setEditFormData4] = useState({
+    robe: "",
+    color_intensity: "",
+    arome: "",
+    arome_intensity: "",
+    flavor: "",
+    rating,
+    user_id: 5,
+    user_account_ID: 3,
+    wineBottle_id: 6,
+  });
+
+  const handleChangeData4 = (evt) => {
+    setFormData4((previousData) => ({
+      ...previousData,
+      [evt.target.name]: evt.target.value,
+    }));
+    setEditFormData4((previousData) => ({
+      ...previousData,
+      [evt.target.name]: evt.target.value,
+    }));
+  };
+
+  const handleSubmitForm4 = (evt) => {
+    evt.preventDefault();
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/tasting`, formData4)
+      .then(() => {
+        setIsEditing(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleEditForm4 = (evt) => {
+    evt.preventDefault();
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/tasting`, editFormData4, {
+        params: {
+          user_account_ID: formData4.user_account_ID,
+          wineBottle_id: formData4.wineBottle_id,
+        },
+      })
+      .then(() => {
+        setIsEditing(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <div>
       <h3>Formulaire du vin 4</h3>
+      {isEditing ? (
+        <button type="button" onClick={handleEditForm4}>
+          Modifier form 4
+        </button>
+      ) : (
+        <button type="button" onClick={handleSubmitForm4}>
+          Valider form 4
+        </button>
+      )}
       <div className="slideWrapper">
-        <div className="fourthSlide">
+        <div className="thirdSlide">
           <h3>Vin numéro 4</h3>
           <div className="tabs">
             {/* Tab nav */}
@@ -68,96 +120,106 @@ function FormVin4() {
               <TabContent id="tab1" activeTab={activeTabSlide4}>
                 <form>
                   <h3>Robe</h3>
-                  {/* Option 16 */}
+                  {/* Option 11 */}
                   <label>
                     <input
                       type="radio"
+                      name="robe"
                       value="jauneOr"
-                      checked={selectedOption16 === "jauneOr"}
-                      onChange={handleOptionChange16}
+                      checked={formData4.robe === "jauneOr"}
+                      onChange={handleChangeData4}
                     />
                     Jaune Or
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="robe"
                       value="roux"
-                      checked={selectedOption16 === "roux"}
-                      onChange={handleOptionChange16}
+                      checked={formData4.robe === "roux"}
+                      onChange={handleChangeData4}
                     />
                     Roux
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="robe"
                       value="grenat"
-                      checked={selectedOption16 === "grenat"}
-                      onChange={handleOptionChange16}
+                      checked={formData4.robe === "grenat"}
+                      onChange={handleChangeData4}
                     />
                     Grenat
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="robe"
                       value="violet"
-                      checked={selectedOption16 === "violet"}
-                      onChange={handleOptionChange16}
+                      checked={formData4.robe === "violet"}
+                      onChange={handleChangeData4}
                     />
                     Violet
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="robe"
                       value="jauneVert"
-                      checked={selectedOption16 === "jauneVert"}
-                      onChange={handleOptionChange16}
+                      checked={formData4.robe === "jauneVert"}
+                      onChange={handleChangeData4}
                     />
                     Jaune Vert
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="robe"
                       value="dore"
-                      checked={selectedOption16 === "dore"}
-                      onChange={handleOptionChange16}
+                      checked={formData4.robe === "dore"}
+                      onChange={handleChangeData4}
                     />
                     Doré
                   </label>
                   <h3>Intensité des couleurs</h3>
-                  {/* Option 17 */}
+                  {/* Option 12 */}
                   <label>
                     <input
                       type="radio"
+                      name="color_intensity"
                       value="claire"
-                      checked={selectedOption17 === "claire"}
-                      onChange={handleOptionChange17}
+                      checked={formData4.color_intensity === "claire"}
+                      onChange={handleChangeData4}
                     />
                     Claire
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="color_intensity"
                       value="moyenne"
-                      checked={selectedOption17 === "moyenne"}
-                      onChange={handleOptionChange17}
+                      checked={formData4.color_intensity === "moyenne"}
+                      onChange={handleChangeData4}
                     />
                     Moyenne
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="color_intensity"
                       value="trouble"
-                      checked={selectedOption17 === "trouble"}
-                      onChange={handleOptionChange17}
+                      checked={formData4.color_intensity === "trouble"}
+                      onChange={handleChangeData4}
                     />
                     Trouble
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="color_intensity"
                       value="opaque"
-                      checked={selectedOption17 === "opaque"}
-                      onChange={handleOptionChange17}
+                      checked={formData4.color_intensity === "opaque"}
+                      onChange={handleChangeData4}
                     />
                     Opaque
                   </label>
@@ -166,78 +228,86 @@ function FormVin4() {
               <TabContent id="tab2" activeTab={activeTabSlide4}>
                 <form>
                   <h3>Arôme</h3>
-                  {/* Option 18 */}
+                  {/* Option 13 */}
                   <label>
                     <input
                       type="radio"
+                      name="arome"
                       value="fruit"
-                      checked={selectedOption18 === "fruit"}
-                      onChange={handleOptionChange18}
+                      checked={formData4.arome === "fruit"}
+                      onChange={handleChangeData4}
                     />
                     Fruits
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="arome"
                       value="fleur"
-                      checked={selectedOption18 === "fleur"}
-                      onChange={handleOptionChange18}
+                      checked={formData4.arome === "fleur"}
+                      onChange={handleChangeData4}
                     />
                     Fleurs
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="arome"
                       value="vegetal"
-                      checked={selectedOption18 === "vegetal"}
-                      onChange={handleOptionChange18}
+                      checked={formData4.arome === "vegetal"}
+                      onChange={handleChangeData4}
                     />
                     Végétal
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="arome"
                       value="epice"
-                      checked={selectedOption18 === "epice"}
-                      onChange={handleOptionChange18}
+                      checked={formData4.arome === "epice"}
+                      onChange={handleChangeData4}
                     />
                     Epicé
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="arome"
                       value="animal"
-                      checked={selectedOption18 === "animal"}
-                      onChange={handleOptionChange18}
+                      checked={formData4.arome === "animal"}
+                      onChange={handleChangeData4}
                     />
                     Animal
                   </label>
                   <h3>Intensité des arômes</h3>
-                  {/* Option 19 */}
+                  {/* Option 14 */}
                   <label>
                     <input
                       type="radio"
+                      name="arome_intensity"
                       value="leger"
-                      checked={selectedOption19 === "leger"}
-                      onChange={handleOptionChange19}
+                      checked={formData4.arome_intensity === "leger"}
+                      onChange={handleChangeData4}
                     />
                     Léger
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="arome_intensity"
                       value="moyen"
-                      checked={selectedOption19 === "moyen"}
-                      onChange={handleOptionChange19}
+                      checked={formData4.arome_intensity === "moyen"}
+                      onChange={handleChangeData4}
                     />
                     Moyen
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="arome_intensity"
                       value="fort"
-                      checked={selectedOption19 === "fort"}
-                      onChange={handleOptionChange19}
+                      checked={formData4.arome_intensity === "fort"}
+                      onChange={handleChangeData4}
                     />
                     Fort
                   </label>
@@ -246,40 +316,44 @@ function FormVin4() {
               <TabContent id="tab3" activeTab={activeTabSlide4}>
                 <form>
                   <h3>Saveur</h3>
-                  {/* Option 20 */}
+                  {/* Option 15 */}
                   <label>
                     <input
                       type="radio"
+                      name="flavor"
                       value="acide"
-                      checked={selectedOption20 === "acide"}
-                      onChange={handleOptionChange20}
+                      checked={formData4.flavor === "acide"}
+                      onChange={handleChangeData4}
                     />
                     Acide
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="flavor"
                       value="amer"
-                      checked={selectedOption20 === "amer"}
-                      onChange={handleOptionChange20}
+                      checked={formData4.flavor === "amer"}
+                      onChange={handleChangeData4}
                     />
                     Amer
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="flavor"
                       value="sucre"
-                      checked={selectedOption20 === "sucre"}
-                      onChange={handleOptionChange20}
+                      checked={formData4.flavor === "sucre"}
+                      onChange={handleChangeData4}
                     />
                     Sucré
                   </label>
                   <label>
                     <input
                       type="radio"
+                      name="flavor"
                       value="gras"
-                      checked={selectedOption20 === "gras"}
-                      onChange={handleOptionChange20}
+                      checked={formData4.flavor === "gras"}
+                      onChange={handleChangeData4}
                     />
                     Gras
                   </label>
@@ -295,6 +369,7 @@ function FormVin4() {
                           value={ratingValue}
                           className="dropletInput"
                           onClick={() => setRating(ratingValue)}
+                          onChange={handleChangeData4}
                         />
                         <BsDropletFill
                           className="droplet"

@@ -1,365 +1,398 @@
-// import { useState } from "react";
-// import { BsDropletFill } from "react-icons/bs";
-// import TabNavItem from "../TabComponents/TabNavItem";
-// import TabContent from "../TabComponents/TabContent";
+import { useState } from "react";
+// import UserContext from "../../contexts/UserContext";
+import axios from "axios";
+import { BsDropletFill } from "react-icons/bs";
+import TabNavItem from "../TabComponents/TabNavItem";
+import TabContent from "../TabComponents/TabContent";
 
-// export default function FormVin2() {
-//   const [activeTabSlide2, setActiveTabSlide2] = useState("tab1");
+function FormVin2() {
+  const [activeTabSlide2, setActiveTabSlide2] = useState("tab1");
+  const [isEditing, setIsEditing] = useState(false);
+  // const { user } = useContext(UserContext);
 
-//   const [selectedOption6, setSelectedOption6] = useState();
-//   const [selectedOption7, setSelectedOption7] = useState();
-//   const [selectedOption8, setSelectedOption8] = useState();
-//   const [selectedOption9, setSelectedOption9] = useState();
-//   const [selectedOption10, setSelectedOption10] = useState();
+  const [rating, setRating] = useState(null);
 
-//   const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
 
-//   const [formData2, setFormData2] = useState({
-//     robe: selectedOption6,
-//     color_intensity: selectedOption7,
-//     arome: selectedOption8,
-//     arome_intensity: selectedOption9,
-//     flavor: selectedOption10,
-//     rating,
-//     user_id: 5,
-//     user_account_ID: 3,
-//     wineBottle_id: 7,
-//   });
+  const [formData2, setFormData2] = useState({
+    robe: "",
+    color_intensity: "",
+    arome: "",
+    arome_intensity: "",
+    flavor: "",
+    rating,
+    user_id: 5,
+    user_account_ID: 3,
+    wineBottle_id: 6,
+  });
 
-//   const updateFormData2 = () => {
-//     setFormData2({
-//       robe: selectedOption6,
-//       color_intensity: selectedOption7,
-//       arome: selectedOption8,
-//       arome_intensity: selectedOption9,
-//       flavor: selectedOption10,
-//       rating,
-//       user_id: 5,
-//       user_account_ID: 3,
-//       wineBottle_id: 7,
-//     });
-//   };
+  const [editFormData2, setEditFormData2] = useState({
+    robe: "",
+    color_intensity: "",
+    arome: "",
+    arome_intensity: "",
+    flavor: "",
+    rating,
+    user_id: 5,
+    user_account_ID: 3,
+    wineBottle_id: 6,
+  });
 
-//   const handleOptionChange6 = (event) => {
-//     setSelectedOption6(event.target.value);
-//     updateFormData2;
-//   };
+  const handleChangeData2 = (evt) => {
+    setFormData2((previousData) => ({
+      ...previousData,
+      [evt.target.name]: evt.target.value,
+    }));
+    setEditFormData2((previousData) => ({
+      ...previousData,
+      [evt.target.name]: evt.target.value,
+    }));
+  };
 
-//   const handleOptionChange7 = (event) => {
-//     setSelectedOption7(event.target.value);
-//     updateFormData2;
-//   };
+  const handleSubmitForm2 = (evt) => {
+    evt.preventDefault();
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/tasting`, formData2)
+      .then(() => {
+        setIsEditing(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-//   const handleOptionChange8 = (event) => {
-//     setSelectedOption8(event.target.value);
-//     updateFormData2;
-//   };
+  const handleEditForm2 = (evt) => {
+    evt.preventDefault();
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/tasting`, editFormData2, {
+        params: {
+          user_account_ID: formData2.user_account_ID,
+          wineBottle_id: formData2.wineBottle_id,
+        },
+      })
+      .then(() => {
+        setIsEditing(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-//   const handleOptionChange9 = (event) => {
-//     setSelectedOption9(event.target.value);
-//     updateFormData2;
-//   };
+  return (
+    <div>
+      <h3>Formulaire du vin 2</h3>
+      {isEditing ? (
+        <button type="button" onClick={handleEditForm2}>
+          Modifier form 2
+        </button>
+      ) : (
+        <button type="button" onClick={handleSubmitForm2}>
+          Valider form 2
+        </button>
+      )}
+      <div className="slideWrapper">
+        <div className="thirdSlide">
+          <h3>Vin numéro 2</h3>
+          <div className="tabs">
+            {/* Tab nav */}
+            <ul className="nav">
+              <TabNavItem
+                title="Robe"
+                id="tab1"
+                activeTab={activeTabSlide2}
+                setActiveTab={setActiveTabSlide2}
+              />
+              <TabNavItem
+                title="Arôme"
+                id="tab2"
+                activeTab={activeTabSlide2}
+                setActiveTab={setActiveTabSlide2}
+              />
+              <TabNavItem
+                title="Saveur"
+                id="tab3"
+                activeTab={activeTabSlide2}
+                setActiveTab={setActiveTabSlide2}
+              />
+            </ul>
+            {/* Content of the tabs */}
+            <div className="outlet">
+              <TabContent id="tab1" activeTab={activeTabSlide2}>
+                <form>
+                  <h3>Robe</h3>
+                  {/* Option 11 */}
+                  <label>
+                    <input
+                      type="radio"
+                      name="robe"
+                      value="jauneOr"
+                      checked={formData2.robe === "jauneOr"}
+                      onChange={handleChangeData2}
+                    />
+                    Jaune Or
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="robe"
+                      value="roux"
+                      checked={formData2.robe === "roux"}
+                      onChange={handleChangeData2}
+                    />
+                    Roux
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="robe"
+                      value="grenat"
+                      checked={formData2.robe === "grenat"}
+                      onChange={handleChangeData2}
+                    />
+                    Grenat
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="robe"
+                      value="violet"
+                      checked={formData2.robe === "violet"}
+                      onChange={handleChangeData2}
+                    />
+                    Violet
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="robe"
+                      value="jauneVert"
+                      checked={formData2.robe === "jauneVert"}
+                      onChange={handleChangeData2}
+                    />
+                    Jaune Vert
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="robe"
+                      value="dore"
+                      checked={formData2.robe === "dore"}
+                      onChange={handleChangeData2}
+                    />
+                    Doré
+                  </label>
+                  <h3>Intensité des couleurs</h3>
+                  {/* Option 12 */}
+                  <label>
+                    <input
+                      type="radio"
+                      name="color_intensity"
+                      value="claire"
+                      checked={formData2.color_intensity === "claire"}
+                      onChange={handleChangeData2}
+                    />
+                    Claire
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="color_intensity"
+                      value="moyenne"
+                      checked={formData2.color_intensity === "moyenne"}
+                      onChange={handleChangeData2}
+                    />
+                    Moyenne
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="color_intensity"
+                      value="trouble"
+                      checked={formData2.color_intensity === "trouble"}
+                      onChange={handleChangeData2}
+                    />
+                    Trouble
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="color_intensity"
+                      value="opaque"
+                      checked={formData2.color_intensity === "opaque"}
+                      onChange={handleChangeData2}
+                    />
+                    Opaque
+                  </label>
+                </form>
+              </TabContent>
+              <TabContent id="tab2" activeTab={activeTabSlide2}>
+                <form>
+                  <h3>Arôme</h3>
+                  {/* Option 13 */}
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome"
+                      value="fruit"
+                      checked={formData2.arome === "fruit"}
+                      onChange={handleChangeData2}
+                    />
+                    Fruits
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome"
+                      value="fleur"
+                      checked={formData2.arome === "fleur"}
+                      onChange={handleChangeData2}
+                    />
+                    Fleurs
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome"
+                      value="vegetal"
+                      checked={formData2.arome === "vegetal"}
+                      onChange={handleChangeData2}
+                    />
+                    Végétal
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome"
+                      value="epice"
+                      checked={formData2.arome === "epice"}
+                      onChange={handleChangeData2}
+                    />
+                    Epicé
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome"
+                      value="animal"
+                      checked={formData2.arome === "animal"}
+                      onChange={handleChangeData2}
+                    />
+                    Animal
+                  </label>
+                  <h3>Intensité des arômes</h3>
+                  {/* Option 14 */}
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome_intensity"
+                      value="leger"
+                      checked={formData2.arome_intensity === "leger"}
+                      onChange={handleChangeData2}
+                    />
+                    Léger
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome_intensity"
+                      value="moyen"
+                      checked={formData2.arome_intensity === "moyen"}
+                      onChange={handleChangeData2}
+                    />
+                    Moyen
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="arome_intensity"
+                      value="fort"
+                      checked={formData2.arome_intensity === "fort"}
+                      onChange={handleChangeData2}
+                    />
+                    Fort
+                  </label>
+                </form>
+              </TabContent>
+              <TabContent id="tab3" activeTab={activeTabSlide2}>
+                <form>
+                  <h3>Saveur</h3>
+                  {/* Option 15 */}
+                  <label>
+                    <input
+                      type="radio"
+                      name="flavor"
+                      value="acide"
+                      checked={formData2.flavor === "acide"}
+                      onChange={handleChangeData2}
+                    />
+                    Acide
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="flavor"
+                      value="amer"
+                      checked={formData2.flavor === "amer"}
+                      onChange={handleChangeData2}
+                    />
+                    Amer
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="flavor"
+                      value="sucre"
+                      checked={formData2.flavor === "sucre"}
+                      onChange={handleChangeData2}
+                    />
+                    Sucré
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="flavor"
+                      value="gras"
+                      checked={formData2.flavor === "gras"}
+                      onChange={handleChangeData2}
+                    />
+                    Gras
+                  </label>
+                  <h3>Note</h3>
+                  {[...Array(10)].map((droplet, i) => {
+                    const ratingValue = i + 1;
 
-//   const handleOptionChange10 = (event) => {
-//     setSelectedOption10(event.target.value);
-//     updateFormData2;
-//   };
+                    return (
+                      <label key={ratingValue} className="dropletContainer">
+                        <input
+                          type="radio"
+                          name="rating"
+                          value={ratingValue}
+                          className="dropletInput"
+                          onClick={() => setRating(ratingValue)}
+                          onChange={handleChangeData2}
+                        />
+                        <BsDropletFill
+                          className="droplet"
+                          size={30}
+                          color={
+                            ratingValue <= (hover || rating)
+                              ? "#d8af49"
+                              : "#e4e5e9"
+                          }
+                          onMouseEnter={() => setHover(ratingValue)}
+                          onMouseLeave={() => setHover(null)}
+                        />
+                      </label>
+                    );
+                  })}
+                </form>
+              </TabContent>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-//   const [hover, setHover] = useState(null);
-
-//   const handleSubmitForm2 = (event) => {
-//     event.preventDefault;
-//     axios
-//       .post(`${import.meta.env.VITE_BACKEND_URL}/tasting`, formData2)
-//       .then(() => {
-//         // getTastingId();
-//       });
-//   };
-
-//   return (
-//     <div>
-//       <h3>Formulaire du vin 2</h3>
-//       <button type="button" onClick={handleSubmitForm2}>
-//         Valider form 2
-//       </button>
-//       <div className="slideWrapper">
-//         <div className="secondSlide">
-//           <h3>Vin numéro 2</h3>
-//           <div className="tabs">
-//             {/* Tab nav */}
-//             <ul className="nav">
-//               <TabNavItem
-//                 title="Robe"
-//                 id="tab1"
-//                 activeTab={activeTabSlide2}
-//                 setActiveTab={setActiveTabSlide2}
-//               />
-//               <TabNavItem
-//                 title="Arôme"
-//                 id="tab2"
-//                 activeTab={activeTabSlide2}
-//                 setActiveTab={setActiveTabSlide2}
-//               />
-//               <TabNavItem
-//                 title="Saveur"
-//                 id="tab3"
-//                 activeTab={activeTabSlide2}
-//                 setActiveTab={setActiveTabSlide2}
-//               />
-//             </ul>
-//             {/* Content of the tabs */}
-//             <div className="outlet">
-//               <TabContent id="tab1" activeTab={activeTabSlide2}>
-//                 <form>
-//                   <h3>Robe</h3>
-//                   {/* Option 6 */}
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="jauneOr"
-//                       checked={selectedOption6 === "jauneOr"}
-//                       onChange={handleOptionChange6}
-//                     />
-//                     Jaune Or
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="roux"
-//                       checked={selectedOption6 === "roux"}
-//                       onChange={handleOptionChange6}
-//                     />
-//                     Roux
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="grenat"
-//                       checked={selectedOption6 === "grenat"}
-//                       onChange={handleOptionChange6}
-//                     />
-//                     Grenat
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="violet"
-//                       checked={selectedOption6 === "violet"}
-//                       onChange={handleOptionChange6}
-//                     />
-//                     Violet
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="jauneVert"
-//                       checked={selectedOption6 === "jauneVert"}
-//                       onChange={handleOptionChange6}
-//                     />
-//                     Jaune Vert
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="dore"
-//                       checked={selectedOption6 === "dore"}
-//                       onChange={handleOptionChange6}
-//                     />
-//                     Doré
-//                   </label>
-//                   <h3>Intensité des couleurs</h3>
-//                   {/* Option 7 */}
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="claire"
-//                       checked={selectedOption7 === "claire"}
-//                       onChange={handleOptionChange7}
-//                     />
-//                     Claire
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="moyenne"
-//                       checked={selectedOption7 === "moyenne"}
-//                       onChange={handleOptionChange7}
-//                     />
-//                     Moyenne
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="trouble"
-//                       checked={selectedOption7 === "trouble"}
-//                       onChange={handleOptionChange7}
-//                     />
-//                     Trouble
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="opaque"
-//                       checked={selectedOption7 === "opaque"}
-//                       onChange={handleOptionChange7}
-//                     />
-//                     Opaque
-//                   </label>
-//                 </form>
-//               </TabContent>
-//               <TabContent id="tab2" activeTab={activeTabSlide2}>
-//                 <form>
-//                   <h3>Arôme</h3>
-//                   {/* Option 8 */}
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="fruit"
-//                       checked={selectedOption8 === "fruit"}
-//                       onChange={handleOptionChange8}
-//                     />
-//                     Fruits
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="fleur"
-//                       checked={selectedOption8 === "fleur"}
-//                       onChange={handleOptionChange8}
-//                     />
-//                     Fleurs
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="vegetal"
-//                       checked={selectedOption8 === "vegetal"}
-//                       onChange={handleOptionChange8}
-//                     />
-//                     Végétal
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="epice"
-//                       checked={selectedOption8 === "epice"}
-//                       onChange={handleOptionChange8}
-//                     />
-//                     Epicé
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="animal"
-//                       checked={selectedOption8 === "animal"}
-//                       onChange={handleOptionChange8}
-//                     />
-//                     Animal
-//                   </label>
-//                   <h3>Intensité des arômes</h3>
-//                   {/* Option 9 */}
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="leger"
-//                       checked={selectedOption9 === "leger"}
-//                       onChange={handleOptionChange9}
-//                     />
-//                     Léger
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="moyen"
-//                       checked={selectedOption9 === "moyen"}
-//                       onChange={handleOptionChange9}
-//                     />
-//                     Moyen
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="fort"
-//                       checked={selectedOption9 === "fort"}
-//                       onChange={handleOptionChange9}
-//                     />
-//                     Fort
-//                   </label>
-//                 </form>
-//               </TabContent>
-//               <TabContent id="tab3" activeTab={activeTabSlide2}>
-//                 <form>
-//                   <h3>Saveur</h3>
-//                   {/* Option 10 */}
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="acide"
-//                       checked={selectedOption10 === "acide"}
-//                       onChange={handleOptionChange10}
-//                     />
-//                     Acide
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="amer"
-//                       checked={selectedOption10 === "amer"}
-//                       onChange={handleOptionChange10}
-//                     />
-//                     Amer
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="sucre"
-//                       checked={selectedOption10 === "sucre"}
-//                       onChange={handleOptionChange10}
-//                     />
-//                     Sucré
-//                   </label>
-//                   <label>
-//                     <input
-//                       type="radio"
-//                       value="gras"
-//                       checked={selectedOption10 === "gras"}
-//                       onChange={handleOptionChange10}
-//                     />
-//                     Gras
-//                   </label>
-//                   <h3>Note</h3>
-//                   {[...Array(10)].map((droplet, i) => {
-//                     const ratingValue = i + 1;
-
-//                     return (
-//                       <label key={ratingValue} className="dropletContainer">
-//                         <input
-//                           type="radio"
-//                           name="rating"
-//                           value={ratingValue}
-//                           className="dropletInput"
-//                           onClick={() => setRating(ratingValue)}
-//                         />
-//                         <BsDropletFill
-//                           className="droplet"
-//                           size={30}
-//                           color={
-//                             ratingValue <= (hover || rating)
-//                               ? "#d8af49"
-//                               : "#e4e5e9"
-//                           }
-//                           onMouseEnter={() => setHover(ratingValue)}
-//                           onMouseLeave={() => setHover(null)}
-//                         />
-//                       </label>
-//                     );
-//                   })}
-//                 </form>
-//               </TabContent>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+export default FormVin2;

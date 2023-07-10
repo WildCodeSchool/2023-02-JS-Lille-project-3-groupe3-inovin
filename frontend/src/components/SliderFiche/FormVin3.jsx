@@ -176,6 +176,7 @@ function FormVin3() {
                       type="radio"
                       name="robe"
                       value="dore"
+                      checked={formData3.robe === "dore"}
                       onChange={handleChangeData3}
                     />
                     Doré

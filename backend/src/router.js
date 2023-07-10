@@ -33,7 +33,6 @@ router.get("/tasting/:id", tastingControllers.read);
 router.put("/tasting", tastingControllers.updateById);
 router.post("/tasting", tastingControllers.add);
 router.delete("/tasting/:id", tastingControllers.destroy);
-router.get("/tastings/", tastingControllers.findTastingId);
 
 router.get("/compo_recipe", compoRecipeControllers.browse);
 // router.get("/compo_recipe/:id", compoRecipeControllers.read);

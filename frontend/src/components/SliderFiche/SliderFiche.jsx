@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 // import UserContext from "../../contexts/UserContext";
 import "./SliderFiche.scss";
 
-// import FormVin1 from "./FormVin1";
+import FormVin1 from "./FormVin1";
 // import FormVin2 from "./FormVin2";
-import FormVin3 from "./FormVin3";
-import FormVin4 from "./FormVin4";
+// import FormVin3 from "./FormVin3";
+// import FormVin4 from "./FormVin4";
 
 function SliderFiche() {
   // useContext
@@ -21,16 +21,12 @@ function SliderFiche() {
     navigate("/AtelierCreation");
   };
 
-  // const handleFormData1 = (formData1) => {
-  //   console.log(formData1);
-  // };
-
   return (
     <div className="carouselWrapper">
-      {/* <FormVin1 />
-      <FormVin2 /> */}
+      <FormVin1 />
+      {/* <FormVin2 />
       <FormVin3 />
-      <FormVin4 />
+      <FormVin4 /> */}
 
       <button type="button">Envoyer tous les formulaires</button>
       <button type="button" onClick={handleClickNext}>
