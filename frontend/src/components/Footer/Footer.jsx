@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
+import ThemeProvider from "../../contexts/ThemeContext";
 
 function Footer() {
+  const { theme, toggleTheme } = useContext(ThemeProvider);
   const [modalOpen, setModalOpen] = useState(false);
   const handleLegalLinkClick = () => {
     setModalOpen(true);
@@ -19,6 +21,9 @@ function Footer() {
       >
         © 2023 INO VIN. Tous droits réservés.{" "}
       </Link>
+      <button type="button" onClick={toggleTheme}>
+        Changer de thème : {theme === "dark" ? "Clair" : "Sombre"}
+      </button>
       <button
         type="button"
         className="legal-link"
