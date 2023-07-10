@@ -59,6 +59,7 @@ function Resume() {
   const openModal = () => {
     setModalOpen(true);
   };
+
   return (
     <div className="resume_wrapper">
       <div className="profil">
