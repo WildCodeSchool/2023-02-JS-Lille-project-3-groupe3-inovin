@@ -13,6 +13,7 @@ import { LogingProvider } from "./contexts/LogingContext";
 
 import "./App.css";
 import { UserProvider } from "./contexts/UserContext";
+import FormVin2 from "./components/SliderFiche/FormVin2";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/Resume" element={<Resume />} />
             <Route path="/Admin" element={<Admin />} />
             <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
+            <Route path="/Vin2" element={<FormVin2 />} />
           </Routes>
 
           <Footer />

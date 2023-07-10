@@ -87,7 +87,7 @@ function FormVin3() {
         </button>
       ) : (
         <button type="button" onClick={handleSubmitForm3}>
-          Valider form 1
+          Valider form 3
         </button>
       )}
       <div className="slideWrapper">

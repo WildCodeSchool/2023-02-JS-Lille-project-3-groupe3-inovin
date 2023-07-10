@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 // import UserContext from "../../contexts/UserContext";
 import "./SliderFiche.scss";
 
+import { useState } from "react";
 import FormVin1 from "./FormVin1";
-// import FormVin2 from "./FormVin2";
-// import FormVin3 from "./FormVin3";
-// import FormVin4 from "./FormVin4";
+import FormVin2 from "./FormVin2";
+import FormVin3 from "./FormVin3";
+import FormVin4 from "./FormVin4";
 
 function SliderFiche() {
   // useContext
@@ -15,6 +16,23 @@ function SliderFiche() {
   // console.log(`slider fiche account_id: ${user} `);
 
   // navigate
+
+  const [currentFormIndex, setCurrentFormIndex] = useState(0);
+  const forms = [<FormVin1 />, <FormVin2 />, <FormVin3 />, <FormVin4 />];
+
+  const nextForm = () => {
+    setCurrentFormIndex(currentFormIndex + 1);
+  };
+
+  const previousForm = () => {
+    setCurrentFormIndex(currentFormIndex - 1);
+  };
+
+  const showActualForm = () => {
+    const actualForm = forms[currentFormIndex];
+    return actualForm || null;
+  };
+
   const navigate = useNavigate();
 
   const handleClickNext = () => {
@@ -23,14 +41,20 @@ function SliderFiche() {
 
   return (
     <div className="carouselWrapper">
-      <FormVin1 />
-      {/* <FormVin2 />
-      <FormVin3 />
-      <FormVin4 /> */}
+      {showActualForm()}
+      {currentFormIndex > 0 && (
+        <button type="button" onClick={previousForm}>
+          Revenir au formulaire précédent
+        </button>
+      )}
+      {currentFormIndex < forms.length - 1 && (
+        <button type="button" onClick={nextForm}>
+          Form Suivant
+        </button>
+      )}
 
-      <button type="button">Envoyer tous les formulaires</button>
       <button type="button" onClick={handleClickNext}>
-        next page
+        Page Suivante
       </button>
     </div>
   );

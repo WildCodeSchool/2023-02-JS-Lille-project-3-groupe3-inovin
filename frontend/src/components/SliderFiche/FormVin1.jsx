@@ -4,11 +4,12 @@ import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
-// import FormVin2 from "./FormVin2";
 
 function FormVin1() {
-  const [activeTabSlide1, setActiveTabSlide1] = useState("tab1");
-  const [isEditing, setIsEditing] = useState(false);
+  const [activeTabSlide1, setActiveTabSlide1] = useState("tab1"); // useState pour gérer l'affichage des onglets
+
+  const [isEditing, setIsEditing] = useState(false); // Modifier le contenu du bouton, post/edit
+
   // const { user } = useContext(UserContext);
 
   const [rating, setRating] = useState(null);
