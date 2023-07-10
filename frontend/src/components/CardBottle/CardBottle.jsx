@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 import AnimationBottle from "../BouteilleAnimation/AnimationBottle";
 import "./CardBottle.scss";
 
@@ -30,3 +31,6 @@ export default function CardBottle({ id }) {
     </div>
   );
 }
+CardBottle.propTypes = {
+  id: PropTypes.string.isRequired,
+};
