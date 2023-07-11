@@ -42,7 +42,7 @@
 
 .boutonSubmitAdmin2 {
   margin-top: 2.7rem;
-  margin-left: 125%;
+  margin-left: 65vw;
   width: 10rem;
   height: 2.5rem;
   background-color: #d9d9d9;
@@ -52,7 +52,7 @@
 }
 
 .containerTraitNoir {
-  margin-top: 4%;
+  margin-top: 1vh;
   width: 100%;
   height: 0.3%;
   background-color: black;
@@ -95,16 +95,20 @@
   justify-content: space-evenly;
 }
 
-.deuxBoutons {
+.troisBoutons {
   display: flex;
   margin-top: 2.7rem;
-  width: 10rem;
+  width: 20vw;
   height: 2.5rem;
   background-color: #d9d9d9;
   border: #d9d9d9;
   font-family: $font_title_small;
   font-size: 1.5rem;
   justify-content: center;
+}
+
+.addTasting {
+  width: 30vw;
 }
 
 .titleMiniInfo {
@@ -121,7 +125,7 @@
 .displaySuggestWineBottle {
   // display: flex;
   // flex-direction: column;
-  width: 35%;
+  width: 35.5vw;
   // height:20px;
   // border-radius: 5px;
   // background-color: #ffffff5e;
@@ -132,7 +136,7 @@
   max-height: 15vh;
   position: absolute;
   left: 246px;
-  top: 640px;
+  top: 629px;
   // bottom: 2px
   z-index: 10;
 
@@ -157,17 +161,31 @@
 }
 
 .successAdding {
-  display: flex;
-  justify-content: center;
   color: green;
   font-size: 2rem;
+  position: relative;
+  margin-top: 2.7rem;
+  margin-left: 68vw;
+  width: 50vw;
+  height: 2.5rem;
 }
 
 .deletedBottle {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 8vw;
+  margin-top: -5vh;
   color: red;
   font-size: 2rem;
+}
+
+.cantDeletedBottle {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 6vw;
+  margin-top: -5vh;
+  color: red;
+  font-size: 1.7rem;
 }
 
 .editWineModal {
@@ -213,4 +231,22 @@
   justify-content: center;
   color: green;
   font-size: 2rem;
+}
+
+.containerBtnHome {
+  display: flex;
+  justify-content: center;
+}
+
+.navToHome {
+  display: flex;
+  margin-top: 2vh;
+  width: 20vw;
+  height: 2.5rem;
+  text-align: center;
+  background-color: #d9d9d9;
+  border: #d9d9d9;
+  font-family: $font_title_small;
+  font-size: 1.5rem;
+  justify-content: center;
 }
