@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Lexique from "../Lexique/Lexique";
-
 // import UserContext from "../../contexts/UserContext";
-
 import "./SliderFiche.scss";
-
 import FormVin1 from "./FormVin1";
 import FormVin2 from "./FormVin2";
 import FormVin3 from "./FormVin3";

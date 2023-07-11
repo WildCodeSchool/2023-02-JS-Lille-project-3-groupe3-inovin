@@ -1,7 +1,7 @@
 import { useState } from "react";
-// import UserContext from "../../contexts/UserContext";
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
+// import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
@@ -10,7 +10,22 @@ function FormVin1() {
 
   const [isEditing, setIsEditing] = useState(false); // Modifier le contenu du bouton, post/edit
 
+  // Récupérer et traiter les informations du userContext
   // const { user } = useContext(UserContext);
+  // const [userData, setUserData] = useState(null);
+
+  // const getUserData = () => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_BACKEND_URL}/account`, {
+  //       params: { account_id: user },
+  //     })
+  //     .then((response) => {
+  //       setUserData(resultAccountId);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // };
 
   const [rating, setRating] = useState(null);
 
@@ -23,9 +38,9 @@ function FormVin1() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
-    wineBottle_id: 6,
+    user_id: 6,
+    user_account_ID: 6,
+    wineBottle_id: 1,
   });
 
   const [editFormData1, setEditFormData1] = useState({
@@ -35,9 +50,9 @@ function FormVin1() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
-    wineBottle_id: 6,
+    user_id: 6,
+    user_account_ID: 6,
+    wineBottle_id: 1,
   });
 
   const handleChangeData1 = (evt) => {
