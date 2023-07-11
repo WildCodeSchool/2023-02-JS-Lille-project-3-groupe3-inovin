@@ -27,6 +27,18 @@ function AdminAjoutVin() {
   // state to display (or not) success of adding wineBottle
   const [addedWine, setAddedWine] = useState(false);
 
+  // function pour get la bdd et mettre à jour wineData
+  const dataWineGetter = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/wineBottles`)
+      .then((response) => {
+        setWineData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching wine bottles", error);
+      });
+  };
+
   // get value from inputs form and push it in formAddWine state
   const handleChangeAddWine = (event) => {
     event.preventDefault();
@@ -43,9 +55,8 @@ function AdminAjoutVin() {
     // post wine informations
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/winebottle`, formAddWine)
-      .then((response) => {
-        const newWineBottle = response.data;
-        setWineData([...wineData, newWineBottle]);
+      .then(() => {
+        dataWineGetter();
         setAddedWine(true);
       })
       .catch((err) => {
@@ -53,7 +64,7 @@ function AdminAjoutVin() {
       });
   };
 
-  // à chaque fois qu'une bouteille est ajoutée, rempli wineData avec toutes les wine bottle de la database
+  // Rempli wineData avec toutes les wine bottle de la database à l'arrivée sur la page
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/wineBottles`)
@@ -63,7 +74,7 @@ function AdminAjoutVin() {
       .catch((error) => {
         console.error("Error fetching wine bottles", error);
       });
-  }, [addedWine]);
+  }, []);
 
   /* SECOND PART, GET WINE BOTTLE BY NAME IN SEARCH BAR */
 
@@ -164,7 +175,7 @@ function AdminAjoutVin() {
       .delete(`${import.meta.env.VITE_BACKEND_URL}/winebottle/${bottleId}`)
       .then(() => {
         // Remove the deleted bottle from wineData
-        setWineData(wineData.filter((wine) => wine.id !== bottleId));
+        dataWineGetter();
         setBottleDeleted(true);
         setDeleteError(false);
       })
@@ -217,11 +228,9 @@ function AdminAjoutVin() {
         `${import.meta.env.VITE_BACKEND_URL}/wineBottle/${bottleId}`,
         formModifyWine
       )
-      .then((response) => {
+      .then(() => {
         setModifySuccess(true);
-        const newWineBottle = response.data;
-        setWineData([...wineData, newWineBottle]);
-        // mettre à jour wineData et wineSeachSuggest quand put fonctionne
+        dataWineGetter();
       })
       .catch((error) => {
         console.error("Edit impossible", error);
@@ -394,7 +403,7 @@ function AdminAjoutVin() {
       </div>
       {/* 2x message error place */}
 
-      {bottleDeleted ? <p className="deletedBottle">Supprimée</p> : ""}
+      {bottleDeleted ? <p className="deletedBottle">Supprimé</p> : ""}
       {deleteError ? (
         <p className="cantDeletedBottle">
           <FiAlertTriangle /> &nbsp; Bouteille utilisée
