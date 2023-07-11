@@ -21,9 +21,9 @@ function FormVin3() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
-    wineBottle_id: 5,
+    user_id: 6,
+    user_account_ID: 6,
+    wineBottle_id: 3,
   });
 
   const [editFormData3, setEditFormData3] = useState({
@@ -33,9 +33,9 @@ function FormVin3() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
-    wineBottle_id: 5,
+    user_id: 6,
+    user_account_ID: 6,
+    wineBottle_id: 3,
   });
 
   const handleChangeData3 = (evt) => {
