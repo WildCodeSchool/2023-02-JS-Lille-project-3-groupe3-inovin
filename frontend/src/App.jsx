@@ -13,32 +13,35 @@ import { LogingProvider } from "./contexts/LogingContext";
 
 import "./App.css";
 import { UserProvider } from "./contexts/UserContext";
+import { BottleProvider } from "./contexts/BottleContext";
 
 function App() {
   return (
     <UserProvider>
-      <Router>
-        <div>
-          <div className="backgroundHeader">
-            <LogingProvider>
-              <Navbar />
-            </LogingProvider>
+      <BottleProvider>
+        <Router>
+          <div>
+            <div className="backgroundHeader">
+              <LogingProvider>
+                <Navbar />
+              </LogingProvider>
+            </div>
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Inscription" element={<Inscription />} />
+              <Route path="/FicheDegustation" element={<FicheDegustation />} />
+              <Route path="/AtelierCreation" element={<AtelierCreation />} />
+              <Route path="/LivreDor" element={<LivreDor />} />
+              <Route path="/Resume" element={<Resume />} />
+              <Route path="/Admin" element={<Admin />} />
+              <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
+            </Routes>
+
+            <Footer />
           </div>
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Inscription" element={<Inscription />} />
-            <Route path="/FicheDegustation" element={<FicheDegustation />} />
-            <Route path="/AtelierCreation" element={<AtelierCreation />} />
-            <Route path="/LivreDor" element={<LivreDor />} />
-            <Route path="/Resume" element={<Resume />} />
-            <Route path="/Admin" element={<Admin />} />
-            <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
-          </Routes>
-
-          <Footer />
-        </div>
-      </Router>
+        </Router>
+      </BottleProvider>
     </UserProvider>
   );
 }

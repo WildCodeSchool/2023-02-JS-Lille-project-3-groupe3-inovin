@@ -3,8 +3,8 @@ const mailer = require("./Mailer");
 // Create a MySQL connection
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "sql_test",
-  password: "password",
+  user: "Florent",
+  password: "nadinemorano",
   database: "inovin_bdd",
 });
 // recuperer le prenom du client

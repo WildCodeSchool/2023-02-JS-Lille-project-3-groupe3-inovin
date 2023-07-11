@@ -1,25 +1,19 @@
 import "./AdminAjoutVin.scss";
 import axios from "axios";
 import ReactModal from "react-modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { FiAlertTriangle } from "react-icons/fi";
+import BottleContext from "../../contexts/BottleContext";
 
 function AdminAjoutVin() {
+  const navigate = useNavigate();
+
+  const { wineBottleId, setWineBottleId } = useContext(BottleContext); // bottle id of current bottle chose by Admin from adminAjoutVin, you can use it for update database
+
   /* FIRST PART, POST WINE BOTTLE TO DATABASE */
 
-  const [wineList, setWineList] = useState([]); // array with all wineBottle from the database
-
-  // à chaque fois qu'une bouteille est ajoutée, rempli wineList avec toutes les wine bottle de la database
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/wineBottles`)
-      .then((response) => {
-        const suggestionsData = response.data;
-        setWineList(suggestionsData);
-      })
-      .catch((error) => {
-        console.error("Error fetching wine bottles", error);
-      });
-  }, [wineList]);
+  const [wineData, setWineData] = useState([]); // array with all wineBottle from the database
 
   // stock wine infos du form pour post
   const [formAddWine, setFormAddWine] = useState({
@@ -31,11 +25,12 @@ function AdminAjoutVin() {
   });
 
   // state to display (or not) success of adding wineBottle
-  const [addWineBottle, setAddWineBottle] = useState(false);
+  const [addedWine, setAddedWine] = useState(false);
 
   // get value from inputs form and push it in formAddWine state
   const handleChangeAddWine = (event) => {
     event.preventDefault();
+    setAddedWine(false);
     setFormAddWine({
       ...formAddWine,
       [event.target.name]: event.target.value,
@@ -49,17 +44,26 @@ function AdminAjoutVin() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/winebottle`, formAddWine)
       .then((response) => {
-        // Get the new bottle added
         const newWineBottle = response.data;
-        // update the wineList en ajoutant la nouvelle bouteille
-        setWineList([...wineList, newWineBottle]);
-        setAddWineBottle(true);
+        setWineData([...wineData, newWineBottle]);
+        setAddedWine(true);
       })
-
       .catch((err) => {
         console.error(err);
       });
   };
+
+  // à chaque fois qu'une bouteille est ajoutée, rempli wineData avec toutes les wine bottle de la database
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/wineBottles`)
+      .then((response) => {
+        setWineData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching wine bottles", error);
+      });
+  }, [addedWine]);
 
   /* SECOND PART, GET WINE BOTTLE BY NAME IN SEARCH BAR */
 
@@ -76,17 +80,19 @@ function AdminAjoutVin() {
   const [deleteError, setDeleteError] = useState(false); // display error message, cannot be deleted
 
   // function to catch input value with event
-  // then filter wineList in a new array to compare the input value (lowerCase) with bottleWine in wineList (bottle_name in lowerCase too)
+  // then filter wineData in a new array to compare the input value (lowerCase) with bottleWine in wineData (bottle_name in lowerCase too)
   // includes for 'including the letter in the name' ? && (charAt(0)) to verify the 1st letter of name equal the first letter in input Value.
-  // .map used to keep only the bottle_name because wineList contains others informations
+  // .map used to keep only the bottle_name because wineData contains others informations
   // then, put the new array in wineSearchSuggest to show the suggest
   const catchValue = (event) => {
     const inputToLower = event.target.value.toLowerCase();
 
-    const newArray = wineList
+    const newArray = wineData
       .filter((wine) => {
-        const bottleNameInList = wine.bottle_name.toLowerCase();
+        const bottleNameInList =
+          wine.bottle_name && wine.bottle_name.toLowerCase(); // Vérifier si bottle_name est défini
         return (
+          bottleNameInList &&
           bottleNameInList.includes(inputToLower) &&
           bottleNameInList.charAt(0) === inputToLower.charAt(0)
         );
@@ -157,6 +163,8 @@ function AdminAjoutVin() {
     axios
       .delete(`${import.meta.env.VITE_BACKEND_URL}/winebottle/${bottleId}`)
       .then(() => {
+        // Remove the deleted bottle from wineData
+        setWineData(wineData.filter((wine) => wine.id !== bottleId));
         setBottleDeleted(true);
         setDeleteError(false);
       })
@@ -209,10 +217,27 @@ function AdminAjoutVin() {
         `${import.meta.env.VITE_BACKEND_URL}/wineBottle/${bottleId}`,
         formModifyWine
       )
-      .then(setModifySuccess(true))
+      .then((response) => {
+        setModifySuccess(true);
+        const newWineBottle = response.data;
+        setWineData([...wineData, newWineBottle]);
+        // mettre à jour wineData et wineSeachSuggest quand put fonctionne
+      })
       .catch((error) => {
         console.error("Edit impossible", error);
       });
+  };
+
+  /* CHOOSE A BOTTLE FOR DEGUSTATION */
+
+  const handleNavigate = () => {
+    navigate("/");
+  };
+  const handleChooseBottle = (event) => {
+    event.preventDefault();
+    setWineBottleId([...wineBottleId, bottleId]);
+
+    // take the bottleId & put in BottleContext
   };
 
   return (
@@ -270,17 +295,16 @@ function AdminAjoutVin() {
             onChange={handleChangeAddWine}
           />
         </label>
-        <input
-          type="submit"
-          value="Ajouter un vin"
-          className="boutonSubmitAdmin2"
-        />
+        {addedWine ? (
+          <p className="successAdding">Ajoutée !</p>
+        ) : (
+          <input
+            type="submit"
+            value="Ajouter un vin"
+            className="boutonSubmitAdmin2"
+          />
+        )}
       </form>
-      {addWineBottle ? (
-        <p className="successAdding">La bouteille a bien été ajoutée</p>
-      ) : (
-        ""
-      )}
 
       {/* Second part of page, SEARCH */}
 
@@ -334,7 +358,7 @@ function AdminAjoutVin() {
       {/* THIRD PART, MODIFY & DELETE */}
       <div className="containerBoutonInfoVin">
         <button
-          className="deuxBoutons"
+          className="troisBoutons"
           type="submit"
           value="MODIFIER LE VIN"
           onClick={handleModifyBottle}
@@ -342,7 +366,15 @@ function AdminAjoutVin() {
           MODIFIER LE VIN
         </button>
         <button
-          className="deuxBoutons"
+          className="troisBoutons addTasting"
+          type="submit"
+          value="AJOUTER A LA DEGUSTATION"
+          onClick={handleChooseBottle}
+        >
+          AJOUTER A LA DEGUSTATION
+        </button>
+        <button
+          className="troisBoutons"
           type="submit"
           value="MODIFIER LE VIN"
           onClick={handleDeleteBottle}
@@ -350,17 +382,22 @@ function AdminAjoutVin() {
           SUPPRIMER LE VIN
         </button>
       </div>
+      <div className="containerBtnHome">
+        <button
+          className="navToHome"
+          type="submit"
+          value="Navigate to homePage"
+          onClick={handleNavigate}
+        >
+          Accueil
+        </button>
+      </div>
       {/* 2x message error place */}
 
-      {bottleDeleted ? (
-        <p className="deletedBottle">La bouteille a bien été supprimée</p>
-      ) : (
-        ""
-      )}
+      {bottleDeleted ? <p className="deletedBottle">Supprimée</p> : ""}
       {deleteError ? (
-        <p className="deletedBottle">
-          La bouteille ne peut pas être supprimée. La bouteille est utilisée
-          pour la création de recette par au moins un utilisateur.
+        <p className="cantDeletedBottle">
+          <FiAlertTriangle /> &nbsp; Bouteille utilisée
         </p>
       ) : (
         ""
@@ -388,6 +425,7 @@ function AdminAjoutVin() {
                     className="inputModifLabel"
                     placeholder={bottleName}
                     onChange={handleChangeModifyWine}
+                    required
                   />
                 </label>
 
@@ -399,6 +437,7 @@ function AdminAjoutVin() {
                     className="inputModifLabel"
                     placeholder={bottleRegion}
                     onChange={handleChangeModifyWine}
+                    required
                   />
                 </label>
                 <label className="titleMiniInfo2">
@@ -409,6 +448,7 @@ function AdminAjoutVin() {
                     className="inputModifLabel"
                     placeholder={bottleColor}
                     onChange={handleChangeModifyWine}
+                    required
                   />
                 </label>
 
@@ -420,6 +460,7 @@ function AdminAjoutVin() {
                     className="inputModifLabel"
                     placeholder={bottleYear}
                     onChange={handleChangeModifyWine}
+                    required
                   />
                 </label>
 
@@ -431,6 +472,7 @@ function AdminAjoutVin() {
                     className="inputModifLabel"
                     placeholder={bottleCepage}
                     onChange={handleChangeModifyWine}
+                    required
                   />
                 </label>
                 <input
