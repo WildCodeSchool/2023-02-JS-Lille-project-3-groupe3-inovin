@@ -6,24 +6,7 @@ function AnimationBottle() {
   const [progress, setProgress] = useState(0); // État pour gérer la progression
   const [fixedProgress, setFixedProgress] = useState(null); // État pour stocker la progression fixée
   const [isLocked, setIsLocked] = useState(false); // État pour indiquer si la progression est verrouillée
-  const [wineBottleId, setWineBottleId] = useState(null); // État pour stocker l'ID de la bouteille de vin
   const progressBarRef = useRef(null); // Référence à l'élément de la barre de progression pour ne pas scroller sur body entier
-
-  useEffect(() => {
-    // Effectuer la requête GET pour obtenir wineBottle_id depuis la table compo_recipe
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`)
-      .then((response) => {
-        const { wineBottle_id } = response.data;
-        setWineBottleId(wineBottle_id); // Mettre à jour l'état avec l'ID de la bouteille de vin
-      })
-      .catch((error) => {
-        console.error(
-          "Une erreur s'est produite lors de la récupération de wineBottle_id :",
-          error
-        );
-      });
-  }, []);
 
   useEffect(() => {
     // Écouteur d'événement pour la souris
@@ -62,28 +45,38 @@ function AnimationBottle() {
     };
   }, [isLocked, fixedProgress]);
 
+  // ...
+  const progressRef = useRef(null); // Référence pour stocker la valeur de progress lors du clic
+
+  // ...
+
   const handleClick = () => {
     if (fixedProgress === null) {
+      progressRef.current = progress; // Stocker la valeur actuelle de progress
+
       setFixedProgress(progress); // Fixer la progression
       setIsLocked(true); // Verrouiller la progression
 
       // Effectuer la requête POST pour envoyer la valeur progress et wineBottleId
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`, {
-          percentage: progress,
-          wineBottle_id: wineBottleId,
+          percentage: progressRef.current, // Utiliser la valeur stockée de progress
+          user_id: 3,
+          wineBottle_id: 1,
+          user_account_ID: 1,
         })
         .then()
         .catch((error) => {
           console.error(
-            "Une erreur s'est produite lors de l'envoi de la valeur progress et wineBottleId!",
+            "Une erreur s'est produite lors de l'envoi des données :",
             error
           );
         });
     } else {
-      setIsLocked(false); // Déverrouiller la progression
+      setIsLocked(false);
     }
   };
+  // ...
 
   // obligation pour passer le commit (enter sur clavier)
   const handleKeyDown = (e) => {

@@ -7,8 +7,13 @@ class compoRecipeManager extends AbstractManager {
 
   insert(compoRecipe) {
     return this.database.query(
-      `insert into ${this.table} (percentage) values (?)`,
-      [compoRecipe.percentage]
+      `insert into ${this.table} (percentage, user_id, user_account_ID, wineBottle_id) values (?,?,?,?)`,
+      [
+        compoRecipe.percentage,
+        compoRecipe.user_id,
+        compoRecipe.user_account_ID,
+        compoRecipe.wineBottle_id,
+      ]
     );
   }
 
@@ -19,5 +24,4 @@ class compoRecipeManager extends AbstractManager {
     );
   }
 }
-
 module.exports = compoRecipeManager;

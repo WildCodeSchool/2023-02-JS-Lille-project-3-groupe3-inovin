@@ -19,7 +19,7 @@ export default function CardBottle({ id }) {
   }, [id]);
 
   return (
-    <div className="bootle-card">
+    <div className="bottle-card">
       {wineBottle && (
         <div>
           <h3 className="name-bottle">{wineBottle.bottle_name}</h3>

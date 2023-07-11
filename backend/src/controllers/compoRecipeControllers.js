@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.compoRecipe
+  models.comporecipe
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.compo_recipe
+  models.compoRecipe
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -27,7 +27,6 @@ const read = (req, res) => {
       res.sendStatus(500);
     });
 };
-
 const edit = (req, res) => {
   const compoRecipe = req.body;
 
@@ -35,7 +34,7 @@ const edit = (req, res) => {
 
   compoRecipe.id = parseInt(req.params.id, 10);
 
-  models.compoRecipe
+  models.comporecipe
     .update(compoRecipe)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -55,10 +54,10 @@ const add = (req, res) => {
 
   // TODO validations (length, format...)
 
-  models.compoRecipe
+  models.comporecipe
     .insert(compoRecipe)
     .then(([result]) => {
-      res.location(`/compoRecipes/${result.insertId}`).sendStatus(201);
+      res.location(`/compoRecipe/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -85,7 +84,6 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
-
   edit,
   add,
   destroy,
