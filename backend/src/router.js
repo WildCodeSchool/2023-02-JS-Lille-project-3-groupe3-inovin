@@ -30,7 +30,8 @@ router.delete("/winebottle/:id", winebottleControllers.destroy);
 
 router.get("/tasting", tastingControllers.browse);
 router.get("/tasting/:id", tastingControllers.read);
-router.put("/tasting/:id", tastingControllers.edit);
+// router.put("/tasting/:id", tastingControllers.edit);
+router.put("/tasting", tastingControllers.updateById);
 router.post("/tasting", tastingControllers.add);
 router.delete("/tasting/:id", tastingControllers.destroy);
 

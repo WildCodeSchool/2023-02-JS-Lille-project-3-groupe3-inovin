@@ -14,6 +14,7 @@ import { LogingProvider } from "./contexts/LogingContext";
 import "./App.css";
 import { UserProvider } from "./contexts/UserContext";
 
+
 function App() {
   return (
     <UserProvider>
@@ -34,6 +35,8 @@ function App() {
             <Route path="/Resume" element={<Resume />} />
             <Route path="/Admin" element={<Admin />} />
             <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
+
+
           </Routes>
 
           <Footer />

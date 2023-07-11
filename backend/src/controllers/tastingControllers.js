@@ -82,10 +82,48 @@ const destroy = (req, res) => {
     });
 };
 
+const findTastingId = (req, res) => {
+  const { wineBottle_id } = req.query;
+  models.tasting
+    .findByBottleTasting(wineBottle_id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const updateById = (req, res) => {
+  const tasting = req.body;
+  const userAccountId = req.query.user_account_ID;
+  const wineBottleId = req.query.wineBottle_id;
+  models.tasting
+    .updateById(tasting, userAccountId, wineBottleId)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  findTastingId,
+  updateById,
 };

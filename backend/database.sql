@@ -262,6 +262,7 @@ CREATE TABLE `wineBottle` (
 
 LOCK TABLES `wineBottle` WRITE;
 /*!40000 ALTER TABLE `wineBottle` DISABLE KEYS */;
+
 INSERT INTO `wineBottle` VALUES (1,'Chateau Auzias','Languedoc-Roussillon','blanc',2021,'chardonnay','frontend\src\assets\chardonnay-2021-chateau-auzias.png'),
 (2,'Pouilly-Fumé Nuit Blanche','Val de Loire','blanc',2020,'sauvignon','frontend\src\assets\pouilly-fume-nuit-blanche.jpg'),
 (3,'Pinot Gris Grand Cru zinnkoepfle','Alsace','blanc',2020,'Pinot gris','frontend\src\assets\pouilly-fume-nuit-blanche.jpg'),
@@ -269,6 +270,7 @@ INSERT INTO `wineBottle` VALUES (1,'Chateau Auzias','Languedoc-Roussillon','blan
 (5,'Famille Sabourin Cubée Héléna','Bordeaux','rouge',2018,'Merlot',''),
 (6,'Château les Mesclances','Côtes-de-Provence','rouge',2019,'Cabernet Sauvignon',''),
 (7,'Astérie','Bordeaux','blanc',2019,'Sauvignon','');
+
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
