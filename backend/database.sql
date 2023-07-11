@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: inovin_bdd
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version 8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'florent@gmail.fr','nadineMorano'),(2,'Cedric@gmail.fr','inovinLove');
+INSERT INTO `account` VALUES (1,'cedric@inovin.com','in0v1rouge'),(2,'valmont@gmail.com','patacrepe'), (3,'marie@gmail.com','i6you'), (4,'anne@gmail.com','saw7party'), (5,'khouloud@gmail.com','jai-pas-signé'), (6,'florent@gmail.com','monmdpsupersafe') ;
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,9 @@ CREATE TABLE `compoRecipe` (
 
 LOCK TABLES `compoRecipe` WRITE;
 /*!40000 ALTER TABLE `compoRecipe` DISABLE KEYS */;
-INSERT INTO `compoRecipe` VALUES (1,47,3,1,6),(2,53,3,1,5);
+INSERT INTO `compoRecipe` VALUES (1,10,2,2,1), (2,10,2,2,2), (3,80,2,2,3),
+(4,80,3,3,6), (5,10,3,3,3), (6,10,3,3,1),
+(7,60,4,4,5), (8,30,4,4,3), (9,10,4,4,2);
 /*!40000 ALTER TABLE `compoRecipe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +100,12 @@ CREATE TABLE `preference` (
 
 LOCK TABLES `preference` WRITE;
 /*!40000 ALTER TABLE `preference` DISABLE KEYS */;
-INSERT INTO `preference` VALUES (1,'blanc','fruit','j\'aime le vin doux pour l\'apéro!',3);
+INSERT INTO `preference` VALUES (1,'rouge','fruité',"j'aime le vin fait maison", 1),
+(2,'blanc','fruité',"j'aime le vin doux pour l'apéro!", 2),
+(3,'rouge','fruité',"je bois pas mais pourquoi pas", 3),
+(4,'blanc','minéral',"avec les copains", 4),
+(5,'rouge','minéral',"pour accompagner un bon couscous", 5),
+(6,'rouge','fruit',"le soir devant un film", 6);
 /*!40000 ALTER TABLE `preference` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +129,7 @@ CREATE TABLE `recipe` (
 
 LOCK TABLES `recipe` WRITE;
 /*!40000 ALTER TABLE `recipe` DISABLE KEYS */;
-INSERT INTO `recipe` VALUES (1,'Blanc Nordique');
+INSERT INTO `recipe` VALUES (1,'Blanc Nordique'), (2,'Par nous, pour vous'), (3,'Rouge feu') ;
 /*!40000 ALTER TABLE `recipe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +161,7 @@ CREATE TABLE `relation_recipe` (
 
 LOCK TABLES `relation_recipe` WRITE;
 /*!40000 ALTER TABLE `relation_recipe` DISABLE KEYS */;
-INSERT INTO `relation_recipe` VALUES (1,1,3,1,1),(2,2,3,1,1);
+INSERT INTO `relation_recipe` VALUES (1,3,1,1,1),(2,4,2,2,2),(3,7,3,3,3);
 /*!40000 ALTER TABLE `relation_recipe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +197,9 @@ CREATE TABLE `tasting` (
 
 LOCK TABLES `tasting` WRITE;
 /*!40000 ALTER TABLE `tasting` DISABLE KEYS */;
-INSERT INTO `tasting` VALUES (9,'jaune','trouble','fruit','leger','gras','5/10',3,1,5);
+INSERT INTO `tasting` VALUES (1,'jaune','trouble','fruit','leger','gras','5/10',2,2,1), (2,'jaune vert','clair','vegetal','moyen','amer','3/10',2,2,2), (3,'jaune or','clair','fruite','fort','sucre','8/10',2,2,3), (4,'grenat','clair','fruite','leger','sucre','7/10',2,2,4),
+(5,'jaune','trouble','fruit','leger','gras','5/10',3,3,1), (6,'jaune vert','clair','vegetal','fort','amer','1/10',3,3,2), (7,'jaune or','clair','fruite','moyen','sucre','5/10',3,3,3), (8,'grenat','trouble','fruite','moyen','sucre','10/10',3,3,6),
+(9,'jaune','trouble','fruit','leger','gras','1/10',4,4,1), (10,'jaune','trouble','animal','fort','amer','3/10',4,4,2), (11,'jaune or','trouble','fruite','fort','sucre','6/10',4,4,3), (12,'grenat','clair','fruite','fort','sucre','7/10',4,4,5) ;
 /*!40000 ALTER TABLE `tasting` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +217,7 @@ CREATE TABLE `user` (
   `birthdate` date NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `ordering` tinyint NOT NULL,
-  `feedbackRating` tinyint NOT NULL,
+  `feedbackRating` tinyint NULL,
   `feedbackComment` varchar(255) DEFAULT NULL,
   `user_type` varchar(45) NOT NULL,
   `account_ID` int NOT NULL,
@@ -224,7 +233,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,'khouloud','belkhir','1992-12-27','18 rue vaillant 59000 Lille',0,4,'','utilisateur',1),(4,'Cédric','guyot','1878-07-15','cédricinovin@gmail.fr',0,5,'','administrateur',2);
+INSERT INTO `user` VALUES (1,'Cédric','Guyot','1976-10-23','',0,5,"Mon atelier c'est le meilleur",'administrateur',1),(2,'Val','Agostini','1991-07-15','',0,5,'','utilisateur',2), (3,'Marie','Vangrevelynghe','1993-08-06','',0,5,'','utilisateur',3), (4,'Anne','Marchasson','1990-03-22','',0,5,'','utilisateur',4), (5,'Khouloud','Belkhir','1992-12-27','',0,5,'','utilisateur',5), (6,'Florent','Marin','1995-12-25','',0,5,'','utilisateur',6);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,8 +262,13 @@ CREATE TABLE `wineBottle` (
 
 LOCK TABLES `wineBottle` WRITE;
 /*!40000 ALTER TABLE `wineBottle` DISABLE KEYS */;
-INSERT INTO `wineBottle` VALUES (5,'Chateau Auzias','Languedoc-Roussillon','blanc',2021,'chardonnay','frontend\src\assets\chardonnay-2021-chateau-auzias.png'),(6,'Pouilly-Fumé Nuit Blanche','Val de Loire','blanc',2020,'sauvignon','frontend\src\assets\pouilly-fume-nuit-blanche.jpg');
-/*!40000 ALTER TABLE `wineBottle` ENABLE KEYS */;
+INSERT INTO `wineBottle` VALUES (1,'Chateau Auzias','Languedoc-Roussillon','blanc',2021,'chardonnay','frontend\src\assets\chardonnay-2021-chateau-auzias.png'),
+(2,'Pouilly-Fumé Nuit Blanche','Val de Loire','blanc',2020,'sauvignon','frontend\src\assets\pouilly-fume-nuit-blanche.jpg'),
+(3,'Pinot Gris Grand Cru zinnkoepfle','Alsace','blanc',2020,'Pinot gris','frontend\src\assets\pouilly-fume-nuit-blanche.jpg'),
+(4,'Nuits St-Georges ','Bourgogne','rouge',2017,'Pinot noir',''),
+(5,'Famille Sabourin Cubée Héléna','Bordeaux','rouge',2018,'Merlot',''),
+(6,'Château les Mesclances','Côtes-de-Provence','rouge',2019,'Cabernet Sauvignon',''),
+(7,'Astérie','Bordeaux','blanc',2019,'Sauvignon','');
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

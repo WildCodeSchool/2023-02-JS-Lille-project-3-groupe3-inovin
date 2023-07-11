@@ -11,7 +11,6 @@ import CommandeModal from "../../components/commandeModal/CommandeModal";
 function Resume() {
   // useContext
   const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-
   // console.log(`resume account_id: ${user} `);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -38,9 +37,12 @@ function Resume() {
           birthdate,
           recipe_name,
         } = response.data[0];
+        const array = birthdate.split("T");
+        const dateParts = array[0].split("-");
+        const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
         setFullName(`${firstname} ${lastname}`);
         setEmailAddress(`${address}`);
-        setBirthDay(`${birthdate}`);
+        setBirthDay(`${formattedDate}`);
         setRecipeName(`${recipe_name}`);
         setQuantity(`${percentage}`);
         setBottleData(response.data);
@@ -57,6 +59,7 @@ function Resume() {
   const openModal = () => {
     setModalOpen(true);
   };
+
   return (
     <div className="resume_wrapper">
       <div className="profil">
@@ -95,7 +98,13 @@ function Resume() {
           >
             Commander
           </button>
-          {modalOpen && <CommandeModal setOpenModal={setModalOpen} />}
+          {modalOpen && (
+            <CommandeModal
+              setOpenModal={setModalOpen}
+              fullName={fullName}
+              user={user}
+            />
+          )}
         </div>
         <div className="bottle_diploma">
           <img id="bottle_resume" src={bottle} alt="" />

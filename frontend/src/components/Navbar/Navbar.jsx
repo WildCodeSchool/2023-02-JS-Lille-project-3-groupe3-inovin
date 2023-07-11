@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import { useContext } from "react";
 import { LogingContext } from "../../contexts/LogingContext";
+import signout from "../../assets/images/signout.png";
 import ProfileIcone from "../../assets/images/🦆 icon _profile circle_.png";
 import LogoInovin from "../../assets/images/logo_inovin.png";
 import UserContext from "../../contexts/UserContext";
@@ -37,9 +38,7 @@ function Navbar() {
           <img src={LogoInovin} alt="Logo Ino Vin" />
         </Link>
       </p>
-
       <h1 className="inovinTitle">Ino Vin</h1>
-
       <div>
         {firstname ? (
           <h3 className="username">{firstname}</h3>
@@ -51,11 +50,15 @@ function Navbar() {
           className="loginLinks"
           onClick={handleLogingLogout}
         >
-          <img
-            src={ProfileIcone}
-            className="profileIcone"
-            alt="Lien cliquable vers la page d'inscription"
-          />
+          {isOnline ? (
+            <img src={signout} alt="" />
+          ) : (
+            <img
+              src={ProfileIcone}
+              className="profileIcone"
+              alt="Lien cliquable vers la page d'inscription"
+            />
+          )}
         </button>
       </div>
     </div>

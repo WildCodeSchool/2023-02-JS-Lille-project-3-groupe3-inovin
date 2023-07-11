@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.compoRecipe
+  models.compo_recipe
     .findAll()
     .then(([rows]) => {
       res.send(rows);
