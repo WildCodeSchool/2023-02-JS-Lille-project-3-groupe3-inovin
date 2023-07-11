@@ -111,3 +111,106 @@
   display: flex;
   justify-content: space-between;
 }
+
+.test {
+  display: flex;
+  flex-direction: column;
+  // position:absolute;
+}
+
+.displaySuggestWineBottle {
+  // display: flex;
+  // flex-direction: column;
+  width: 35%;
+  // height:20px;
+  // border-radius: 5px;
+  // background-color: #ffffff5e;
+  min-height: 5vh;
+  // border: black solid;
+  background-color: #d9d9d9;
+  // color: black;
+  max-height: 15vh;
+  position: absolute;
+  left: 246px;
+  top: 640px;
+  // bottom: 2px
+  z-index: 10;
+
+  // top: 89px;
+  // right: 219px;
+}
+
+.validButton {
+  width: 10rem;
+  height: 2.5rem;
+  background-color: #d9d9d9;
+  border: #d9d9d9;
+  font-family: $font_title_small;
+  font-size: 1.5rem;
+  margin-top: 6.3%;
+  margin-left: 4%;
+}
+
+.customListItem {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.successAdding {
+  display: flex;
+  justify-content: center;
+  color: green;
+  font-size: 2rem;
+}
+
+.deletedBottle {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-size: 2rem;
+}
+
+.editWineModal {
+  background-color: rgba(255, 0, 0, 0.378);
+  height: 40vh;
+  width: 50vw;
+  margin: auto;
+  margin-top: 18vh;
+}
+
+.containerFormModif {
+  font-family: $font_title_small;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.7rem;
+  justify-content: space-between;
+}
+
+.boutonSubmitAdmin3 {
+  margin-top: 2.7rem;
+  margin-left: 50%;
+  width: 10rem;
+  height: 2.5rem;
+  background-color: #d9d9d9;
+  border: #d9d9d9;
+  font-family: $font_title_small;
+  font-size: 1.5rem;
+}
+
+.titleModifyBottle {
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+.titleMiniInfo2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.successEditing {
+  display: flex;
+  justify-content: center;
+  color: green;
+  font-size: 2rem;
+}

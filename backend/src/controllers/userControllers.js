@@ -28,9 +28,6 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body;
-
-  // TODO validations (length, format...)
-
   user.id = parseInt(req.params.id, 10);
 
   models.user
@@ -47,6 +44,24 @@ const edit = (req, res) => {
       res.sendStatus(500);
     });
 };
+
+// const modify = (req, res) => {
+//   const user = req.body;
+//   user.id = parseInt(req.params.id, 10);
+//   models.user
+//     .modify(user)
+//     .then(([result]) => {
+//       if (result.affectedRows === 0) {
+//         res.sendStatus(404);
+//       } else {
+//         res.sendStatus(204);
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// };
 
 const add = (req, res) => {
   const user = req.body;
@@ -80,10 +95,28 @@ const destroy = (req, res) => {
     });
 };
 
+const getDetails = (req, res) => {
+  // get specific recipe details to show in resume page
+  models.compo_recipe
+    .get(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  getDetails,
 };

@@ -1,7 +1,13 @@
-// import { useState } from "react";
-// import { useContext } from "react";
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
+import TabNavItem from "../TabComponents/TabNavItem";
+import TabContent from "../TabComponents/TabContent";
+import Lexique from "../Lexique/Lexique";
+
 // import UserContext from "../../contexts/UserContext";
+
 import "./SliderFiche.scss";
 
 import { useState } from "react";
@@ -12,8 +18,7 @@ import FormVin4 from "./FormVin4";
 
 function SliderFiche() {
   // useContext
-  // const [user] = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-  // console.log(`slider fiche account_id: ${user} `);
+  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
   // navigate
 
@@ -52,6 +57,8 @@ function SliderFiche() {
           Form Suivant
         </button>
       )}
+
+      <Lexique />
 
       <button type="button" onClick={handleClickNext}>
         Page Suivante

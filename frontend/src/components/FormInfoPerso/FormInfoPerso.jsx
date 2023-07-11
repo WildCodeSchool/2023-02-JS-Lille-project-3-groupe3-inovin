@@ -1,36 +1,36 @@
 import axios from "axios";
 import "./FormInfoPerso.scss";
-import React, { useEffect, useState } from "react";
-// import { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import picturePreferences from "../../assets/images/photo2_720.png";
-// import UserContext from "../../contexts/UserContext";
-
-// fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
-const getUserId = (accountId, setUserId) => {
-  axios
-    .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-      params: { account_id: accountId },
-    })
-    .then((response) => {
-      const resultUserId = response.data[0]?.id;
-      setUserId(resultUserId);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
+import UserContext from "../../contexts/UserContext";
 
 function FormInfoPerso() {
   // usecontext
-  // const [user, setUser] = useContext(UserContext);
+  const { setUser, setFirstname } = useContext(UserContext);
+
+  // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
+  const getUserId = (accountId, setUserId) => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: accountId },
+      })
+      .then((response) => {
+        const resultUserId = response.data[0]?.id;
+        setUserId(resultUserId);
+        setFirstname(response.data[0]?.firstname);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   // navigation
   const navigate = useNavigate();
 
-  const handleClickNext = () => {
-    navigate("/FicheDegustation");
-  };
+  // const handleClickNext = () => {
+  //   navigate("/FicheDegustation");
+  // };
 
   // stock mail & pwd du form pour post
   const [formAuthentification, setFormAuthentifiation] = useState({
@@ -125,7 +125,7 @@ function FormInfoPerso() {
       .then((response) => {
         const resultAccountId = response.data[0]?.id; // permet de récupérer l'id si il y en a un
         setAccountId(resultAccountId);
-        // setUser(resultAccountId); // update userContext with account_id
+        setUser(resultAccountId); // update userContext with account_id
       })
       .catch((err) => {
         console.error(err);
@@ -163,6 +163,10 @@ function FormInfoPerso() {
         .then()
         .catch((err) => {
           console.error(err);
+        })
+        .finally(() => {
+          // Navigate to "/FicheDegustation"
+          navigate("/FicheDegustation");
         });
     }
   };
@@ -238,12 +242,15 @@ function FormInfoPerso() {
             >
               Date d'anniversaire:
               <input
-                className="form-inscription-idendity-input-class"
-                type="text"
+                className="form-inscription-idendity-input-class inputDate"
+                type="date"
                 name="birthdate"
-                placeholder="1980-12-29"
                 value={formInscription.birthdate}
                 onChange={handleChangeFormInscription}
+                style={{
+                  color: formInscription.birthdate ? "black" : "gray",
+                  fontWeight: formInscription.birthdate ? "normal" : "bold",
+                }}
               />
             </label>
           </div>
@@ -271,7 +278,7 @@ function FormInfoPerso() {
               Mot de Passe:
               <input
                 className="form-inscription-idendity-input-class"
-                type="text"
+                type="password"
                 name="pwd"
                 placeholder="........"
                 value={formAuthentification.pwd}
@@ -375,7 +382,7 @@ function FormInfoPerso() {
                   name="other-taste"
                   rows="5"
                   cols="33"
-                  defaultValue="Précisez..."
+                  placeholder="Précisez..."
                   value={formPreference.other}
                   onChange={handleOtherChange}
                 />
@@ -394,10 +401,6 @@ function FormInfoPerso() {
           </div>
         </div>
       </form>
-      <button type="button" onClick={handleClickNext}>
-        {" "}
-        Suivant
-      </button>
     </div>
   );
 }

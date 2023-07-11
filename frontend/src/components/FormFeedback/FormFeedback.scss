@@ -22,13 +22,18 @@
 }
 
 .sendForm {
-  border: none;
-  padding: 0.625rem;
-  border-radius: 0.3125rem;
-  letter-spacing: 0.1875rem;
-  cursor: pointer;
-  background-color: $button_background_color;
-  color: black;
+  background-color: white;
+  border-radius: 8px;
+  border: 8px double #ffffff;
+  color: #3e3e3e;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  width: 235px;
+  height: 53px;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 3px;
+  padding: 0;
 }
 
 .noticeContainer {
@@ -61,7 +66,7 @@
 .content h3 {
   font-family: $font_title_small;
   letter-spacing: 0.3125rem;
-  font-size: 1rem;
+  font-size: 28px;
   width: 100vw;
 }
 
@@ -103,6 +108,9 @@ textarea {
   overflow: auto;
   position: relative;
   top: -2vh;
+  font-size: 17px;
+  font-family: $font_title_small;
+  width: 53%;
 }
 
 textarea::placeholder {
@@ -135,7 +143,7 @@ textarea::placeholder {
   top: 2vh;
   font-size: 1.5rem;
   letter-spacing: 0.3125rem;
-  margin-bottom: 1.7vh;
+  margin-bottom: 1.57vh;
   padding: 0;
 }
 
@@ -231,13 +239,13 @@ textarea::placeholder {
   }
 
   .noticeTitle {
-    font-size: 1.5rem;
+    font-size: 38px;
     top: 0.5vh;
   }
   .feedbackSent {
     font-size: 1.5rem;
     top: 0.5vh;
-    margin-bottom: 0vh;
+    margin-bottom: 1.8vh;
   }
 
   .content {
@@ -254,6 +262,7 @@ textarea::placeholder {
   .content h3 {
     font-family: $font_title_small;
     letter-spacing: 0.3125rem;
+    font-size: 28px;
   }
 
   input[type="radio"] {
@@ -290,13 +299,15 @@ textarea::placeholder {
   }
 
   textarea {
-    font-size: 1rem;
+    font-size: 17px;
     position: relative;
     top: -1.5vh;
+    font-family: $font_title_small;
+    width: 53%;
   }
 
   .noticeContainer {
-    height: 50vh;
+    height: 53vh;
     position: relative;
     top: 2vh;
     width: 90vw;
@@ -304,5 +315,20 @@ textarea::placeholder {
 
   .buttonDecoration {
     top: 2vh;
+  }
+
+  .sendForm {
+    background-color: white;
+    border-radius: 8px;
+    border: 8px double #3e3e3e;
+    color: #3e3e3e;
+    text-align: center;
+    font-family: "Bebas Neue", sans-serif;
+    width: 235px;
+    height: 53px;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 3px;
+    padding: 0;
   }
 }

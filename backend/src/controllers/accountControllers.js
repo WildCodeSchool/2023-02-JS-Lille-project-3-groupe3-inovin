@@ -27,10 +27,8 @@ const read = (req, res) => {
 };
 
 const add = (req, res) => {
-  const account = req.body;
-
-  // TODO validations (length, format...)
-
+  const { email, hashedPassword } = req.body;
+  const account = { email, hashedPassword };
   models.account
     .insert(account)
     .then(([result]) => {

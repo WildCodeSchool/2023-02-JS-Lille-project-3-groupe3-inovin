@@ -9,7 +9,7 @@ const compoRecipeControllers = require("./controllers/compoRecipeControllers");
 const recipeControllers = require("./controllers/recipeControllers");
 const preferenceControllers = require("./controllers/preferenceControllers");
 const accountControllers = require("./controllers/accountControllers");
-
+const { hashPassword } = require("./auth");
 /* router.get("/user", userControllers.browse); */ // commenté pour pouvoir faire les requêtes de FormInfoPerso
 router.get("/user", userControllers.read);
 router.put("/user/:id", userControllers.edit);
@@ -18,10 +18,11 @@ router.delete("/user/:id", userControllers.destroy);
 
 /* router.get("/account", accountControllers.browse); */ // commenté pour pouvoir faire les requêtes de FormInfoPerso
 router.get("/account", accountControllers.read);
-router.post("/account", accountControllers.add);
+router.post("/account", hashPassword, accountControllers.add);
 router.delete("/account/:id", accountControllers.destroy);
 
-router.get("/winebottle", winebottleControllers.browse);
+router.get("/winebottle", winebottleControllers.getOneBottle);
+router.get("/winebottles", winebottleControllers.browse);
 router.get("/winebottle/:id", winebottleControllers.read);
 router.put("/winebottle/:id", winebottleControllers.edit);
 router.post("/winebottle", winebottleControllers.add);
@@ -35,8 +36,8 @@ router.post("/tasting", tastingControllers.add);
 router.delete("/tasting/:id", tastingControllers.destroy);
 
 router.get("/compo_recipe", compoRecipeControllers.browse);
-// router.get("/compo_recipe/:id", compoRecipeControllers.read);
-router.get("/compo_recipe/:id", compoRecipeControllers.getDetails);
+router.get("/compo_recipe/:id", compoRecipeControllers.read);
+// router.get("/compo_recipe/:id", compoRecipeControllers.getDetails);
 router.put("/compo_recipe/:id", compoRecipeControllers.edit);
 router.post("/compo_recipe", compoRecipeControllers.add);
 router.delete("/compo_recipe/:id", compoRecipeControllers.destroy);
