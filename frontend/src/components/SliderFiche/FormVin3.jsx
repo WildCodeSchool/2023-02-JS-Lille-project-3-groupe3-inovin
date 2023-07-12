@@ -1,11 +1,13 @@
+import PropTypes from "prop-types";
 import { useState, useContext, useEffect } from "react";
+
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
 import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
-function FormVin3() {
+function FormVin3({ thirdBottleId }) {
   const [activeTabSlide3, setActiveTabSlide3] = useState("tab1");
   const [isEditing, setIsEditing] = useState(false);
 
@@ -24,7 +26,7 @@ function FormVin3() {
     rating,
     user_id: userId,
     user_account_ID: user,
-    wineBottle_id: 3,
+    wineBottle_id: thirdBottleId,
   });
 
   useEffect(() => {
@@ -55,7 +57,7 @@ function FormVin3() {
     rating,
     user_id: userId,
     user_account_ID: user,
-    wineBottle_id: 3,
+    wineBottle_id: thirdBottleId,
   });
 
   useEffect(() => {
@@ -418,5 +420,9 @@ function FormVin3() {
     </div>
   );
 }
+
+FormVin3.propTypes = {
+  thirdBottleId: PropTypes.number.isRequired,
+};
 
 export default FormVin3;
