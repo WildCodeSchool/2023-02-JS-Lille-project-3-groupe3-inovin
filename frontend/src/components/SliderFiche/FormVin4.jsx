@@ -27,7 +27,7 @@ function FormVin4({ fourthBottleId }) {
     rating,
     user_id: userId,
     user_account_ID: user,
-    wineBottle_id: fourthBottleId,,
+    wineBottle_id: fourthBottleId,
   });
 
   useEffect(() => {
