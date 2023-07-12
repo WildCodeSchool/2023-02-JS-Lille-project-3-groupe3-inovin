@@ -1,17 +1,18 @@
-import { useState } from "react";
-// import UserContext from "../../contexts/UserContext";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
+import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
 function FormVin4() {
   const [activeTabSlide4, setActiveTabSlide4] = useState("tab1");
   const [isEditing, setIsEditing] = useState(false);
-  // const { user } = useContext(UserContext);
+
+  const { user } = useContext(UserContext);
+  const [userId, setUserId] = useState(null);
 
   const [rating, setRating] = useState(null);
-
   const [hover, setHover] = useState(null);
 
   const [formData4, setFormData4] = useState({
@@ -21,10 +22,29 @@ function FormVin4() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 6,
-    user_account_ID: 6,
+    user_id: userId,
+    user_account_ID: user,
     wineBottle_id: 3,
   });
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: `${user}` },
+      })
+      .then((response) => {
+        const userIdUpdated = response.data[0]?.id;
+        setUserId(userIdUpdated);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [setFormData4]);
+
+  // Envoyer le userId dans le formData
+  useEffect(() => {
+    setFormData4({ ...formData4, user_id: userId });
+  }, [userId]);
 
   const [editFormData4, setEditFormData4] = useState({
     robe: "",
@@ -33,10 +53,14 @@ function FormVin4() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 6,
-    user_account_ID: 6,
+    user_id: userId,
+    user_account_ID: user,
     wineBottle_id: 3,
   });
+
+  useEffect(() => {
+    setEditFormData4({ ...editFormData4, user_id: userId });
+  }, [userId]);
 
   const handleChangeData4 = (evt) => {
     setFormData4((previousData) => ({
