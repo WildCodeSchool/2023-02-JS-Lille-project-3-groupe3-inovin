@@ -17,6 +17,6 @@ export default function CardBottle({ wineBottleId, wineBottleName }) {
   );
 }
 CardBottle.propTypes = {
-  wineBottleId: PropTypes.string.isRequired,
+  wineBottleId: PropTypes.number.isRequired,
   wineBottleName: PropTypes.string.isRequired,
 };
