@@ -3,6 +3,7 @@ import Apercu from "../../components/Apercu/Apercu";
 import "./AtelierCreation.scss";
 import BottleContext from "../../contexts/BottleContext";
 import CardBottle from "../../components/CardBottle/CardBottle";
+import NameRecipe from "../../components/NameRecipe/NameRecipe";
 
 function AtelierCreation() {
   const { wineBottleId, wineBottleName } = useContext(BottleContext);
@@ -24,6 +25,7 @@ function AtelierCreation() {
           <CardBottle wineBottleName={Name1} wineBottleId={id1} />
           <CardBottle wineBottleName={Name2} wineBottleId={id2} />
           <CardBottle wineBottleName={Name3} wineBottleId={id3} />
+          <NameRecipe />
         </div>
         <Apercu />
       </div>

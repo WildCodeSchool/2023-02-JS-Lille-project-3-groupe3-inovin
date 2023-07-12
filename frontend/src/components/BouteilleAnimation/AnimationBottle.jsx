@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import "./AnimationBottle.scss";
 import UserContext from "../../contexts/UserContext";
 
-function AnimationBottle() {
+function AnimationBottle({ id }) {
   const [progress, setProgress] = useState(0); // État pour gérer la progression
   const [fixedProgress, setFixedProgress] = useState(null); // État pour stocker la progression fixée
   const [isLocked, setIsLocked] = useState(false); // État pour indiquer si la progression est verrouillée
@@ -35,7 +36,8 @@ function AnimationBottle() {
     const handleMouseMove = (e) => {
       const progressBar = progressBarRef.current;
       const progressBarHeight = progressBar.offsetHeight;
-      const { top } = progressBar.getBoundingClientRect();
+      const progressBarWidth = progressBar.offsetWidth;
+      const { top, left } = progressBar.getBoundingClientRect();
       const maxProgress = 100;
       // progressBar : référence de la barre de progression à partir de progressBarRef.current. La référence est stockée dans la variable progressBar
       // progressBarHeight : hauteur de la barre de progression à l'aide de progressBar.offsetHeight. La hauteur est stockée dans la variable progressBarHeight
@@ -43,15 +45,18 @@ function AnimationBottle() {
       if (!isLocked && fixedProgress === null) {
         // Récupération de la position verticale de la souris par rapport à la barre de progression
         const mouseY = e.clientY - top;
+        const mouseX = e.clientX - left;
         // calcul pour déterminer le nouvel état de progression en fonction de la position verticale de la souris par rapport à la barre de progression et en respectant le maxProgress
-        const newProgress = Math.min(
-          Math.max(
-            ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
-            0
-          ),
-          maxProgress
-        );
-        setProgress(newProgress); // Mettre à jour l'état avec la nouvelle progression
+        if (mouseX >= 0 && mouseX <= progressBarWidth) {
+          const newProgress = Math.min(
+            Math.max(
+              ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
+              0
+            ),
+            maxProgress
+          );
+          setProgress(newProgress); // Mettre à jour l'état avec la nouvelle progression
+        }
       }
     };
     document.addEventListener("mousemove", handleMouseMove);
@@ -69,7 +74,7 @@ function AnimationBottle() {
           percentage: progress,
           user_account_ID: user,
           user_id: userId,
-          wineBottle_id: 1,
+          wineBottle_id: id,
         })
         .then()
         .catch((error) => {
@@ -114,3 +119,6 @@ function AnimationBottle() {
   );
 }
 export default AnimationBottle;
+AnimationBottle.propTypes = {
+  id: PropTypes.number.isRequired,
+};
