@@ -233,7 +233,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Cédric','Guyot','1976-10-23','',0,5,"Mon atelier c'est le meilleur",'administrateur',1),(2,'Val','Agostini','1991-07-15','',0,5,'','utilisateur',2), (3,'Marie','Vangrevelynghe','1993-08-06','',0,5,'','utilisateur',3), (4,'Anne','Marchasson','1990-03-22','',0,5,'','utilisateur',4), (5,'Khouloud','Belkhir','1992-12-27','',0,5,'','utilisateur',5), (6,'Florent','Marin','1995-12-25','',0,5,'','utilisateur',6);
+INSERT INTO `user` VALUES (1,'Cédric','Boriat','1976-10-23','',0,5,"Mon atelier c'est le meilleur",'administrateur',1),(2,'Val','Agostini','1991-07-15','',0,5,'','utilisateur',2), (3,'Marie','Vangrevelynghe','1993-08-06','',0,5,'','utilisateur',3), (4,'Anne','Marchasson','1990-03-22','',0,5,'','utilisateur',4), (5,'Khouloud','Belkhir','1992-12-27','',0,5,'','utilisateur',5), (6,'Florent','Marin','1995-12-25','',0,5,'','utilisateur',6);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
