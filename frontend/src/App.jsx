@@ -9,11 +9,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin/Admin";
 import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
-import { LogingProvider } from "./contexts/LogingContext";
-
 import "./App.css";
 import { UserProvider } from "./contexts/UserContext";
-
 
 function App() {
   return (
@@ -21,11 +18,8 @@ function App() {
       <Router>
         <div>
           <div className="backgroundHeader">
-            <LogingProvider>
-              <Navbar />
-            </LogingProvider>
+            <Navbar />
           </div>
-
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Inscription" element={<Inscription />} />
@@ -35,10 +29,7 @@ function App() {
             <Route path="/Resume" element={<Resume />} />
             <Route path="/Admin" element={<Admin />} />
             <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
-
-
           </Routes>
-
           <Footer />
         </div>
       </Router>

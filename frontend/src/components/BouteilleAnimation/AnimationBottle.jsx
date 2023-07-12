@@ -1,29 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./AnimationBottle.scss";
+// import UserContext from "../../contexts/UserContext";
 
 function AnimationBottle() {
   const [progress, setProgress] = useState(0); // État pour gérer la progression
   const [fixedProgress, setFixedProgress] = useState(null); // État pour stocker la progression fixée
   const [isLocked, setIsLocked] = useState(false); // État pour indiquer si la progression est verrouillée
-  const [wineBottleId, setWineBottleId] = useState(null); // État pour stocker l'ID de la bouteille de vin
+  // const [wineBottleId, setWineBottleId] = useState(null); // État pour stocker l'ID de la bouteille de vin
   const progressBarRef = useRef(null); // Référence à l'élément de la barre de progression pour ne pas scroller sur body entier
+  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
-  useEffect(() => {
-    // Effectuer la requête GET pour obtenir wineBottle_id depuis la table compo_recipe
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`)
-      .then((response) => {
-        const { wineBottle_id } = response.data;
-        setWineBottleId(wineBottle_id); // Mettre à jour l'état avec l'ID de la bouteille de vin
-      })
-      .catch((error) => {
-        console.error(
-          "Une erreur s'est produite lors de la récupération de wineBottle_id :",
-          error
-        );
-      });
-  }, []);
+  // Effectuer la requête GET pour obtenir wineBottle_id depuis la table compo_recipe
 
   useEffect(() => {
     // Écouteur d'événement pour la souris
@@ -71,7 +59,7 @@ function AnimationBottle() {
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`, {
           percentage: progress,
-          wineBottle_id: wineBottleId,
+          // wineBottle_id: wineBottleId,
         })
         .then()
         .catch((error) => {

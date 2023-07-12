@@ -1,16 +1,10 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Carousel } from "react-responsive-carousel";
-import TabNavItem from "../TabComponents/TabNavItem";
-import TabContent from "../TabComponents/TabContent";
 import Lexique from "../Lexique/Lexique";
 
 // import UserContext from "../../contexts/UserContext";
 
 import "./SliderFiche.scss";
-
-import { useState } from "react";
 import FormVin1 from "./FormVin1";
 import FormVin2 from "./FormVin2";
 import FormVin3 from "./FormVin3";

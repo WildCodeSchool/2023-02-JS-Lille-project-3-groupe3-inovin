@@ -1,14 +1,14 @@
-import { useState } from "react";
-// import UserContext from "../../contexts/UserContext";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
+import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
 function FormVin2() {
   const [activeTabSlide2, setActiveTabSlide2] = useState("tab1");
   const [isEditing, setIsEditing] = useState(false);
-  // const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const [rating, setRating] = useState(null);
 
@@ -21,8 +21,8 @@ function FormVin2() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
+    user_id: user,
+    user_account_ID: "",
     wineBottle_id: 6,
   });
 
@@ -33,8 +33,8 @@ function FormVin2() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
+    user_id: user,
+    user_account_ID: "",
     wineBottle_id: 6,
   });
 
