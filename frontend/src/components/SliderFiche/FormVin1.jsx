@@ -1,8 +1,10 @@
-import { useState } from "react";
+
 import PropTypes from "prop-types";
+import { useState, useContext, useEffect } from "react";
+
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
-// import UserContext from "../../contexts/UserContext";
+import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
@@ -11,10 +13,11 @@ function FormVin1({ firstBottleId }) {
   const [isEditing, setIsEditing] = useState(false); // Modifier le contenu du bouton, post/edit
 
   // Récupérer et traiter les informations du userContext
-  // const { user } = useContext(UserContext);
+
+  const { user } = useContext(UserContext);
+  const [userId, setUserId] = useState(null);
 
   const [rating, setRating] = useState(null);
-
   const [hover, setHover] = useState(null);
 
   const [formData1, setFormData1] = useState({
@@ -24,10 +27,30 @@ function FormVin1({ firstBottleId }) {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 6,
-    user_account_ID: 6,
+    user_id: userId,
+    user_account_ID: user,
     wineBottle_id: firstBottleId,
   });
+
+  // Get l'id de la table user grâce au account_id de la table user
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: `${user}` },
+      })
+      .then((response) => {
+        const userIdUpdated = response.data[0]?.id;
+        setUserId(userIdUpdated);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [setFormData1]);
+
+  // Envoyer le userId dans le formData
+  useEffect(() => {
+    setFormData1({ ...formData1, user_id: userId });
+  }, [userId]);
 
   const [editFormData1, setEditFormData1] = useState({
     robe: "",
@@ -36,10 +59,14 @@ function FormVin1({ firstBottleId }) {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 6,
-    user_account_ID: 6,
+    user_id: userId,
+    user_account_ID: user,
     wineBottle_id: firstBottleId,
   });
+
+  useEffect(() => {
+    setEditFormData1({ ...editFormData1, user_id: userId });
+  }, [userId]);
 
   const handleChangeData1 = (evt) => {
     setFormData1((previousData) => ({
