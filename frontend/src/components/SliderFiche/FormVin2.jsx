@@ -1,11 +1,12 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 // import UserContext from "../../contexts/UserContext";
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
-function FormVin2() {
+function FormVin2({ secondBottleId }) {
   const [activeTabSlide2, setActiveTabSlide2] = useState("tab1");
   const [isEditing, setIsEditing] = useState(false);
   // const { user } = useContext(UserContext);
@@ -23,7 +24,7 @@ function FormVin2() {
     rating,
     user_id: 6,
     user_account_ID: 6,
-    wineBottle_id: 2,
+    wineBottle_id: secondBottleId,
   });
 
   const [editFormData2, setEditFormData2] = useState({
@@ -35,7 +36,7 @@ function FormVin2() {
     rating,
     user_id: 6,
     user_account_ID: 6,
-    wineBottle_id: 2,
+    wineBottle_id: secondBottleId,
   });
 
   const handleChangeData2 = (evt) => {
@@ -395,4 +396,7 @@ function FormVin2() {
   );
 }
 
+FormVin2.propTypes = {
+  secondBottleId: PropTypes.number.isRequired,
+};
 export default FormVin2;

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Lexique from "../Lexique/Lexique";
 // import UserContext from "../../contexts/UserContext";
+import BottleContext from "../../contexts/BottleContext";
 import "./SliderFiche.scss";
 import FormVin1 from "./FormVin1";
 import FormVin2 from "./FormVin2";
@@ -12,10 +13,19 @@ function SliderFiche() {
   // useContext
   // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
-  // navigate
+  const { wineBottleId } = useContext(BottleContext);
+  // wineBottleId est un tableau, il faut le destructurer pour envoyer une valeur unique en props
+  const [firstBottleId, secondBottleId, thirdBottleId, fourthBottleId] =
+    wineBottleId;
 
+  // navigation entre les formulaires
   const [currentFormIndex, setCurrentFormIndex] = useState(0);
-  const forms = [<FormVin1 />, <FormVin2 />, <FormVin3 />, <FormVin4 />];
+  const forms = [
+    <FormVin1 firstBottleId={firstBottleId} />,
+    <FormVin2 secondBottleId={secondBottleId} />,
+    <FormVin3 thirdBottleId={thirdBottleId} />,
+    <FormVin4 fourthBottleId={fourthBottleId} />,
+  ];
 
   const nextForm = () => {
     setCurrentFormIndex(currentFormIndex + 1);

@@ -1,31 +1,17 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
 // import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
-function FormVin1() {
+function FormVin1({ firstBottleId }) {
   const [activeTabSlide1, setActiveTabSlide1] = useState("tab1"); // useState pour gérer l'affichage des onglets
-
   const [isEditing, setIsEditing] = useState(false); // Modifier le contenu du bouton, post/edit
 
   // Récupérer et traiter les informations du userContext
   // const { user } = useContext(UserContext);
-  // const [userData, setUserData] = useState(null);
-
-  // const getUserData = () => {
-  //   axios
-  //     .get(`${import.meta.env.VITE_BACKEND_URL}/account`, {
-  //       params: { account_id: user },
-  //     })
-  //     .then((response) => {
-  //       setUserData(resultAccountId);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // };
 
   const [rating, setRating] = useState(null);
 
@@ -40,7 +26,7 @@ function FormVin1() {
     rating,
     user_id: 6,
     user_account_ID: 6,
-    wineBottle_id: 1,
+    wineBottle_id: firstBottleId,
   });
 
   const [editFormData1, setEditFormData1] = useState({
@@ -52,7 +38,7 @@ function FormVin1() {
     rating,
     user_id: 6,
     user_account_ID: 6,
-    wineBottle_id: 1,
+    wineBottle_id: firstBottleId,
   });
 
   const handleChangeData1 = (evt) => {
@@ -98,6 +84,7 @@ function FormVin1() {
   return (
     <div>
       <h3>Formulaire du vin 1</h3>
+
       {isEditing ? (
         <button type="button" onClick={handleEditForm1}>
           Modifier form 1
@@ -412,4 +399,7 @@ function FormVin1() {
   );
 }
 
+FormVin1.propTypes = {
+  firstBottleId: PropTypes.number.isRequired,
+};
 export default FormVin1;
