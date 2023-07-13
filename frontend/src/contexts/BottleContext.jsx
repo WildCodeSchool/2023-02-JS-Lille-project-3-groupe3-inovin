@@ -5,9 +5,15 @@ const BottleContext = createContext(null);
 
 export function BottleProvider({ children }) {
   const [wineBottleId, setWineBottleId] = useState([]);
+  const [wineBottleName, setWineBottleName] = useState([]);
   const contextValue = useMemo(
-    () => ({ wineBottleId, setWineBottleId }),
-    [wineBottleId, setWineBottleId]
+    () => ({
+      wineBottleId,
+      setWineBottleId,
+      wineBottleName,
+      setWineBottleName,
+    }),
+    [wineBottleId, setWineBottleId, wineBottleName, setWineBottleName]
   );
 
   return (

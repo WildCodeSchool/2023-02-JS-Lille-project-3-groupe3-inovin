@@ -9,7 +9,8 @@ import BottleContext from "../../contexts/BottleContext";
 function AdminAjoutVin() {
   const navigate = useNavigate();
 
-  const { wineBottleId, setWineBottleId } = useContext(BottleContext); // bottle id of current bottle chose by Admin from adminAjoutVin, you can use it for update database
+  const { wineBottleId, setWineBottleId, setWineBottleName, wineBottleName } =
+    useContext(BottleContext); // bottle id of current bottle chose by Admin from adminAjoutVin, you can use it for update database
 
   /* FIRST PART, POST WINE BOTTLE TO DATABASE */
 
@@ -247,6 +248,7 @@ function AdminAjoutVin() {
   const handleChooseBottle = (event) => {
     event.preventDefault();
     setWineBottleId([...wineBottleId, bottleId]); // take the bottleId & put in BottleContext
+    setWineBottleName([...wineBottleName, bottleName]);
     setBottleAddedToTasting(true); // to display confirmation
     setSearchTerm(""); // reset the search to empty
   };
