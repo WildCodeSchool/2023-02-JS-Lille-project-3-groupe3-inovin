@@ -333,10 +333,10 @@ function AdminAjoutVin() {
           />
           {searchTerm !== "" && showSuggestWine && (
             <ul className="displaySuggestWineBottle">
-              {wineSearchSuggest.map((wineBottle) => (
+              {wineSearchSuggest.map((wineBottle, index) => (
                 <li
                   role="presentation"
-                  key={wineBottle.id}
+                  key={index}
                   className="customListItem"
                   onClick={() => handleWineBottleClickedDisplay(wineBottle)}
                   onKeyDown={() => handleWineBottleClickedDisplay(wineBottle)}
