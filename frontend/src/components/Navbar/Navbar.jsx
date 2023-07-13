@@ -1,12 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./Navbar.scss";
-import { useContext } from "react";
 import { LogingContext } from "../../contexts/LogingContext";
 import ProfileIcone from "../../assets/images/🦆 icon _profile circle_.png";
 import LogoInovin from "../../assets/images/logo_inovin.png";
 import UserContext from "../../contexts/UserContext";
 
 function Navbar() {
+  const { theme } = useContext(ThemeContext);
+
   const { firstname } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -31,10 +34,10 @@ function Navbar() {
   };
 
   return (
-    <div className="navHeader">
+    <div className={`navHeader ${theme}`}>
       <p className="logo">
         <Link to="/">
-          <img src={LogoInovin} alt="Logo Ino Vin" />
+          <img src={LogoInovin} alt="Logo Ino Vin" className="logoLogin" />
         </Link>
       </p>
 

@@ -173,3 +173,11 @@ body {
   background-size: 100%;
   box-shadow: -5px 5px 40px #0f0d0d;
 }
+
+.light .backgroundHeader {
+  background-image: url(../../assets/images/BGImageLight.jpg);
+  height: 25vh;
+  background-size: 100%;
+  opacity: 0.7699999809265137;
+  box-shadow: 0px 10px 36px 12px #d8af49, 0px 6px 31px 4px rgba(0, 0, 0, 0.3);
+}

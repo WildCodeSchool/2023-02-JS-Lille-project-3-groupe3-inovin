@@ -1,16 +1,21 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
-import ThemeProvider from "../../contexts/ThemeContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 function Footer() {
-  const { theme, toggleTheme } = useContext(ThemeProvider);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [modalOpen, setModalOpen] = useState(false);
+
   const handleLegalLinkClick = () => {
     setModalOpen(true);
   };
   const closeModal = () => {
     setModalOpen(false);
+  };
+
+  const handleThemeToggle = () => {
+    toggleTheme();
   };
   return (
     <footer className="footerContainer">
@@ -21,7 +26,7 @@ function Footer() {
       >
         © 2023 INO VIN. Tous droits réservés.{" "}
       </Link>
-      <button type="button" onClick={toggleTheme}>
+      <button type="button" onClick={handleThemeToggle}>
         Changer de thème : {theme === "dark" ? "Clair" : "Sombre"}
       </button>
       <button

@@ -2,16 +2,19 @@ import "./SliderHomePage.scss";
 import { useNavigate } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import React, { useContext } from "react";
 import wineGlass from "../../assets/images/verre_plan_de_travail.png";
 import franceMap from "../../assets/images/map.png";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 function SliderHome() {
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const navigateToInscription = () => {
     navigate("/inscription");
   };
   return (
-    <div className="wrapper_portrait">
+    <div className={`wrapper_portrait ${theme}`}>
       <div className="carousel_container">
         <Carousel
           showThumbs={false}

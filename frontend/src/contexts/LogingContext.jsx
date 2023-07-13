@@ -1,5 +1,5 @@
 import { createContext, useState, useMemo } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const LogingContext = createContext();
 
@@ -27,9 +27,5 @@ export function LogingProvider({ children }) {
 }
 
 LogingProvider.propTypes = {
-  children: propTypes.shape({
-    isOnline: propTypes.string,
-    loging: propTypes.string,
-    logout: propTypes.string,
-  }).isRequired,
+  children: PropTypes.node.isRequired,
 };

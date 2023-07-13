@@ -220,3 +220,16 @@
     margin: 5% 5% 5% 5%;
   }
 }
+
+.light .text-first-slide {
+  font-family: $font_title_small;
+  font-size: 3vh;
+  color: #6b6c6b;
+  letter-spacing: 5px;
+  padding: 2%;
+  line-height: 50px;
+  margin: 15% 5% 20% 5%;
+  @include tablet-paysage {
+    margin: 5% 5% 5% 5%;
+  }
+}

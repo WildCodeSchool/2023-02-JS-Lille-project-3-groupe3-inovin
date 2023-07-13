@@ -13,12 +13,32 @@
   margin-left: 10px;
 }
 
+.light .logoLogin {
+  box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.45) inset;
+  filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.6));
+}
+
 .inovinTitle {
   font-family: $font_inovin;
   color: $title_color;
   font-size: 8vh;
   text-shadow: 4px 4px 3px #000000;
   margin-right: 110px;
+}
+
+//.inovinTitle pour Light Theme, ajout du gradient et de la mise en majuscule.
+.light .inovinTitle {
+  font-family: $font_inovin;
+  color: $title_color;
+  background: linear-gradient(to bottom, #d8af49, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 8vh;
+  // text-shadow: 0px 0px 3px 4px rgba(122, 122, 122, 0.6);
+  text-shadow: none;
+  margin-right: 110px;
+  letter-spacing: 1.62px;
+  text-transform: uppercase;
 }
 
 .loginLinks {
