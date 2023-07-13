@@ -11,27 +11,17 @@ function AtelierCreation() {
   const { wineBottleId, wineBottleName, setWineBottleName, setWineBottleId } =
     useContext(BottleContext); // BottleContext to get the current bottles id & name
 
-  function destructuredName() {
-    return wineBottleName;
-  }
-  const [Name1, Name2, Name3] = destructuredName();
-  function destructuredId() {
-    return wineBottleId;
-  }
-  const [id1, id2, id3] = destructuredId();
+  /* Content below : we want remove 1 id & 1 bottleName in BottleContext because we had 4 bottle in tasting and 
+    we want to keep only 3, we remove the 1 worst rating */
 
-  const [tastingData, setTastingData] = useState();
+  const [tastingData, setTastingData] = useState(); // stock all tasting table from database
   const { user } = useContext(UserContext); // UserContext to get the current account_id
-  const accountID = user; // clearer
-  const [dataLoaded, setDataLoaded] = useState(false); // state to know if data getted or not
-  const [wineBottleData, setWineBottleData] = useState();
-  const [bottleNameToDelete, setBottleNameToDelete] = useState();
+  const accountID = user; // clearer , translate user to accountID for the comprehension
+  const [dataLoaded, setDataLoaded] = useState(false); // state to know if data getted or not and active useEffect
+  const [wineBottleData, setWineBottleData] = useState(); // stock all wineBottle table from database
 
-  // console.log(` Au départ wineBottleId c'est ${wineBottleId}`);
-  // console.log(` Au départ wineBottleName c'est ${wineBottleName}`);
-
-  // function to get ratings by user_account_ID in tastingData(array) with account_id by userContext
-  function getRatings(array, rating, bottleId, account_id) {
+  // function to get ratings and ids by user_account_ID in tastingData(array)
+  function getRatingsAndIds(array, rating, bottleId, account_id) {
     const outputRatings = []; // array to stock ratings
     const outputBottleIds = []; // array to stock the wineBottleId linked with ratings
 
@@ -46,31 +36,30 @@ function AtelierCreation() {
     return { ratings: outputRatings, ids: outputBottleIds }; // return an object with ratings & ids
   }
 
+  // function to get the name of bottle we would like to delete
   function getName(array, idToDelete, bottle_name) {
-    const bottleToDelete = [];
+    const bottleNameToDelete = [];
     for (let i = 0; i < array.length; i += 1) {
       if (idToDelete === array[i].id) {
-        bottleToDelete.push(array[i][bottle_name]);
-        // console.log(
-        //  `dans getName la bottleName a delete c'est : ${bottleToDelete}`
-        // );
+        // compare with id we looking for, then we get the bottle_name
+        bottleNameToDelete.push(array[i][bottle_name]);
       }
     }
-    return bottleToDelete;
+    return bottleNameToDelete;
   }
 
+  // function to loop in our wineBottleName and verify if including the name we getted previously with getName()
   function deleteBottleName(array, name) {
     const bottleRemove = [];
     for (let i = 0; i < array.length; i += 1) {
-      if (name === array[i]) {
+      if (array[i].includes(name)) {
         bottleRemove.push(array.splice(i, 1));
-        // console.log(`bottle supp c'est ${bottleRemove}`);
       }
     }
     return bottleRemove;
   }
 
-  // fetch all tasting data & set the state with
+  // fetch all tasting data & set the state with response
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -82,7 +71,7 @@ function AtelierCreation() {
     }
   };
 
-  // fetch all wineBottle data & set the state with
+  // fetch all wineBottle data & set the state with response
   const fetchBottleData = async () => {
     try {
       const response = await axios.get(
@@ -94,10 +83,10 @@ function AtelierCreation() {
     }
   };
 
-  // function to update the BottleContext with 3 bottles, calling the getRatings function
-  const updateBottleId = () => {
+  // function to update the BottleContext with 3 bottles(id & name) calling getName(), deleteBottleName() && set the context
+  const updateBottleContext = () => {
     if (tastingData && tastingData.length > 0) {
-      const resultRating = getRatings(
+      const resultRating = getRatingsAndIds(
         tastingData,
         "rating",
         "wineBottle_id",
@@ -110,44 +99,36 @@ function AtelierCreation() {
       const index = arrayOfRatings.indexOf(arrayOfRatingsSmallest); // find the index of smallest rating
       arrayOfRatings.splice(index, 1); // remove the smallest rating
 
-      const idToDelete = arrayOfIds[index]; // stock the id to delete, need it for get the bottleName
+      const idToDelete = arrayOfIds[index]; // stock the id to delete, need it for get the bottleName in getName() below
 
       const bottleToDelete = getName(wineBottleData, idToDelete, "bottle_name");
-      setBottleNameToDelete(bottleToDelete);
-      // console.log(`avant la fonction deleteBottle : wineBottleName = ${wineBottleName} & bottleNameToDelete = ${bottleNameToDelete}`)
       const bottleDeleted = deleteBottleName(wineBottleName, bottleToDelete);
 
       arrayOfIds.splice(index, 1); // remove the id of the smallest rating
-      setWineBottleName(bottleDeleted);
+      const updatedWineBottleName = wineBottleName.filter(
+        (name) => name !== bottleDeleted
+      );
+      setWineBottleName(updatedWineBottleName); // update bottleContext with 1 name removed
       setWineBottleId(arrayOfIds); // update bottleContext with 1 id removed
-      // console.log(` à la fin wineBottleId context c'est : ${wineBottleId}`); // check if ok
-      // console.log(` à la finwineBottleName c'est ${wineBottleName}`); // check if ok
     }
   };
 
-  // at page loading, get the tasting data with the fetchData function
+  // at page loading, get the tasting data & wineBottle data with the functions
   useEffect(() => {
     fetchData();
     fetchBottleData();
   }, []);
 
-  // when tastingData & wineBottleData updated with the previous useEffect, call updateBottleId()
+  // when tastingData & wineBottleData updated with the previous useEffect, call updateBottleContext()
   useEffect(() => {
     if (tastingData && wineBottleData && !dataLoaded) {
       setDataLoaded(true);
-      updateBottleId();
+      updateBottleContext();
     }
   }, [tastingData, wineBottleData]);
 
-  useEffect(() => {
-    // console.log(
-    // `Après la mise à jour, bottleNameToDelete : ${bottleNameToDelete}`
-    // );
-  }, [bottleNameToDelete]);
-
-  /*    const [Name1, Name2, Name3] = wineBottleName;
-
-   const [id1, id2, id3] = wineBottleId; */
+  const [Name1, Name2, Name3] = wineBottleName;
+  const [id1, id2, id3] = wineBottleId;
 
   return (
     <div className="element-fond">
