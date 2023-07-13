@@ -9,8 +9,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin/Admin";
 import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
-import { LogingProvider } from "./contexts/LogingContext";
-
 import "./App.css";
 import { UserProvider } from "./contexts/UserContext";
 import { BottleProvider } from "./contexts/BottleContext";
@@ -22,9 +20,7 @@ function App() {
         <Router>
           <div>
             <div className="backgroundHeader">
-              <LogingProvider>
-                <Navbar />
-              </LogingProvider>
+              <Navbar />
             </div>
 
             <Routes>

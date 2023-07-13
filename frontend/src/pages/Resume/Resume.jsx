@@ -11,9 +11,7 @@ import CommandeModal from "../../components/commandeModal/CommandeModal";
 function Resume() {
   // useContext
   const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-  // console.log(`resume account_id: ${user} `);
   const [modalOpen, setModalOpen] = useState(false);
-
   const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [birthDay, setBirthDay] = useState();
@@ -33,20 +31,22 @@ function Resume() {
           firstname,
           lastname,
           percentage,
-          address,
+          email,
           birthdate,
           recipe_name,
+          bottle_name,
         } = response.data[0];
         const array = birthdate.split("T");
         const dateParts = array[0].split("-");
         const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
         setFullName(`${firstname} ${lastname}`);
-        setEmailAddress(`${address}`);
+        setEmailAddress(`${email}`);
         setBirthDay(`${formattedDate}`);
         setRecipeName(`${recipe_name}`);
         setQuantity(`${percentage}`);
-        setBottleData(response.data);
+        setBottleData(`${bottle_name}`);
       })
+
       .catch((error) => {
         console.error("Error retrieving composition recipe details:", error);
       });
@@ -75,14 +75,14 @@ function Resume() {
           <h2 className="recepie_title">RECETTE</h2>
           <div className="recepie_info">
             <span className="personalDetails">
-              {/* Need a map over all bottleData with same user_id */}
-              {bottleData.map((data, index) => (
+              {/* {bottleData.map((data, index) => (
                 <ul key={data.id || index}>
                   <li>
                     {data.bottle_name} - <span>{quantity}%</span>
                   </li>
                 </ul>
-              ))}
+              ))} */}
+              {bottleData} {quantity}
             </span>
             <p />
             <p />
@@ -108,7 +108,7 @@ function Resume() {
         </div>
         <div className="bottle_diploma">
           <img id="bottle_resume" src={bottle} alt="" />
-          <span className="bottle_title">{recipeName}</span>
+          <span className="bottle_title" />
           <div className="halfBackground">
             <img id="diploma" src={diploma} alt="" />
             <p className="diploma_winner">{fullName}</p>

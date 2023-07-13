@@ -2,12 +2,14 @@ import axios from "axios";
 import "./FormInfoPerso.scss";
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { differenceInYears } from "date-fns";
 import picturePreferences from "../../assets/images/photo2_720.png";
 import UserContext from "../../contexts/UserContext";
 
 function FormInfoPerso() {
   // usecontext
   const { setUser, setFirstname } = useContext(UserContext);
+  const [ageError, setAgeError] = useState(false);
 
   // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
   const getUserId = (accountId, setUserId) => {
@@ -135,6 +137,14 @@ function FormInfoPerso() {
   // fonction de soumission du formulaire
   const handleSubmitInscription = (event) => {
     event.preventDefault();
+    const birthdate = new Date(formInscription.birthdate);
+    const eighteenYearsAgo = new Date();
+    eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+
+    if (differenceInYears(eighteenYearsAgo, birthdate) < 0) {
+      setAgeError(true);
+      return;
+    }
     // post email et pwd
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/account`, formAuthentification)
@@ -216,6 +226,7 @@ function FormInfoPerso() {
                 placeholder="Dupont"
                 value={formInscription.firstname}
                 onChange={handleChangeFormInscription}
+                required
               />
             </label>
           </div>
@@ -232,6 +243,7 @@ function FormInfoPerso() {
                 placeholder="Jean"
                 value={formInscription.lastname}
                 onChange={handleChangeFormInscription}
+                required
               />
             </label>
           </div>
@@ -246,6 +258,7 @@ function FormInfoPerso() {
                 type="date"
                 name="birthdate"
                 value={formInscription.birthdate}
+                required
                 onChange={handleChangeFormInscription}
                 style={{
                   color: formInscription.birthdate ? "black" : "gray",
@@ -253,6 +266,24 @@ function FormInfoPerso() {
                 }}
               />
             </label>
+            {ageError ? (
+              <div className="modal">
+                <div className="modal-content">
+                  <span className="modalText">
+                    <p className="ErrorAge">
+                      Vous devez avoir au moins 18 ans.
+                    </p>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  className="closeAge"
+                  onClick={() => setAgeError(false)}
+                >
+                  🗙
+                </button>
+              </div>
+            ) : null}
           </div>
           <div className="form-inscription-identity-input-contenair">
             <label
@@ -267,6 +298,7 @@ function FormInfoPerso() {
                 placeholder="jeandupont@gmail.fr"
                 value={formAuthentification.email}
                 onChange={handleChangeFormAuthentification}
+                required
               />
             </label>
           </div>
@@ -283,6 +315,7 @@ function FormInfoPerso() {
                 placeholder="........"
                 value={formAuthentification.pwd}
                 onChange={handleChangeFormAuthentification}
+                required
               />
             </label>
           </div>
