@@ -22,8 +22,8 @@ function App() {
     <ThemeProvider>
       <UserProvider>
         <Router>
-          <div>
-            <div className={`backgroundHeader ${theme}`}>
+          <div className={`poloop ${theme}`}>
+            <div className="backgroundHeader">
               <LogingProvider>
                 <Navbar />
               </LogingProvider>
