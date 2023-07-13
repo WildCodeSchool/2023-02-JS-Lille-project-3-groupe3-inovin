@@ -89,6 +89,7 @@ function AdminAjoutVin() {
   const [showSuggestWine, setShowSuggestWine] = useState(true); // state to show or not the wineSearchSuggest
   const [bottleDeleted, setBottleDeleted] = useState(false); // confirm deleting bottle
   const [deleteError, setDeleteError] = useState(false); // display error message, cannot be deleted
+  const [bottleAddedToTasting, setBottleAddedToTasting] = useState(false); // state todisplay or not confirm mesg when add bottle in bottleContext
 
   // function to catch input value with event
   // then filter wineData in a new array to compare the input value (lowerCase) with bottleWine in wineData (bottle_name in lowerCase too)
@@ -120,6 +121,7 @@ function AdminAjoutVin() {
     setSearchTerm(event.target.value);
     setBottleDeleted(false);
     setDeleteError(false);
+    setBottleAddedToTasting(false);
   };
 
   // onClick function to hide the dropdown when you click on the bottle wine name show in the dropdown and update the searchBar with the name
@@ -244,9 +246,9 @@ function AdminAjoutVin() {
   };
   const handleChooseBottle = (event) => {
     event.preventDefault();
-    setWineBottleId([...wineBottleId, bottleId]);
-
-    // take the bottleId & put in BottleContext
+    setWineBottleId([...wineBottleId, bottleId]); // take the bottleId & put in BottleContext
+    setBottleAddedToTasting(true); // to display confirmation
+    setSearchTerm(""); // reset the search to empty
   };
 
   return (
@@ -374,14 +376,19 @@ function AdminAjoutVin() {
         >
           MODIFIER LE VIN
         </button>
-        <button
-          className="troisBoutons addTasting"
-          type="submit"
-          value="AJOUTER A LA DEGUSTATION"
-          onClick={handleChooseBottle}
-        >
-          AJOUTER A LA DEGUSTATION
-        </button>
+        {bottleAddedToTasting ? (
+          <p className="successAddingToTasting">Ajoutée !</p>
+        ) : (
+          <button
+            className="troisBoutons addTasting"
+            type="submit"
+            value="AJOUTER A LA DEGUSTATION"
+            onClick={handleChooseBottle}
+          >
+            AJOUTER A LA DEGUSTATION
+          </button>
+        )}
+
         <button
           className="troisBoutons"
           type="submit"

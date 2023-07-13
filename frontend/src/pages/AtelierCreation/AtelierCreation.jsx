@@ -1,34 +1,36 @@
-/* import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import Apercu from "../../components/Apercu/Apercu";
 import "./AtelierCreation.scss";
 import BottleContext from "../../contexts/BottleContext";
 import UserContext from "../../contexts/UserContext";
 import CardBottle from "../../components/CardBottle/CardBottle";
-import axios from "axios";
 
 function AtelierCreation() {
   const { wineBottleId, setWineBottleId, wineBottleName } =
-    useContext(BottleContext);
+    useContext(BottleContext); // BottleContext to get the current bottles id & name
   const [tastingData, setTastingData] = useState();
-  const { user } = useContext(UserContext);
-  const accountID = 4; // clearer
-  const [dataLoaded, setDataLoaded] = useState(false); // Variable d'état pour suivre si les données sont chargées
+  const { user } = useContext(UserContext); // UserContext to get the current account_id
+  const accountID = user; // clearer
+  const [dataLoaded, setDataLoaded] = useState(false); // state to know if data getted or not
 
   // function to get ratings by user_account_ID in tastingData(array) with account_id by userContext
-  function getRatings(array, rating, wineBottleId, id) {
-    const output = []; // tableau pour stocker les ratings
-    const ids = []; // Tableau pour stocker les wineBottleId correspondants
+  function getRatings(array, rating, bottleId, account_id) {
+    const outputRatings = []; // array to stock ratings
+    const outputBottleIds = []; // array to stock the wineBottleId linked with ratings
 
-    for (let i = 0; i < array.length; i++) {
-      if (id === array[i].user_account_ID) {
-        output.push(array[i][rating]);
-        ids.push(array[i][wineBottleId]); // Ajouter wineBottleId au tableau des ids
+    for (let i = 0; i < array.length; i += 1) {
+      if (account_id === array[i].user_account_ID) {
+        // check only the current account_id
+        outputRatings.push(array[i][rating]); // add rating in outputRatings
+        outputBottleIds.push(array[i][bottleId]); // add wineBottleId in outputBottleIds
       }
     }
 
-    return { ratings: output, ids }; // Retourner un objet contenant les notes et les ids
+    return { ratings: outputRatings, ids: outputBottleIds }; // return an object with ratings & ids
   }
 
+  // fetch all tasting data & set the state with
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -36,11 +38,11 @@ function AtelierCreation() {
       );
       setTastingData(response.data);
     } catch (error) {
-      // Gérer les erreurs de récupération des données
       console.error(error);
     }
   };
 
+  // function to update the BottleContext with 3 bottles, calling the getRatings function
   const updateBottleId = () => {
     if (tastingData && tastingData.length > 0) {
       const result = getRatings(
@@ -49,60 +51,53 @@ function AtelierCreation() {
         "wineBottle_id",
         accountID
       );
-      const arrayOfRatings = result.ratings;
-      const arrayOfIds = result.ids;
-      const arrayOfRatingsSmallest = Math.min(...arrayOfRatings);
-      const index = arrayOfRatings.indexOf(arrayOfRatingsSmallest);
-      arrayOfRatings.splice(index, 1);
-      arrayOfIds.splice(index, 1);
+      const arrayOfRatings = result.ratings; // array of ratings
+      const arrayOfIds = result.ids; // aray of wine bottle ids
+      const arrayOfRatingsSmallest = Math.min(...arrayOfRatings); // find the smallest rating
+      const index = arrayOfRatings.indexOf(arrayOfRatingsSmallest); // find the index of smallest rating
+      arrayOfRatings.splice(index, 1); // remove the smallest rating
+      arrayOfIds.splice(index, 1); // remove the id of the smallest rating
 
-      setWineBottleId(arrayOfIds);
-      console.log(`wineBottleId context c'est : ${arrayOfIds}`);
+      setWineBottleId(arrayOfIds); // update bottleContext with 1 id removed
+      // console.log(`wineBottleId context c'est : ${arrayOfIds}`); // check if ok
     }
   };
 
+  // at page loading, get the tasting data with the fetchData function
   useEffect(() => {
     fetchData();
   }, []);
 
+  // when tastingData updated with the previous useEffect, call updateBottleId()
   useEffect(() => {
     if (tastingData && !dataLoaded) {
       setDataLoaded(true);
-      updateBottleId(); // Appeler la fonction updateBottleId() dès que les données sont chargées
+      updateBottleId();
     }
   }, [tastingData]);
 
-  useEffect(() => {
-    if (dataLoaded) {
-      updateBottleId();
-    }
-  }, [dataLoaded]);
-
-  /*    function destructuredName() {
+  function destructuredName() {
     return wineBottleName;
   }
   const [Name1, Name2, Name3] = destructuredName();
+
   function destructuredId() {
     return wineBottleId;
   }
-  const [id1, id2, id3] = destructuredId();  */
+  const [id1, id2, id3] = destructuredId();
 
-// console.log(wineBottleId);
-// console.log(wineBottleName);
-// return (
-// <div className="element-fond">
-// <div className="container_atelier">
-// <div className="container-bottle">
-
-/* <CardBottle wineBottleName={Name1} wineBottleId={id1} />
+  return (
+    <div className="element-fond">
+      <div className="container_atelier">
+        <div className="container-bottle">
+          <CardBottle wineBottleName={Name1} wineBottleId={id1} />
           <CardBottle wineBottleName={Name2} wineBottleId={id2} />
-          <CardBottle wineBottleName={Name3} wineBottleId={id3} /> */
+          <CardBottle wineBottleName={Name3} wineBottleId={id3} />
+        </div>
+        <Apercu />
+      </div>
+    </div>
+  );
+}
 
-// </div>
-// <Apercu />
-// </div>
-// </div>
-// );
-// }
-
-// export default AtelierCreation;
+export default AtelierCreation;
