@@ -46,8 +46,8 @@ models.tasting.setDatabase(pool);
 
 const CompoRecipeManager = require("./CompoRecipeManager");
 
-models.compo_recipe = new CompoRecipeManager();
-models.compo_recipe.setDatabase(pool);
+models.compoRecipe = new CompoRecipeManager();
+models.compoRecipe.setDatabase(pool);
 
 const RecipeManager = require("./RecipeManager");
 

@@ -45,24 +45,6 @@ const edit = (req, res) => {
     });
 };
 
-// const modify = (req, res) => {
-//   const user = req.body;
-//   user.id = parseInt(req.params.id, 10);
-//   models.user
-//     .modify(user)
-//     .then(([result]) => {
-//       if (result.affectedRows === 0) {
-//         res.sendStatus(404);
-//       } else {
-//         res.sendStatus(204);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
-
 const add = (req, res) => {
   const user = req.body;
 
@@ -97,7 +79,7 @@ const destroy = (req, res) => {
 
 const getDetails = (req, res) => {
   // get specific recipe details to show in resume page
-  models.compo_recipe
+  models.comporecipe
     .get(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {

@@ -4,14 +4,22 @@ import Apercu from "../../components/Apercu/Apercu";
 import "./AtelierCreation.scss";
 import BottleContext from "../../contexts/BottleContext";
 import UserContext from "../../contexts/UserContext";
-// import CardBottle from "../../components/CardBottle/CardBottle";
+import CardBottle from "../../components/CardBottle/CardBottle";
+import NameRecipe from "../../components/NameRecipe/NameRecipe";
 
 function AtelierCreation() {
-  const {
-    /* wineBottleId */ wineBottleName,
-    setWineBottleName,
-    setWineBottleId,
-  } = useContext(BottleContext); // BottleContext to get the current bottles id & name
+  const { wineBottleId, wineBottleName, setWineBottleName, setWineBottleId } =
+    useContext(BottleContext); // BottleContext to get the current bottles id & name
+
+  function destructuredName() {
+    return wineBottleName;
+  }
+  const [Name1, Name2, Name3] = destructuredName();
+  function destructuredId() {
+    return wineBottleId;
+  }
+  const [id1, id2, id3] = destructuredId();
+
   const [tastingData, setTastingData] = useState();
   const { user } = useContext(UserContext); // UserContext to get the current account_id
   const accountID = user; // clearer
@@ -145,9 +153,10 @@ function AtelierCreation() {
     <div className="element-fond">
       <div className="container_atelier">
         <div className="container-bottle">
-          {/* <CardBottle wineBottleName={Name1} wineBottleId={id1} />
+          <CardBottle wineBottleName={Name1} wineBottleId={id1} />
           <CardBottle wineBottleName={Name2} wineBottleId={id2} />
-          <CardBottle wineBottleName={Name3} wineBottleId={id3} /> */}
+          <CardBottle wineBottleName={Name3} wineBottleId={id3} />
+          <NameRecipe />
         </div>
         <Apercu />
       </div>

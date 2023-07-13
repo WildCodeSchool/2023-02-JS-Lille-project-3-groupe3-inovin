@@ -9,7 +9,7 @@ import BottleContext from "../../contexts/BottleContext";
 function AdminAjoutVin() {
   const navigate = useNavigate();
 
-  const { wineBottleId, setWineBottleId, setWineBottleName, wineBottleName } =
+  const { wineBottleId, setWineBottleId, wineBottleName, setWineBottleName } =
     useContext(BottleContext); // bottle id of current bottle chose by Admin from adminAjoutVin, you can use it for update database
 
   /* FIRST PART, POST WINE BOTTLE TO DATABASE */
