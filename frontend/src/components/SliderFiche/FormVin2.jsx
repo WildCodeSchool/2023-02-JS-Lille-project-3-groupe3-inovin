@@ -1,17 +1,20 @@
-import { useState, useContext } from "react";
+import PropTypes from "prop-types";
+import { useState, useContext, useEffect } from "react";
+
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
 import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
-function FormVin2() {
+function FormVin2({ secondBottleId }) {
   const [activeTabSlide2, setActiveTabSlide2] = useState("tab1");
   const [isEditing, setIsEditing] = useState(false);
+
   const { user } = useContext(UserContext);
+  const [userId, setUserId] = useState(null);
 
   const [rating, setRating] = useState(null);
-
   const [hover, setHover] = useState(null);
 
   const [formData2, setFormData2] = useState({
@@ -21,10 +24,29 @@ function FormVin2() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: user,
-    user_account_ID: "",
-    wineBottle_id: 6,
+    user_id: userId,
+    user_account_ID: user,
+    wineBottle_id: secondBottleId,
   });
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: `${user}` },
+      })
+      .then((response) => {
+        const userIdUpdated = response.data[0]?.id;
+        setUserId(userIdUpdated);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [setFormData2]);
+
+  // Envoyer le userId dans le formData
+  useEffect(() => {
+    setFormData2({ ...formData2, user_id: userId });
+  }, [userId]);
 
   const [editFormData2, setEditFormData2] = useState({
     robe: "",
@@ -33,10 +55,14 @@ function FormVin2() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: user,
-    user_account_ID: "",
-    wineBottle_id: 6,
+    user_id: userId,
+    user_account_ID: user,
+    wineBottle_id: secondBottleId,
   });
+
+  useEffect(() => {
+    setEditFormData2({ ...editFormData2, user_id: userId });
+  }, [userId]);
 
   const handleChangeData2 = (evt) => {
     setFormData2((previousData) => ({
@@ -395,4 +421,7 @@ function FormVin2() {
   );
 }
 
+FormVin2.propTypes = {
+  secondBottleId: PropTypes.number.isRequired,
+};
 export default FormVin2;

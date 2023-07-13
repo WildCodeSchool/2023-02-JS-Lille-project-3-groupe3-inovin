@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.compo_recipe
+  models.comporecipe
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.compo_recipe
+  models.comporecipe
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -53,12 +53,10 @@ const edit = (req, res) => {
 const add = (req, res) => {
   const compoRecipe = req.body;
 
-  // TODO validations (length, format...)
-
   models.compoRecipe
     .insert(compoRecipe)
     .then(([result]) => {
-      res.location(`/compoRecipes/${result.insertId}`).sendStatus(201);
+      res.location(`/compoRecipe/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -81,12 +79,28 @@ const destroy = (req, res) => {
       res.sendStatus(500);
     });
 };
+const getDetails = (req, res) => {
+  // get specific recipe details to show in resume page
+  models.compo_recipe
+    .get(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   browse,
   read,
-
   edit,
   add,
   destroy,
+  getDetails,
 };

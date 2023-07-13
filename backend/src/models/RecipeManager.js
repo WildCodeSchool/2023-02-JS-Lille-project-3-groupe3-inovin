@@ -6,9 +6,10 @@ class RecipeManager extends AbstractManager {
   }
 
   insert(recipe) {
-    return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      recipe.name,
-    ]);
+    return this.database.query(
+      `insert into ${this.table} (recipe_name) values (?)`,
+      [recipe.recipe_name]
+    );
   }
 
   update(recipe) {

@@ -43,22 +43,21 @@ class UserManager extends AbstractManager {
     );
   }
 
-  get(account_id) {
-    // this request will be displayed on the resume page
-    return this.database.query(
-      `
-      SELECT cr.id, cr.percentage, cr.user_account_ID, u.firstname, u.lastname, u.birthdate, a.email, wb.bottle_name, r.recipe_name
-FROM comporecipe cr
-JOIN user u ON cr.user_id = u.id
-JOIN account a ON u.account_id = a.id
-JOIN winebottle wb ON cr.wineBottle_id = wb.id
-JOIN relation_recipe rr ON cr.id = rr.compoRecipe_id
-JOIN recipe r ON rr.recipe_id = r.id
-      `,
+  //   get(account_id) {
+  //     // this request will be displayed on the resume page
+  //     return this.database.query(
+  //       `
+  //       SELECT cr.id, cr.percentage, cr.user_account_ID, u.firstname, u.lastname, u.birthdate, a.email, wb.bottle_name, r.recipe_name
+  //  FROM ${this.table} u
+  // JOIN account a ON u.account_id = a.id
+  // JOIN comporecipe cr ON cr.user_id = u.id
+  // JOIN winebottle wb ON cr.wineBottle_id = wb.id
+  //  JOIN recipe r ON rr.recipe_id = r.id;
+  //       `,
 
-      [account_id]
-    );
-  }
+  //       [account_id]
+  //     );
+  //   }
 }
 
 module.exports = UserManager;

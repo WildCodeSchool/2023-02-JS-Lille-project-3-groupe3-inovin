@@ -1,17 +1,20 @@
-import { useState } from "react";
-// import UserContext from "../../contexts/UserContext";
+import PropTypes from "prop-types";
+import { useState, useContext, useEffect } from "react";
+
 import axios from "axios";
 import { BsDropletFill } from "react-icons/bs";
+import UserContext from "../../contexts/UserContext";
 import TabNavItem from "../TabComponents/TabNavItem";
 import TabContent from "../TabComponents/TabContent";
 
-function FormVin3() {
+function FormVin3({ thirdBottleId }) {
   const [activeTabSlide3, setActiveTabSlide3] = useState("tab1");
   const [isEditing, setIsEditing] = useState(false);
-  // const { user } = useContext(UserContext);
+
+  const { user } = useContext(UserContext);
+  const [userId, setUserId] = useState(null);
 
   const [rating, setRating] = useState(null);
-
   const [hover, setHover] = useState(null);
 
   const [formData3, setFormData3] = useState({
@@ -21,10 +24,29 @@ function FormVin3() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
-    wineBottle_id: 5,
+    user_id: userId,
+    user_account_ID: user,
+    wineBottle_id: thirdBottleId,
   });
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+        params: { account_id: `${user}` },
+      })
+      .then((response) => {
+        const userIdUpdated = response.data[0]?.id;
+        setUserId(userIdUpdated);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [setFormData3]);
+
+  // Envoyer le userId dans le formData
+  useEffect(() => {
+    setFormData3({ ...formData3, user_id: userId });
+  }, [userId]);
 
   const [editFormData3, setEditFormData3] = useState({
     robe: "",
@@ -33,10 +55,14 @@ function FormVin3() {
     arome_intensity: "",
     flavor: "",
     rating,
-    user_id: 5,
-    user_account_ID: 3,
-    wineBottle_id: 5,
+    user_id: userId,
+    user_account_ID: user,
+    wineBottle_id: thirdBottleId,
   });
+
+  useEffect(() => {
+    setEditFormData3({ ...editFormData3, user_id: userId });
+  }, [userId]);
 
   const handleChangeData3 = (evt) => {
     setFormData3((previousData) => ({
@@ -394,5 +420,9 @@ function FormVin3() {
     </div>
   );
 }
+
+FormVin3.propTypes = {
+  thirdBottleId: PropTypes.number.isRequired,
+};
 
 export default FormVin3;

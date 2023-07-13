@@ -31,6 +31,7 @@ connection.query(
     const mailOptions = {
       from: "inovincodewildschool@gmail.com",
       to: emailAddress, // l'email du user(id)
+      // to: "belkhirkhouloud@gmail.com",
       subject: "Notification de réception de commande",
       html: emailContent,
     };

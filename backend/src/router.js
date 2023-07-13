@@ -12,6 +12,7 @@ const accountControllers = require("./controllers/accountControllers");
 const { hashPassword } = require("./auth");
 /* router.get("/user", userControllers.browse); */ // commenté pour pouvoir faire les requêtes de FormInfoPerso
 router.get("/user", userControllers.read);
+// router.get("/user/:id", userControllers.getDetails);
 router.put("/user/:id", userControllers.edit);
 router.post("/user", userControllers.add);
 router.delete("/user/:id", userControllers.destroy);
@@ -36,8 +37,8 @@ router.post("/tasting", tastingControllers.add);
 router.delete("/tasting/:id", tastingControllers.destroy);
 
 router.get("/compo_recipe", compoRecipeControllers.browse);
-router.get("/compo_recipe/:id", compoRecipeControllers.read);
-// router.get("/compo_recipe/:id", compoRecipeControllers.getDetails);
+// router.get("/compo_recipe/:id", compoRecipeControllers.read);
+router.get("/compo_recipe/:id", compoRecipeControllers.getDetails);
 router.put("/compo_recipe/:id", compoRecipeControllers.edit);
 router.post("/compo_recipe", compoRecipeControllers.add);
 router.delete("/compo_recipe/:id", compoRecipeControllers.destroy);

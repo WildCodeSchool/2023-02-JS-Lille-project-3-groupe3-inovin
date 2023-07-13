@@ -15,9 +15,9 @@ function Resume() {
   const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [birthDay, setBirthDay] = useState();
-  // const [bottleData, setBottleData] = useState([]);
-  // const [recipeName, setRecipeName] = useState("");
-  // const [quantity, setQuantity] = useState();
+  const [bottleData, setBottleData] = useState([]);
+  const [recipeName, setRecipeName] = useState("");
+  const [quantity, setQuantity] = useState();
 
   const navigate = useNavigate();
 
@@ -30,11 +30,11 @@ function Resume() {
         const {
           firstname,
           lastname,
-          // percentage,
+          percentage,
           email,
           birthdate,
-          // recipe_name,
-          // bottle_name,
+          recipe_name,
+          bottle_name,
         } = response.data[0];
         const array = birthdate.split("T");
         const dateParts = array[0].split("-");
@@ -42,10 +42,9 @@ function Resume() {
         setFullName(`${firstname} ${lastname}`);
         setEmailAddress(`${email}`);
         setBirthDay(`${formattedDate}`);
-        // setRecipeName("blabla");
-        // setQuantity(`${percentage}`);
-        // setBottleData(`${bottle_name}`);
-        // setRecipeName(`${recipe_name}`);
+        setRecipeName(`${recipe_name}`);
+        setQuantity(`${percentage}`);
+        setBottleData(`${bottle_name}`);
       })
 
       .catch((error) => {
@@ -83,11 +82,12 @@ function Resume() {
                   </li>
                 </ul>
               ))} */}
+              {bottleData} {quantity}
             </span>
             <p />
             <p />
             <h3 className="personalDetails" id="rName">
-              {/* {recipeName} */}
+              {recipeName}
             </h3>
           </div>
           <button
