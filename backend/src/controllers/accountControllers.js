@@ -25,6 +25,19 @@ const read = (req, res) => {
       res.sendStatus(500);
     });
 };
+const findById = (req, res) => {
+  const { account_id } = req.query;
+
+  models.account
+    .findByid(account_id)
+    .then(([result]) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 const add = (req, res) => {
   const { email, hashedPassword } = req.body;
@@ -61,4 +74,5 @@ module.exports = {
   read,
   add,
   destroy,
+  findById,
 };

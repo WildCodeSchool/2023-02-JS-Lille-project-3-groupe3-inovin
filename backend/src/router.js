@@ -19,6 +19,7 @@ router.delete("/user/:id", userControllers.destroy);
 
 /* router.get("/account", accountControllers.browse); */ // commenté pour pouvoir faire les requêtes de FormInfoPerso
 router.get("/account", accountControllers.read);
+router.get("/account/:id", accountControllers.findById);
 router.post("/account", hashPassword, accountControllers.add);
 router.delete("/account/:id", accountControllers.destroy);
 
@@ -36,15 +37,14 @@ router.put("/tasting", tastingControllers.updateById);
 router.post("/tasting", tastingControllers.add);
 router.delete("/tasting/:id", tastingControllers.destroy);
 
-router.get("/compo_recipe", compoRecipeControllers.browse);
+router.get("/compo_recipe/:id", compoRecipeControllers.browse);
 // router.get("/compo_recipe/:id", compoRecipeControllers.read);
-router.get("/compo_recipe/:id", compoRecipeControllers.getDetails);
 router.put("/compo_recipe/:id", compoRecipeControllers.edit);
 router.post("/compo_recipe", compoRecipeControllers.add);
 router.delete("/compo_recipe/:id", compoRecipeControllers.destroy);
 
 router.get("/recipe", recipeControllers.browse);
-router.get("/recipe/:id", recipeControllers.read);
+// router.get("/recipe/:id", recipeControllers.findByName);
 router.put("/recipe/:id", recipeControllers.edit);
 router.post("/recipe", recipeControllers.add);
 router.delete("/recipe/:id", recipeControllers.destroy);

@@ -1,0 +1,58 @@
+@import "../../App.scss";
+
+// form.form-name-recipe {
+//     position: relative;
+//     top: 58vh;
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-content: stretch;
+//     flex-direction: row;
+//     justify-content: space-evenly;
+// }
+// #nameRecipe{
+//     background-color: black;
+//     width: 209px;
+//     border: 8px double white;
+//     color: white;
+// }
+
+.input-name-recipe-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22vh;
+  height: 6vh;
+  position: relative;
+  top: 55vh;
+  right: 27vh;
+}
+
+.form-name-recipe {
+  display: flex;
+  align-items: center;
+}
+
+.label-name-recipe {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.input-name-recipe {
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  text-indent: 1vh;
+}
+
+#nameRecipe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 19vh;
+  height: 5vh;
+  background-color: white;
+}
+#WineName {
+  width: 18vh;
+}

@@ -1,10 +1,40 @@
 const models = require("../models");
 
+// const browse = (req, res) => {
+//   models.comporecipe
+//     .findAll()
+//     .then(([rows]) => {
+//       res.send(rows);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// };
 const browse = (req, res) => {
   models.comporecipe
     .findAll()
     .then(([rows]) => {
-      res.send(rows);
+      const promises = rows.map((row) =>
+        models.wineBottle.find(row.wineBottle_id).then(([wineBottle]) => {
+          return {
+            id: row.id,
+            percentage: row.percentage,
+            user_id: row.user_id,
+            user_account_ID: row.user_account_ID,
+            wineBottle_id: row.wineBottle_id,
+            bottle_name: wineBottle.bottle_name,
+          };
+        })
+      );
+      Promise.all(promises)
+        .then((result) => {
+          res.send(result);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     })
     .catch((err) => {
       console.error(err);
@@ -79,22 +109,22 @@ const destroy = (req, res) => {
       res.sendStatus(500);
     });
 };
-const getDetails = (req, res) => {
-  // get specific recipe details to show in resume page
-  models.compo_recipe
-    .get(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
+// const getDetails = (req, res) => {
+//   // get specific recipe details to show in resume page
+//   models.compo_recipe
+//     .get(req.params.id)
+//     .then(([rows]) => {
+//       if (rows[0] == null) {
+//         res.sendStatus(404);
+//       } else {
+//         res.send(rows);
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// };
 
 module.exports = {
   browse,
@@ -102,5 +132,5 @@ module.exports = {
   edit,
   add,
   destroy,
-  getDetails,
+  // getDetails,
 };

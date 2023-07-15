@@ -77,22 +77,22 @@ const destroy = (req, res) => {
     });
 };
 
-const getDetails = (req, res) => {
-  // get specific recipe details to show in resume page
-  models.comporecipe
-    .get(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
+// const getDetails = (req, res) => {
+//   // get specific recipe details to show in resume page
+//   models.comporecipe
+//     .get(req.params.id)
+//     .then(([rows]) => {
+//       if (rows[0] == null) {
+//         res.sendStatus(404);
+//       } else {
+//         res.send(rows);
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// };
 
 module.exports = {
   browse,
@@ -100,5 +100,4 @@ module.exports = {
   edit,
   add,
   destroy,
-  getDetails,
 };
