@@ -2,31 +2,31 @@
 
 .tabs {
   width: 65vw;
-  background: $input_color;
-  border-radius: 15px;
+  background: #c5c5c500;
+  border-radius: 0em 1em 1em 1em;
   margin: 3.5rem auto 4.5rem;
   padding: 2rem 1rem;
+  height: 12em;
 }
 
 ul.nav {
-  width: 50vw;
-  margin: 0 auto 2rem;
+  width: 45vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #0c1a22;
-  border-radius: 15px;
-  padding-left: 0px;
+  position: relative;
+  bottom: 5em;
+  left: -3.2em;
+  border-radius: 1em 1em 0em 0em;
 }
 
 ul.nav li {
-  padding: 1rem;
   list-style: none;
   text-align: center;
   cursor: pointer;
   transition: all 0.7s;
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
+  opacity: 0%;
+  margin-left: -9vh;
 }
 
 ul.nav li:hover {
@@ -37,15 +37,16 @@ ul.nav li:active {
   background: #3e3e3e4d;
 }
 .carouselWrapper {
-  background-color: $box_color;
+  background-image: url(../../assets/images/fond-gris_720.png);
   padding: 1em 3em;
   position: absolute;
-  bottom: 10%;
-  box-shadow: 4px 4px 4px 4px #000000;
+  bottom: 4vh;
+  box-shadow: 0.1em 0.1em 0.5em 0.1em #000000;
   z-index: auto;
-  margin: 2% 5%;
-  border: 1px solid gainsboro;
-  width: 75%;
+  margin: 1em 1em;
+  border-radius: 1vh;
+  width: 54vh;
+  height: 50vh;
 }
 
 .carousel .control-arrow:before,
@@ -54,4 +55,44 @@ ul.nav li:active {
   display: inline-block;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
+}
+
+.btn-page-next {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: $font_title_small;
+  letter-spacing: 0.1875rem;
+  left: 41em;
+  bottom: -2em;
+}
+.btn-form-next,
+.btn-form-back {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  border-radius: 8px;
+  border: 0.8vh double #3e3e3e;
+  color: #3e3e3e;
+  text-align: center;
+  font-size: 1.5em;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-family: $font_title_small;
+  letter-spacing: 0.2vh;
+  width: 7em;
+  bottom: 0.5em;
+  left: 4.1em;
+}
+.nextPageArrow-tasting {
+  position: relative;
+  top: 0.3vh;
+  right: 0.1875vw;
+  height: 2vh;
+  width: auto;
 }

@@ -6,13 +6,20 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
+.picture-band-taste {
+  position: relative;
+  bottom: 4.9em;
+}
 .degustationTitle {
-  font-family: "Montaga", serif;
-  color: $gold_title;
-  font-size: 38px;
+  padding: 1em 3em;
+  position: relative;
+  font-family: $font_inovin;
+  color: $input_color;
+  background-color: $box_color;
+  border: solid 0.03em $button_background_color;
+  border-radius: 0.1em;
+  font-size: 3.4em;
   align-self: center;
-  padding: 2%;
-  margin-left: 8%;
-  padding: 16px;
+  padding: 3vh;
+  bottom: 6vh;
 }
