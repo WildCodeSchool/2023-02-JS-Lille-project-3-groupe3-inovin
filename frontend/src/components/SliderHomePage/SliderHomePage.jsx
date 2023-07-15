@@ -17,6 +17,8 @@ function SliderHome() {
           showThumbs={false}
           showStatus={false}
           infiniteLoop
+          autoPlay
+          stopOnHover
           useKeyboardArrows
           transitionTime={1000}
         >

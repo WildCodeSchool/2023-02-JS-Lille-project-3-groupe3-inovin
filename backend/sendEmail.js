@@ -3,8 +3,8 @@ const mailer = require("./Mailer");
 // Create a MySQL connection
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "Florent",
-  password: "nadinemorano",
+  user: "sql_test",
+  password: "password",
   database: "inovin_bdd",
 });
 // recuperer le prenom du client
@@ -31,6 +31,7 @@ connection.query(
     const mailOptions = {
       from: "inovincodewildschool@gmail.com",
       to: emailAddress, // l'email du user(id)
+      // to: "belkhirkhouloud@gmail.com",
       subject: "Notification de réception de commande",
       html: emailContent,
     };
