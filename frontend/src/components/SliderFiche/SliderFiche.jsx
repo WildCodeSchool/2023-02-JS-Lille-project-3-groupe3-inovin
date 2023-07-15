@@ -4,6 +4,7 @@ import Lexique from "../Lexique/Lexique";
 // import UserContext from "../../contexts/UserContext";
 import BottleContext from "../../contexts/BottleContext";
 import "./SliderFiche.scss";
+import fleche from "../../assets/images/fleche_360.png";
 import FormVin1 from "./FormVin1";
 import FormVin2 from "./FormVin2";
 import FormVin3 from "./FormVin3";
@@ -50,20 +51,21 @@ function SliderFiche() {
     <div className="carouselWrapper">
       {showActualForm()}
       {currentFormIndex > 0 && (
-        <button type="button" onClick={previousForm}>
-          Revenir au formulaire précédent
+        <button className="btn-form-back" type="button" onClick={previousForm}>
+          VIN précédent
         </button>
       )}
       {currentFormIndex < forms.length - 1 && (
-        <button type="button" onClick={nextForm}>
-          Form Suivant
+        <button className="btn-form-next" type="button" onClick={nextForm}>
+          VIN suivant
         </button>
       )}
 
       <Lexique />
 
-      <button type="button" onClick={handleClickNext}>
-        Page Suivante
+      <button className="btn-page-next" type="button" onClick={handleClickNext}>
+        <img src={fleche} alt="next page" className="nextPageArrow-tasting" />{" "}
+        SUIVANT
       </button>
     </div>
   );
