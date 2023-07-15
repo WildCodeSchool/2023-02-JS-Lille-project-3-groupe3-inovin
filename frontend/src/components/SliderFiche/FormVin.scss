@@ -101,10 +101,11 @@
   height: 2em;
 }
 
-.btn-validate-form {
+.btn-validate-form,
+.btn-update-form {
   position: relative;
-  bottom: -13.8em;
-  left: -0.7em;
+  bottom: 5.1em;
+  left: -1.6em;
   background-color: white;
   border-radius: 8px;
   color: #3e3e3e;
@@ -119,7 +120,7 @@
 }
 .slideWrapper {
   position: relative;
-  top: -4em;
+  top: -2.2em;
 }
 #input-rating {
   opacity: 0 !important;
