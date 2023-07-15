@@ -179,7 +179,7 @@ CREATE TABLE `tasting` (
   `arome` varchar(45) NOT NULL,
   `arome_intensity` varchar(45) NOT NULL,
   `flavor` varchar(45) NOT NULL,
-  `rating` varchar(45) NOT NULL,
+  `rating` int(45) NOT NULL,
   `user_id` int NOT NULL,
   `user_account_ID` int NOT NULL,
   `wineBottle_id` int NOT NULL,
@@ -197,9 +197,9 @@ CREATE TABLE `tasting` (
 
 LOCK TABLES `tasting` WRITE;
 /*!40000 ALTER TABLE `tasting` DISABLE KEYS */;
-INSERT INTO `tasting` VALUES (1,'jaune','trouble','fruit','leger','gras','5/10',2,2,1), (2,'jaune vert','clair','vegetal','moyen','amer','3/10',2,2,2), (3,'jaune or','clair','fruite','fort','sucre','8/10',2,2,3), (4,'grenat','clair','fruite','leger','sucre','7/10',2,2,4),
-(5,'jaune','trouble','fruit','leger','gras','5/10',3,3,1), (6,'jaune vert','clair','vegetal','fort','amer','1/10',3,3,2), (7,'jaune or','clair','fruite','moyen','sucre','5/10',3,3,3), (8,'grenat','trouble','fruite','moyen','sucre','10/10',3,3,6),
-(9,'jaune','trouble','fruit','leger','gras','1/10',4,4,1), (10,'jaune','trouble','animal','fort','amer','3/10',4,4,2), (11,'jaune or','trouble','fruite','fort','sucre','6/10',4,4,3), (12,'grenat','clair','fruite','fort','sucre','7/10',4,4,5) ;
+INSERT INTO `tasting` VALUES (1,'jaune','trouble','fruit','leger','gras',5,2,2,1), (2,'jaune vert','clair','vegetal','moyen','amer',3,2,2,2), (3,'jaune or','clair','fruite','fort','sucre',8,2,2,3), (4,'grenat','clair','fruite','leger','sucre',7,2,2,4),
+(5,'jaune','trouble','fruit','leger','gras',5,3,3,1), (6,'jaune vert','clair','vegetal','fort','amer',1,3,3,2), (7,'jaune or','clair','fruite','moyen','sucre',5,3,3,3), (8,'grenat','trouble','fruite','moyen','sucre',10,3,3,6),
+(9,'jaune','trouble','fruit','leger','gras',1,4,4,1), (10,'jaune','trouble','animal','fort','amer',3,4,4,2), (11,'jaune or','trouble','fruite','fort','sucre',6,4,4,3), (12,'grenat','clair','fruite','fort','sucre',7,4,4,5) ;
 /*!40000 ALTER TABLE `tasting` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +233,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Cédric','Guyot','1976-10-23','',0,5,"Mon atelier c'est le meilleur",'administrateur',1),(2,'Val','Agostini','1991-07-15','',0,5,'','utilisateur',2), (3,'Marie','Vangrevelynghe','1993-08-06','',0,5,'','utilisateur',3), (4,'Anne','Marchasson','1990-03-22','',0,5,'','utilisateur',4), (5,'Khouloud','Belkhir','1992-12-27','',0,5,'','utilisateur',5), (6,'Florent','Marin','1995-12-25','',0,5,'','utilisateur',6);
+INSERT INTO `user` VALUES (1,'Cédric','Boriat','1976-10-23','',0,5,"Mon atelier c'est le meilleur",'administrateur',1),(2,'Val','Agostini','1991-07-15','',0,5,'','utilisateur',2), (3,'Marie','Vangrevelynghe','1993-08-06','',0,5,'','utilisateur',3), (4,'Anne','Marchasson','1990-03-22','',0,5,'','utilisateur',4), (5,'Khouloud','Belkhir','1992-12-27','',0,5,'','utilisateur',5), (6,'Florent','Marin','1995-12-25','',0,5,'','utilisateur',6);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 

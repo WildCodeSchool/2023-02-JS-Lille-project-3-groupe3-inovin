@@ -10,6 +10,7 @@ function AnimationBottle({ id }) {
   const [isLocked, setIsLocked] = useState(false); // État pour indiquer si la progression est verrouillée
   // const [wineBottleId] = useState(null); // État pour stocker l'ID de la bouteille de vin
   const progressBarRef = useRef(null); // Référence à l'élément de la barre de progression pour ne pas scroller sur body entier
+  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
   const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
   // stock userId after user creation by post method

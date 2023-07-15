@@ -36,3 +36,69 @@
   font-size: 1.5em;
   letter-spacing: 4px;
 }
+
+.modal-btn {
+  /* background-color: red; */
+  height: 4vh;
+  position: relative;
+  top: 10vh;
+  right: 0vh;
+  display: flex;
+  flex-direction: row;
+}
+#Mcontent {
+  position: absolute;
+  width: 37%;
+}
+
+#deconnexionBtn {
+  margin-right: 10px;
+}
+
+#cancel {
+  margin-left: 10px;
+}
+
+.modal-content {
+  width: 41%;
+}
+
+.Mtext {
+  font-family: $font_title_large;
+}
+
+.btn_M {
+  display: inline-block;
+  background-color: white;
+  border-radius: 8px;
+  border: 8px double #3e3e3e;
+  color: $box_color;
+  text-align: center;
+  font-size: 22px;
+  padding: 8px;
+  /* width: 156px; */
+  height: fit-content;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 1vh;
+  font-family: $font_title_small;
+  letter-spacing: 3px;
+  position: relative;
+  bottom: 2vh;
+}
+// .modal-actions {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .modal-btn {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 10px;
+// }
+
+// .deconnexionBtn,
+// .cancel {
+//   /* Add your button styles here */
+// }

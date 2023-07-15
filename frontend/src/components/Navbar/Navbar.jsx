@@ -1,7 +1,103 @@
+// import { Link, useNavigate } from "react-router-dom";
+// import "./Navbar.scss";
+// import { useContext, useState } from "react";
+// import signout from "../../assets/images/signout.png";
+// import ProfileIcone from "../../assets/images/🦆 icon _profile circle_.png";
+// import LogoInovin from "../../assets/images/logo_inovin.png";
+// import UserContext from "../../contexts/UserContext";
+
+// function Navbar() {
+//   const { firstname } = useContext(UserContext);
+//   const [disconnect, setDisconnect] = useState(false);
+//   const navigate = useNavigate();
+//   const { user, setUser } = useContext(UserContext);
+
+//   const inscription = () => {
+//     navigate("/Inscription");
+//   };
+
+//   const deconnexion = () => {
+//     setUser(null);
+//     navigate("/");
+//     setDisconnect(false);
+//     window.location.reload();
+//   };
+
+//   const openModal = () => {
+//     if (user) {
+//       setDisconnect(true);
+//     }
+//   };
+
+//   const closeModal = () => {
+//     setDisconnect(false);
+//   };
+
+//   return (
+//     <div className="navHeader">
+//       <p className="logo">
+//         <Link to="/">
+//           <img src={LogoInovin} alt="Logo Ino Vin" />
+//         </Link>
+//       </p>
+//       <h1 className="inovinTitle">Ino Vin</h1>
+//       <div>
+//         {firstname ? (
+//           <h3 className="username">{firstname}</h3>
+//         ) : (
+//           <h3 className="username">Invité</h3>
+//         )}
+//         <div className="loginLinks" tabIndex={0} onClick={openModal}>
+//           {user ? (
+//             <img src={signout} alt="" />
+//           ) : (
+//             <img
+//               src={ProfileIcone}
+//               className="profileIcone"
+//               alt="Lien cliquable vers la page d'inscription"
+//               onClick={inscription}
+//             />
+//           )}
+//         </div>
+//         {disconnect && (
+//           <div className="modal">
+//             <div className="modal-content" id="Mcontent">
+//               <span className="modalText  Mtext">
+//                 <p>Êtes-vous sûr(e) de vouloir vous déconnecter ?</p>
+//               </span>
+//             </div>
+//             <div className="modal-actions">
+//               <div className="modal-btn">
+//                 <button
+//                   className="btn_M"
+//                   id="deconnexionBtn"
+//                   onClick={deconnexion}
+//                   type="button"
+//                 >
+//                   Oui
+//                 </button>
+//                 <button
+//                   type="button"
+//                   className="btn_M"
+//                   id="cancel"
+//                   onClick={closeModal}
+//                 >
+//                   Non
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Navbar;
+
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
-import { useContext } from "react";
-import { LogingContext } from "../../contexts/LogingContext";
+import { useContext, useState } from "react";
 import signout from "../../assets/images/signout.png";
 import ProfileIcone from "../../assets/images/🦆 icon _profile circle_.png";
 import LogoInovin from "../../assets/images/logo_inovin.png";
@@ -9,26 +105,29 @@ import UserContext from "../../contexts/UserContext";
 
 function Navbar() {
   const { firstname } = useContext(UserContext);
-
+  const [disconnect, setDisconnect] = useState(false);
   const navigate = useNavigate();
-  const { isOnline, loging, logout } = useContext(LogingContext);
+  const { user, setUser } = useContext(UserContext);
 
   const inscription = () => {
     navigate("/Inscription");
   };
 
   const deconnexion = () => {
+    setUser(null);
     navigate("/");
+    setDisconnect(false);
+    window.location.reload();
   };
 
-  const handleLogingLogout = () => {
-    if (isOnline) {
-      logout();
-      deconnexion();
-    } else {
-      loging();
-      inscription();
+  const openModal = () => {
+    if (user) {
+      setDisconnect(true);
     }
+  };
+
+  const closeModal = () => {
+    setDisconnect(false);
   };
 
   return (
@@ -45,21 +144,74 @@ function Navbar() {
         ) : (
           <h3 className="username">Invité</h3>
         )}
-        <button
-          type="button"
+        <div
           className="loginLinks"
-          onClick={handleLogingLogout}
+          role="presentation"
+          onClick={openModal}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              openModal();
+            }
+          }}
         >
-          {isOnline ? (
-            <img src={signout} alt="" />
+          {user ? (
+            <img
+              src={signout}
+              alt=""
+              role="presentation"
+              onClick=""
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  deconnexion();
+                }
+              }}
+              aria-label="Déconnexion"
+            />
           ) : (
             <img
               src={ProfileIcone}
               className="profileIcone"
               alt="Lien cliquable vers la page d'inscription"
+              role="presentation"
+              onClick={inscription}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  inscription();
+                }
+              }}
+              aria-label="Inscription"
             />
           )}
-        </button>
+        </div>
+        {disconnect && (
+          <div className="modal">
+            <div className="modal-content" id="Mcontent">
+              <span className="modalText  Mtext">
+                <p>Êtes-vous sûr(e) de vouloir vous déconnecter ?</p>
+              </span>
+            </div>
+            <div className="modal-actions">
+              <div className="modal-btn">
+                <button
+                  className="btn_M"
+                  id="deconnexionBtn"
+                  onClick={deconnexion}
+                  type="button"
+                >
+                  Oui
+                </button>
+                <button
+                  type="button"
+                  className="btn_M"
+                  id="cancel"
+                  onClick={closeModal}
+                >
+                  Non
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

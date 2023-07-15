@@ -176,17 +176,44 @@
     flex-direction: column;
     align-items: flex-end;
   }
+  .resume_info {
+    width: 40vh;
+    position: relative;
+    top: 3vh;
+    height: 13vh;
+    right: 23vh;
+  }
   .halfBackground {
     position: absolute;
     height: 25%;
   }
   .recepie_info {
     width: 40vh;
-    height: 20vh;
-    right: 10vh;
+    top: 30vh;
+    height: 17vh;
+    right: 16vh;
     margin: 7vh 3vh;
   }
-
+  .profil_title {
+    position: relative;
+    top: 1vh;
+    right: 22vh;
+    font-family: "Montaga", serif;
+    color: #d8af49;
+    font-size: 38px;
+    padding: 2vh;
+    font-weight: 400;
+  }
+  .recepie_title {
+    position: relative;
+    bottom: 26vh;
+    color: #d8af49;
+    font-family: "Montaga", serif;
+    color: #d8af49;
+    font-size: 38px;
+    padding: 2vh;
+    font-weight: 400;
+  }
   #commande_btn {
     z-index: 2;
     top: 1;
@@ -195,43 +222,37 @@
   }
 
   #diploma {
-    width: 30vh;
-    height: 20vh;
-    width: 30vh;
-    height: 20vh;
-    left: 25%;
-    right: 50%;
+    width: 33vh;
+    height: 23vh;
+    left: 90vh;
+    bottom: 11vh;
   }
   .bottle_title {
     font-size: larger;
     z-index: 2;
-    left: 12vh;
-    bottom: 18vh;
+    left: 8vh;
+    bottom: 14vh;
   }
-  .diploma_winner {
-    bottom: 17vh;
-    left: 40vh;
-    z-index: 2;
-  }
+
   #goBack_btn {
     position: absolute;
-    //right: -55vh;
-    //bottom: -11vh;
+    //right: -48vh;
+    bottom: -9vh;
   }
 
   #bottle_resume {
-    bottom: 28vh;
+    position: relative;
+    width: 13vh;
+    margin-left: 6vh;
+    bottom: 24vh;
   }
-
-  #diploma {
-    width: 33vh;
-    height: 23vh;
-    left: 25%;
-    right: 50%;
-    bottom: 80%;
+  .diploma_winner {
+    bottom: 25vh;
+    right: 19vh;
   }
 
   #commande_btn {
-    margin-left: -163px;
+    left: 45vh;
+    bottom: 19vh;
   }
 }

@@ -2,12 +2,14 @@ import axios from "axios";
 import "./FormInfoPerso.scss";
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { differenceInYears } from "date-fns";
 import picturePreferences from "../../assets/images/photo2_720.png";
 import UserContext from "../../contexts/UserContext";
 
 function FormInfoPerso() {
   // usecontext
   const { setUser, setFirstname } = useContext(UserContext);
+  const [ageError, setAgeError] = useState(false);
 
   // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
   const getUserId = (accountId, setUserId) => {
@@ -135,6 +137,14 @@ function FormInfoPerso() {
   // fonction de soumission du formulaire
   const handleSubmitInscription = (event) => {
     event.preventDefault();
+    const birthdate = new Date(formInscription.birthdate);
+    const eighteenYearsAgo = new Date();
+    eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+
+    if (differenceInYears(eighteenYearsAgo, birthdate) < 0) {
+      setAgeError(true);
+      return;
+    }
     // post email et pwd
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/account`, formAuthentification)
@@ -216,6 +226,7 @@ function FormInfoPerso() {
                 placeholder="Dupont"
                 value={formInscription.firstname}
                 onChange={handleChangeFormInscription}
+                required
               />
             </label>
           </div>
@@ -232,6 +243,7 @@ function FormInfoPerso() {
                 placeholder="Jean"
                 value={formInscription.lastname}
                 onChange={handleChangeFormInscription}
+                required
               />
             </label>
           </div>
@@ -246,6 +258,7 @@ function FormInfoPerso() {
                 type="date"
                 name="birthdate"
                 value={formInscription.birthdate}
+                required
                 onChange={handleChangeFormInscription}
                 style={{
                   color: formInscription.birthdate ? "black" : "gray",
@@ -253,6 +266,24 @@ function FormInfoPerso() {
                 }}
               />
             </label>
+            {ageError ? (
+              <div className="modal">
+                <div className="modal-content">
+                  <span className="modalText">
+                    <p className="ErrorAge">
+                      Vous devez avoir au moins 18 ans.
+                    </p>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  className="closeAge"
+                  onClick={() => setAgeError(false)}
+                >
+                  🗙
+                </button>
+              </div>
+            ) : null}
           </div>
           <div className="form-inscription-identity-input-contenair">
             <label
@@ -267,6 +298,7 @@ function FormInfoPerso() {
                 placeholder="jeandupont@gmail.fr"
                 value={formAuthentification.email}
                 onChange={handleChangeFormAuthentification}
+                required
               />
             </label>
           </div>
@@ -283,6 +315,7 @@ function FormInfoPerso() {
                 placeholder="........"
                 value={formAuthentification.pwd}
                 onChange={handleChangeFormAuthentification}
+                required
               />
             </label>
           </div>
@@ -295,7 +328,7 @@ function FormInfoPerso() {
               required
               onChange={handleCheckboxChange}
             />
-            <label className="box-yes" htmlFor="label-color">
+            <label className="box-yes" htmlFor="checkbox-18-yes">
               J'ai plus de 18 ans
             </label>
           </div>
@@ -306,7 +339,7 @@ function FormInfoPerso() {
             <div className="contenair-color">
               <h3 className="title-checkbox">Color</h3>
               <label className="form-color-label" htmlFor="label-color">
-                <p>rouge</p>
+                <label htmlFor="checkbox-red">rouge</label>
                 <input
                   className="formbook-input-check"
                   type="checkbox"
@@ -316,7 +349,7 @@ function FormInfoPerso() {
                   checked={formPreference.color === "rouge"}
                   onChange={handleColorChange}
                 />
-                <p>blanc</p>
+                <label htmlFor="checkbox-white">blanc</label>
                 <input
                   className="formbook-input-check"
                   type="checkbox"
@@ -326,7 +359,7 @@ function FormInfoPerso() {
                   checked={formPreference.color === "blanc"}
                   onChange={handleColorChange}
                 />
-                <p>rosé</p>
+                <label htmlFor="checkbox-rose">rosé</label>
                 <input
                   className="formbook-input-check"
                   type="checkbox"
@@ -341,7 +374,7 @@ function FormInfoPerso() {
             <div className="contenair-arome">
               <h3 className="title-checkbox">Arôme</h3>
               <label className="form-arome-label" htmlFor="label-arome">
-                <p>fruité</p>
+                <label htmlFor="checkbox-fruit">fruité</label>
                 <input
                   className="formbook-input-check"
                   type="checkbox"
@@ -351,7 +384,7 @@ function FormInfoPerso() {
                   checked={formPreference.arome === "fruite"}
                   onChange={handleAromeChange}
                 />
-                <p>minéral</p>
+                <label htmlFor="checkbox-mineral">minéral</label>
                 <input
                   className="formbook-input-check"
                   type="checkbox"
@@ -361,7 +394,7 @@ function FormInfoPerso() {
                   checked={formPreference.arome === "mineral"}
                   onChange={handleAromeChange}
                 />
-                <p>boisé</p>
+                <label htmlFor="checkbox-wood">boisé</label>
                 <input
                   className="formbook-input-check"
                   type="checkbox"
