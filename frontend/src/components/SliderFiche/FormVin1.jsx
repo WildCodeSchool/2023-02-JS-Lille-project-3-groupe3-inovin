@@ -114,24 +114,6 @@ function FormVin1({ firstBottleId }) {
   return (
     <div className="contenair-carousel">
       <h3 className="h3-title-wine-taste">VIN NUMERO 1</h3>
-
-      {isEditing ? (
-        <button
-          className="btn-update-form"
-          type="button"
-          onClick={handleEditForm1}
-        >
-          Modifier
-        </button>
-      ) : (
-        <button
-          className="btn-validate-form"
-          type="button"
-          onClick={handleSubmitForm1}
-        >
-          Valider
-        </button>
-      )}
       <div className="slideWrapper">
         <div className="thirdSlide">
           <div className="tabs">
@@ -478,6 +460,23 @@ function FormVin1({ firstBottleId }) {
                     })}
                   </div>
                 </form>
+                {isEditing ? (
+                  <button
+                    className="btn-update-form"
+                    type="button"
+                    onClick={handleEditForm1}
+                  >
+                    Modifier
+                  </button>
+                ) : (
+                  <button
+                    className="btn-validate-form"
+                    type="button"
+                    onClick={handleSubmitForm1}
+                  >
+                    Valider
+                  </button>
+                )}
               </TabContent>
             </div>
           </div>
