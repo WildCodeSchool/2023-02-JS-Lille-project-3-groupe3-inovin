@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import Apercu from "../../components/Apercu/Apercu";
 import "./AtelierCreation.scss";
 import BottleContext from "../../contexts/BottleContext";
 import UserContext from "../../contexts/UserContext";
@@ -139,7 +138,6 @@ function AtelierCreation() {
           <CardBottle wineBottleName={Name3} wineBottleId={id3} />
           <NameRecipe />
         </div>
-        <Apercu />
       </div>
     </div>
   );

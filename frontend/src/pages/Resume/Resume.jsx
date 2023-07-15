@@ -1,6 +1,6 @@
-import "./Resume.scss";
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import "./Resume.scss";
 import { useNavigate } from "react-router-dom";
 import bottle from "../../assets/images/bootle_360.png";
 import diploma from "../../assets/images/diplome.png";
@@ -9,47 +9,115 @@ import UserContext from "../../contexts/UserContext";
 import CommandeModal from "../../components/commandeModal/CommandeModal";
 
 function Resume() {
-  // useContext
-  const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
+  const { user } = useContext(UserContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
-  const [birthDay, setBirthDay] = useState();
-  const [bottleData, setBottleData] = useState([]);
+  const [birthDay, setBirthDay] = useState("");
+  // const [bottleData, setBottleData] = useState([]);
   const [recipeName, setRecipeName] = useState("");
-  const [quantity, setQuantity] = useState();
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const getUserInfo = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-        params: { account_id: `${user}` },
+        params: { account_id: user },
       })
       .then((response) => {
-        const {
-          firstname,
-          lastname,
-          percentage,
-          email,
-          birthdate,
-          recipe_name,
-          bottle_name,
-        } = response.data[0];
+        const { firstname, lastname, birthdate } = response.data[0];
         const array = birthdate.split("T");
         const dateParts = array[0].split("-");
         const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
         setFullName(`${firstname} ${lastname}`);
-        setEmailAddress(`${email}`);
-        setBirthDay(`${formattedDate}`);
-        setRecipeName(`${recipe_name}`);
-        setQuantity(`${percentage}`);
-        setBottleData(`${bottle_name}`);
+        setBirthDay(formattedDate);
       })
-
       .catch((error) => {
-        console.error("Error retrieving composition recipe details:", error);
+        console.error("Error retrieving user info:", error);
       });
+  };
+
+  const emailInfo = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/account/findById`, {
+        params: { account_id: user },
+      })
+      .then((response) => {
+        const { email } = response.data[0];
+        setEmailAddress(email);
+      })
+      .catch((error) => {
+        console.error("Error retrieving recipe info:", error);
+      });
+  };
+
+  const recipeInfo = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/relation_recipe`, {
+        params: { user },
+      })
+      .then((response) => {
+        const relationData = response.data[0];
+        const recipeId = relationData.recipe_id;
+
+        axios
+          .get(`${import.meta.env.VITE_BACKEND_URL}/recipe/findById`, {
+            params: { recipe_id: recipeId },
+          })
+          .then((recipeResponse) => {
+            const { recipe_name } = recipeResponse.data[0];
+            setRecipeName(recipe_name);
+          })
+          .catch((error) => {
+            console.error("Error retrieving recipe info:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error retrieving relation recipe info:", error);
+      });
+  };
+
+  // const bottlesInfo = () => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`, {
+  //       params: { user_id: user },
+  //     })
+  //     .then((response) => {
+  //       const compoRecipeData = response.data;
+  //       const promises = compoRecipeData.map((data) =>
+  //         axios
+  //           .get(`${import.meta.env.VITE_BACKEND_URL}/winebottle`, {
+  //             params: { bottle_id: data.wineBottle_id },
+  //           })
+  //           .then((wineBottleResponse) => {
+  //             const wineBottle = wineBottleResponse.data[0];
+  //             return {
+  //               id: data.id,
+  //               percentage: data.percentage,
+  //               user_id: data.user_id,
+  //               user_account_ID: data.user_account_ID,
+  //               wineBottle_id: data.wineBottle_id,
+  //               bottle_name: wineBottle.bottle_name,
+  //             };
+  //           })
+  //       );
+  //       Promise.all(promises)
+  //         .then((result) => {
+  //           setBottleData(result);
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error retrieving bottle info:", error);
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error retrieving compo recipe info:", error);
+  //     });
+  // };
+
+  useEffect(() => {
+    getUserInfo();
+    emailInfo();
+    recipeInfo();
   }, []);
 
   const previousPage = () => {
@@ -76,13 +144,10 @@ function Resume() {
           <div className="recepie_info">
             <span className="personalDetails">
               {/* {bottleData.map((data, index) => (
-                <ul key={data.id || index}>
-                  <li>
-                    {data.bottle_name} - <span>{quantity}%</span>
-                  </li>
-                </ul>
+                <li key={index}>
+                  {data.bottle_name} - <span>{data.percentage}%</span>
+                </li>
               ))} */}
-              {bottleData} {quantity}
             </span>
             <p />
             <p />
@@ -127,4 +192,5 @@ function Resume() {
     </div>
   );
 }
+
 export default Resume;
