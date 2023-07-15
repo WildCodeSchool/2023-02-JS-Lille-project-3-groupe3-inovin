@@ -1,5 +1,3 @@
-
-import React, { useContext } from "react";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./AtelierCreation.scss";
