@@ -29,6 +29,13 @@
   bottom: -0.1em;
   left: 0;
   z-index: 2;
+  @include tablet-paysage {
+    width: 15em;
+    height: 15em;
+    line-height: 2.7vh;
+    bottom: 9.2em;
+    left: 37.2em;
+  }
 }
 
 .p-lexique {
@@ -52,6 +59,10 @@
   position: absolute;
   bottom: 7.2em;
   left: 4em;
+  @include tablet-paysage {
+    bottom: 22em;
+    left: 31em;
+  }
 }
 .modal-close-button-lexique {
   display: inline-block;
@@ -70,4 +81,8 @@
   position: absolute;
   bottom: 7.2em;
   left: 6.2em;
+  @include tablet-paysage {
+    bottom: 22em;
+    left: 33em;
+  }
 }

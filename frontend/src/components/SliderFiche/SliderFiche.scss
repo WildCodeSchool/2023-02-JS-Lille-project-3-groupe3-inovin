@@ -47,6 +47,10 @@ ul.nav li:active {
   border-radius: 1vh;
   width: 54vh;
   height: 50vh;
+  @include tablet-paysage {
+    width: 100vh;
+    height: 50vh;
+  }
 }
 
 .carousel .control-arrow:before,
@@ -68,12 +72,15 @@ ul.nav li:active {
   color: #fff;
   font-size: $font_title_small;
   letter-spacing: 0.1875rem;
-  left: 41em;
+  left: 36em;
   bottom: -5em;
+  @include tablet-paysage {
+    left: 53em;
+    bottom: 3em;
+  }
 }
-.btn-form-next,
-.btn-form-back {
-  position: relative;
+.btn-form-next {
+  position: fixed;
   display: inline-block;
   background-color: white;
   border-radius: 8px;
@@ -86,8 +93,34 @@ ul.nav li:active {
   font-family: $font_title_small;
   letter-spacing: 0.2vh;
   width: 7em;
-  bottom: 0em;
-  left: 4.1em;
+  bottom: 4em;
+  left: 16.1em;
+  @include tablet-paysage {
+    bottom: 4em;
+    left: 29.5em;
+  }
+}
+
+.btn-form-back {
+  position: fixed;
+  display: inline-block;
+  background-color: white;
+  border-radius: 8px;
+  border: 0.8vh double #3e3e3e;
+  color: #3e3e3e;
+  text-align: center;
+  font-size: 1.5em;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-family: $font_title_small;
+  letter-spacing: 0.2vh;
+  width: 7em;
+  bottom: 4em;
+  left: 8.1em;
+  @include tablet-paysage {
+    bottom: 6em;
+    left: 29.5em;
+  }
 }
 .nextPageArrow-tasting {
   position: relative;

@@ -125,7 +125,6 @@ function FormVin1({ firstBottleId }) {
               />
               <TabNavItem
                 title="Robe"
-                className="tab-invisible"
                 id="tab1"
                 activeTab={activeTabSlide1}
                 setActiveTab={setActiveTabSlide1}
