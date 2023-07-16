@@ -22,4 +22,8 @@
   align-self: center;
   padding: 3vh;
   bottom: 6vh;
+  @include tablet-paysage {
+    bottom: 10vh;
+    font-size: 3em;
+  }
 }
