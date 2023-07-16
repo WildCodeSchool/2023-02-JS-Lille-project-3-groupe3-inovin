@@ -112,10 +112,6 @@ function AnimationBottle({ id }) {
             : `${progress.toFixed(0)}%`}
         </div>
       </div>
-      <h3 className="h3-pourcentage">
-        {/* Affichage de la progression fixée */}
-        {fixedProgress !== null ? `${fixedProgress.toFixed(0)}%` : ""}
-      </h3>
     </div>
   );
 }

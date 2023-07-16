@@ -136,6 +136,8 @@ function AtelierCreation() {
           <CardBottle wineBottleName={Name1} wineBottleId={id1} />
           <CardBottle wineBottleName={Name2} wineBottleId={id2} />
           <CardBottle wineBottleName={Name3} wineBottleId={id3} />
+        </div>
+        <div className="container-bottle2">
           <NameRecipe />
         </div>
       </div>

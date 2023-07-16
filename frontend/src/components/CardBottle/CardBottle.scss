@@ -1,7 +1,17 @@
 @import "../../App.scss";
-
+.contenair-card-bottle {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 15em;
+  filter: drop-shadow(0.4em 0.4em 0.1em #000000);
+}
 .name-bottle {
   font-family: $font_title_small;
   color: $gold_title;
   font-size: 2em;
+  text-align: center;
+  padding: 0.5em;
 }

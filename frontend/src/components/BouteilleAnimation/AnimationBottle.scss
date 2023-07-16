@@ -1,3 +1,4 @@
+@import "../../App.scss";
 .progress-bar {
   max-width: 100%;
   width: 100%;
@@ -8,12 +9,12 @@
     60% 90%,
     60% 36%,
     50% 28%,
-    50% 13%,
-    52% 9%,
+    50% 12%,
+    52% 8%,
     52% 0%,
-    40% 0%,
-    40% 8%,
-    42% 13%,
+    39% 0%,
+    39% 8%,
+    41% 12%,
     41% 28%,
     30% 36%
   );
@@ -21,7 +22,6 @@
   width: 200px;
   height: 250px;
   background-color: goldenrod;
-
   border-radius: 10px;
   overflow: hidden;
 }
@@ -34,6 +34,10 @@
   height: 50%;
   background-color: goldenrod;
   transition: height 0.2s ease-in-out;
+  text-align: center;
+  font-size: 2em;
+  font-family: $font_title_small;
+  padding-top: 0.1em;
 }
 
 .h3-pourcentage {
@@ -51,17 +55,17 @@
   background-color: #000;
   border-radius: 5px;
   clip-path: polygon(
-    24% 90%,
-    66% 90%,
-    66% 36%,
+    25% 90%,
+    65% 90%,
+    65% 36%,
     50% 28%,
-    50% 8%,
-    52% 5%,
-    52% 0%,
-    40% 0%,
-    40% 5%,
-    42% 8%,
+    50% 9%,
+    53% 5%,
+    53% 0%,
+    38% 0%,
+    38% 5%,
+    41% 9%,
     41% 28%,
-    24% 36%
+    25% 36%
   );
 }

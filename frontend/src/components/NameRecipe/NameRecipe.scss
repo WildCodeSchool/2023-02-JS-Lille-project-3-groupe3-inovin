@@ -1,48 +1,30 @@
 @import "../../App.scss";
 
-// form.form-name-recipe {
-//     position: relative;
-//     top: 58vh;
-//     display: flex;
-//     flex-wrap: wrap;
-//     align-content: stretch;
-//     flex-direction: row;
-//     justify-content: space-evenly;
-// }
-// #nameRecipe{
-//     background-color: black;
-//     width: 209px;
-//     border: 8px double white;
-//     color: white;
-// }
-
 .input-name-recipe-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22vh;
-  height: 6vh;
-  position: relative;
-  top: 55vh;
-  right: 27vh;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // width: 22vh;
+  // height: 6vh;
+  // position: relative;
+  // top: 55vh;
+  // right: 27vh;
 }
 
 .form-name-recipe {
   display: flex;
+  flex-direction: row;
   align-items: center;
-}
-
-.label-name-recipe {
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .input-name-recipe {
-  width: 200px;
-  height: 40px;
-  border-radius: 8px;
-  text-indent: 1vh;
+  border-radius: 0.2em;
+  padding-left: 0.4em;
+  font-size: 1.8em;
+  font-family: $font_title_small;
+  margin: 0.4em 2em 0.4em 0em;
 }
 
 #nameRecipe {
@@ -53,6 +35,18 @@
   height: 5vh;
   background-color: white;
 }
-#WineName {
-  width: 18vh;
+.button-submit-recipe-name {
+  background-color: white;
+  border-radius: 0.6em;
+  border: 0.4em double #3e3e3e;
+  color: #3e3e3e;
+  text-align: center;
+  font-size: 1.8em;
+  padding: 0.3em;
+  width: 9em;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0.3em;
+  font-family: $font_title_small;
+  letter-spacing: 0.1em;
 }
