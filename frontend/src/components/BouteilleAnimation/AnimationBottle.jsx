@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import "./AnimationBottle.scss";
 import UserContext from "../../contexts/UserContext";
+import { PercentageContext } from "../../contexts/PercentageContext";
 
 function AnimationBottle({ id }) {
-  const [progress, setProgress] = useState(0); // État pour gérer la progression
+  const { progress, setProgress } = useContext(PercentageContext); // Etat pour envoyer percentage dans PercentageContext
+
   const [fixedProgress, setFixedProgress] = useState(null); // État pour stocker la progression fixée
   const [isLocked, setIsLocked] = useState(false); // État pour indiquer si la progression est verrouillée
   // const [wineBottleId] = useState(null); // État pour stocker l'ID de la bouteille de vin
@@ -56,7 +58,8 @@ function AnimationBottle({ id }) {
             ),
             maxProgress
           );
-          setProgress(newProgress); // Mettre à jour l'état avec la nouvelle progression
+          setProgress(newProgress); // avant context
+          // Mettre à jour l'état avec la nouvelle progression, avec context
         }
       }
     };
@@ -65,6 +68,7 @@ function AnimationBottle({ id }) {
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, [isLocked, fixedProgress]);
+
   const handleClick = () => {
     if (fixedProgress === null) {
       setFixedProgress(progress); // Fixer la progression

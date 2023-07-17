@@ -12,31 +12,37 @@ import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
 import "./App.css";
 import { UserProvider } from "./contexts/UserContext";
 import { BottleProvider } from "./contexts/BottleContext";
+import { PercentageProvider } from "./contexts/PercentageContext";
 
 function App() {
   return (
     <UserProvider>
       <BottleProvider>
-        <Router>
-          <div>
-            <div className="backgroundHeader">
-              <Navbar />
+        <PercentageProvider>
+          <Router>
+            <div>
+              <div className="backgroundHeader">
+                <Navbar />
+              </div>
+
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/Inscription" element={<Inscription />} />
+                <Route
+                  path="/FicheDegustation"
+                  element={<FicheDegustation />}
+                />
+                <Route path="/AtelierCreation" element={<AtelierCreation />} />
+                <Route path="/LivreDor" element={<LivreDor />} />
+                <Route path="/Resume" element={<Resume />} />
+                <Route path="/Admin" element={<Admin />} />
+                <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
+              </Routes>
+
+              <Footer />
             </div>
-
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Inscription" element={<Inscription />} />
-              <Route path="/FicheDegustation" element={<FicheDegustation />} />
-              <Route path="/AtelierCreation" element={<AtelierCreation />} />
-              <Route path="/LivreDor" element={<LivreDor />} />
-              <Route path="/Resume" element={<Resume />} />
-              <Route path="/Admin" element={<Admin />} />
-              <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
-            </Routes>
-
-            <Footer />
-          </div>
-        </Router>
+          </Router>
+        </PercentageProvider>
       </BottleProvider>
     </UserProvider>
   );
