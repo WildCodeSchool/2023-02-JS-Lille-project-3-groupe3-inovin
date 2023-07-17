@@ -11,10 +11,9 @@ import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin/Admin";
 import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
 import { LogingProvider } from "./contexts/LogingContext";
-import { ThemeProvider, ThemeContext } from "./contexts/ThemeContext";
-
 import "./App.css";
 import { UserProvider } from "./contexts/UserContext";
+import { ThemeContext, ThemeProvider } from "./contexts/ThemeContext";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -22,8 +21,8 @@ function App() {
     <ThemeProvider>
       <UserProvider>
         <Router>
-          <div>
-            <div className={`backgroundHeader ${theme}`}>
+          <div className={`marcheGrosShlag ${theme}`}>
+            <div className="backgroundHeader">
               <LogingProvider>
                 <Navbar />
               </LogingProvider>
