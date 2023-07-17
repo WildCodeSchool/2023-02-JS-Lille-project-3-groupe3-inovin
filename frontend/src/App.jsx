@@ -21,8 +21,8 @@ function App() {
     <ThemeProvider>
       <UserProvider>
         <Router>
-          <div className={`marcheGrosShlag ${theme}`}>
-            <div className="backgroundHeader">
+          <div>
+            <div className={`backgroundHeader ${theme}`}>
               <LogingProvider>
                 <Navbar />
               </LogingProvider>

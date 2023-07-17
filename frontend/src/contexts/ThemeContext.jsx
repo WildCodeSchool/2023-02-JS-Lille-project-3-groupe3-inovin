@@ -2,7 +2,7 @@ import React, { createContext, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 
 // Création du contexte de thème
-const ThemeContext = createContext(" ");
+const ThemeContext = createContext("dark");
 
 // Provider du contexte de thème
 function ThemeProvider({ children }) {
