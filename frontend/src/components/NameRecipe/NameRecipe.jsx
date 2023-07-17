@@ -42,7 +42,7 @@ function NameRecipe() {
               />
             </label>
             <button
-              className="button-submit-identity"
+              className="button-submit-recipe-name"
               id="WineName"
               type="submit"
             >
