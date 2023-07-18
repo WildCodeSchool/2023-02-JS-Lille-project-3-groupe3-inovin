@@ -41,7 +41,9 @@ function Navbar() {
         </Link>
       </p>
 
-      <h1 className="inovinTitle">Ino Vin</h1>
+      <h1 className="inovinTitle" data-text="Ino Vin">
+        Ino Vin
+      </h1>
 
       <div>
         {firstname ? (

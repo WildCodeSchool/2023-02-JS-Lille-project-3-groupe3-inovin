@@ -140,6 +140,7 @@ $box_color: #3e3e3e;
 $gold_title: #d8af49;
 $input_color: #c5c5c5;
 $button_background_color: #d9d9d9;
+$background_light: #ffffff;
 
 $font_inovin: "Limelight", cursive;
 $font_title_small: "Bebas Neue", sans-serif;
@@ -160,18 +161,52 @@ $tablet-width-paysage: 1024px;
   }
 }
 
-@mixin page-background {
-  background-color: $background_color;
+@mixin light-page-background {
+  background-color: $background_color_light;
+}
+
+@mixin dark-page-background {
+  background-color: $background_color_dark;
 }
 
 @mixin black-page-background {
   background-color: #1d1d1d;
 }
+// Le thème actuel ("light" ou "dark")
+$theme: "dark";
 
+.light {
+  @include light-page-background;
+}
+
+.dark {
+  @include dark-page-background;
+}
+
+// Les couleurs de fond pour chaque thème
+$background_color_light: #ffffff;
+$background_color_dark: #1d1d1d;
+
+// Les mixins ou les styles pour chaque thème
+
+// Le mixin pour la couleur de fond en fonction du thème
+@mixin page-background($theme) {
+  @if $theme == "light" {
+    @include light-page-background;
+  } @else {
+    @include dark-page-background;
+  }
+}
+
+// ...
+
+// Utilisation dans le fichier app.scss
 body {
   height: 1024px;
   overflow: hidden;
-  @include page-background();
+  @include page-background(
+    $theme
+  ); // Remplacez $theme par votre variable de thème (light ou dark)
 }
 
 .backgroundHeader {
