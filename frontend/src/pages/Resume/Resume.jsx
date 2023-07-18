@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./Resume.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import bottle from "../../assets/images/bootle_360.png";
 import diploma from "../../assets/images/diplome.png";
 import fleche from "../../assets/images/fleche_360.png";
 import UserContext from "../../contexts/UserContext";
+import BottleContext from "../../contexts/BottleContext";
 import CommandeModal from "../../components/commandeModal/CommandeModal";
 
 function Resume() {
@@ -14,10 +15,12 @@ function Resume() {
   const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [birthDay, setBirthDay] = useState("");
-  // const [bottleData, setBottleData] = useState([]);
-  const [recipeName, setRecipeName] = useState("");
-
+  const [recipeName, setRecipeName] = useState({ recipe_name: "" });
+  const { wineBottleName } = useContext(BottleContext);
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const recipeTitle = location.state;
 
   const getUserInfo = () => {
     axios
@@ -50,71 +53,12 @@ function Resume() {
         console.error("Error retrieving recipe info:", error);
       });
   };
-
   const recipeInfo = () => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/relation_recipe`, {
-        params: { user },
-      })
-      .then((response) => {
-        const relationData = response.data[0];
-        const recipeId = relationData.recipe_id;
-
-        axios
-          .get(`${import.meta.env.VITE_BACKEND_URL}/recipe/findById`, {
-            params: { recipe_id: recipeId },
-          })
-          .then((recipeResponse) => {
-            const { recipe_name } = recipeResponse.data[0];
-            setRecipeName(recipe_name);
-          })
-          .catch((error) => {
-            console.error("Error retrieving recipe info:", error);
-          });
-      })
-      .catch((error) => {
-        console.error("Error retrieving relation recipe info:", error);
-      });
+    setRecipeName(recipeTitle);
   };
 
-  // const bottlesInfo = () => {
-  //   axios
-  //     .get(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`, {
-  //       params: { user_id: user },
-  //     })
-  //     .then((response) => {
-  //       const compoRecipeData = response.data;
-  //       const promises = compoRecipeData.map((data) =>
-  //         axios
-  //           .get(`${import.meta.env.VITE_BACKEND_URL}/winebottle`, {
-  //             params: { bottle_id: data.wineBottle_id },
-  //           })
-  //           .then((wineBottleResponse) => {
-  //             const wineBottle = wineBottleResponse.data[0];
-  //             return {
-  //               id: data.id,
-  //               percentage: data.percentage,
-  //               user_id: data.user_id,
-  //               user_account_ID: data.user_account_ID,
-  //               wineBottle_id: data.wineBottle_id,
-  //               bottle_name: wineBottle.bottle_name,
-  //             };
-  //           })
-  //       );
-  //       Promise.all(promises)
-  //         .then((result) => {
-  //           setBottleData(result);
-  //         })
-  //         .catch((error) => {
-  //           console.error("Error retrieving bottle info:", error);
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error retrieving compo recipe info:", error);
-  //     });
-  // };
-
   useEffect(() => {
+    recipeInfo();
     getUserInfo();
     emailInfo();
     recipeInfo();
@@ -143,16 +87,14 @@ function Resume() {
           <h2 className="recepie_title">RECETTE</h2>
           <div className="recepie_info">
             <span className="personalDetails">
-              {/* {bottleData.map((data, index) => (
-                <li key={index}>
-                  {data.bottle_name} - <span>{data.percentage}%</span>
-                </li>
-              ))} */}
+              {wineBottleName.map((name, index) => (
+                <li key={index}>{name}</li>
+              ))}
             </span>
             <p />
             <p />
             <h3 className="personalDetails" id="rName">
-              {recipeName}
+              {recipeName.recipe_name}
             </h3>
           </div>
           <button
@@ -173,7 +115,7 @@ function Resume() {
         </div>
         <div className="bottle_diploma">
           <img id="bottle_resume" src={bottle} alt="" />
-          <span className="bottle_title" />
+          <h4 className="bottle_title"> {recipeName.recipe_name} </h4>
           <div className="halfBackground">
             <img id="diploma" src={diploma} alt="" />
             <p className="diploma_winner">{fullName}</p>
