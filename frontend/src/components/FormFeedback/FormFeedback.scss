@@ -87,7 +87,6 @@
   background-color: $box_color;
   display: flex;
   justify-content: center;
-  position: absolute;
   border: 1px solid #ffffff;
   border-radius: 0.375rem;
   padding: 0.5rem 0;
@@ -155,7 +154,8 @@ textarea::placeholder {
     display: flex;
     justify-content: center;
     z-index: 1;
-    top: 21vh;
+    position: relative;
+    bottom: 5vh;
   }
 
   .commentsBook h2 {
@@ -168,7 +168,7 @@ textarea::placeholder {
     width: 90vw;
     height: 50vh;
     position: relative;
-    top: 2vh;
+    bottom: 4vh;
   }
 
   .content {
@@ -196,7 +196,7 @@ textarea::placeholder {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: -1.6vh;
+    bottom: 6.3vh;
     width: 70vw;
   }
 
@@ -226,7 +226,7 @@ textarea::placeholder {
     width: 40vw;
     display: flex;
     justify-content: center;
-    position: absolute;
+    /* position: absolute; */
     top: 20vh;
     z-index: 1;
   }
@@ -309,7 +309,7 @@ textarea::placeholder {
   .noticeContainer {
     height: 53vh;
     position: relative;
-    top: 2vh;
+    bottom: 4vh;
     width: 90vw;
   }
 

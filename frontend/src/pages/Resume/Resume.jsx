@@ -7,6 +7,7 @@ import diploma from "../../assets/images/diplome.png";
 import fleche from "../../assets/images/fleche_360.png";
 import UserContext from "../../contexts/UserContext";
 import CommandeModal from "../../components/commandeModal/CommandeModal";
+import AnimationPage from "../../components/AnimationPage/AnimationPage";
 
 function Resume() {
   const { user } = useContext(UserContext);
@@ -129,16 +130,17 @@ function Resume() {
   };
 
   return (
-    <div className="resume_wrapper">
-      <div className="profil">
-        <h2 className="profil_title">PROFIL</h2>
-        <div className="resume_info">
-          <h3 className="personalDetails">{fullName}</h3>
-          <h3 className="personalDetails">{emailAddress}</h3>
-          <h3 className="personalDetails">{birthDay}</h3>
+    <AnimationPage>
+      <div className="resume_wrapper">
+        <div className="profil">
+          <h2 className="profil_title">PROFIL</h2>
+          <div className="resume_info">
+            <h3 className="personalDetails">{fullName}</h3>
+            <h3 className="personalDetails">{emailAddress}</h3>
+            <h3 className="personalDetails">{birthDay}</h3>
+          </div>
         </div>
-      </div>
-      <div className="bottom_recette">
+
         <div className="recipe_resume">
           <h2 className="recepie_title">RECETTE</h2>
           <div className="recepie_info">
@@ -171,25 +173,26 @@ function Resume() {
             />
           )}
         </div>
-        <div className="bottle_diploma">
-          <img id="bottle_resume" src={bottle} alt="" />
+        <div className="containBottleTitle">
           <span className="bottle_title" />
-          <div className="halfBackground">
-            <img id="diploma" src={diploma} alt="" />
-            <p className="diploma_winner">{fullName}</p>
-            <button
-              type="button"
-              className="navigateLinkToResume"
-              id="goBack_btn"
-              onClick={previousPage}
-            >
-              {" "}
-              <img src={fleche} alt="" className="nextPageArrow" /> Précédent
-            </button>
-          </div>
+        </div>
+        <div className="halfBackground">
+          <img id="bottle_resume" src={bottle} alt="" />
+
+          <img id="diploma" src={diploma} alt="" />
+          <p className="diploma_winner">{fullName}</p>
+          <button
+            type="button"
+            className="navigateLinkToResume"
+            id="goBack_btn"
+            onClick={previousPage}
+          >
+            {" "}
+            <img src={fleche} alt="" className="nextPageArrow" /> Précédent
+          </button>
         </div>
       </div>
-    </div>
+    </AnimationPage>
   );
 }
 

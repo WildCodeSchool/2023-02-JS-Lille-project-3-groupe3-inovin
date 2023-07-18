@@ -1,5 +1,28 @@
 @import "../../App.scss";
 
+.degustationTitle {
+  padding: 1em 3em;
+  position: relative;
+  font-family: $font_inovin;
+  color: $input_color;
+  background-color: $box_color;
+  border: solid 0.03em $button_background_color;
+  border-radius: 0.1em;
+  font-size: 3.4em;
+  align-self: center;
+  padding: 3vh;
+  bottom: 6vh;
+  @include tablet-paysage {
+    bottom: 10vh;
+    font-size: 3em;
+  }
+}
+
+.picture-band-taste {
+  position: relative;
+  bottom: 4.9em;
+}
+
 .tabs {
   width: 65vw;
   background: #c5c5c500;
@@ -39,8 +62,9 @@ ul.nav li:active {
 .carouselWrapper {
   background-image: url(../../assets/images/fond-gris_720.png);
   padding: 1em 3em;
-  position: absolute;
+  position: relative;
   bottom: 4vh;
+  left: 3vw;
   box-shadow: 0.1em 0.1em 0.5em 0.1em #000000;
   z-index: auto;
   margin: 1em 1em;
@@ -73,14 +97,14 @@ ul.nav li:active {
   font-size: $font_title_small;
   letter-spacing: 0.1875rem;
   left: 36em;
-  bottom: -5em;
+  bottom: 3vh;
   @include tablet-paysage {
     left: 53em;
     bottom: 3em;
   }
 }
 .btn-form-next {
-  position: fixed;
+  position: relative;
   display: inline-block;
   background-color: white;
   border-radius: 8px;
@@ -93,8 +117,8 @@ ul.nav li:active {
   font-family: $font_title_small;
   letter-spacing: 0.2vh;
   width: 7em;
-  bottom: 4em;
-  left: 16.1em;
+  left: 15vw;
+  bottom: 0.1vh;
   @include tablet-paysage {
     bottom: 4em;
     left: 29.5em;
@@ -102,7 +126,7 @@ ul.nav li:active {
 }
 
 .btn-form-back {
-  position: fixed;
+  position: relative;
   display: inline-block;
   background-color: white;
   border-radius: 8px;
@@ -115,8 +139,7 @@ ul.nav li:active {
   font-family: $font_title_small;
   letter-spacing: 0.2vh;
   width: 7em;
-  bottom: 4em;
-  left: 8.1em;
+  left: 10vw;
   @include tablet-paysage {
     bottom: 6em;
     left: 29.5em;

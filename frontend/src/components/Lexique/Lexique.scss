@@ -26,7 +26,7 @@
   align-items: center;
   text-align: -webkit-center;
   line-height: 1.9vh;
-  bottom: -0.1em;
+  bottom: 0.7vh;
   left: 0;
   z-index: 2;
   @include tablet-paysage {
@@ -56,9 +56,9 @@
   margin: 0.2em;
   font-family: $font_title_small;
   letter-spacing: 0.1em;
-  position: absolute;
-  bottom: 7.2em;
-  left: 4em;
+  position: relative;
+  bottom: 13vw;
+  left: 3vw;
   @include tablet-paysage {
     bottom: 22em;
     left: 31em;
@@ -79,8 +79,8 @@
   font-family: $font_title_small;
   letter-spacing: 0.1em;
   position: absolute;
-  bottom: 7.2em;
-  left: 6.2em;
+  bottom: 11.75vh;
+  left: 15vw;
   @include tablet-paysage {
     bottom: 22em;
     left: 33em;

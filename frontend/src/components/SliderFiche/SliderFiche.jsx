@@ -9,6 +9,8 @@ import FormVin1 from "./FormVin1";
 import FormVin2 from "./FormVin2";
 import FormVin3 from "./FormVin3";
 import FormVin4 from "./FormVin4";
+import AnimationPage from "../AnimationPage/AnimationPage";
+import pictureBand from "../../assets/images/separator3.png";
 
 function SliderFiche() {
   // useContext
@@ -48,26 +50,38 @@ function SliderFiche() {
   };
 
   return (
-    <div className="carouselWrapper">
-      {showActualForm()}
-      {currentFormIndex > 0 && (
-        <button className="btn-form-back" type="button" onClick={previousForm}>
-          VIN précédent
-        </button>
-      )}
-      {currentFormIndex < forms.length - 1 && (
-        <button className="btn-form-next" type="button" onClick={nextForm}>
-          VIN suivant
-        </button>
-      )}
+    <AnimationPage>
+      <h2 className="degustationTitle">Fiche de Dégustation</h2>
+      <img className="picture-band-taste" src={pictureBand} alt="banderole3" />
+      <div className="carouselWrapper">
+        {showActualForm()}
+        {currentFormIndex > 0 && (
+          <button
+            className="btn-form-back"
+            type="button"
+            onClick={previousForm}
+          >
+            VIN précédent
+          </button>
+        )}
+        {currentFormIndex < forms.length - 1 && (
+          <button className="btn-form-next" type="button" onClick={nextForm}>
+            VIN suivant
+          </button>
+        )}
 
-      <Lexique />
+        <Lexique />
 
-      <button className="btn-page-next" type="button" onClick={handleClickNext}>
-        <img src={fleche} alt="next page" className="nextPageArrow-tasting" />{" "}
-        SUIVANT
-      </button>
-    </div>
+        <button
+          className="btn-page-next"
+          type="button"
+          onClick={handleClickNext}
+        >
+          <img src={fleche} alt="next page" className="nextPageArrow-tasting" />{" "}
+          SUIVANT
+        </button>
+      </div>
+    </AnimationPage>
   );
 }
 

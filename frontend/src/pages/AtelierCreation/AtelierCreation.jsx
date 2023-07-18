@@ -5,6 +5,7 @@ import BottleContext from "../../contexts/BottleContext";
 import UserContext from "../../contexts/UserContext";
 import CardBottle from "../../components/CardBottle/CardBottle";
 import NameRecipe from "../../components/NameRecipe/NameRecipe";
+import AnimationPage from "../../components/AnimationPage/AnimationPage";
 
 function AtelierCreation() {
   const { wineBottleId, wineBottleName, setWineBottleName, setWineBottleId } =
@@ -130,18 +131,20 @@ function AtelierCreation() {
   const [id1, id2, id3] = wineBottleId;
 
   return (
-    <div className="element-fond">
-      <div className="container_atelier">
-        <div className="container-bottle">
-          <CardBottle wineBottleName={Name1} wineBottleId={id1} />
-          <CardBottle wineBottleName={Name2} wineBottleId={id2} />
-          <CardBottle wineBottleName={Name3} wineBottleId={id3} />
-        </div>
-        <div className="container-bottle2">
-          <NameRecipe />
+    <AnimationPage>
+      <div className="element-fond">
+        <div className="container_atelier">
+          <div className="container-bottle">
+            <CardBottle wineBottleName={Name1} wineBottleId={id1} />
+            <CardBottle wineBottleName={Name2} wineBottleId={id2} />
+            <CardBottle wineBottleName={Name3} wineBottleId={id3} />
+          </div>
+          <div className="container-bottle2">
+            <NameRecipe />
+          </div>
         </div>
       </div>
-    </div>
+    </AnimationPage>
   );
 }
 

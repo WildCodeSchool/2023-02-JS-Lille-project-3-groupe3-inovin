@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { differenceInYears } from "date-fns";
 import picturePreferences from "../../assets/images/photo2_720.png";
 import UserContext from "../../contexts/UserContext";
+import AnimationPage from "../AnimationPage/AnimationPage";
 
 function FormInfoPerso() {
   // usecontext
@@ -209,232 +210,234 @@ function FormInfoPerso() {
   }, [userId]);
 
   return (
-    <div>
-      <form className="form-inscription" onSubmit={handleSubmitInscription}>
-        <div className="contenair-identity">
-          <h2 className="title-identity">INSCRIPTION</h2>
-          <div className="form-inscription-identity-input-contenair">
-            <label
-              className="form-inscription-idendity-label"
-              htmlFor="label-lastname"
-            >
-              Prénom:
-              <input
-                className="form-inscription-idendity-input-class"
-                type="text"
-                name="firstname"
-                placeholder="Dupont"
-                value={formInscription.firstname}
-                onChange={handleChangeFormInscription}
-                required
-              />
-            </label>
-          </div>
-          <div className="form-inscription-identity-input-contenair">
-            <label
-              className="form-inscription-idendity-label"
-              htmlFor="label-firstname"
-            >
-              Nom:
-              <input
-                className="form-inscription-idendity-input-class"
-                type="text"
-                name="lastname"
-                placeholder="Jean"
-                value={formInscription.lastname}
-                onChange={handleChangeFormInscription}
-                required
-              />
-            </label>
-          </div>
-          <div className="form-inscription-identity-input-contenair">
-            <label
-              className="form-inscription-idendity-label"
-              htmlFor="label-birthdate"
-            >
-              Date d'anniversaire:
-              <input
-                className="form-inscription-idendity-input-class inputDate"
-                type="date"
-                name="birthdate"
-                value={formInscription.birthdate}
-                required
-                onChange={handleChangeFormInscription}
-                style={{
-                  color: formInscription.birthdate ? "black" : "gray",
-                  fontWeight: formInscription.birthdate ? "normal" : "bold",
-                }}
-              />
-            </label>
-            {ageError ? (
-              <div className="modal">
-                <div className="modal-content">
-                  <span className="modalText">
-                    <p className="ErrorAge">
-                      Vous devez avoir au moins 18 ans.
-                    </p>
-                  </span>
+    <AnimationPage>
+      <div>
+        <form className="form-inscription" onSubmit={handleSubmitInscription}>
+          <div className="contenair-identity">
+            <h2 className="title-identity">INSCRIPTION</h2>
+            <div className="form-inscription-identity-input-contenair">
+              <label
+                className="form-inscription-idendity-label"
+                htmlFor="label-lastname"
+              >
+                Prénom:
+                <input
+                  className="form-inscription-idendity-input-class"
+                  type="text"
+                  name="firstname"
+                  placeholder="Dupont"
+                  value={formInscription.firstname}
+                  onChange={handleChangeFormInscription}
+                  required
+                />
+              </label>
+            </div>
+            <div className="form-inscription-identity-input-contenair">
+              <label
+                className="form-inscription-idendity-label"
+                htmlFor="label-firstname"
+              >
+                Nom:
+                <input
+                  className="form-inscription-idendity-input-class"
+                  type="text"
+                  name="lastname"
+                  placeholder="Jean"
+                  value={formInscription.lastname}
+                  onChange={handleChangeFormInscription}
+                  required
+                />
+              </label>
+            </div>
+            <div className="form-inscription-identity-input-contenair">
+              <label
+                className="form-inscription-idendity-label"
+                htmlFor="label-birthdate"
+              >
+                Date d'anniversaire:
+                <input
+                  className="form-inscription-idendity-input-class inputDate"
+                  type="date"
+                  name="birthdate"
+                  value={formInscription.birthdate}
+                  required
+                  onChange={handleChangeFormInscription}
+                  style={{
+                    color: formInscription.birthdate ? "black" : "gray",
+                    fontWeight: formInscription.birthdate ? "normal" : "bold",
+                  }}
+                />
+              </label>
+              {ageError ? (
+                <div className="modal">
+                  <div className="modal-content">
+                    <span className="modalText">
+                      <p className="ErrorAge">
+                        Vous devez avoir au moins 18 ans.
+                      </p>
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="closeAge"
+                    onClick={() => setAgeError(false)}
+                  >
+                    🗙
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  className="closeAge"
-                  onClick={() => setAgeError(false)}
-                >
-                  🗙
-                </button>
+              ) : null}
+            </div>
+            <div className="form-inscription-identity-input-contenair">
+              <label
+                className="form-inscription-idendity-label"
+                htmlFor="label-email"
+              >
+                E-mail:
+                <input
+                  className="form-inscription-idendity-input-class"
+                  type="email"
+                  name="email"
+                  placeholder="jeandupont@gmail.fr"
+                  value={formAuthentification.email}
+                  onChange={handleChangeFormAuthentification}
+                  required
+                />
+              </label>
+            </div>
+            <div className="form-inscription-identity-input-contenair">
+              <label
+                className="form-inscription-idendity-label"
+                htmlFor="label-pwd"
+              >
+                Mot de Passe:
+                <input
+                  className="form-inscription-idendity-input-class"
+                  type="password"
+                  name="pwd"
+                  placeholder="........"
+                  value={formAuthentification.pwd}
+                  onChange={handleChangeFormAuthentification}
+                  required
+                />
+              </label>
+            </div>
+            <div className="box-18">
+              <input
+                className="formbook-input-check"
+                type="checkbox"
+                id="checkbox-18-yes"
+                name="checkbox-18-yes"
+                required
+                onChange={handleCheckboxChange}
+              />
+              <label className="box-yes" htmlFor="checkbox-18-yes">
+                J'ai plus de 18 ans
+              </label>
+            </div>
+          </div>
+          <div className="contenair-preference">
+            <div className="contenair-preference-g">
+              <h2 className="title-preference">PREFERENCES</h2>
+              <div className="contenair-color">
+                <h3 className="title-checkbox">Color</h3>
+                <label className="form-color-label" htmlFor="label-color">
+                  <label htmlFor="checkbox-red">rouge</label>
+                  <input
+                    className="formbook-input-check"
+                    type="checkbox"
+                    id="checkbox-red"
+                    name="checkbox-red"
+                    value="rouge"
+                    checked={formPreference.color === "rouge"}
+                    onChange={handleColorChange}
+                  />
+                  <label htmlFor="checkbox-white">blanc</label>
+                  <input
+                    className="formbook-input-check"
+                    type="checkbox"
+                    id="checkbox-white"
+                    name="checkbox-white"
+                    value="blanc"
+                    checked={formPreference.color === "blanc"}
+                    onChange={handleColorChange}
+                  />
+                  <label htmlFor="checkbox-rose">rosé</label>
+                  <input
+                    className="formbook-input-check"
+                    type="checkbox"
+                    id="checkbox-rose"
+                    name="checkbox-rose"
+                    value="rose"
+                    checked={formPreference.color === "rose"}
+                    onChange={handleColorChange}
+                  />
+                </label>
               </div>
-            ) : null}
-          </div>
-          <div className="form-inscription-identity-input-contenair">
-            <label
-              className="form-inscription-idendity-label"
-              htmlFor="label-email"
-            >
-              E-mail:
-              <input
-                className="form-inscription-idendity-input-class"
-                type="email"
-                name="email"
-                placeholder="jeandupont@gmail.fr"
-                value={formAuthentification.email}
-                onChange={handleChangeFormAuthentification}
-                required
+              <div className="contenair-arome">
+                <h3 className="title-checkbox">Arôme</h3>
+                <label className="form-arome-label" htmlFor="label-arome">
+                  <label htmlFor="checkbox-fruit">fruité</label>
+                  <input
+                    className="formbook-input-check"
+                    type="checkbox"
+                    id="checkbox-fruit"
+                    name="checkbox-fruit"
+                    value="fruite"
+                    checked={formPreference.arome === "fruite"}
+                    onChange={handleAromeChange}
+                  />
+                  <label htmlFor="checkbox-mineral">minéral</label>
+                  <input
+                    className="formbook-input-check"
+                    type="checkbox"
+                    id="checkbox-mineral"
+                    name="checkbox-mineral"
+                    value="mineral"
+                    checked={formPreference.arome === "mineral"}
+                    onChange={handleAromeChange}
+                  />
+                  <label htmlFor="checkbox-wood">boisé</label>
+                  <input
+                    className="formbook-input-check"
+                    type="checkbox"
+                    id="checkbox-wood"
+                    name="checkbox-wood"
+                    value="boise"
+                    checked={formPreference.arome === "boise"}
+                    onChange={handleAromeChange}
+                  />
+                </label>
+              </div>
+              <div className="contenair-area-taste">
+                <label className="comment">
+                  Comment aimes-tu ton vin?
+                  <textarea
+                    className="comment-taste"
+                    id="other-taste"
+                    name="other-taste"
+                    rows="5"
+                    cols="33"
+                    placeholder="Précisez..."
+                    value={formPreference.other}
+                    onChange={handleOtherChange}
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="contenair-preference-d">
+              <img
+                className="picture-preference"
+                src={picturePreferences}
+                alt="wine bottle"
               />
-            </label>
-          </div>
-          <div className="form-inscription-identity-input-contenair">
-            <label
-              className="form-inscription-idendity-label"
-              htmlFor="label-pwd"
-            >
-              Mot de Passe:
-              <input
-                className="form-inscription-idendity-input-class"
-                type="password"
-                name="pwd"
-                placeholder="........"
-                value={formAuthentification.pwd}
-                onChange={handleChangeFormAuthentification}
-                required
-              />
-            </label>
-          </div>
-          <div className="box-18">
-            <input
-              className="formbook-input-check"
-              type="checkbox"
-              id="checkbox-18-yes"
-              name="checkbox-18-yes"
-              required
-              onChange={handleCheckboxChange}
-            />
-            <label className="box-yes" htmlFor="checkbox-18-yes">
-              J'ai plus de 18 ans
-            </label>
-          </div>
-        </div>
-        <div className="contenair-preference">
-          <div className="contenair-preference-g">
-            <h2 className="title-preference">PREFERENCES</h2>
-            <div className="contenair-color">
-              <h3 className="title-checkbox">Color</h3>
-              <label className="form-color-label" htmlFor="label-color">
-                <label htmlFor="checkbox-red">rouge</label>
-                <input
-                  className="formbook-input-check"
-                  type="checkbox"
-                  id="checkbox-red"
-                  name="checkbox-red"
-                  value="rouge"
-                  checked={formPreference.color === "rouge"}
-                  onChange={handleColorChange}
-                />
-                <label htmlFor="checkbox-white">blanc</label>
-                <input
-                  className="formbook-input-check"
-                  type="checkbox"
-                  id="checkbox-white"
-                  name="checkbox-white"
-                  value="blanc"
-                  checked={formPreference.color === "blanc"}
-                  onChange={handleColorChange}
-                />
-                <label htmlFor="checkbox-rose">rosé</label>
-                <input
-                  className="formbook-input-check"
-                  type="checkbox"
-                  id="checkbox-rose"
-                  name="checkbox-rose"
-                  value="rose"
-                  checked={formPreference.color === "rose"}
-                  onChange={handleColorChange}
-                />
-              </label>
-            </div>
-            <div className="contenair-arome">
-              <h3 className="title-checkbox">Arôme</h3>
-              <label className="form-arome-label" htmlFor="label-arome">
-                <label htmlFor="checkbox-fruit">fruité</label>
-                <input
-                  className="formbook-input-check"
-                  type="checkbox"
-                  id="checkbox-fruit"
-                  name="checkbox-fruit"
-                  value="fruite"
-                  checked={formPreference.arome === "fruite"}
-                  onChange={handleAromeChange}
-                />
-                <label htmlFor="checkbox-mineral">minéral</label>
-                <input
-                  className="formbook-input-check"
-                  type="checkbox"
-                  id="checkbox-mineral"
-                  name="checkbox-mineral"
-                  value="mineral"
-                  checked={formPreference.arome === "mineral"}
-                  onChange={handleAromeChange}
-                />
-                <label htmlFor="checkbox-wood">boisé</label>
-                <input
-                  className="formbook-input-check"
-                  type="checkbox"
-                  id="checkbox-wood"
-                  name="checkbox-wood"
-                  value="boise"
-                  checked={formPreference.arome === "boise"}
-                  onChange={handleAromeChange}
-                />
-              </label>
-            </div>
-            <div className="contenair-area-taste">
-              <label className="comment">
-                Comment aimes-tu ton vin?
-                <textarea
-                  className="comment-taste"
-                  id="other-taste"
-                  name="other-taste"
-                  rows="5"
-                  cols="33"
-                  placeholder="Précisez..."
-                  value={formPreference.other}
-                  onChange={handleOtherChange}
-                />
-              </label>
+              <button className="button-submit-identity" type="submit">
+                <span>JE M'INSCRIS</span>
+              </button>
             </div>
           </div>
-          <div className="contenair-preference-d">
-            <img
-              className="picture-preference"
-              src={picturePreferences}
-              alt="wine bottle"
-            />
-            <button className="button-submit-identity" type="submit">
-              <span>JE M'INSCRIS</span>
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </AnimationPage>
   );
 }
 

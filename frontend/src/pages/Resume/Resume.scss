@@ -19,14 +19,19 @@
   font-size: 38px;
   padding: 2vh;
   font-weight: 400;
+  position: relative;
 }
 
 #bottle_resume {
   width: 12vh;
   margin-left: 11vh;
   z-index: 1;
-  position: absolute;
-  bottom: 8vh;
+  position: relative;
+  bottom: 28vh;
+}
+
+.containBottleTitle {
+  overflow-wrap: break-word;
 }
 
 .resume_info {
@@ -39,29 +44,24 @@
 
 .halfBackground {
   background-image: url("../../assets//images/fond-gris_720.png");
-  position: absolute;
-  bottom: 0;
+  position: relative;
   width: 100%;
-  z-index: auto;
+  z-index: 0;
 }
 
 .recepie_info {
-  position: absolute;
+  position: relative;
   background-color: #3e3e3e;
   box-shadow: 1px 1px 15px 1px #000000;
   padding: 1vh;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
 }
 
 #commande_btn {
-  position: absolute;
+  position: relative;
 }
+
 #diploma {
-  position: absolute;
+  position: relative;
 }
 
 .personalDetails {
@@ -85,7 +85,7 @@
   line-height: 2;
 }
 .diploma_winner {
-  position: absolute;
+  position: relative;
   font-family: $font_title_large;
   color: black;
   font-weight: bold;
@@ -97,15 +97,17 @@
   .recipe_resume {
     width: 80%;
     display: flex;
-    height: 20vh;
     flex-direction: column;
     align-items: flex-end;
   }
 
+  .recepie_title {
+    left: 2vw;
+  }
+
   #commande_btn {
-    top: 1;
+    top: 1.5vh;
     bottom: 11vh;
-    right: 20vh;
     z-index: 2;
   }
 
@@ -117,20 +119,13 @@
   }
 
   .recepie_info {
-    width: 30vh;
+    width: 40vw;
     height: 15vh;
-    position: absolute;
-    right: 3vh;
+    left: 10vw;
     background-color: #3e3e3e;
     //border: 1px solid rgb(189, 187, 187);
     box-shadow: 1px 1px 15px 1px #000000;
-    margin: 7vh 3vh;
     padding: 1vh;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
   }
 
   .halfBackground {
@@ -138,16 +133,8 @@
   }
   #diploma {
     width: 35%;
-    position: absolute;
-    top: 25%;
-    right: 13%;
-  }
-
-  #commande_btn {
-    position: absolute;
-    right: 14vh;
-    bottom: 21vh;
-    z-index: 1;
+    bottom: 25vh;
+    left: 21vw;
   }
 
   .bottle_title {
@@ -158,9 +145,10 @@
   }
 
   .diploma_winner {
-    bottom: 12vh;
-    right: 18vh;
+    bottom: 36.7vh;
+    left: 62vw;
   }
+
   #goBack_btn {
     position: absolute;
     left: 3vh;
@@ -184,7 +172,7 @@
     right: 23vh;
   }
   .halfBackground {
-    position: absolute;
+    /* position: absolute; */
     height: 25%;
   }
   .recepie_info {
