@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import "./FormFeedback.scss";
 import { FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import separator from "../../assets/images/separator02.png";
 import fleche from "../../assets/images/fleche_360.png";
@@ -20,6 +20,8 @@ function FormFeedback() {
   const [feedbackConfirm, setFeedbackConfirm] = useState(false);
 
   const [userId, setUserId] = useState();
+  const location = useLocation();
+  const recipeTitle = location.state;
 
   // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
   useEffect(() => {
@@ -50,7 +52,7 @@ function FormFeedback() {
   const navigate = useNavigate();
 
   const handleClickNext = () => {
-    navigate("/Resume");
+    navigate("/Resume", { state: recipeTitle });
   };
 
   const sendFeedbackRating = () => {

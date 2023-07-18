@@ -14,7 +14,6 @@ const browse = (req, res) => {
 
 const read = (req, res) => {
   const { email } = req.query;
-
   models.account
     .findByEmail(email)
     .then(([result]) => {
