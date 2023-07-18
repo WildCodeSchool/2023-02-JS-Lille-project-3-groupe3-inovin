@@ -5,25 +5,22 @@ import "./AnimationBottle.scss";
 import UserContext from "../../contexts/UserContext";
 
 function AnimationBottle({ id }) {
-  const [progress, setProgress] = useState(0); // État pour gérer la progression
-  const [fixedProgress, setFixedProgress] = useState(null); // État pour stocker la progression fixée
-  const [isLocked, setIsLocked] = useState(false); // État pour indiquer si la progression est verrouillée
-  // const [wineBottleId] = useState(null); // État pour stocker l'ID de la bouteille de vin
-  const progressBarRef = useRef(null); // Référence à l'élément de la barre de progression pour ne pas scroller sur body entier
-  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-
-  const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-  // stock userId after user creation by post method
+  const [progress, setProgress] = useState(0);
+  const [fixedProgress, setFixedProgress] = useState(null);
+  const [isLocked, setIsLocked] = useState(false);
+  const progressBarRef = useRef(null);
+  const { user } = useContext(UserContext);
   const [userId, setUserId] = useState();
-  // Effectuer la requête GET pour obtenir wineBottle_id depuis la table compo_recipe
+  const [isEditing, setIsEditing] = useState(false);
+  const [setEditCompoRecipe] = useState({
+    percentage: 0,
+  });
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
         params: { account_id: `${user}` },
       })
       .then((response) => {
-        // console.log(user);
-        // console.log(response);
         const resultUserId = response.data[0]?.id;
         setUserId(resultUserId);
       })
@@ -33,51 +30,51 @@ function AnimationBottle({ id }) {
   }, []);
 
   useEffect(() => {
-    // Écouteur d'événement pour la souris
     const handleMouseMove = (e) => {
       const progressBar = progressBarRef.current;
       const progressBarHeight = progressBar.offsetHeight;
-      const progressBarWidth = progressBar.offsetWidth;
-      const { top, left } = progressBar.getBoundingClientRect();
       const maxProgress = 100;
-      // progressBar : référence de la barre de progression à partir de progressBarRef.current. La référence est stockée dans la variable progressBar
-      // progressBarHeight : hauteur de la barre de progression à l'aide de progressBar.offsetHeight. La hauteur est stockée dans la variable progressBarHeight
-      // { top } : Cela déstructure les propriétés top de la valeur retournée par progressBar.getBoundingClientRect(). La méthode getBoundingClientRect() renvoie un objet contenant des informations sur les dimensions et la position d'un élément par rapport à la fenêtre. déstructuration, extraire valeur de top et socker dans variable top.
+      const { top } = progressBar.getBoundingClientRect();
+
       if (!isLocked && fixedProgress === null) {
-        // Récupération de la position verticale de la souris par rapport à la barre de progression
         const mouseY = e.clientY - top;
-        const mouseX = e.clientX - left;
-        // calcul pour déterminer le nouvel état de progression en fonction de la position verticale de la souris par rapport à la barre de progression et en respectant le maxProgress
-        if (mouseX >= 0 && mouseX <= progressBarWidth) {
-          const newProgress = Math.min(
-            Math.max(
-              ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
-              0
-            ),
-            maxProgress
-          );
-          setProgress(newProgress); // Mettre à jour l'état avec la nouvelle progression
-        }
+        const newProgress = Math.min(
+          Math.max(
+            ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
+            0
+          ),
+          maxProgress
+        );
+        setProgress(newProgress);
       }
     };
+
     document.addEventListener("mousemove", handleMouseMove);
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, [isLocked, fixedProgress]);
+
   const handleClick = () => {
     if (fixedProgress === null) {
-      setFixedProgress(progress); // Fixer la progression
-      setIsLocked(true); // Verrouiller la progression
-      // Effectuer la requête POST pour envoyer la valeur progress et wineBottleId
+      setFixedProgress(progress);
+      setIsLocked(true);
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/compo_recipe`, {
           percentage: progress,
+          wineBottle_id: id,
           user_account_ID: user,
           user_id: userId,
-          wineBottle_id: id,
         })
-        .then()
+        .then(() => {
+          // console.log("Data posted:", {
+          //   percentage: progress,
+          //   wineBottle_id: id,
+          //   user_account_ID: user,
+          //   user_id: userId,
+          // });
+          setIsEditing(true);
+        })
         .catch((error) => {
           console.error(
             "Une erreur s'est produite lors de l'envoi de la valeur progress et wineBottleId!",
@@ -85,37 +82,99 @@ function AnimationBottle({ id }) {
           );
         });
     } else {
-      setIsLocked(false); // Déverrouiller la progression
+      setIsLocked(false);
     }
   };
-  // obligation pour passer le commit (enter sur clavier)
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleClick();
     }
   };
+  useEffect(() => {
+    setEditCompoRecipe({ percentage: progress });
+  }, [progress]);
+
+  const handleClickPut = () => {
+    setIsLocked(false); // Désactiver le verrouillage
+    const updatedCompoRecipe = { percentage: progress };
+
+    axios
+      .put(
+        `${import.meta.env.VITE_BACKEND_URL}/compo_recipe`,
+        updatedCompoRecipe,
+        {
+          params: {
+            wineBottle_id: id,
+            user_id: userId,
+            user_account_ID: user,
+          },
+        }
+      )
+      .then(() => {
+        // console.log("Data updated:", {
+        //   percentage: progress,
+        //   wineBottle_id: id,
+        //   user_id: userId,
+        //   user_account_ID: user,
+        // });
+        setIsEditing(false);
+      })
+      .catch((error) => {
+        console.error(
+          "Une erreur s'est produite lors de la modification de la valeur progress",
+          error
+        );
+      });
+  };
+
   return (
     <div className="bottle-animation">
-      <div
-        className={`progress-bar ${isLocked ? "locked" : ""}`}
-        id="progressbar"
-        role="button"
-        tabIndex="0"
-        onClick={handleClick}
-        onKeyDown={handleKeyDown} // obligation clavier (voir ci dessus)
-        ref={progressBarRef}
-      >
-        <div className="progress-bar-inner" style={{ height: `${progress}%` }}>
-          {/* Affichage de la progression fixée ou en cours */}
-          {fixedProgress !== null
-            ? `${fixedProgress.toFixed(0)}%`
-            : `${progress.toFixed(0)}%`}
+      {isEditing ? (
+        <div
+          className={`progress-bar ${isLocked ? "locked" : ""}`}
+          id="progressbar"
+          role="button"
+          tabIndex="0"
+          onClick={handleClickPut}
+          onKeyDown={handleKeyDown}
+          ref={progressBarRef}
+        >
+          <div
+            className="progress-bar-inner"
+            style={{ height: `${progress}%` }}
+          >
+            {fixedProgress !== null
+              ? `${fixedProgress.toFixed(0)}%`
+              : `${progress.toFixed(0)}%`}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div
+          className={`progress-bar ${isLocked ? "locked" : ""}`}
+          id="progressbar"
+          role="button"
+          tabIndex="0"
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+          ref={progressBarRef}
+        >
+          <div
+            className="progress-bar-inner"
+            style={{ height: `${progress}%` }}
+          >
+            {fixedProgress !== null
+              ? `${fixedProgress.toFixed(0)}%`
+              : `${progress.toFixed(0)}%`}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
 export default AnimationBottle;
+
 AnimationBottle.propTypes = {
   id: PropTypes.number.isRequired,
 };

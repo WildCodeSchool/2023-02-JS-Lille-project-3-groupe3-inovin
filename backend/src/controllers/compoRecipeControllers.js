@@ -125,12 +125,31 @@ const destroy = (req, res) => {
 //       res.sendStatus(500);
 //     });
 // };
-
+const updateById = (req, res) => {
+  const compoRecipe = req.body;
+  const wineBottleId = req.query.wineBottle_id;
+  const userId = req.query.user_id;
+  const userAccountId = req.query.user_account_ID;
+  models.compoRecipe
+    .updateById(compoRecipe, wineBottleId, userId, userAccountId)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  updateById,
   // getDetails,
 };
