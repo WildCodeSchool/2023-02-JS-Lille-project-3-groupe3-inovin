@@ -76,7 +76,8 @@
 .bottle_title {
   color: black;
   font-family: "Birthstone Bounce", cursive;
-
+  max-width: 30vh;
+  word-break: break-word;
   font-weight: bold;
   position: absolute;
   height: 10vh;
@@ -159,7 +160,7 @@
 
   .diploma_winner {
     bottom: 12vh;
-    right: 18vh;
+    right: 20vh;
   }
   #goBack_btn {
     position: absolute;
@@ -248,7 +249,7 @@
   }
   .diploma_winner {
     bottom: 25vh;
-    right: 19vh;
+    right: 28vh;
   }
 
   #commande_btn {

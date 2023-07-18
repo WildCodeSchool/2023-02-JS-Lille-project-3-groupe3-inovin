@@ -11,7 +11,7 @@ function Apercu({ inputNameRecipe }) {
   const navigate = useNavigate();
 
   const handleClickNext = () => {
-    navigate("/livredor");
+    navigate("/livredor", { state: inputNameRecipe });
   };
   return (
     <div className="element_apercu">
