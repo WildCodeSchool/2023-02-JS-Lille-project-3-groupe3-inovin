@@ -103,3 +103,19 @@
 // .cancel {
 //   /* Add your button styles here */
 // }
+
+@media (orientation: landscape) {
+
+  #Mcontent {
+    position: relative;
+    width: 37%;
+    right: 12vw;
+    bottom: 23vh;
+  }
+
+  .btn_M {
+    bottom: 25vh;
+    right: 50vw;
+  }
+
+}

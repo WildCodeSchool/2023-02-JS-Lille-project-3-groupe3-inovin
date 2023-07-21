@@ -432,7 +432,8 @@ input#city {
 @media (orientation: landscape) {
   .modalContainer {
     width: 75vh;
-    top: 23vh;
+    bottom: 18vh;
+    right: 20vw;
   }
   input#street-address,
   input#city {
@@ -443,4 +444,19 @@ input#city {
     left: 25vh;
     bottom: 2vh;
   }
+
+.codePostale,
+.city,
+.street {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  font-size: x-large;
+}
+
+.truck-button {
+  top: 1.5vh;
+}
+
+
 }

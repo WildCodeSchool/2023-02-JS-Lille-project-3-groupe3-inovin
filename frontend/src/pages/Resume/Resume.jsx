@@ -89,7 +89,6 @@ function Resume() {
           <h2 className="recepie_title">RECETTE</h2>
           <div className="recepie_info">
             <span className="personalDetails">
-              <h3 className="cepageTitle">Cépages choisi : </h3>
               {wineBottleName.map((name, index) => (
                 <li className="nameBottle" key={index}>
                   {name}
@@ -98,9 +97,6 @@ function Resume() {
             </span>
             <p />
             <p />
-            <h3 className="recipeName" id="rName">
-              Nom de la recette :{recipeName.recipe_name}
-            </h3>
           </div>
           <button
             className="button-submit-identity"
