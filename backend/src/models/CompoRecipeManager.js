@@ -23,6 +23,14 @@ class compoRecipeManager extends AbstractManager {
       [compoRecipe.percentage, compoRecipe.id]
     );
   }
+
+
+  updateById(compoRecipe, wineBottleId, userId, userAccountId) {
+    return this.database.query(
+      `update ${this.table} set percentage = ? where wineBottle_id = ? AND user_id = ? AND user_account_ID = ?`,
+      [compoRecipe.percentage, wineBottleId, userId, userAccountId]
+    );
+  }
 }
 
 module.exports = compoRecipeManager;
