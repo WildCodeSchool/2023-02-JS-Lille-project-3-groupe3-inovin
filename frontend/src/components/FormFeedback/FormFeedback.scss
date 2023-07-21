@@ -66,7 +66,7 @@
 .content h3 {
   font-family: $font_title_small;
   letter-spacing: 0.3125rem;
-  font-size: 28px;
+  font-size: 2em;
   width: 100vw;
 }
 
@@ -107,7 +107,6 @@ textarea {
   overflow: auto;
   position: relative;
   top: -2vh;
-  font-size: 17px;
   font-family: $font_title_small;
   width: 53%;
 }
@@ -140,7 +139,7 @@ textarea::placeholder {
   font-family: $font_title_large;
   position: relative;
   top: 2vh;
-  font-size: 1.5rem;
+  font-size: 2rem;
   letter-spacing: 0.3125rem;
   margin-bottom: 1.57vh;
   padding: 0;
@@ -154,25 +153,27 @@ textarea::placeholder {
     display: flex;
     justify-content: center;
     z-index: 1;
+    padding: 3vh;
     position: relative;
-    bottom: 5vh;
+    bottom: 7vh;
   }
 
+  
   .commentsBook h2 {
     padding: 0.625rem 0;
     color: $title_color;
-    font-size: 2rem;
+    font-size: 3.4em;
   }
 
   .noticeContainer {
     width: 90vw;
     height: 50vh;
     position: relative;
-    bottom: 4vh;
+    bottom: 6vh;
   }
 
   .content {
-    top: 4vh;
+    top: 3vh;
     height: 35vh;
   }
 
@@ -196,7 +197,7 @@ textarea::placeholder {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: 6.3vh;
+    bottom: 8.4vh;
     width: 70vw;
   }
 
@@ -207,6 +208,11 @@ textarea::placeholder {
     letter-spacing: 0.1875rem;
     cursor: pointer;
     background-color: $button_background_color;
+    position: relative;
+  }
+
+  .buttonDecoration{
+    top: 4vh;
   }
 
   .navigateLinkToResume {
@@ -245,7 +251,7 @@ textarea::placeholder {
     top: 0.5vh;
   }
   .feedbackSent {
-    font-size: 1.5rem;
+    font-size: 2rem;
     top: 0.5vh;
     margin-bottom: 1.8vh;
   }
