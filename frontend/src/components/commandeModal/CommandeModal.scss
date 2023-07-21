@@ -17,9 +17,9 @@
   width: 50vh;
   height: 53vh;
   border-radius: 12px;
-  position: fixed;
-  top: 28vh;
-  //left: 10vh;
+  position: relative;
+  bottom: 30vh;
+  right: 30vw;
   background-color: #c5c5c5;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
@@ -80,12 +80,16 @@
 .formCommande {
   width: 90vw;
   max-width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .commandeInput {
   border: 1px solid;
   padding: 0.3em;
-  width: 100%;
+  width: 30vw;
 }
 
 #commande_btn {
@@ -95,10 +99,12 @@
   display: block;
   font-size: 1.2rem;
   margin-top: 1rem;
+  width: 20vw;
+  text-align: left;
 }
 
 .postal-code {
-  width: 50%;
+  width: 30vw;
 }
 
 .codePostale,
@@ -112,16 +118,11 @@
 
 input#street-address,
 input#city {
-  left: 10vh;
-  position: relative;
-  width: 57%;
   text-indent: 6px;
   font-size: x-large;
 }
 
 #postal-code {
-  margin-left: 30px;
-  width: 58%;
   text-indent: 5px;
   font-size: x-large;
 }
@@ -431,7 +432,8 @@ input#city {
 @media (orientation: landscape) {
   .modalContainer {
     width: 75vh;
-    top: 23vh;
+    bottom: 18vh;
+    right: 20vw;
   }
   input#street-address,
   input#city {
@@ -442,4 +444,19 @@ input#city {
     left: 25vh;
     bottom: 2vh;
   }
+
+.codePostale,
+.city,
+.street {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  font-size: x-large;
+}
+
+.truck-button {
+  top: 1.5vh;
+}
+
+
 }

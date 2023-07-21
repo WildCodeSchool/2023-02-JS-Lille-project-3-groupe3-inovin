@@ -260,9 +260,10 @@
   bottom: 5vh;
   @include tablet-paysage {
     width: 200px;
-    position: absolute;
-    left: 19%;
+    position: relative;
+    right: 50vw;
     margin-top: 1%;
+    top: 1vh;
   }
   .button-submit-identity span {
     cursor: pointer;
