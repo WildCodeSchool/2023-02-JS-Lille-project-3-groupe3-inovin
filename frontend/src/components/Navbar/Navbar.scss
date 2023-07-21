@@ -108,14 +108,30 @@
 
   #Mcontent {
     position: relative;
-    width: 37%;
+    width: 50vw;
     right: 12vw;
     bottom: 23vh;
   }
 
   .btn_M {
     bottom: 25vh;
-    right: 50vw;
+    right: 48vw;
+  }
+
+}
+
+@media (orientation: portrait) {
+
+  #Mcontent {
+    position: relative;
+    width: 50vw;
+    right: 20vw;
+    bottom: 28vh;
+  }
+
+  .btn_M {
+    bottom: 32vh;
+    right: 44vh;
   }
 
 }
