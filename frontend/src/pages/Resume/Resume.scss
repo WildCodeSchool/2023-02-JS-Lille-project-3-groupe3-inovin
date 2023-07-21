@@ -11,6 +11,22 @@
   flex-direction: column;
   align-items: center;
 }
+
+.nameBottle {
+  list-style-type: none;
+  font-size: 0.5em;
+}
+
+.recipeName {
+  font-size: 1em;
+  color: $title_color;
+}
+
+.cepageTitle {
+  font-size: 0.5em;
+  color: $title_color;
+}
+
 .profil_title,
 .recepie_title {
   color: $gold_title;
@@ -39,6 +55,10 @@
   height: 10vh;
   border: 1px solid rgb(189, 187, 187);
   padding: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
   //background-color: $box_color
 }
 
@@ -68,18 +88,21 @@
   font-family: $font_title_large;
   color: $title_color;
   line-height: 2;
+  font-size: 1.5em;
 }
+
 #rName {
   font-family: "Birthstone Bounce", cursive;
   letter-spacing: 0.2rem;
 }
+
 .bottle_title {
   color: black;
   font-family: "Birthstone Bounce", cursive;
   max-width: 30vh;
   word-break: break-word;
   font-weight: bold;
-  position: absolute;
+  position: relative;
   height: 10vh;
   width: 10vh;
   text-align: center;
@@ -103,7 +126,7 @@
   }
 
   .recepie_title {
-    left: 2vw;
+    left: 3vw;
   }
 
   #commande_btn {
@@ -131,6 +154,7 @@
 
   .halfBackground {
     height: 25%;
+    bottom: 10vh;
   }
   #diploma {
     width: 35%;
@@ -141,7 +165,7 @@
   .bottle_title {
     font-size: xx-large;
     z-index: 2;
-    bottom: 19vh;
+    bottom: 3vh;
     left: 12vh;
   }
 
@@ -152,8 +176,8 @@
 
   #goBack_btn {
     position: absolute;
-    left: 3vh;
-    bottom: -8vh;
+    left: 11vh;
+    bottom: -4vh;
   }
 }
 
@@ -161,7 +185,6 @@
   .recipe_resume {
     width: 80%;
     display: flex;
-    height: 20vh;
     flex-direction: column;
     align-items: flex-end;
   }
@@ -171,17 +194,17 @@
     top: 3vh;
     height: 13vh;
     right: 23vh;
-  }
-  .halfBackground {
-    /* position: absolute; */
-    height: 25%;
+    flex-direction: column;
+    font-size: 0.8em;
   }
   .recepie_info {
-    width: 40vh;
-    top: 30vh;
+    width: 40vw;
     height: 17vh;
-    right: 16vh;
-    margin: 7vh 3vh;
+    left: 12vw;
+    bottom: 24.57vh;
+    background-color: #3e3e3e;
+    box-shadow: 1px 1px 15px 1px #000000;
+    padding: 1vh;
   }
   .profil_title {
     position: relative;
@@ -209,31 +232,34 @@
     bottom: 11vh;
     right: 20vh;
   }
+  .halfBackground {
+    bottom: 30vh;
+  }
 
   #diploma {
     width: 33vh;
     height: 23vh;
-    left: 90vh;
-    bottom: 11vh;
+    bottom: 30vh;
+    left: 15vw;
   }
   .bottle_title {
     font-size: larger;
     z-index: 2;
     left: 8vh;
-    bottom: 14vh;
+    bottom: 20vh;
   }
 
   #goBack_btn {
-    position: absolute;
-    //right: -48vh;
-    bottom: -9vh;
+    position: relative;
+    bottom: 30vh;
+    left: 4vw;
   }
 
   #bottle_resume {
     position: relative;
     width: 13vh;
     margin-left: 6vh;
-    bottom: 24vh;
+    bottom: 30vh;
   }
   .diploma_winner {
     bottom: 25vh;
@@ -241,7 +267,7 @@
   }
 
   #commande_btn {
-    left: 45vh;
-    bottom: 19vh;
+    bottom: 29vh;
+    left: 10vw;
   }
 }

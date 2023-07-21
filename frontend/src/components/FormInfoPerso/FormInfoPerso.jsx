@@ -225,7 +225,7 @@ function FormInfoPerso() {
                   className="form-inscription-idendity-input-class"
                   type="text"
                   name="firstname"
-                  placeholder="Dupont"
+                  placeholder="Jean"
                   value={formInscription.firstname}
                   onChange={handleChangeFormInscription}
                   required
@@ -242,7 +242,7 @@ function FormInfoPerso() {
                   className="form-inscription-idendity-input-class"
                   type="text"
                   name="lastname"
-                  placeholder="Jean"
+                  placeholder="Dupont"
                   value={formInscription.lastname}
                   onChange={handleChangeFormInscription}
                   required

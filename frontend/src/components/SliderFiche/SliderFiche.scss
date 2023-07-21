@@ -15,12 +15,19 @@
   @include tablet-paysage {
     bottom: 10vh;
     font-size: 3em;
+    width: 55vw;
+    left: 15vw;
+    text-align: center;
   }
 }
 
 .picture-band-taste {
   position: relative;
   bottom: 4.9em;
+  @include tablet-paysage {
+    bottom: 12vh;
+    left: 9vw;
+  }
 }
 
 .tabs {
@@ -74,6 +81,8 @@ ul.nav li:active {
   @include tablet-paysage {
     width: 100vh;
     height: 50vh;
+    bottom: 12vh;
+    left: 0vw;
   }
 }
 
@@ -100,7 +109,7 @@ ul.nav li:active {
   bottom: 3vh;
   @include tablet-paysage {
     left: 53em;
-    bottom: 3em;
+    bottom: 16vh;
   }
 }
 .btn-form-next {
@@ -121,7 +130,7 @@ ul.nav li:active {
   bottom: 0.1vh;
   @include tablet-paysage {
     bottom: 4em;
-    left: 29.5em;
+    left: 55vw;
   }
 }
 
@@ -142,7 +151,7 @@ ul.nav li:active {
   left: 10vw;
   @include tablet-paysage {
     bottom: 6em;
-    left: 29.5em;
+    left: 56.4vw;
   }
 }
 .nextPageArrow-tasting {

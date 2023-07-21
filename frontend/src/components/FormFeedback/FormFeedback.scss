@@ -221,13 +221,15 @@ textarea::placeholder {
 
 @media (orientation: landscape) {
   .commentsBook {
+    position: relative;
     box-sizing: border-box;
     background-color: $box_color;
-    width: 40vw;
+    width: 60vw;
+    padding: 3vh;
     display: flex;
     justify-content: center;
     /* position: absolute; */
-    top: 20vh;
+    bottom: 8vh;
     z-index: 1;
   }
 
@@ -235,7 +237,7 @@ textarea::placeholder {
     padding: none;
     color: $title_color;
     padding: 0.4375rem 0rem;
-    font-size: 2rem;
+    font-size: 3.4em;
   }
 
   .noticeTitle {
@@ -289,13 +291,12 @@ textarea::placeholder {
     transform: rotate(180deg);
     position: relative;
     z-index: 1;
-    bottom: -1rem;
-    width: 40vw;
+    bottom: 10.2vh;
   }
 
   .navigateLinkToResume {
-    top: 5vh;
-    left: 40vw;
+    bottom: 2vh;
+    left: 38vw;
   }
 
   textarea {
@@ -309,7 +310,7 @@ textarea::placeholder {
   .noticeContainer {
     height: 53vh;
     position: relative;
-    bottom: 4vh;
+    bottom: 12vh;
     width: 90vw;
   }
 

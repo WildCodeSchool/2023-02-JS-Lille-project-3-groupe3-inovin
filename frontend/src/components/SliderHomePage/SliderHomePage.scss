@@ -177,17 +177,16 @@
 }
 #home_btn {
   cursor: pointer;
-  position: absolute;
-  bottom: 0vh;
-  height: 5vh;
   text-align: center;
-  margin-bottom: 2vh;
+  position: relative;
+  bottom: 1vh;
   @include tablet-paysage {
-    bottom: 3vh;
-    margin-bottom: 0%;
-    height: 7vh;
+    width: 200px;
+    position: relative;
+    right: 1vw;
   }
 }
+
 .slide-map {
   display: flex;
   flex-direction: row;
