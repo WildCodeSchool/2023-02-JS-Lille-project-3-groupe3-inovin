@@ -24,7 +24,6 @@ class compoRecipeManager extends AbstractManager {
     );
   }
 
-
   updateById(compoRecipe, wineBottleId, userId, userAccountId) {
     return this.database.query(
       `update ${this.table} set percentage = ? where wineBottle_id = ? AND user_id = ? AND user_account_ID = ?`,

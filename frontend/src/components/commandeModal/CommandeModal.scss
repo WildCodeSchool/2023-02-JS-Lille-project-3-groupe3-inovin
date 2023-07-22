@@ -445,18 +445,16 @@ input#city {
     bottom: 2vh;
   }
 
-.codePostale,
-.city,
-.street {
-  display: flex;
-  flex-direction: row;
-  margin: 20px;
-  font-size: x-large;
-}
+  .codePostale,
+  .city,
+  .street {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    font-size: x-large;
+  }
 
-.truck-button {
-  top: 1.5vh;
-}
-
-
+  .truck-button {
+    top: 1.5vh;
+  }
 }

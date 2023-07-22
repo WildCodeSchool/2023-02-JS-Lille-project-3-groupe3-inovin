@@ -1,4 +1,5 @@
 const models = require("../models");
+
 const browse = (req, res) => {
   models.comporecipe
     .findAll()

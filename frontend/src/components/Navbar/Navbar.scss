@@ -105,7 +105,6 @@
 // }
 
 @media (orientation: landscape) {
-
   #Mcontent {
     position: relative;
     width: 50vw;
@@ -117,11 +116,9 @@
     bottom: 25vh;
     right: 48vw;
   }
-
 }
 
 @media (orientation: portrait) {
-
   #Mcontent {
     position: relative;
     width: 50vw;
@@ -133,5 +130,4 @@
     bottom: 32vh;
     right: 44vh;
   }
-
 }
