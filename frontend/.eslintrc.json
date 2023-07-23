@@ -19,6 +19,7 @@
   "rules": {
     "no-console": "off",
     "camelcase": "off",
+    "no-nested-ternary": "off",
     "react/no-array-index-key": "off",
     "no-restricted-syntax": [
       "error",
