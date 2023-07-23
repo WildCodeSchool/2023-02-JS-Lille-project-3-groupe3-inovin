@@ -1,0 +1,36 @@
+//@import "./App.scss";
+.lightModeNav {
+  background-image: url(../src/assets/images/fondOr.png);
+  height: 25vh;
+  background-size: 100%;
+  box-shadow: -5px 5px 40px #0f0d0d;
+}
+
+.lightCarousel {
+  background-color: #f0f0b854;
+  position: absolute;
+  top: 40%;
+  height: 50%;
+  width: -webkit-fill-available;
+  box-shadow: 4px 4px 4px 4px white;
+  z-index: auto;
+  margin: 5%;
+  border: 1px solid gainsboro;
+}
+
+// .slide-holderLight {
+// color: #0f0d0d;
+// }
+
+.light-text-first-slide {
+  color: black;
+  text-shadow: none;
+  font-size: 3vh;
+  letter-spacing: 5px;
+  padding: 2%;
+  line-height: 50px;
+  margin: 15% 5% 20% 5%;
+  // @include tablet-paysage {
+  //   margin: 5% 5% 5% 5%;
+  // }
+}

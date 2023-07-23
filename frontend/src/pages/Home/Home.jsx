@@ -4,7 +4,7 @@ import SliderHome from "../../components/SliderHomePage/SliderHomePage";
 
 function Home() {
   return (
-    <div className="">
+    <div className="homePage">
       <div className="header_container">
         <h2 id="title">Connectez vous à votre profil de dégustation de vin</h2>
         <img className="title_background" src={background} alt="" />

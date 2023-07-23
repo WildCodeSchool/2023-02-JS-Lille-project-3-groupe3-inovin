@@ -1,5 +1,5 @@
 @import "../../App.scss";
-
+@import "../../LightMode.scss";
 .navHeader {
   display: flex;
   justify-content: space-around;
@@ -19,6 +19,14 @@
   font-size: 8vh;
   text-shadow: 4px 4px 3px #000000;
   margin-right: 110px;
+}
+
+.InovinlightMode {
+  color: #d8af49;
+  font-family: $font_inovin;
+  font-size: 8vh;
+  margin-right: 110px;
+  text-shadow: 4px 4px 3px #ffffff;
 }
 
 .loginLinks {
@@ -87,25 +95,8 @@
   position: relative;
   bottom: 2vh;
 }
-// .modal-actions {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// .modal-btn {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 10px;
-// }
-
-// .deconnexionBtn,
-// .cancel {
-//   /* Add your button styles here */
-// }
 
 @media (orientation: landscape) {
-
   #Mcontent {
     position: relative;
     width: 50vw;
@@ -117,11 +108,9 @@
     bottom: 25vh;
     right: 48vw;
   }
-
 }
 
 @media (orientation: portrait) {
-
   #Mcontent {
     position: relative;
     width: 50vw;
@@ -133,5 +122,27 @@
     bottom: 32vh;
     right: 44vh;
   }
+}
 
+.mode_icons {
+  z-index: 100;
+  height: inherit;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 15vh;
+  justify-content: center;
+  align-items: first baseline;
+}
+.icon {
+  cursor: pointer;
+  width: 4em;
+  display: flex;
+  justify-content: center;
+  margin: 1vh;
+  background-color: transparent; 
+  border: none; 
+}
+.mode {
+  height: 100px;
 }

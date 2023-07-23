@@ -1,5 +1,5 @@
 @import "../../App.scss";
-
+@import "../../LightMode.scss";
 .carousel_container {
   background-color: $box_color;
   padding: 1em 3em;
@@ -125,9 +125,6 @@
 
   .carousel_container {
     position: absolute;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
     top: 40%;
     height: 50%;
     width: -webkit-fill-available;
@@ -209,6 +206,7 @@
   }
 }
 .text-first-slide {
+  color: white;
   font-family: $font_title_small;
   font-size: 3vh;
   letter-spacing: 5px;

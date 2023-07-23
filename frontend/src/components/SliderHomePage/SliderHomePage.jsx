@@ -1,18 +1,21 @@
 import "./SliderHomePage.scss";
 import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import wineGlass from "../../assets/images/verre_plan_de_travail.png";
 import franceMap from "../../assets/images/map.png";
+import { LightModeContext } from "../../contexts/LightModeContext";
 
 function SliderHome() {
   const navigate = useNavigate();
+  const { lightMode } = useContext(LightModeContext);
   const navigateToInscription = () => {
     navigate("/inscription");
   };
   return (
     <div className="wrapper_portrait">
-      <div className="carousel_container">
+      <div className={lightMode ? "lightCarousel" : "carousel_container"}>
         <Carousel
           showThumbs={false}
           showStatus={false}
@@ -22,16 +25,20 @@ function SliderHome() {
           useKeyboardArrows
           transitionTime={1000}
         >
-          <div className="slide-holder">
+          <div className={lightMode ? "slide-holderLight" : "slide-holder"}>
             <div id="first_slide">
-              <div className="text-first-slide">
+              <div
+                className={
+                  lightMode ? "light-text-first-slide" : "text-first-slide"
+                }
+              >
                 Bienvenue à cet atelier unique, après une dégustation
                 savoureuse, vous créerez votre propre vin grâce aux différents
                 cépages !
               </div>
             </div>
           </div>
-          <div className="slide-holder">
+          <div className={lightMode ? "slide-holderLight" : "slide-holder"}>
             <div className="slide-map">
               <div className="text-map">
                 Et voici la carte des différentes régions viticoles où nous
@@ -44,7 +51,7 @@ function SliderHome() {
               />
             </div>
           </div>
-          <div className="slide-holder">
+          <div className={lightMode ? "slide-holderLight" : "slide-holder"}>
             <span className="text_container" id="steps">
               <div id="a">1. Inscrivez-vous</div>
               <div id="b">2. Complétez vos préférences</div>

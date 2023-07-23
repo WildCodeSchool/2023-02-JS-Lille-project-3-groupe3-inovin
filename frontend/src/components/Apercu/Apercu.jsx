@@ -37,5 +37,7 @@ function Apercu({ inputNameRecipe }) {
 
 export default Apercu;
 Apercu.propTypes = {
-  inputNameRecipe: PropTypes.string.isRequired,
+  inputNameRecipe: PropTypes.shape({
+    recipe_name: PropTypes.string.isRequired,
+  }).isRequired,
 };

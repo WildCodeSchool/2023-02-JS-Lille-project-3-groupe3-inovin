@@ -1,4 +1,7 @@
+// App.js
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 import Home from "./pages/Home/Home";
 import Inscription from "./pages/Inscription/Inscription";
 import FicheDegustation from "./pages/FicheDegustation/FicheDegustation";
@@ -10,19 +13,26 @@ import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin/Admin";
 import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
 import "./App.css";
+import "./LightMode.scss";
 import { UserProvider } from "./contexts/UserContext";
 import { BottleProvider } from "./contexts/BottleContext";
+import { LightModeContext } from "./contexts/LightModeContext";
+
+function LightModeWrapper({ children }) {
+  const { lightMode } = useContext(LightModeContext);
+  useEffect(() => {
+    document.body.style.backgroundColor = lightMode ? "white" : "#3e3e3e";
+  }, [lightMode]);
+  return <div className={lightMode ? "lightMode" : "darkMode"}>{children}</div>;
+}
 
 function App() {
   return (
     <UserProvider>
-      <BottleProvider>
-        <Router>
-          <div>
-            <div className="backgroundHeader">
-              <Navbar />
-            </div>
-
+      <LightModeWrapper>
+        <BottleProvider>
+          <Router>
+            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Inscription" element={<Inscription />} />
@@ -33,13 +43,16 @@ function App() {
               <Route path="/Admin" element={<Admin />} />
               <Route path="/AdminAjoutVin" element={<AdminAjoutVin />} />
             </Routes>
-
             <Footer />
-          </div>
-        </Router>
-      </BottleProvider>
+          </Router>
+        </BottleProvider>
+      </LightModeWrapper>
     </UserProvider>
   );
 }
 
 export default App;
+
+LightModeWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
