@@ -24,10 +24,12 @@
   background-color: goldenrod;
   border-radius: 10px;
   overflow: hidden;
+  margin-left: 1vh;
 }
 
 .progress-bar-inner {
   position: absolute;
+  line-height: 300vh;
   bottom: 10px;
   left: 64px;
   width: 28%;
@@ -44,7 +46,12 @@
   margin-top: 10px;
   text-align: center;
 }
-
+.percentage-title {
+  text-align: center;
+  font-family: $font_title_small;
+  color: white;
+  font-size: 2em;
+}
 .progress-bar:before {
   content: "";
   position: absolute;

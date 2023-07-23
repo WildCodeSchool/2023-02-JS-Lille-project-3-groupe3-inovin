@@ -56,7 +56,14 @@ ul.nav li {
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
   opacity: 0%;
-  margin-left: -9vh;
+  margin-left: -8vh;
+  height: 4vh;
+  width: 11vw;
+  @include tablet-paysage {
+    margin-left: -7vh;
+    height: 6vh;
+    width: 6vw;
+  }
 }
 
 ul.nav li:hover {
@@ -96,24 +103,25 @@ ul.nav li:active {
 
 .btn-page-next {
   cursor: pointer;
-  position: relative;
+  position: inherit;
   text-decoration: none;
   border: none;
   background: none;
   padding: 0;
   margin: 0;
   color: #fff;
-  font-size: $font_title_small;
+  font-size: 25px;
+  font-family: $font_title_small;
   letter-spacing: 0.1875rem;
-  left: 36em;
-  bottom: 3vh;
+  left: 18em;
+  bottom: 4vh;
   @include tablet-paysage {
-    left: 53em;
-    bottom: 16vh;
+    left: 27em;
+    bottom: 19vh;
   }
 }
 .btn-form-next {
-  position: relative;
+  position: inherit;
   display: inline-block;
   background-color: white;
   border-radius: 8px;
@@ -129,8 +137,8 @@ ul.nav li:active {
   left: 15vw;
   bottom: 0.1vh;
   @include tablet-paysage {
-    bottom: 4em;
-    left: 55vw;
+    bottom: 9vh;
+    left: 9vw;
   }
 }
 
@@ -150,14 +158,14 @@ ul.nav li:active {
   width: 7em;
   left: 10vw;
   @include tablet-paysage {
-    bottom: 6em;
-    left: 56.4vw;
+    bottom: 9vh;
+    left: 6vw;
   }
 }
 .nextPageArrow-tasting {
   position: relative;
-  top: 0.3vh;
+  top: 1.3vh;
   right: 0.1875vw;
-  height: 2vh;
+  height: 4vh;
   width: auto;
 }

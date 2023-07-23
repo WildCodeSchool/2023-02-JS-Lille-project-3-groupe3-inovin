@@ -57,7 +57,7 @@
   display: flex;
   margin: 0% 2% 1% 2%;
   font-family: $font_title_small;
-  font-size: 22px;
+  font-size: 28px;
   letter-spacing: 3px;
   color: white;
   width: 100%;
@@ -74,8 +74,8 @@
   font-family: $font_title_small;
   padding: 8px;
   width: 240px;
-  margin: 6px;
-  font-size: 22px;
+  margin: 3px 0px 3px 0px;
+  font-size: 24px;
   letter-spacing: 3px;
   height: 17px;
   border-radius: 5px;
@@ -87,7 +87,7 @@
 .box-18 {
   display: flex;
   align-self: center;
-  font-size: 22px;
+  font-size: 28px;
   color: $gold_title;
   font-family: $font_title_small;
   font-weight: 100;
@@ -162,7 +162,7 @@
 .form-arome-label {
   display: flex;
   color: black;
-  font-size: 28px;
+  font-size: 30px;
   text-align: center;
   font-family: $font_title_small;
 }
@@ -173,9 +173,10 @@
 }
 .title-checkbox {
   font-family: $font_title_small;
+  padding-bottom: 1vh;
   font-style: normal;
   font-weight: 200;
-  font-size: 25px;
+  font-size: 28px;
   line-height: 30px;
   text-align: center;
   letter-spacing: 0.26em;
@@ -192,7 +193,7 @@
   font-family: $font_title_small;
   font-style: normal;
   font-weight: 200;
-  font-size: 22px;
+  font-size: 25px;
   line-height: 30px;
   text-align: center;
   letter-spacing: 0.16em;
@@ -203,8 +204,9 @@
   font-family: $font_title_small;
   overflow-y: scroll;
   height: 74px;
-  font-size: 20px;
+  font-size: 28px;
   top: 1%;
+  width: 34vh;
   @include tablet-paysage {
     margin-top: 5%;
   }
@@ -296,14 +298,7 @@
   position: relative;
   transition: 0.5s;
 }
-.button-submit-identity span:after {
-  content: "\00bb";
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
+
 .button-submit-identity:hover {
   background-color: $input_color;
 }
