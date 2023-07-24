@@ -124,8 +124,7 @@ function Resume() {
           <p className="diploma_winner">{fullName}</p>
           <button
             type="button"
-            className="navigateLinkToResume"
-            id="goBack_btn"
+            className="navigateLinkBackToResume"
             onClick={previousPage}
           >
             {" "}

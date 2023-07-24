@@ -22,7 +22,7 @@
 
 .previousPageArrow {
   position: relative;
-  top: 1.3vh;
+  top: 1vh;
   right: 0.1875vw;
   height: 4vh;
   width: auto;
@@ -105,6 +105,7 @@
   line-height: 2;
   font-size: 2rem;
   margin-right: 2vw;
+  font-weight: normal;
 }
 
 #rName {
@@ -130,9 +131,23 @@
   color: black;
   font-weight: bold;
 }
-.navigateLinkToResume img {
+.navigateLinkBackToResume img {
   transform: rotate(180deg);
 }
+
+.navigateLinkBackToResume {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: 1.6rem;
+  letter-spacing: 0.1875rem;
+  
+} 
 
 @media (orientation: portrait) {
   .recipe_resume {
@@ -140,6 +155,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  }
+
+  .navigateLinkBackToResume {
+    left: 10vw;
+    bottom: 34vh
   }
 
   .recepie_title {
@@ -181,21 +201,16 @@
   .bottle_title {
     font-size: 2.5rem;
     z-index: 2;
-    bottom: 3vh;
+    bottom: 7vh;
     left: 12vh;
   }
 
   .diploma_winner {
     bottom: 37.2vh;
-    left: 62vw;
+    left: 57vw;
     font-size: 1.5rem;
   }
 
-  #goBack_btn {
-    position: absolute;
-    left: 6vh;
-    bottom: 3vh;
-  }
 }
 
 @media (orientation: landscape) {
@@ -229,6 +244,11 @@
     flex-wrap: wrap;
     text-align: center;
   }
+
+ .navigateLinkBackToResume {
+    bottom: 32vh;
+    left: 1vw;
+  } 
 
   .personalDetails {
     line-height: 1.2;
@@ -274,12 +294,6 @@
     bottom: 26vh;
   }
 
-  #goBack_btn {
-    position: relative;
-    bottom: 32vh;
-    left: 4vw;
-  }
-
   #bottle_resume {
     position: relative;
     width: 13vh;
@@ -287,8 +301,8 @@
     bottom: 30vh;
   }
   .diploma_winner {
-    bottom: 46vh;
-    left: 59.5vh;
+    bottom: 47vh;
+    left: 57vh;
     font-size: 1.5rem;
   }
 

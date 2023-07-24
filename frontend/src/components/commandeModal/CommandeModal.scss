@@ -18,8 +18,7 @@
   height: 53vh;
   border-radius: 12px;
   position: relative;
-  bottom: 30vh;
-  right: 30vw;
+  left: inherit;
   background-color: #c5c5c5;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
@@ -429,9 +428,11 @@ input#city {
 @media (orientation: landscape) {
   .modalContainer {
     width: 75vh;
-    bottom: 18vh;
+    bottom: 8vh;
     right: 20vw;
+    left: inherit;
   }
+  
   input#street-address,
   input#city {
     left: 13vh;
