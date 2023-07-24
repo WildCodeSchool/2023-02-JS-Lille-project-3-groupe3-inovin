@@ -58,27 +58,29 @@ function AnimationBottle({ id }) {
   useEffect(() => {
     const handleMouseMove = (e) => {
       const progressBar = progressBarRef.current;
+
       const progressBarHeight = progressBar.offsetHeight;
-      const progressBarWidth = progressBar.offsetWidth;
+
       const maxProgress = 100;
-      const { top, left } = progressBar.getBoundingClientRect();
+
+      const { top } = progressBar.getBoundingClientRect();
 
       // Mise à jour de la progression uniquement si le verrouillage est désactivé et la progression fixée est nulle
+
       if (!isLocked && fixedProgress === null) {
         const mouseY = e.clientY - top;
-        const mouseX = e.clientX - left;
 
-        if (mouseX >= 0 && mouseX <= progressBarWidth) {
-          const newProgress = Math.min(
-            Math.max(
-              ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
-              0
-            ),
-            maxProgress
-          );
+        const newProgress = Math.min(
+          Math.max(
+            ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
 
-          setProgress(newProgress);
-        }
+            0
+          ),
+
+          maxProgress
+        );
+
+        setProgress(newProgress);
       }
     };
 
@@ -87,7 +89,7 @@ function AnimationBottle({ id }) {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [isLocked, fixedProgress]);
+  }, [isLocked]);
 
   const handleFirstClick = () => {
     setClickCounter((prevClickCounter) => {
@@ -330,7 +332,6 @@ function AnimationBottle({ id }) {
           </div>
         </div>
       ) : null}
-      <div className="percentage-title">{Math.round(progress)} %</div>
     </div>
   );
 }
