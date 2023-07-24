@@ -9,11 +9,17 @@
 }
 
 .input-name-recipe {
+  display: block;
   border-radius: 0.2em;
   padding-left: 0.4em;
   font-size: 1.8em;
   font-family: $font_title_small;
   margin: 0.4em 2em 0.4em 0em;
+}
+.label-name-recipe span {
+  font-family: $font_title_small;
+  color: $gold_title;
+  font-size: 2em;
 }
 
 #nameRecipe {

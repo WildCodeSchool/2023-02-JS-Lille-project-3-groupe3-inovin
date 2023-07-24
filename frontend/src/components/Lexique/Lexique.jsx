@@ -33,17 +33,10 @@ function Lexique() {
       {/* Modal */}
       {isShowing && (
         <div className="modal-open">
+          <p className="p-lexique">Robe: Couleur du vin.</p>
+          <p className="p-lexique">Arôme: odeurs par la voie rétro-nasale</p>
           <p className="p-lexique">
-            Robe (du vin) dégustation : la robe du vin désigne la couleur et
-            l’aspect extérieur du vin.
-          </p>
-          <p className="p-lexique">
-            Arôme (du vin) dégustation : odeurs perçues en bouche par la voie
-            rétro-nasale
-          </p>
-          <p className="p-lexique">
-            Saveur (du vin) dégustation :Les saveurs d’un vin se révèlent l’une
-            après l’autre en fonction de la région de la langue concernée.
+            Saveur: une sensation sur l'organe du goût
           </p>
         </div>
       )}

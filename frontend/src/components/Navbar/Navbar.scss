@@ -21,14 +21,6 @@
   margin-right: 110px;
 }
 
-.InovinlightMode {
-  color: #d8af49;
-  font-family: $font_inovin;
-  font-size: 8vh;
-  margin-right: 110px;
-  text-shadow: 4px 4px 3px #ffffff;
-}
-
 .loginLinks {
   height: 65px;
   width: 65px;
@@ -108,6 +100,9 @@
     bottom: 25vh;
     right: 48vw;
   }
+  #moon {
+    width: 6vw;
+  }
 }
 
 @media (orientation: portrait) {
@@ -122,27 +117,31 @@
     bottom: 32vh;
     right: 44vh;
   }
+  #moon {
+    width: 9vw;
+  }
 }
 
 .mode_icons {
   z-index: 100;
-  height: inherit;
   display: flex;
   flex-direction: row;
   position: relative;
   top: 15vh;
+  right: 10vw;
   justify-content: center;
   align-items: first baseline;
 }
 .icon {
   cursor: pointer;
-  width: 4em;
+  width: 2em;
   display: flex;
   justify-content: center;
   margin: 1vh;
-  background-color: transparent; 
-  border: none; 
+  background-color: transparent;
+  border: none;
 }
-.mode {
-  height: 100px;
+
+#sun {
+  height: 10vh;
 }

@@ -25,12 +25,10 @@ function SliderHome() {
           useKeyboardArrows
           transitionTime={1000}
         >
-          <div className={lightMode ? "slide-holderLight" : "slide-holder"}>
+          <div className="slide-holder">
             <div id="first_slide">
               <div
-                className={
-                  lightMode ? "light-text-first-slide" : "text-first-slide"
-                }
+                className={lightMode ? "light-text-slide" : "text-first-slide"}
               >
                 Bienvenue à cet atelier unique, après une dégustation
                 savoureuse, vous créerez votre propre vin grâce aux différents
@@ -38,9 +36,9 @@ function SliderHome() {
               </div>
             </div>
           </div>
-          <div className={lightMode ? "slide-holderLight" : "slide-holder"}>
+          <div className={lightMode ? "light-first-slide" : "slide-holder"}>
             <div className="slide-map">
-              <div className="text-map">
+              <div className={lightMode ? "text-map-light" : "text-map"}>
                 Et voici la carte des différentes régions viticoles où nous
                 irons piocher nos cépages.
               </div>
@@ -51,20 +49,30 @@ function SliderHome() {
               />
             </div>
           </div>
-          <div className={lightMode ? "slide-holderLight" : "slide-holder"}>
+          <div className="slide-holder">
             <span className="text_container" id="steps">
-              <div id="a">1. Inscrivez-vous</div>
-              <div id="b">2. Complétez vos préférences</div>
-              <div id="c">3. Découvrez votre Profil de Dégustation</div>
-              <div id="d">4. Découvrez l’Atelier Création Viticole </div>
-              <div id="e">5. Achetez Votre création</div>
+              <div id="a" className={lightMode ? "light_steps" : "dark_steps"}>
+                1. Inscrivez-vous
+              </div>
+              <div id="b" className={lightMode ? "light_steps" : "dark_steps"}>
+                2. Complétez vos préférences
+              </div>
+              <div id="c" className={lightMode ? "light_steps" : "dark_steps"}>
+                3. Découvrez votre Profil de Dégustation
+              </div>
+              <div id="d" className={lightMode ? "light_steps" : "dark_steps"}>
+                4. Découvrez l’Atelier Création Viticole{" "}
+              </div>
+              <div id="e" className={lightMode ? "light_steps" : "dark_steps"}>
+                5. Achetez Votre création
+              </div>
             </span>
             <img src={wineGlass} id="wineGlass" alt="wine" />
             <div className="start_button">
               <button
                 type="button"
                 className="button-submit-identity"
-                id="home_btn"
+                id={lightMode ? "home_btn_light" : "home_btn"}
                 onClick={navigateToInscription}
               >
                 C'est parti

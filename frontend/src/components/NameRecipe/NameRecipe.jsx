@@ -32,6 +32,7 @@ function NameRecipe() {
         <div className="input-name-recipe-container">
           <form className="form-name-recipe" onSubmit={handleSubmitNameRecipe}>
             <label className="label-name-recipe" htmlFor="label-name-recipe">
+              <span>Choisir le nom du vin</span>
               <input
                 className="input-name-recipe"
                 type="text"
@@ -46,7 +47,7 @@ function NameRecipe() {
               id="WineName"
               type="submit"
             >
-              <span>Ajouter le Nom</span>
+              <span>Création de la Recette</span>
             </button>
           </form>
         </div>

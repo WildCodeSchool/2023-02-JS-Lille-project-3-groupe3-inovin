@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import signout from "../../assets/images/signout.png";
 import ProfileIcone from "../../assets/images/🦆 icon _profile circle_.png";
 import LogoInovin from "../../assets/images/logo_inovin.png";
+import lightLogo from "../../assets/images/logo2.png";
 import UserContext from "../../contexts/UserContext";
 import sun from "../../assets/images/sun.png";
 import moon from "../../assets/images/moon.png";
@@ -42,7 +43,7 @@ function Navbar() {
       <div className="navHeader">
         <p className="logo">
           <Link to="/">
-            <img src={LogoInovin} alt="Logo Ino Vin" />
+            <img src={lightMode ? lightLogo : LogoInovin} alt="Logo Ino Vin" />
           </Link>
         </p>
         <h1 className={lightMode ? "InovinlightMode" : "inovinTitle"}>
@@ -129,6 +130,7 @@ function Navbar() {
           <button type="button" className="icon" onClick={toggleLightMode}>
             {" "}
             <img
+              id={lightMode ? "sun" : "moon"}
               className="mode"
               src={lightMode ? sun : moon}
               alt={lightMode ? "moon" : "sun"}

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
+import { LightModeContext } from "../../contexts/LightModeContext";
 
 function Footer() {
   const [modalOpen, setModalOpen] = useState(false);
+  const { lightMode } = useContext(LightModeContext);
   const handleLegalLinkClick = () => {
     setModalOpen(true);
   };
@@ -15,6 +17,7 @@ function Footer() {
       <Link
         to="https://www.inovin.fr/"
         className="inovinSiteLink"
+        id={!lightMode ? "siteLink_dark" : ""}
         target="_blank"
       >
         © 2023 INO VIN. Tous droits réservés.{" "}
