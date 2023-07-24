@@ -129,7 +129,7 @@ function Resume() {
             onClick={previousPage}
           >
             {" "}
-            <img src={fleche} alt="" className="nextPageArrow" /> Précédent
+            <img src={fleche} alt="" className="previousPageArrow" /> Précédent
           </button>
         </div>
       </div>

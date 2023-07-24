@@ -119,29 +119,17 @@
 .test {
   display: flex;
   flex-direction: column;
-  // position:absolute;
 }
 
 .displaySuggestWineBottle {
-  // display: flex;
-  // flex-direction: column;
   width: 35.5vw;
-  // height:20px;
-  // border-radius: 5px;
-  // background-color: #ffffff5e;
   min-height: 5vh;
-  // border: black solid;
   background-color: #d9d9d9;
-  // color: black;
   max-height: 15vh;
   position: absolute;
   left: 246px;
   top: 629px;
-  // bottom: 2px
   z-index: 10;
-
-  // top: 89px;
-  // right: 219px;
 }
 
 .validButton {

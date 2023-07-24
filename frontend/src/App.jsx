@@ -1,4 +1,4 @@
-// App.js
+
 import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -12,7 +12,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin/Admin";
 import AdminAjoutVin from "./pages/AdminAjoutVin/AdminAjoutVin";
-import "./App.css";
+import "./App.scss";
 import "./LightMode.scss";
 import { UserProvider } from "./contexts/UserContext";
 import { BottleProvider } from "./contexts/BottleContext";

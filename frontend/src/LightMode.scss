@@ -1,4 +1,4 @@
-//@import "./App.scss";
+
 .lightModeNav {
   background-image: url(../src/assets/images/fondOr.png);
   height: 25vh;
@@ -34,9 +34,6 @@
   padding: 2%;
   line-height: 50px;
   margin: 15% 5% 20% 5%;
-  // @include tablet-paysage {
-  //   margin: 5% 5% 5% 5%;
-  // }
 }
 
 .text-map-light {

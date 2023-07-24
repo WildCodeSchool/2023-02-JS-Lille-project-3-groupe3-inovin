@@ -61,7 +61,7 @@ function SliderHome() {
                 3. Découvrez votre Profil de Dégustation
               </div>
               <div id="d" className={lightMode ? "light_steps" : "dark_steps"}>
-                4. Découvrez l’Atelier Création Viticole{" "}
+                4. Découvrez l'Atelier Création Viticole{" "}
               </div>
               <div id="e" className={lightMode ? "light_steps" : "dark_steps"}>
                 5. Achetez Votre création
@@ -71,7 +71,7 @@ function SliderHome() {
             <div className="start_button">
               <button
                 type="button"
-                className="button-submit-identity"
+                //className="button-submit-identity"
                 id={lightMode ? "home_btn_light" : "home_btn"}
                 onClick={navigateToInscription}
               >

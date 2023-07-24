@@ -15,7 +15,6 @@ function CommandeModal({ setOpenModal, fullName, user }) {
   const [ordering, setOrdering] = useState(0);
   const [userId, setUserId] = useState();
   const [buttonClicks, setbuttonClicks] = useState(0);
-  // const [emailSent, setEmailSent] = useState(false);
   const [feedbackComment, setfeedbackComment] = useState("");
   const [rating, setRating] = useState(null);
   useEffect(() => {
@@ -249,18 +248,10 @@ function CommandeModal({ setOpenModal, fullName, user }) {
           ) : (
             <div className="confirmationMessage">
               <img id="commandeLogo" src={logo} alt="" />
-              {/* {buttonClicks === 1 ? (
-                <h2>
-                  {" "}
-                  Merci pour votre commande, {fullName}. Nous vous avons envoyé
-                  un mail de confirmation.{" "}
-                </h2>
-              ) : (
-                <h2>Merci, Votre address a étè bien enregistrée</h2>
-              )} */}
+
               {buttonClicks === 1 ? (
                 <h2 className="confirmation">
-                  Merci. Votre address a étè bien enregistrée
+                  Merci. Votre addresse a été bien enregistrée
                 </h2>
               ) : (
                 <h2 className="confirmation">

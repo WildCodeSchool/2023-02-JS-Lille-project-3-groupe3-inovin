@@ -58,27 +58,29 @@ function AnimationBottle({ id }) {
   useEffect(() => {
     const handleMouseMove = (e) => {
       const progressBar = progressBarRef.current;
+
       const progressBarHeight = progressBar.offsetHeight;
-      const progressBarWidth = progressBar.offsetWidth;
+
       const maxProgress = 100;
-      const { top, left } = progressBar.getBoundingClientRect();
+
+      const { top } = progressBar.getBoundingClientRect();
 
       // Mise à jour de la progression uniquement si le verrouillage est désactivé et la progression fixée est nulle
+
       if (!isLocked && fixedProgress === null) {
         const mouseY = e.clientY - top;
-        const mouseX = e.clientX - left;
 
-        if (mouseX >= 0 && mouseX <= progressBarWidth) {
-          const newProgress = Math.min(
-            Math.max(
-              ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
-              0
-            ),
-            maxProgress
-          );
+        const newProgress = Math.min(
+          Math.max(
+            ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
 
-          setProgress(newProgress);
-        }
+            0
+          ),
+
+          maxProgress
+        );
+
+        setProgress(newProgress);
       }
     };
 
@@ -87,7 +89,7 @@ function AnimationBottle({ id }) {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [isLocked, fixedProgress]);
+  }, [isLocked]);
 
   const handleFirstClick = () => {
     setClickCounter((prevClickCounter) => {
@@ -96,10 +98,6 @@ function AnimationBottle({ id }) {
       const newClickCounter = prevClickCounter + 1;
 
       const newIsLocked = true;
-
-      // console.log(`clickCounter firstclick : ${newClickCounter}`);
-
-      // console.log(`isLocked firstclick : ${newIsLocked}`);
 
       // Mettre à jour les états immédiatement
 
@@ -126,16 +124,6 @@ function AnimationBottle({ id }) {
         })
 
         .then(() => {
-          /* console.log("Données postées :", {
-            percentage: progress,
-
-            wineBottle_id: id,
-
-            user_account_ID: user,
-
-            user_id: userId,
-          }); */
-
           setFixedProgress(null);
         })
 
@@ -169,10 +157,6 @@ function AnimationBottle({ id }) {
 
       const newIsLocked = false;
 
-      // console.log(`clickCounter secondclick : ${newClickCounter}`);
-
-      // console.log(`isLocked secondclick : ${newIsLocked}`);
-
       // Mettre à jour les états immédiatement
 
       setIsLocked(newIsLocked);
@@ -188,10 +172,6 @@ function AnimationBottle({ id }) {
       const newClickCounter = prevClickCounter + 1;
 
       const newIsLocked = true;
-
-      // console.log(`clickCounter thirdclick : ${newClickCounter}`);
-
-      // console.log(`isLocked thirdclick : ${newIsLocked}`);
 
       // Mettre à jour les états immédiatement
 
@@ -225,17 +205,7 @@ function AnimationBottle({ id }) {
           }
         )
 
-        .then(() => {
-          /* console.log("Données mises à jour :", {
-            percentage: progress,
-
-            wineBottle_id: id,
-
-            user_id: userId,
-
-            user_account_ID: user,
-          }); */
-        })
+        .then(() => {})
 
         .catch((error) => {
           console.error(

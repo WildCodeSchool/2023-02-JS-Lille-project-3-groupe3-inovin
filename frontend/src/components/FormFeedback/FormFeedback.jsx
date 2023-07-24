@@ -38,8 +38,6 @@ function FormFeedback() {
       });
   }, []);
 
-  // console.log(`id de l'utilisateur sur cette page feedback : ${userId}`);
-
   const updateMedia = () => {
     setIsPortrait(window.innerWidth < 769);
   };
