@@ -1,0 +1,72 @@
+.lightModeNav {
+  background-image: url(../src/assets/images/fondOr.png);
+  height: 25vh;
+  background-size: 100%;
+  box-shadow: -5px 5px 40px #d8af49;
+}
+
+.InovinlightMode {
+  color: #d8af49;
+  font-family: "Limelight", cursive;
+  font-size: 8vh;
+  margin-right: 110px;
+  text-shadow: 4px 4px 3px #2b3044;
+}
+
+.lightCarousel {
+  background-color: #fdffe914;
+  position: absolute;
+  top: 40%;
+  height: 50%;
+  width: -webkit-fill-available;
+  box-shadow: 4px 4px 4px 4px #e8e3d7;
+  z-index: auto;
+  margin: 5%;
+  border: 1px solid #d8af4940;
+}
+
+.light-text-slide {
+  color: #6b6c6b;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3vh;
+  letter-spacing: 5px;
+  padding: 2%;
+  line-height: 50px;
+  margin: 15% 5% 20% 5%;
+}
+
+.text-map-light {
+  font-size: 25px;
+  letter-spacing: 5px;
+  padding: 2%;
+  text-align: center;
+  line-height: 40px;
+  color: #6b6c6b;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.light_steps {
+  color: #6b6c6b;
+  text-shadow: 4px 4px 3px #d9d9d9;
+}
+
+#home_btn_light {
+  border: 8px double #d8af4973;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  bottom: 1vh;
+}
+#head_container_light {
+  opacity: 0.7;
+}
+
+@media (orientation: landscape) {
+  .lightCarousel {
+    height: 36%;
+    padding: 1em 4.5em;
+  }
+  .light-text-slide {
+    margin: 5% 5% 5% 5%;
+  }
+}

@@ -1,5 +1,4 @@
 @import "../../App.scss";
-
 .navHeader {
   display: flex;
   justify-content: space-around;
@@ -39,7 +38,6 @@
 }
 
 .modal-btn {
-  /* background-color: red; */
   height: 4vh;
   position: relative;
   top: 10vh;
@@ -99,6 +97,9 @@
     bottom: 25vh;
     right: 48vw;
   }
+  #moon {
+    width: 6vw;
+  }
 }
 
 @media (orientation: portrait) {
@@ -113,4 +114,31 @@
     bottom: 32vh;
     right: 44vh;
   }
+  #moon {
+    width: 9vw;
+  }
+}
+
+.mode_icons {
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 15vh;
+  right: 10vw;
+  justify-content: center;
+  align-items: first baseline;
+}
+.icon {
+  cursor: pointer;
+  width: 2em;
+  display: flex;
+  justify-content: center;
+  margin: 1vh;
+  background-color: transparent;
+  border: none;
+}
+
+#sun {
+  height: 10vh;
 }

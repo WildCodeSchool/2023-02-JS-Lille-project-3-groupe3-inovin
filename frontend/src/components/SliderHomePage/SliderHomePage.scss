@@ -15,13 +15,6 @@
 #first_slide {
   display: contents;
 }
-.carousel .control-arrow:before,
-.carousel.carousel-slider .control-arrow:before {
-  margin: 0 5px;
-  display: inline-block;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
 
 .carousel.carousel-slider {
   margin: 0px auto;
@@ -81,71 +74,71 @@
   position: absolute;
   font-family: $font_title_small;
   letter-spacing: 1px;
-  text-shadow: 4px 4px 3px #000000;
   font-size: 1.8vh;
   @include tablet-paysage {
     font-size: 1.5em;
   }
 }
-@media (orientation: landscape) {
-  body {
-    background-color: $background_color;
-  }
-  .carousel_container {
-    height: 36%;
-    padding: 1em 4.5em;
-  }
+.dark_steps {
+  text-shadow: 4px 4px 3px #000000;
+}
 
-  #a {
-    top: 10%;
+body {
+  background-color: $background_color;
+}
+.carousel_container {
+  height: 36%;
+  padding: 1em 4.5em;
+}
+
+#a {
+  top: 10%;
+  left: 10%;
+  @include tablet-paysage {
+    top: 2%;
     left: 10%;
-    @include tablet-paysage {
-      top: 2%;
-      left: 10%;
-    }
   }
+}
 
-  #b {
-    top: 10%;
-    left: 43%;
-    @include tablet-paysage {
-      top: 13%;
-      left: 38%;
-    }
+#b {
+  top: 10%;
+  left: 43%;
+  @include tablet-paysage {
+    top: 13%;
+    left: 38%;
   }
+}
 
-  #c {
-    top: 33%;
+#c {
+  top: 33%;
+  left: 7%;
+  @include tablet-paysage {
+    top: 31%;
     left: 7%;
-    @include tablet-paysage {
-      top: 31%;
-      left: 7%;
-    }
   }
+}
 
-  #d {
-    top: 35%;
-    left: 43%;
-    @include tablet-paysage {
-      top: 51%;
-      left: 33%;
-    }
+#d {
+  top: 35%;
+  left: 43%;
+  @include tablet-paysage {
+    top: 51%;
+    left: 33%;
   }
+}
 
-  #e {
-    top: 60%;
-    left: 28%;
-    @include tablet-paysage {
-      top: 70%;
-      left: 18%;
-    }
+#e {
+  top: 60%;
+  left: 28%;
+  @include tablet-paysage {
+    top: 70%;
+    left: 18%;
   }
 }
 
 @media (orientation: portrait) {
   .carousel_container {
     position: absolute;
-
     top: 40%;
     height: 50%;
     width: -webkit-fill-available;
@@ -227,6 +220,7 @@
   }
 }
 .text-first-slide {
+  color: white;
   font-family: $font_title_small;
   font-size: 3vh;
   letter-spacing: 5px;

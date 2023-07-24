@@ -12,9 +12,11 @@
 
 .inovinSiteLink {
   color: $input_color;
-  text-shadow: 4px 4px 3px #000000;
   margin-left: 10px;
   text-decoration: none;
+}
+#siteLink_dark {
+  text-shadow: 4px 4px 3px #000000;
 }
 
 .legal-link {
