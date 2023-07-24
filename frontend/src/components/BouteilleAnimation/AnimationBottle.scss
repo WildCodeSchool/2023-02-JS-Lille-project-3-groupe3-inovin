@@ -1,4 +1,11 @@
 @import "../../App.scss";
+.title-bottle {
+  font-family: $font_title_large;
+  color: $gold_title;
+  font-size: 3em;
+  align-self: center;
+  padding: 23px 1px 1px 1px;
+}
 .progress-bar {
   max-width: 100%;
   width: 100%;
@@ -51,6 +58,13 @@
   font-family: $font_title_small;
   color: white;
   font-size: 2em;
+  margin-left: 7.2vw;
+  width: 10vw;
+  border-radius: 6px;
+  padding: 8px 4px 0px 5px;
+  @include tablet-paysage {
+    margin-left: 4vw;
+  }
 }
 .progress-bar:before {
   content: "";
@@ -75,4 +89,47 @@
     41% 28%,
     25% 36%
   );
+}
+
+.water-fill {
+  position: absolute;
+  top: -38px;
+  left: -16vw;
+  width: 33vw;
+  height: 6vh;
+  background-color: $gold_title;
+  clip-path: polygon(
+    0% 53%,
+    8% 45%,
+    15% 44%,
+    21% 44%,
+    25% 50%,
+    29% 54%,
+    35% 57%,
+    47% 57%,
+    51% 52%,
+    60% 41%,
+    66% 37%,
+    72% 38%,
+    77% 43%,
+    80% 47%,
+    87% 57%,
+    95% 56%,
+    99% 48%,
+    100% 86%,
+    0% 88%
+  );
+  animation: waterAnimation 1s linear infinite forwards; /* Ajoutez une animation pour le mouvement horizontal */
+}
+
+@keyframes waterAnimation {
+  0%,
+  100% {
+    transform: translateX(-30%); /* Le liquide commence et termine au centre */
+  }
+  50% {
+    transform: translateX(
+      30%
+    ); /* Le liquide est au maximum de son déplacement à droite */
+  }
 }

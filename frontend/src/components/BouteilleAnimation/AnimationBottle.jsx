@@ -29,8 +29,24 @@ function AnimationBottle({ id }) {
 
   const [clickCounter, setClickCounter] = useState(0);
 
-  // useEffect pour effectuer une requête GET lors du chargement du composant
+  const [percenStyle, setPercenStyle] = useState({}); // style du percentage au click, état initial
 
+  const newStyle = {
+    backgroundColor: "grey",
+    width: "10vw",
+    borderRadius: "6px",
+    padding: "8px 4px 0px 5px",
+    color: "#292929",
+    boxShadow: "inset 2px 2px 4px rgba(0,0,0,1)",
+  };
+  const secondStyle = {
+    width: "10vw",
+    borderRadius: "6px",
+    padding: "8px 4px 0px 5px",
+    color: "white",
+    boxShadow: "none",
+  };
+  // useEffect pour effectuer une requête GET lors du chargement du composant
   useEffect(() => {
     axios
 
@@ -90,6 +106,7 @@ function AnimationBottle({ id }) {
   }, [isLocked, fixedProgress]);
 
   const handleFirstClick = () => {
+    setPercenStyle(newStyle);
     setClickCounter((prevClickCounter) => {
       // Mettre à jour les états immédiatement en fonction de l'état précédent (prevClickCounter)
 
@@ -162,6 +179,7 @@ function AnimationBottle({ id }) {
   };
 
   const handleSecondClick = () => {
+    setPercenStyle(secondStyle);
     setClickCounter((prevClickCounter) => {
       // Mettre à jour les états immédiatement en fonction de l'état précédent (prevClickCounter)
 
@@ -182,6 +200,7 @@ function AnimationBottle({ id }) {
   };
 
   const handleThirdClick = () => {
+    setPercenStyle(newStyle);
     setClickCounter((prevClickCounter) => {
       // Mettre à jour les états immédiatement en fonction de l'état précédent (prevClickCounter)
 
@@ -270,6 +289,9 @@ function AnimationBottle({ id }) {
             {fixedProgress !== null
               ? `${fixedProgress.toFixed(0)}%`
               : `${progress.toFixed(0)}%`}
+            <div className="water-fill">
+              <div className="water-fill water-fill2" />
+            </div>
           </div>
         </div>
       ) : clickCounter === 1 ? (
@@ -329,8 +351,29 @@ function AnimationBottle({ id }) {
               : `${progress.toFixed(0)}%`}
           </div>
         </div>
-      ) : null}
-      <div className="percentage-title">{Math.round(progress)} %</div>
+      ) : (
+        <div
+          className={`progress-bar ${isLocked ? "locked" : ""}`}
+          id="progressbar"
+          role="button"
+          tabIndex="0"
+          onClick={handleSecondClick}
+          onKeyDown={handleKeyDown}
+          ref={progressBarRef}
+        >
+          <div
+            className="progress-bar-inner"
+            style={{ height: `${progress}%` }}
+          >
+            {fixedProgress !== null
+              ? `${fixedProgress.toFixed(0)}%`
+              : `${progress.toFixed(0)}%`}
+          </div>
+        </div>
+      )}
+      <div className="percentage-title" style={percenStyle}>
+        {Math.round(progress)} %
+      </div>
     </div>
   );
 }
