@@ -13,14 +13,14 @@
 
 .element_apercu {
   position: fixed;
-  bottom: 16vh;
+  bottom: 9vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50vh;
-  height: 130px;
+  width: 58vh;
+  height: 150px;
 }
 
 .element_gauche {
@@ -32,13 +32,12 @@
 }
 
 .element_mini_title {
-  font-size: 26px;
+  font-size: 32px;
   letter-spacing: 0.16em;
   font-family: $font_title_small;
-  padding-bottom: 6%;
+  padding-bottom: -5%;
   margin-top: 0%;
   @include tablet-paysage {
-    margin-top: -6%;
   }
 }
 
@@ -125,7 +124,6 @@
 .recap {
   display: flex;
   align-items: center;
-  background-color: #1d1d1d;
 }
 
 .element_photo {

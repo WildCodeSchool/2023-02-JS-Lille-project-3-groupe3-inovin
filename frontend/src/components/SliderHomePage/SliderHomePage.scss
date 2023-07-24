@@ -83,6 +83,9 @@
   letter-spacing: 1px;
   text-shadow: 4px 4px 3px #000000;
   font-size: 1.8vh;
+  @include tablet-paysage {
+    font-size: 1.5em;
+  }
 }
 @media (orientation: landscape) {
   body {
@@ -96,26 +99,46 @@
   #a {
     top: 10%;
     left: 10%;
+    @include tablet-paysage {
+      top: 2%;
+      left: 10%;
+    }
   }
 
   #b {
     top: 10%;
     left: 43%;
+    @include tablet-paysage {
+      top: 13%;
+      left: 38%;
+    }
   }
 
   #c {
     top: 33%;
     left: 7%;
+    @include tablet-paysage {
+      top: 31%;
+      left: 7%;
+    }
   }
 
   #d {
     top: 35%;
     left: 43%;
+    @include tablet-paysage {
+      top: 51%;
+      left: 33%;
+    }
   }
 
   #e {
     top: 60%;
     left: 28%;
+    @include tablet-paysage {
+      top: 70%;
+      left: 18%;
+    }
   }
 }
 
