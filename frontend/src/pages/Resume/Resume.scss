@@ -15,7 +15,18 @@
 
 .nameBottle {
   list-style-type: none;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
+  font-family: $font_title_small;
+  letter-spacing: 0.05em;
+
+}
+
+.previousPageArrow {
+  position: relative;
+  top: 1.3vh;
+  right: 0.1875vw;
+  height: 4vh;
+  width: auto;
 }
 
 .recipeName {
@@ -31,9 +42,10 @@
 .profil_title,
 .recepie_title {
   color: $gold_title;
-  font-family: $font_title_large;
+  font-family: $font_title_small;
   color: #d8af49;
-  font-size: 38px;
+  font-size: 3rem;
+  letter-spacing: 0.3125rem;
   padding: 2vh;
   font-weight: 400;
   position: relative;
@@ -90,10 +102,10 @@
 }
 
 .personalDetails {
-  font-family: $font_title_large;
+  font-family: $font_title_small;
   color: $title_color;
   line-height: 2;
-  font-size: 1.5em;
+  font-size: 2rem;
   margin-right: 2vw;
 }
 
@@ -120,9 +132,10 @@
   color: black;
   font-weight: bold;
 }
-.nextPageArrow {
+.navigateLinkToResume img {
   transform: rotate(180deg);
 }
+
 @media (orientation: portrait) {
   .recipe_resume {
     width: 80%;
@@ -169,20 +182,21 @@
   }
 
   .bottle_title {
-    font-size: xx-large;
+    font-size: 2.5rem;
     z-index: 2;
     bottom: 3vh;
     left: 12vh;
   }
 
   .diploma_winner {
-    bottom: 36.7vh;
+    bottom: 37.2vh;
     left: 62vw;
+    font-size: 1.5rem;
   }
 
   #goBack_btn {
     position: absolute;
-    left: 11vh;
+    left: 6vh;
     bottom: -4vh;
   }
 }

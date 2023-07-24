@@ -332,6 +332,7 @@ function AnimationBottle({ id }) {
           </div>
         </div>
       ) : null}
+      <div className="percentage-title">{Math.round(progress)} %</div>
     </div>
   );
 }
