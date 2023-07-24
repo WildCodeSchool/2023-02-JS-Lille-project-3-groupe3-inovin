@@ -71,7 +71,6 @@ function SliderHome() {
             <div className="start_button">
               <button
                 type="button"
-                //className="button-submit-identity"
                 id={lightMode ? "home_btn_light" : "home_btn"}
                 onClick={navigateToInscription}
               >
