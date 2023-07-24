@@ -56,7 +56,7 @@
   margin-left: 11vh;
   z-index: 1;
   position: relative;
-  bottom: 28vh;
+  bottom: 31vh;
 }
 
 .containBottleTitle {
@@ -197,7 +197,7 @@
   #goBack_btn {
     position: absolute;
     left: 6vh;
-    bottom: -4vh;
+    bottom: 3vh;
   }
 }
 
@@ -233,6 +233,11 @@
     text-align: center;
   }
 
+  .personalDetails {
+    line-height: 1.2;
+    font-size: 2rem;
+  }
+
   .profil_title {
     position: relative;
     top: 1vh;
@@ -246,6 +251,7 @@
   .recepie_title {
     position: relative;
     bottom: 26vh;
+    left: 3vw;
     color: #d8af49;
     font-family: "Montaga", serif;
     color: #d8af49;
@@ -265,7 +271,7 @@
     left: 24vw;
   }
   .bottle_title {
-    font-size: larger;
+    font-size: 2rem;
     z-index: 2;
     left: 8vh;
     bottom: 26vh;
@@ -273,7 +279,7 @@
 
   #goBack_btn {
     position: relative;
-    bottom: 30vh;
+    bottom: 32vh;
     left: 4vw;
   }
 
@@ -286,6 +292,7 @@
   .diploma_winner {
     bottom: 46vh;
     left: 59.5vh;
+    font-size: 1.5rem;
   }
 
   #commande_btn {
@@ -294,6 +301,10 @@
   }
 
   .nameBottle {
-    font-size: 0.7em;
+    list-style-type: none;
+    font-size: 1em;
+    line-height: 1.2;
+    font-family: $font_title_small;
+    letter-spacing: 0.05em;
   }
 }
