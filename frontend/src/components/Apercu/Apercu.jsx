@@ -36,4 +36,4 @@ Apercu.propTypes = {
   inputNameRecipe: PropTypes.shape({
     recipe_name: PropTypes.string.isRequired,
   }).isRequired,
-};
+}; 

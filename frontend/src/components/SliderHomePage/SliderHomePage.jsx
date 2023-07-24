@@ -66,6 +66,11 @@ function SliderHome() {
               <div id="e" className={lightMode ? "light_steps" : "dark_steps"}>
                 5. Achetez Votre création
               </div>
+              <div id="a">1. Inscrivez-vous</div>
+              <div id="b">2. Complétez vos préférences</div>
+              <div id="c">3. Découvrez votre Profil de Dégustation</div>
+              <div id="d">4. Découvrez l'Atelier Création Viticole </div>
+              <div id="e">5. Achetez Votre création</div>
             </span>
             <img src={wineGlass} id="wineGlass" alt="wine" />
             <div className="start_button">
