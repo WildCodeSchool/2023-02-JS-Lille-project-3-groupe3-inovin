@@ -77,7 +77,6 @@
   text-align: center;
   font-size: 22px;
   padding: 8px;
-  /* width: 156px; */
   height: fit-content;
   transition: all 0.5s;
   cursor: pointer;
@@ -87,22 +86,6 @@
   position: relative;
   bottom: 2vh;
 }
-// .modal-actions {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// .modal-btn {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 10px;
-// }
-
-// .deconnexionBtn,
-// .cancel {
-//   /* Add your button styles here */
-// }
 
 @media (orientation: landscape) {
   #Mcontent {
