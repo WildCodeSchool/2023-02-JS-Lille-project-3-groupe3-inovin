@@ -12,6 +12,7 @@
   align-self: center;
   padding: 3vh;
   bottom: 6vh;
+
   @include tablet-paysage {
     bottom: 10vh;
     font-size: 3em;
@@ -24,6 +25,7 @@
 .picture-band-taste {
   position: relative;
   bottom: 4.9em;
+
   @include tablet-paysage {
     bottom: 12vh;
     left: 9vw;
@@ -59,6 +61,7 @@ ul.nav li {
   margin-left: -8vh;
   height: 4vh;
   width: 11vw;
+
   @include tablet-paysage {
     margin-left: -7vh;
     height: 6vh;
@@ -73,6 +76,7 @@ ul.nav li:hover {
 ul.nav li:active {
   background: #3e3e3e4d;
 }
+
 .carouselWrapper {
   background-image: url(../../assets/images/fond-gris_720.png);
   padding: 1em 3em;
@@ -85,6 +89,7 @@ ul.nav li:active {
   border-radius: 1vh;
   width: 54vh;
   height: 50vh;
+
   @include tablet-paysage {
     width: 100vh;
     height: 50vh;
@@ -115,11 +120,13 @@ ul.nav li:active {
   letter-spacing: 0.1875rem;
   left: 18em;
   bottom: 4vh;
+
   @include tablet-paysage {
     left: 27em;
     bottom: 19vh;
   }
 }
+
 .btn-form-next {
   position: inherit;
   display: inline-block;
@@ -136,6 +143,7 @@ ul.nav li:active {
   width: 7em;
   left: 15vw;
   bottom: 0.1vh;
+
   @include tablet-paysage {
     bottom: 9vh;
     left: 9vw;
@@ -157,15 +165,67 @@ ul.nav li:active {
   letter-spacing: 0.2vh;
   width: 7em;
   left: 10vw;
+
   @include tablet-paysage {
     bottom: 9vh;
     left: 6vw;
   }
 }
+
 .nextPageArrow-tasting {
   position: relative;
   top: 1.3vh;
   right: 0.1875vw;
   height: 4vh;
   width: auto;
+}
+
+.btn-form-back:hover {
+  background-color: $input_color;
+}
+
+.btn-form-back:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-form-back span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-form-back:hover {
+  background-color: $input_color;
+}
+
+.btn-form-back:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-form-next:hover {
+  background-color: $input_color;
+}
+
+.btn-form-next:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-form-next span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-form-next:hover {
+  background-color: $input_color;
+}
+
+.btn-form-next:hover span:after {
+  opacity: 1;
+  right: 0;
 }

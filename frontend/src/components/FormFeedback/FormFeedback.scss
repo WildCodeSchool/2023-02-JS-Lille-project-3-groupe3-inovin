@@ -253,6 +253,7 @@ textarea::placeholder {
     font-size: 38px;
     top: 0.5vh;
   }
+
   .feedbackSent {
     font-size: 2rem;
     top: 0.5vh;
@@ -330,7 +331,7 @@ textarea::placeholder {
   .sendForm {
     background-color: white;
     border-radius: 8px;
-    border: 8px double #3e3e3e;
+    border: 0.8vh double #3e3e3e;
     color: #3e3e3e;
     text-align: center;
     font-family: "Bebas Neue", sans-serif;
@@ -341,4 +342,29 @@ textarea::placeholder {
     letter-spacing: 3px;
     padding: 0;
   }
+}
+
+.sendForm:hover {
+  background-color: $input_color;
+}
+
+.sendForm:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.sendForm span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.sendForm:hover {
+  background-color: $input_color;
+}
+
+.sendForm:hover span:after {
+  opacity: 1;
+  right: 0;
 }

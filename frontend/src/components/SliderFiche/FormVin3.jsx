@@ -21,12 +21,12 @@ function FormVin3({ thirdBottleId }) {
   const [hover, setHover] = useState(null);
 
   const [formData3, setFormData3] = useState({
-    robe: "",
-    color_intensity: "",
-    arome: "",
-    arome_intensity: "",
-    flavor: "",
-    rating,
+    robe: "grenat",
+    color_intensity: "clair",
+    arome: "fruité",
+    arome_intensity: "léger",
+    flavor: "sucre",
+    rating: 7,
     user_id: userId,
     user_account_ID: user,
     wineBottle_id: thirdBottleId,
@@ -184,7 +184,7 @@ function FormVin3({ thirdBottleId }) {
                         type="radio"
                         name="robe"
                         value="grenat"
-                        checked={formData3.robe === "grenat"}
+                        checked
                         onChange={handleChangeData3}
                       />
                       Grenat
@@ -243,7 +243,7 @@ function FormVin3({ thirdBottleId }) {
                         type="radio"
                         name="color_intensity"
                         value="moyenne"
-                        checked={formData3.color_intensity === "moyenne"}
+                        checked
                         onChange={handleChangeData3}
                       />
                       Moyenne
@@ -295,7 +295,7 @@ function FormVin3({ thirdBottleId }) {
                         type="radio"
                         name="arome"
                         value="fleur"
-                        checked={formData3.arome === "fleur"}
+                        checked
                         onChange={handleChangeData3}
                       />
                       Fleurs
@@ -365,7 +365,7 @@ function FormVin3({ thirdBottleId }) {
                         type="radio"
                         name="arome_intensity"
                         value="fort"
-                        checked={formData3.arome_intensity === "fort"}
+                        checked
                         onChange={handleChangeData3}
                       />
                       Fort
@@ -395,7 +395,7 @@ function FormVin3({ thirdBottleId }) {
                         type="radio"
                         name="flavor"
                         value="amer"
-                        checked={formData3.flavor === "amer"}
+                        checked
                         onChange={handleChangeData3}
                       />
                       Amer
