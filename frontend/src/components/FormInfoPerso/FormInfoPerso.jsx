@@ -31,10 +31,6 @@ function FormInfoPerso() {
   // navigation
   const navigate = useNavigate();
 
-  // const handleClickNext = () => {
-  //   navigate("/FicheDegustation");
-  // };
-
   // stock mail & pwd du form pour post
   const [formAuthentification, setFormAuthentifiation] = useState({
     email: "",

@@ -10,7 +10,6 @@ export default function CardBottle({ wineBottleId, wineBottleName }) {
         <div className="contenair-card-bottle">
           <h3 className="name-bottle">{wineBottleName}</h3>
           <AnimationBottle id={wineBottleId} />
-          {/* Intégration du composant AnimationBottle avec les données de la bouteille */}
         </div>
       )}
     </div>

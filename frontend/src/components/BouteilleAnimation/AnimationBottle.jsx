@@ -97,10 +97,6 @@ function AnimationBottle({ id }) {
 
       const newIsLocked = true;
 
-      // console.log(`clickCounter firstclick : ${newClickCounter}`);
-
-      // console.log(`isLocked firstclick : ${newIsLocked}`);
-
       // Mettre à jour les états immédiatement
 
       setIsLocked(newIsLocked);
@@ -126,16 +122,6 @@ function AnimationBottle({ id }) {
         })
 
         .then(() => {
-          /* console.log("Données postées :", {
-            percentage: progress,
-
-            wineBottle_id: id,
-
-            user_account_ID: user,
-
-            user_id: userId,
-          }); */
-
           setFixedProgress(null);
         })
 
@@ -169,10 +155,6 @@ function AnimationBottle({ id }) {
 
       const newIsLocked = false;
 
-      // console.log(`clickCounter secondclick : ${newClickCounter}`);
-
-      // console.log(`isLocked secondclick : ${newIsLocked}`);
-
       // Mettre à jour les états immédiatement
 
       setIsLocked(newIsLocked);
@@ -188,10 +170,6 @@ function AnimationBottle({ id }) {
       const newClickCounter = prevClickCounter + 1;
 
       const newIsLocked = true;
-
-      // console.log(`clickCounter thirdclick : ${newClickCounter}`);
-
-      // console.log(`isLocked thirdclick : ${newIsLocked}`);
 
       // Mettre à jour les états immédiatement
 
@@ -225,17 +203,7 @@ function AnimationBottle({ id }) {
           }
         )
 
-        .then(() => {
-          /* console.log("Données mises à jour :", {
-            percentage: progress,
-
-            wineBottle_id: id,
-
-            user_id: userId,
-
-            user_account_ID: user,
-          }); */
-        })
+        .then(() => {})
 
         .catch((error) => {
           console.error(
