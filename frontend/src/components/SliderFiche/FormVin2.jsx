@@ -22,12 +22,12 @@ function FormVin2({ secondBottleId }) {
   const [hover, setHover] = useState(null);
 
   const [formData2, setFormData2] = useState({
-    robe: "",
-    color_intensity: "",
-    arome: "",
-    arome_intensity: "",
-    flavor: "",
-    rating,
+    robe: "jaune",
+    color_intensity: "trouble",
+    arome: "fruit",
+    arome_intensity: "Léger",
+    flavor: "gras",
+    rating: 8,
     user_id: userId,
     user_account_ID: user,
     wineBottle_id: secondBottleId,
@@ -163,7 +163,7 @@ function FormVin2({ secondBottleId }) {
                         className="input-size"
                         name="robe"
                         value="jauneOr"
-                        checked={formData2.robe === "jauneOr"}
+                        checked
                         onChange={handleChangeData2}
                       />
                       Jaune Or
@@ -233,7 +233,7 @@ function FormVin2({ secondBottleId }) {
                         className="input-size"
                         name="color_intensity"
                         value="claire"
-                        checked={formData2.color_intensity === "claire"}
+                        checked
                         onChange={handleChangeData2}
                       />
                       Claire
@@ -285,7 +285,7 @@ function FormVin2({ secondBottleId }) {
                         className="input-size"
                         name="arome"
                         value="fruit"
-                        checked={formData2.arome === "fruit"}
+                        checked
                         onChange={handleChangeData2}
                       />
                       Fruits
@@ -344,7 +344,7 @@ function FormVin2({ secondBottleId }) {
                         className="input-size"
                         name="arome_intensity"
                         value="leger"
-                        checked={formData2.arome_intensity === "leger"}
+                        checked
                         onChange={handleChangeData2}
                       />
                       Léger
@@ -385,7 +385,7 @@ function FormVin2({ secondBottleId }) {
                         className="input-size"
                         name="flavor"
                         value="acide"
-                        checked={formData2.flavor === "acide"}
+                        checked
                         onChange={handleChangeData2}
                       />
                       Acide

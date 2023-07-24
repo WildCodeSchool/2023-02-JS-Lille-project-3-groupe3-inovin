@@ -21,12 +21,12 @@ function FormVin4({ fourthBottleId }) {
   const [hover, setHover] = useState(null);
 
   const [formData4, setFormData4] = useState({
-    robe: "",
-    color_intensity: "",
-    arome: "",
-    arome_intensity: "",
-    flavor: "",
-    rating,
+    robe: "Jaune or",
+    color_intensity: "clair",
+    arome: "animal",
+    arome_intensity: "moyen",
+    flavor: "gras",
+    rating: 3,
     user_id: userId,
     user_account_ID: user,
     wineBottle_id: fourthBottleId,
@@ -184,7 +184,7 @@ function FormVin4({ fourthBottleId }) {
                         type="radio"
                         name="robe"
                         value="grenat"
-                        checked={formData4.robe === "grenat"}
+                        checked
                         onChange={handleChangeData4}
                       />
                       Grenat
@@ -254,7 +254,7 @@ function FormVin4({ fourthBottleId }) {
                         type="radio"
                         name="color_intensity"
                         value="trouble"
-                        checked={formData4.color_intensity === "trouble"}
+                        checked
                         onChange={handleChangeData4}
                       />
                       Trouble
@@ -317,7 +317,7 @@ function FormVin4({ fourthBottleId }) {
                         type="radio"
                         name="arome"
                         value="epice"
-                        checked={formData4.arome === "epice"}
+                        checked
                         onChange={handleChangeData4}
                       />
                       Epicé
@@ -354,7 +354,7 @@ function FormVin4({ fourthBottleId }) {
                         type="radio"
                         name="arome_intensity"
                         value="moyen"
-                        checked={formData4.arome_intensity === "moyen"}
+                        checked
                         onChange={handleChangeData4}
                       />
                       Moyen
@@ -406,7 +406,7 @@ function FormVin4({ fourthBottleId }) {
                         type="radio"
                         name="flavor"
                         value="sucre"
-                        checked={formData4.flavor === "sucre"}
+                        checked
                         onChange={handleChangeData4}
                       />
                       Sucré
