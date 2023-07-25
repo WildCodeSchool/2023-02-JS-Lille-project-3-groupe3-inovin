@@ -50,7 +50,10 @@ function SliderHome() {
             </div>
           </div>
           <div className="slide-holder">
-            <span className="text_container" id="steps">
+            <span
+              className="text_container"
+              id={lightMode ? "steps_light" : "steps"}
+            >
               <div id="a" className={lightMode ? "light_steps" : "dark_steps"}>
                 1. Inscrivez-vous
               </div>
