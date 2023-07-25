@@ -35,7 +35,7 @@ function Lexique() {
         <div className="modal-open">
           <p className="p-lexique">Robe: Couleur du vin</p>
           <p className="p-lexique">Arôme: odeurs perçues par l'odorat</p>
-          <p className="p-lexique">Saveur: une sensation gustative</p>
+          <p className="p-lexique">Saveur: Une sensation gustative</p>
         </div>
       )}
     </div>
