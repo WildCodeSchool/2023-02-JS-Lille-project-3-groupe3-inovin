@@ -75,9 +75,10 @@ function AnimationBottle({ id }) {
     const handleMouseMove = (e) => {
       const progressBar = progressBarRef.current;
       const progressBarHeight = progressBar.offsetHeight;
-      // dis
+      // 🔥 const progressBarWidth = progressBar.offsetWidth;
       const progressBarWidth = progressBar.offsetWidth;
       const maxProgress = 100;
+      // 🔥   const { top, left } = progressBar.getBoundingClientRect();
       const { top, left } = progressBar.getBoundingClientRect();
 
       // Mise à jour de la progression uniquement si le verrouillage est désactivé et la progression fixée est nulle
@@ -88,6 +89,7 @@ function AnimationBottle({ id }) {
         if (mouseX >= 0 && mouseX <= progressBarWidth) {
           const newProgress = Math.min(
             Math.max(
+              // 🔥((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
               ((progressBarHeight - mouseY) / progressBarHeight) * maxProgress,
               0
             ),
