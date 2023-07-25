@@ -75,6 +75,7 @@ function AnimationBottle({ id }) {
     const handleMouseMove = (e) => {
       const progressBar = progressBarRef.current;
       const progressBarHeight = progressBar.offsetHeight;
+      // dis
       const progressBarWidth = progressBar.offsetWidth;
       const maxProgress = 100;
       const { top, left } = progressBar.getBoundingClientRect();
