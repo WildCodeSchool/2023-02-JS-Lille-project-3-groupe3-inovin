@@ -4,9 +4,8 @@
   margin-top: -17vh;
 }
 
-.creation-title{
+.creation-title {
   @include tablet-paysage {
-
     position: relative;
     bottom: 2vh;
   }
