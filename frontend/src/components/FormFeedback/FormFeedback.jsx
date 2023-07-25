@@ -3,7 +3,6 @@ import "./FormFeedback.scss";
 import { FaStar } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import separator from "../../assets/images/separator02.png";
 import fleche from "../../assets/images/fleche_360.png";
 import UserContext from "../../contexts/UserContext";
 import AnimationPage from "../AnimationPage/AnimationPage";
@@ -37,8 +36,6 @@ function FormFeedback() {
         console.error(err);
       });
   }, []);
-
-  // console.log(`id de l'utilisateur sur cette page feedback : ${userId}`);
 
   const updateMedia = () => {
     setIsPortrait(window.innerWidth < 769);
@@ -78,11 +75,7 @@ function FormFeedback() {
   return (
     <AnimationPage>
       <div className="commentsPage">
-        <div className="commentsBook">
-          <h2>LIVRE D'OR</h2>
-        </div>
-        <img src={separator} className="separatorImg" alt="artdeco" />
-
+        <h2 className="commentsPageTitle">LIVRE D'OR</h2>
         <div className="noticeContainer">
           {!feedbackConfirm ? (
             <h3 className="noticeTitle">AVIS</h3>

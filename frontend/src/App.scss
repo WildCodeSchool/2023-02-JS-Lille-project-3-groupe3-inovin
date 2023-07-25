@@ -135,7 +135,6 @@ $box_color: #3e3e3e;
 $gold_title: #d8af49;
 $input_color: #c5c5c5;
 $button_background_color: #d9d9d9;
-
 $font_inovin: "Limelight", cursive;
 $font_title_small: "Bebas Neue", sans-serif;
 $font_title_large: "Montaga", serif;
@@ -164,11 +163,10 @@ $tablet-width-paysage: 1024px;
 body {
   height: 1024px;
   overflow: hidden;
-  @include page-background();
 }
 
 .backgroundHeader {
-  background-image: url(../../assets/images/fond-gris_720.png);
+  background-image: url(./assets/images/fond-gris_720.png);
   height: 25vh;
   background-size: 100%;
   box-shadow: -5px 5px 40px #0f0d0d;

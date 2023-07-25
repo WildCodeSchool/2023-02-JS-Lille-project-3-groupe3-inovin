@@ -312,9 +312,10 @@
 
 .inputDate {
   color: #0000007b;
-}
-.inputDate {
-  color: #0000007b;
+  @include tablet-paysage {
+    right: 0vw;
+    width: 26.5vw;
+  }
 }
 
 .inputDate:focus {

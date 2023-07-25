@@ -1,13 +1,9 @@
 import "./Apercu.scss";
 import { useNavigate } from "react-router-dom";
-// import { useContext } from "react";
 import PropTypes from "prop-types";
 import grapes from "../../assets/images/grape.jpg";
-// import UserContext from "../../contexts/UserContext";
-function Apercu({ inputNameRecipe }) {
-  // useContext
-  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
 
+function Apercu({ inputNameRecipe }) {
   const navigate = useNavigate();
 
   const handleClickNext = () => {
@@ -37,5 +33,7 @@ function Apercu({ inputNameRecipe }) {
 
 export default Apercu;
 Apercu.propTypes = {
-  inputNameRecipe: PropTypes.string.isRequired,
+  inputNameRecipe: PropTypes.shape({
+    recipe_name: PropTypes.string.isRequired,
+  }).isRequired,
 };

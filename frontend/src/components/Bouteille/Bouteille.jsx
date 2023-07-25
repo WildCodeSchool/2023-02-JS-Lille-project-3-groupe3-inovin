@@ -1,12 +1,7 @@
 import "./Bouteille.scss";
-// import { useContext } from "react";
 import bottlesSlider from "../../assets/images/bouteille_slider.png";
-// import UserContext from "../../contexts/UserContext";
 
 function Bouteille() {
-  // useContext
-  // const { user } = useContext(UserContext); // account_id of current user from inscription page, you can use it for update database
-
   return (
     <>
       <h2 className="element_titre_exterieur_deux">ATELIER DE CREATION</h2>

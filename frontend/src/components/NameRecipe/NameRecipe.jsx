@@ -7,6 +7,7 @@ function NameRecipe() {
   const [inputNameRecipe, setInputNameRecipe] = useState({
     recipe_name: "",
   });
+
   const [posted, setPosted] = useState(false);
   const handleChangeInputNameRecipe = (evt) => {
     setInputNameRecipe({

@@ -1,7 +1,8 @@
 @import "../../App.scss";
 @import url("https://fonts.googleapis.com/css2?family=Birthstone+Bounce&display=swap");
+
 .resume_wrapper {
-  height: 100vh;
+  height: 76vh;
   width: 100%;
   @include black-page-background;
 }
@@ -14,7 +15,17 @@
 
 .nameBottle {
   list-style-type: none;
-  font-size: 0.5em;
+  font-size: 1.7rem;
+  font-family: $font_title_small;
+  letter-spacing: 0.05em;
+}
+
+.previousPageArrow {
+  position: relative;
+  top: 1vh;
+  right: 0.1875vw;
+  height: 4vh;
+  width: auto;
 }
 
 .recipeName {
@@ -30,9 +41,10 @@
 .profil_title,
 .recepie_title {
   color: $gold_title;
-  font-family: $font_title_large;
+  font-family: $font_title_small;
   color: #d8af49;
-  font-size: 38px;
+  font-size: 3rem;
+  letter-spacing: 0.3125rem;
   padding: 2vh;
   font-weight: 400;
   position: relative;
@@ -43,7 +55,7 @@
   margin-left: 11vh;
   z-index: 1;
   position: relative;
-  bottom: 28vh;
+  bottom: 31vh;
 }
 
 .containBottleTitle {
@@ -59,7 +71,6 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  //background-color: $box_color
 }
 
 .halfBackground {
@@ -74,6 +85,10 @@
   background-color: #3e3e3e;
   box-shadow: 1px 1px 15px 1px #000000;
   padding: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 #commande_btn {
@@ -85,10 +100,12 @@
 }
 
 .personalDetails {
-  font-family: $font_title_large;
+  font-family: $font_title_small;
   color: $title_color;
   line-height: 2;
-  font-size: 1.5em;
+  font-size: 2rem;
+  margin-right: 2vw;
+  font-weight: normal;
 }
 
 #rName {
@@ -106,7 +123,7 @@
   height: 10vh;
   width: 10vh;
   text-align: center;
-  line-height: 2;
+  line-height: inherit;
 }
 .diploma_winner {
   position: relative;
@@ -114,15 +131,34 @@
   color: black;
   font-weight: bold;
 }
-.nextPageArrow {
+.navigateLinkBackToResume img {
   transform: rotate(180deg);
 }
+
+.navigateLinkBackToResume {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: 1.6rem;
+  letter-spacing: 0.1875rem;
+}
+
 @media (orientation: portrait) {
   .recipe_resume {
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  }
+
+  .navigateLinkBackToResume {
+    left: 10vw;
+    bottom: 34vh;
   }
 
   .recepie_title {
@@ -147,7 +183,6 @@
     height: 15vh;
     left: 10vw;
     background-color: #3e3e3e;
-    //border: 1px solid rgb(189, 187, 187);
     box-shadow: 1px 1px 15px 1px #000000;
     padding: 1vh;
   }
@@ -163,21 +198,16 @@
   }
 
   .bottle_title {
-    font-size: xx-large;
+    font-size: 2.5rem;
     z-index: 2;
-    bottom: 3vh;
+    bottom: 7vh;
     left: 12vh;
   }
 
   .diploma_winner {
-    bottom: 36.7vh;
-    left: 62vw;
-  }
-
-  #goBack_btn {
-    position: absolute;
-    left: 11vh;
-    bottom: -4vh;
+    bottom: 37.2vh;
+    left: 57vw;
+    font-size: 1.5rem;
   }
 }
 
@@ -213,6 +243,16 @@
     text-align: center;
   }
 
+  .navigateLinkBackToResume {
+    bottom: 32vh;
+    left: 1vw;
+  }
+
+  .personalDetails {
+    line-height: 1.2;
+    font-size: 2rem;
+  }
+
   .profil_title {
     position: relative;
     top: 1vh;
@@ -226,6 +266,7 @@
   .recepie_title {
     position: relative;
     bottom: 26vh;
+    left: 3vw;
     color: #d8af49;
     font-family: "Montaga", serif;
     color: #d8af49;
@@ -245,16 +286,10 @@
     left: 24vw;
   }
   .bottle_title {
-    font-size: larger;
+    font-size: 2rem;
     z-index: 2;
     left: 8vh;
     bottom: 26vh;
-  }
-
-  #goBack_btn {
-    position: relative;
-    bottom: 30vh;
-    left: 4vw;
   }
 
   #bottle_resume {
@@ -264,8 +299,9 @@
     bottom: 30vh;
   }
   .diploma_winner {
-    bottom: 46vh;
-    left: 59.5vh;
+    bottom: 47vh;
+    left: 57vh;
+    font-size: 1.5rem;
   }
 
   #commande_btn {
@@ -274,6 +310,15 @@
   }
 
   .nameBottle {
-    font-size: 0.7em;
+    list-style-type: none;
+    font-size: 1em;
+    line-height: 1.2;
+    font-family: $font_title_small;
+    letter-spacing: 0.05em;
   }
+}
+
+html,
+body {
+  overflow: hidden;
 }

@@ -16,6 +16,7 @@
   font-family: $font_title_small;
   margin: 0.4em 2em 0.4em 0em;
 }
+
 .label-name-recipe span {
   font-family: $font_title_small;
   color: $gold_title;
@@ -30,6 +31,7 @@
   height: 5vh;
   background-color: white;
 }
+
 .button-submit-recipe-name {
   background-color: white;
   border-radius: 0.6em;
@@ -44,4 +46,29 @@
   margin: 0.3em;
   font-family: $font_title_small;
   letter-spacing: 0.1em;
+}
+
+.button-submit-recipe-name:hover {
+  background-color: $input_color;
+}
+
+.button-submit-recipe-name:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button-submit-recipe-name span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-submit-recipe-name:hover {
+  background-color: $input_color;
+}
+
+.button-submit-recipe-name:hover span:after {
+  opacity: 1;
+  right: 0;
 }
