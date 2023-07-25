@@ -77,6 +77,7 @@ function AnimationBottle({ id }) {
 
       const progressBarHeight = progressBar.offsetHeight;
 
+      const progressBarWidth = progressBar.offsetWidth;
       const maxProgress = 100;
 
       const { top } = progressBar.getBoundingClientRect();
