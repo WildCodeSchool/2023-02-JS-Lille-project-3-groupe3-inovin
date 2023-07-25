@@ -170,4 +170,6 @@ body {
   height: 25vh;
   background-size: 100%;
   box-shadow: -5px 5px 40px #0f0d0d;
+  position: relative;
+  z-index: 2;
 }
