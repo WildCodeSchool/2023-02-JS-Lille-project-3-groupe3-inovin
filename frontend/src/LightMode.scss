@@ -6,11 +6,14 @@
 }
 
 .InovinlightMode {
-  color: #d8af49;
+  background: linear-gradient(180deg, #d8b049 0%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: "Limelight", cursive;
   font-size: 8vh;
   margin-right: 110px;
-  text-shadow: 4px 4px 3px #2b3044;
+  filter: drop-shadow(4px 3px #696969);
 }
 
 .lightCarousel {
@@ -36,7 +39,7 @@
 }
 
 .text-map-light {
-  font-size: 25px;
+  font-size: 3vh;
   letter-spacing: 5px;
   padding: 2%;
   text-align: center;
@@ -45,9 +48,10 @@
   font-family: "Bebas Neue", sans-serif;
 }
 
-.light_steps {
-  color: #6b6c6b;
-  text-shadow: 4px 4px 3px #d9d9d9;
+#steps_light {
+  color: #696969;
+  letter-spacing: 5px;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 #home_btn_light {
@@ -57,6 +61,7 @@
   position: relative;
   bottom: 1vh;
 }
+
 #head_container_light {
   opacity: 0.7;
 }
@@ -66,6 +71,7 @@
     height: 36%;
     padding: 1em 4.5em;
   }
+
   .light-text-slide {
     margin: 5% 5% 5% 5%;
   }
