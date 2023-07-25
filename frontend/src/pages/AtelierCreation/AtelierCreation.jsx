@@ -134,7 +134,7 @@ function AtelierCreation() {
     <AnimationPage>
       <div className="element-fond">
         <div className="container_atelier">
-          <h3 className="title-bottle">ATELIER CREATION</h3>
+          <h3 className="title-bottle creation-title">ATELIER CREATION</h3>
           <div className="container-bottle">
             <CardBottle wineBottleName={Name1} wineBottleId={id1} />
             <CardBottle wineBottleName={Name2} wineBottleId={id2} />

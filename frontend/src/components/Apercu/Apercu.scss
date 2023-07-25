@@ -13,7 +13,7 @@
 
 .element_apercu {
   position: fixed;
-  bottom: 8vh;
+  bottom: 9vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -21,6 +21,9 @@
   align-items: center;
   width: 58vh;
   height: 150px;
+  @include tablet-paysage {
+    bottom: 4vh;
+  }
 }
 
 .element_gauche {
