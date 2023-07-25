@@ -32,17 +32,23 @@
   border: none;
 
   @include tablet-paysage {
-    width: 8em;
-    height: 9em;
+    width: 25vw;
+    height: 38vh;
     line-height: 4vh;
-    bottom: 5.1vh;
     left: 56vw;
-    padding-top: 3vh;
+    bottom: 5.5vh;
+    padding-top: 1vh;
+    text-align: left;
+    padding-left: 2vw;
   }
 }
 
 .p-lexique {
   padding: 0.4vh;
+  @include tablet-paysage {
+    padding: 0;
+    padding-top: 1.5vh;
+  }
 }
 
 .button-modal-lexique-open {
@@ -85,7 +91,7 @@
   bottom: 11.75vh;
   left: 15vw;
   @include tablet-paysage {
-    bottom: 45.3vh;
+    bottom: 45.6vh;
     left: 52vw;
   }
 }

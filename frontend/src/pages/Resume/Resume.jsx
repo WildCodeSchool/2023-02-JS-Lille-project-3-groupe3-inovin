@@ -124,12 +124,11 @@ function Resume() {
           <p className="diploma_winner">{fullName}</p>
           <button
             type="button"
-            className="navigateLinkToResume"
-            id="goBack_btn"
+            className="navigateLinkBackToResume"
             onClick={previousPage}
           >
             {" "}
-            <img src={fleche} alt="" className="nextPageArrow" /> Précédent
+            <img src={fleche} alt="" className="previousPageArrow" /> Précédent
           </button>
         </div>
       </div>

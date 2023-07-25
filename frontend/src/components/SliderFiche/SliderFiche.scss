@@ -1,32 +1,17 @@
 @import "../../App.scss";
 
-.degustationTitle {
-  padding: 1em 3em;
+.tastingTitlePage {
   position: relative;
   font-family: $font_inovin;
-  color: $input_color;
-  background-color: $box_color;
-  border: solid 0.03em $button_background_color;
-  border-radius: 0.1em;
-  font-size: 3.4em;
-  align-self: center;
-  padding: 3vh;
-  bottom: 6vh;
-  @include tablet-paysage {
-    bottom: 10vh;
-    font-size: 3em;
-    width: 55vw;
-    left: 15vw;
-    text-align: center;
-  }
-}
+  font-family: $font_title_large;
+  color: $gold_title;
+  font-size: 3em;
+  padding: 2.7vh;
+  left: 3vw;
 
-.picture-band-taste {
-  position: relative;
-  bottom: 4.9em;
   @include tablet-paysage {
-    bottom: 12vh;
-    left: 9vw;
+    font-size: 3em;
+    text-align: center;
   }
 }
 
@@ -59,6 +44,7 @@ ul.nav li {
   margin-left: -8vh;
   height: 4vh;
   width: 11vw;
+
   @include tablet-paysage {
     margin-left: -7vh;
     height: 6vh;
@@ -73,22 +59,22 @@ ul.nav li:hover {
 ul.nav li:active {
   background: #3e3e3e4d;
 }
+
 .carouselWrapper {
   background-image: url(../../assets/images/fond-gris_720.png);
   padding: 1em 3em;
   position: relative;
-  bottom: 4vh;
-  left: 3vw;
   box-shadow: 0.1em 0.1em 0.5em 0.1em #000000;
   z-index: auto;
   margin: 1em 1em;
   border-radius: 1vh;
   width: 54vh;
   height: 50vh;
+  top: 3vh;
   @include tablet-paysage {
     width: 100vh;
     height: 50vh;
-    bottom: 12vh;
+    top: 2vh;
     left: 0vw;
   }
 }
@@ -115,11 +101,13 @@ ul.nav li:active {
   letter-spacing: 0.1875rem;
   left: 18em;
   bottom: 4vh;
+
   @include tablet-paysage {
     left: 27em;
     bottom: 19vh;
   }
 }
+
 .btn-form-next {
   position: inherit;
   display: inline-block;
@@ -136,8 +124,9 @@ ul.nav li:active {
   width: 7em;
   left: 15vw;
   bottom: 0.1vh;
+
   @include tablet-paysage {
-    bottom: 9vh;
+    bottom: 7.5vh;
     left: 9vw;
   }
 }
@@ -157,15 +146,67 @@ ul.nav li:active {
   letter-spacing: 0.2vh;
   width: 7em;
   left: 10vw;
+
   @include tablet-paysage {
-    bottom: 9vh;
+    bottom: 7.5vh;
     left: 6vw;
   }
 }
+
 .nextPageArrow-tasting {
   position: relative;
   top: 1.3vh;
   right: 0.1875vw;
   height: 4vh;
   width: auto;
+}
+
+.btn-form-back:hover {
+  background-color: $input_color;
+}
+
+.btn-form-back:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-form-back span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-form-back:hover {
+  background-color: $input_color;
+}
+
+.btn-form-back:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-form-next:hover {
+  background-color: $input_color;
+}
+
+.btn-form-next:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-form-next span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-form-next:hover {
+  background-color: $input_color;
+}
+
+.btn-form-next:hover span:after {
+  opacity: 1;
+  right: 0;
 }
