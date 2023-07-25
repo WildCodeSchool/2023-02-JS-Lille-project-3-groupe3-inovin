@@ -6,13 +6,11 @@
   height: 15vh;
   justify-content: space-around;
 }
-
 .logo {
   align-self: self-start;
   background-repeat: no-repeat;
   margin-left: 10px;
 }
-
 .inovinTitle {
   font-family: $font_inovin;
   color: $title_color;
@@ -20,7 +18,6 @@
   text-shadow: 4px 4px 3px #000000;
   margin-right: 110px;
 }
-
 .loginLinks {
   height: 65px;
   width: 65px;
@@ -29,7 +26,6 @@
   border: none;
   padding-top: 1vh;
 }
-
 .username {
   color: $gold_title;
   font-family: $font_title_small;
@@ -37,37 +33,8 @@
   font-size: 1.5em;
   letter-spacing: 4px;
   transition: 2s;
+  text-align: center;
 }
-
-.modal-btn {
-  height: 4vh;
-  position: relative;
-  top: 10vh;
-  right: 0vh;
-  display: flex;
-  flex-direction: row;
-}
-#Mcontent {
-  position: absolute;
-  width: 37%;
-}
-
-#deconnexionBtn {
-  margin-right: 10px;
-}
-
-#cancel {
-  margin-left: 10px;
-}
-
-.modal-content {
-  width: 41%;
-}
-
-.Mtext {
-  font-family: $font_title_large;
-}
-
 .btn_M {
   display: inline-block;
   background-color: white;
@@ -83,42 +50,35 @@
   margin: 1vh;
   font-family: $font_title_small;
   letter-spacing: 3px;
-  position: relative;
-  bottom: 2vh;
-}
-
-@media (orientation: landscape) {
-  #Mcontent {
-    position: relative;
-    width: 50vw;
-    right: 12vw;
-    bottom: 23vh;
-  }
-
-  .btn_M {
-    bottom: 25vh;
-    right: 48vw;
-  }
-  #moon {
-    width: 6vw;
-  }
 }
 .connect {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+.modal-content {
+  width: 50%;
+}
+.modal-btn {
+  top: -11vh;
+  position: relative;
+}
+.modalText {
+  font-size: 2em;
+  text-align: center;
+  padding-bottom: 6vh;
+  font-family: $font_title_small;
+}
+@media (orientation: landscape) {
+  #moon {
+    width: 6vw;
+  }
 }
 @media (orientation: portrait) {
-  #Mcontent {
-    position: relative;
-    width: 50vw;
-    right: 20vw;
-    bottom: 28vh;
-  }
-
-  .btn_M {
-    bottom: 32vh;
-    right: 44vh;
-  }
   #moon {
     width: 9vw;
   }
