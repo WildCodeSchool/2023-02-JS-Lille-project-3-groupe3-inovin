@@ -13,11 +13,19 @@ function Home() {
         id={lightMode ? "head_container_light" : ""}
       >
         <h2 id="title">Connectez vous à votre profil de dégustation de vin</h2>
-        <img className="title_background" src={background} alt="" />
+        <img
+          className={lightMode ? "light-title-background" : "title_background"}
+          src={background}
+          alt=""
+        />
       </div>
       <SliderHome />
       <div className="start_button">
-        <img id="background_btn" src={background} alt="" />
+        <img
+          id={lightMode ? "light_background_btn" : "background_btn"}
+          src={background}
+          alt=""
+        />
       </div>
     </div>
   );
