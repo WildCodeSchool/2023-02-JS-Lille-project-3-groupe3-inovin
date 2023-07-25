@@ -10,7 +10,6 @@ import FormVin2 from "./FormVin2";
 import FormVin3 from "./FormVin3";
 import FormVin4 from "./FormVin4";
 import AnimationPage from "../AnimationPage/AnimationPage";
-import pictureBand from "../../assets/images/separator3.png";
 
 function SliderFiche() {
   // useContext
@@ -51,8 +50,7 @@ function SliderFiche() {
 
   return (
     <AnimationPage>
-      <h2 className="degustationTitle">Fiche de Dégustation</h2>
-      <img className="picture-band-taste" src={pictureBand} alt="banderole3" />
+      <h2 className="tastingTitlePage">FICHE DE DEGUSTATION</h2>
       <div className="carouselWrapper">
         {showActualForm()}
         {currentFormIndex > 0 && (

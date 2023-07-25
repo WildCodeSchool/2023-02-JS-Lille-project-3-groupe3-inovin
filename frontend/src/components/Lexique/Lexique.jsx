@@ -33,11 +33,9 @@ function Lexique() {
       {/* Modal */}
       {isShowing && (
         <div className="modal-open">
-          <p className="p-lexique">Robe: Couleur du vin.</p>
-          <p className="p-lexique">Arôme: odeurs par la voie rétro-nasale</p>
-          <p className="p-lexique">
-            Saveur: une sensation sur l'organe du goût
-          </p>
+          <p className="p-lexique">Robe: Couleur du vin</p>
+          <p className="p-lexique">Arôme: odeurs perçues par l'odorat</p>
+          <p className="p-lexique">Saveur: une sensation gustative</p>
         </div>
       )}
     </div>

@@ -64,6 +64,8 @@
   padding: 8px 4px 0px 5px;
   @include tablet-paysage {
     margin-left: 4vw;
+    position: relative;
+    bottom: 3vh;
   }
 }
 .progress-bar:before {
