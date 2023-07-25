@@ -2,14 +2,13 @@
 
 .carousel_container {
   background-color: $box_color;
-  padding: 1em 3em;
+  // padding: 1em 3em;
   position: absolute;
   bottom: 10%;
   box-shadow: 4px 4px 4px 4px #000000;
   z-index: auto;
   margin: 2% 5%;
   border: 1px solid gainsboro;
-  width: 75%;
 }
 
 #first_slide {
@@ -190,11 +189,10 @@ body {
   }
 }
 #home_btn {
-  height: 27%;
-  width: 8rem;
-  font-family: $font_title_small;
-  position: absolute;
-  top: 1%;
+  width: 9rem;
+  font-family: "Bebas Neue", sans-serif;
+  position: fixed;
+  top: -54px;
   background-color: white;
   border-radius: 8px;
   border: 0.8vh double #3e3e3e;
@@ -202,10 +200,12 @@ body {
   text-align: center;
   font-size: 1.5em;
   transition: all 0.5s;
+  right: -76px;
   cursor: pointer;
   letter-spacing: 0.2vh;
   @include tablet-paysage {
     width: 200px;
+    top: 1px;
     position: relative;
     right: 1vw;
   }
