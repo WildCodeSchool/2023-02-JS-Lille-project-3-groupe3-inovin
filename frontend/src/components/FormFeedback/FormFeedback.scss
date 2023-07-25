@@ -84,16 +84,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.commentsBook {
-  box-sizing: border-box;
-  background-color: $box_color;
-  display: flex;
-  justify-content: center;
-  border: 1px solid #ffffff;
-  border-radius: 0.375rem;
-  padding: 0.5rem 0;
+  height: 100vh;
 }
 
 .starContainer {
@@ -162,17 +153,20 @@ textarea::placeholder {
     bottom: 7vh;
   }
 
-  .commentsBook h2 {
+  .commentsPageTitle {
     padding: 0.625rem 0;
-    color: $title_color;
-    font-size: 3.4em;
+    color: $gold_title;
+    font-size: 3em;
+    font-family: $font_title_large;
+    position: relative;
+    top: 2vh;
   }
 
   .noticeContainer {
     width: 90vw;
     height: 50vh;
     position: relative;
-    bottom: 6vh;
+    top: 4vh;
   }
 
   .content {
@@ -194,14 +188,6 @@ textarea::placeholder {
   .askCommentTitle {
     position: relative;
     top: -2vh;
-  }
-
-  .separatorImg {
-    transform: rotate(180deg);
-    position: relative;
-    z-index: 1;
-    bottom: 8.4vh;
-    width: 70vw;
   }
 
   .sendForm {
@@ -229,23 +215,14 @@ textarea::placeholder {
 }
 
 @media (orientation: landscape) {
-  .commentsBook {
-    position: relative;
-    box-sizing: border-box;
-    background-color: $box_color;
-    width: 60vw;
-    padding: 3vh;
-    display: flex;
-    justify-content: center;
-    bottom: 8vh;
-    z-index: 1;
-  }
-
-  .commentsBook h2 {
+  .commentsPageTitle {
     padding: none;
-    color: $title_color;
+    color: $gold_title;
     padding: 0.4375rem 0rem;
-    font-size: 3.4em;
+    font-size: 3em;
+    font-family: $font_title_large;
+    position: relative;
+    top: 2vh;
   }
 
   .noticeTitle {
@@ -296,13 +273,6 @@ textarea::placeholder {
     top: -1vh;
   }
 
-  .separatorImg {
-    transform: rotate(180deg);
-    position: relative;
-    z-index: 1;
-    bottom: 10.2vh;
-  }
-
   .navigateLinkToResume {
     bottom: 2vh;
     left: 35vw;
@@ -319,8 +289,8 @@ textarea::placeholder {
   .noticeContainer {
     height: 53vh;
     position: relative;
-    bottom: 12vh;
     width: 90vw;
+    top: 4vh;
   }
 
   .buttonDecoration {

@@ -112,7 +112,7 @@ function FormVin1({ firstBottleId }) {
 
   return (
     <div className="contenair-carousel">
-      <h3 className="h3-title-wine-taste">VIN NUMERO 1</h3>
+      <h3 className="h3-title-wine-taste">Vin numéro 1</h3>
       <div className="slideWrapper">
         <div className="thirdSlide">
           <div className="tabs">

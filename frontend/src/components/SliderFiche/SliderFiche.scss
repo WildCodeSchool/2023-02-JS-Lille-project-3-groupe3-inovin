@@ -1,34 +1,17 @@
 @import "../../App.scss";
 
-.degustationTitle {
-  padding: 1em 3em;
+.tastingTitlePage {
   position: relative;
   font-family: $font_inovin;
-  color: $input_color;
-  background-color: $box_color;
-  border: solid 0.03em $button_background_color;
-  border-radius: 0.1em;
-  font-size: 3.4em;
-  align-self: center;
-  padding: 3vh;
-  bottom: 6vh;
+  font-family: $font_title_large;
+  color: $gold_title;
+  font-size: 3em;
+  padding: 2.7vh;
+  left: 3vw;
 
   @include tablet-paysage {
-    bottom: 10vh;
     font-size: 3em;
-    width: 55vw;
-    left: 15vw;
     text-align: center;
-  }
-}
-
-.picture-band-taste {
-  position: relative;
-  bottom: 4.9em;
-
-  @include tablet-paysage {
-    bottom: 12vh;
-    left: 9vw;
   }
 }
 
@@ -81,19 +64,17 @@ ul.nav li:active {
   background-image: url(../../assets/images/fond-gris_720.png);
   padding: 1em 3em;
   position: relative;
-  bottom: 4vh;
-  left: 3vw;
   box-shadow: 0.1em 0.1em 0.5em 0.1em #000000;
   z-index: auto;
   margin: 1em 1em;
   border-radius: 1vh;
   width: 54vh;
   height: 50vh;
-
+  top: 3vh;
   @include tablet-paysage {
     width: 100vh;
     height: 50vh;
-    bottom: 12vh;
+    top: 2vh;
     left: 0vw;
   }
 }
@@ -145,7 +126,7 @@ ul.nav li:active {
   bottom: 0.1vh;
 
   @include tablet-paysage {
-    bottom: 9vh;
+    bottom: 7.5vh;
     left: 9vw;
   }
 }
@@ -167,7 +148,7 @@ ul.nav li:active {
   left: 10vw;
 
   @include tablet-paysage {
-    bottom: 9vh;
+    bottom: 7.5vh;
     left: 6vw;
   }
 }
