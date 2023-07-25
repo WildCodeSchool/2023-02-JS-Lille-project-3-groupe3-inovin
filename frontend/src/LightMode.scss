@@ -14,6 +14,28 @@
   font-size: 8vh;
   margin-right: 110px;
   filter: drop-shadow(4px 3px #696969);
+  box-shadow: 5px 4px 4px 0px rgba(0, 0, 0, 0.62);
+}
+
+.light-slide-map {
+  display: flex;
+  flex-direction: row;
+  font-family: "Bebas Neue", sans-serif;
+  align-items: center;
+  padding: 6% 5% 5% 5%;
+  top: 1vh;
+}
+
+.light-title-background {
+  transform: rotate(180deg);
+  width: inherit;
+  position: absolute;
+  top: 21vh;
+  opacity: 0.7;
+}
+
+#light_background_btn {
+  opacity: 0.5;
 }
 
 .lightCarousel {
@@ -22,10 +44,11 @@
   top: 40%;
   height: 50%;
   width: -webkit-fill-available;
-  box-shadow: 4px 4px 4px 4px #e8e3d7;
   z-index: auto;
   margin: 5%;
   border: 1px solid #d8af4940;
+  border-radius: 9px;
+  box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.6);
 }
 
 .light-text-slide {
@@ -64,6 +87,7 @@
 
 #head_container_light {
   opacity: 0.7;
+  box-shadow: 5px 4px 4px 4px rgba(0, 0, 0, 0.55);
 }
 
 @media (orientation: landscape) {

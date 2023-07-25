@@ -190,10 +190,20 @@ body {
   }
 }
 #home_btn {
-  cursor: pointer;
+  height: 27%;
+  width: 8rem;
+  font-family: $font_title_small;
+  position: absolute;
+  top: 1%;
+  background-color: white;
+  border-radius: 8px;
+  border: 0.8vh double #3e3e3e;
+  color: #3e3e3e;
   text-align: center;
-  position: relative;
-  bottom: 1vh;
+  font-size: 1.5em;
+  transition: all 0.5s;
+  cursor: pointer;
+  letter-spacing: 0.2vh;
   @include tablet-paysage {
     width: 200px;
     position: relative;
