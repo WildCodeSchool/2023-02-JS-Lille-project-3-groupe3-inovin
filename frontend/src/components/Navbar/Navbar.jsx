@@ -4,7 +4,6 @@ import { useContext, useState } from "react";
 import signout from "../../assets/images/signout.png";
 import ProfileIcone from "../../assets/images/🦆 icon _profile circle_.png";
 import LogoInovin from "../../assets/images/logo_inovin.png";
-import lightLogo from "../../assets/images/logo2.png";
 import UserContext from "../../contexts/UserContext";
 import sun from "../../assets/images/sun.png";
 import moon from "../../assets/images/moon.png";
@@ -43,13 +42,17 @@ function Navbar() {
       <div className="navHeader">
         <p className="logo">
           <Link to="/">
-            <img src={lightMode ? lightLogo : LogoInovin} alt="Logo Ino Vin" />
+            <img
+              className={lightMode ? "lightLogo" : "darkLogo"}
+              src={LogoInovin}
+              alt="Logo Ino Vin"
+            />
           </Link>
         </p>
         <h1 className={lightMode ? "InovinlightMode" : "inovinTitle"}>
           Ino Vin
         </h1>
-        <div>
+        <div className="connect">
           {firstname ? (
             <h3 className="username">{firstname}</h3>
           ) : (
@@ -93,6 +96,17 @@ function Navbar() {
                 aria-label="Inscription"
               />
             )}
+            <div className="mode_icons">
+              <button type="button" className="icon" onClick={toggleLightMode}>
+                {" "}
+                <img
+                  id={lightMode ? "sun" : "moon"}
+                  className="mode"
+                  src={lightMode ? sun : moon}
+                  alt={lightMode ? "moon" : "sun"}
+                />
+              </button>
+            </div>
           </div>
           {disconnect && (
             <div className="modal">
@@ -125,17 +139,6 @@ function Navbar() {
               </div>
             </div>
           )}
-        </div>
-        <div className="mode_icons">
-          <button type="button" className="icon" onClick={toggleLightMode}>
-            {" "}
-            <img
-              id={lightMode ? "sun" : "moon"}
-              className="mode"
-              src={lightMode ? sun : moon}
-              alt={lightMode ? "moon" : "sun"}
-            />
-          </button>
         </div>
       </div>
     </div>
