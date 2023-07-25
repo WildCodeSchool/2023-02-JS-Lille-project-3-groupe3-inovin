@@ -37,7 +37,7 @@ function SliderHome() {
             </div>
           </div>
           <div className={lightMode ? "light-first-slide" : "slide-holder"}>
-            <div className="slide-map">
+            <div className={lightMode ? "light-slide-map" : "slide-map"}>
               <div className={lightMode ? "text-map-light" : "text-map"}>
                 Et voici la carte des différentes régions viticoles où nous
                 irons piocher nos cépages.
