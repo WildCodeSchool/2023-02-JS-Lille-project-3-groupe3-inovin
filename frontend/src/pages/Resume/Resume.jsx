@@ -14,6 +14,7 @@ function Resume() {
   const { user } = useContext(UserContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [fullName, setFullName] = useState("");
+  const [userFirstname, setUserFirstname] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [birthDay, setBirthDay] = useState("");
   const [recipeName, setRecipeName] = useState({ recipe_name: "" });
@@ -30,11 +31,13 @@ function Resume() {
       })
       .then((response) => {
         const { firstname, lastname, birthdate } = response.data[0];
+        const userName = response.data[0].firstname;
         const array = birthdate.split("T");
         const dateParts = array[0].split("-");
         const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
         setFullName(`${firstname} ${lastname}`);
         setBirthDay(formattedDate);
+        setUserFirstname(`${userName}`);
       })
       .catch((error) => {
         console.error("Error retrieving user info:", error);
@@ -109,7 +112,7 @@ function Resume() {
           {modalOpen && (
             <CommandeModal
               setOpenModal={setModalOpen}
-              fullName={fullName}
+              userFirstname={userFirstname}
               user={user}
             />
           )}

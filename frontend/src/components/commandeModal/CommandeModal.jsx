@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import axios from "axios";
 import logo from "../../assets/images/logo_inovin.png";
 
-function CommandeModal({ setOpenModal, fullName, user }) {
+function CommandeModal({ setOpenModal, userFirstname, user }) {
   const [confirmed, setConfirmed] = useState(false);
   const [address, setAddress] = useState({
     street: "",
@@ -174,7 +174,8 @@ function CommandeModal({ setOpenModal, fullName, user }) {
             <div>
               <div className="title">
                 <h1>
-                  Nous avons besoin de votre adresse de livraison, {fullName}!
+                  Nous avons besoin de votre adresse de livraison,{" "}
+                  {userFirstname}!
                 </h1>
               </div>
 
@@ -255,8 +256,8 @@ function CommandeModal({ setOpenModal, fullName, user }) {
                 </h2>
               ) : (
                 <h2 className="confirmation">
-                  Merci pour votre commande, {fullName}. Nous vous avons envoyé
-                  un mail de confirmation.
+                  Merci pour votre commande, {userFirstname}. Nous vous avons
+                  envoyé un mail de confirmation.
                 </h2>
               )}
             </div>
@@ -289,6 +290,6 @@ function CommandeModal({ setOpenModal, fullName, user }) {
 export default CommandeModal;
 CommandeModal.propTypes = {
   setOpenModal: PropTypes.func.isRequired,
-  fullName: PropTypes.string.isRequired,
+  userFirstname: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
 };
