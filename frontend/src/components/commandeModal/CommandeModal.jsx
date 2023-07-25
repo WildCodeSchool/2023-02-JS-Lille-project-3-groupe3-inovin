@@ -225,7 +225,7 @@ function CommandeModal({ setOpenModal, userFirstname, user }) {
                 </div>
                 <div className="codePostale">
                   <label className="commandeLabel" htmlFor="postal-code">
-                    Code postale
+                    Code postal
                   </label>
                   <input
                     required
@@ -252,7 +252,7 @@ function CommandeModal({ setOpenModal, userFirstname, user }) {
 
               {buttonClicks === 1 ? (
                 <h2 className="confirmation">
-                  Merci. Votre addresse a été bien enregistrée
+                  Merci. Votre adresse a bien été enregistrée.
                 </h2>
               ) : (
                 <h2 className="confirmation">
