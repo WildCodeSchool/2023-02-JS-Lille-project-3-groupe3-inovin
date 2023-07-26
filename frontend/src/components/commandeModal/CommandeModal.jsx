@@ -290,6 +290,7 @@ function CommandeModal({ setOpenModal, userFirstname, user }) {
 export default CommandeModal;
 CommandeModal.propTypes = {
   setOpenModal: PropTypes.func.isRequired,
+  fullName: PropTypes.string.isRequired,
+  user: PropTypes.number.isRequired,
   userFirstname: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
 };
