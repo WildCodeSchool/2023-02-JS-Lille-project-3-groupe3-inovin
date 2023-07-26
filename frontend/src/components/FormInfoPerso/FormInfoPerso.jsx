@@ -3,15 +3,17 @@ import "./FormInfoPerso.scss";
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { differenceInYears } from "date-fns";
+import { ToastContainer, toast } from "react-toastify";
 import picturePreferences from "../../assets/images/photo2_720.png";
 import UserContext from "../../contexts/UserContext";
 import AnimationPage from "../AnimationPage/AnimationPage";
+import "react-toastify/dist/ReactToastify.css";
 
 function FormInfoPerso() {
   // usecontext
   const { setUser, setFirstname } = useContext(UserContext);
   const [ageError, setAgeError] = useState(false);
-
+  const notify = () => toast("Votre compte a été créé avec succès");
   // fonction pour get l'id du nouvel inscrit grâce à son account_id, on le stock dans le state userId.
   const getUserId = (accountId, setUserId) => {
     axios
@@ -147,6 +149,7 @@ function FormInfoPerso() {
       .post(`${import.meta.env.VITE_BACKEND_URL}/account`, formAuthentification)
       .then(() => {
         getAccountId(); // call la fonction pour récupérer l'account_id du nouvel inscrit grâce à son email
+        notify();
       })
       .catch((err) => {
         console.error(err);
@@ -171,9 +174,11 @@ function FormInfoPerso() {
         .catch((err) => {
           console.error(err);
         })
+        // naviguer aprés 2 sec (pour afficher le toast)
         .finally(() => {
-          // Navigate to "/FicheDegustation"
-          navigate("/FicheDegustation");
+          setTimeout(() => {
+            navigate("/FicheDegustation");
+          }, 2000);
         });
     }
   };
@@ -205,8 +210,21 @@ function FormInfoPerso() {
     createPreference();
   }, [userId]);
 
+  // pour l'affichage du toast
+
   return (
     <AnimationPage>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div>
         <form className="form-inscription" onSubmit={handleSubmitInscription}>
           <div className="contenair-identity">
