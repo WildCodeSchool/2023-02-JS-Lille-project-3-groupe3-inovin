@@ -73,7 +73,7 @@ function Navbar() {
                 src={signout}
                 alt=""
                 role="presentation"
-                onClick=""
+                onClick={deconnexion} // Pass the 'deconnexion' function here
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     deconnexion();
@@ -87,7 +87,7 @@ function Navbar() {
                 className="profileIcone"
                 alt="Lien cliquable vers la page d'inscription"
                 role="presentation"
-                onClick={inscription}
+                onClick={inscription} // Pass the 'inscription' function here
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     inscription();

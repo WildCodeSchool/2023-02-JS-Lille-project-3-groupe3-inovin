@@ -251,7 +251,7 @@ function CommandeModal({ setOpenModal, fullName, user }) {
 
               {buttonClicks === 1 ? (
                 <h2 className="confirmation">
-                  Merci. Votre addresse a été bien enregistrée
+                  Merci. Votre adresse a bien été enregistrée
                 </h2>
               ) : (
                 <h2 className="confirmation">
@@ -290,5 +290,5 @@ export default CommandeModal;
 CommandeModal.propTypes = {
   setOpenModal: PropTypes.func.isRequired,
   fullName: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
+  user: PropTypes.number.isRequired,
 };
